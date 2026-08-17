@@ -254,6 +254,28 @@ def _text_hash(text: str) -> str:
 # `_report_failures` in on_label_merge: the count is the signal).
 _skipped_uncached: dict[str, int] = {}
 
+#: Flush the LLM caches to disk every N new entries, not only at the end of `main()`.
+#:
+#: `EnrichmentCache.put` mutates an in-memory dict; persistence happens in `flush()`. With the
+#: only flush at the end of the run, a crash or an interrupt part-way through a multi-thousand
+#: call ingest discarded every answer bought so far and the next run paid for them again. A
+#: full DailyMed rebuild is ~3,578 calls, so the exposure is hours of wall clock and real
+#: money. Checkpointing costs one small write per 100 answers.
+_FLUSH_EVERY = 100
+_writes_since_flush = 0
+
+
+def _checkpoint(cache) -> None:
+    """Count one new cache entry and flush periodically so work survives a crash."""
+    global _writes_since_flush
+    _writes_since_flush += 1
+    if _writes_since_flush >= _FLUSH_EVERY:
+        _writes_since_flush = 0
+        for c in (_disease_cache, _contra_disease_cache, _allergen_cache):
+            if c is not None:
+                c.flush()
+        logger.info("cache checkpoint: flushed after %d new entries", _FLUSH_EVERY)
+
 
 def _note_skipped_uncached(kind: str) -> None:
     _skipped_uncached[kind] = _skipped_uncached.get(kind, 0) + 1
@@ -365,6 +387,7 @@ def extract_diseases_from_text(indication_text: str) -> list[str]:
 
     # Cache the RAW extraction (faithful to the LLM); screen on return.
     cache.put(key, {"diseases": diseases, "text_prefix": indication_text[:200]})
+    _checkpoint(cache)
     return _screen_negated_indications(diseases, indication_text)
 
 
@@ -427,6 +450,7 @@ def extract_contraindicated_diseases_from_text(contraindication_text: str) -> li
         key,
         {"diseases": diseases, "text_prefix": contraindication_text[:200]},
     )
+    _checkpoint(cache)
     return diseases
 
 
@@ -462,6 +486,7 @@ def is_allergen_or_diagnostic(drug_name: str) -> dict:
     }
 
     cache.put(key, result)
+    _checkpoint(cache)
     return result
 
 
