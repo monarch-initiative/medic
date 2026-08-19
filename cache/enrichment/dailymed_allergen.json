@@ -19,6 +19,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "1,2-HEXANEDIOL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "2,3,7,8-TETRACHLORODIBENZO-P-DIOXIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -247,6 +251,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ALFUZOSIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ALGLUCOSIDASE ALFA": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -275,6 +283,14 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ALMOTRIPTAN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "ALOE VERA LEAF": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ALOGLIPTIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -292,6 +308,10 @@
     "is_diagnostic_agent": false
   },
   "ALPROSTADIL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "ALTEPLASE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -316,6 +336,10 @@
     "is_diagnostic_agent": false
   },
   "AMCINONIDE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "AMDINOCILLIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -408,6 +432,10 @@
     "is_diagnostic_agent": false
   },
   "ANAKINRA": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "ANASTROZOLE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -591,6 +619,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ATOMOXETINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ATORVASTATIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -663,7 +695,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "AZACITIDINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "AZATHIOPRINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "AZELAIC ACID": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -832,6 +872,10 @@
     "is_diagnostic_agent": false
   },
   "BEREMAGENE GEPERPAVEC": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "BETAINE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -1355,7 +1399,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "CEFIXIME ANHYDROUS": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "CEFOTETAN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "CEFOXITIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -1535,6 +1587,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": true
   },
+  "CICLESONIDE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "CICLOPIROX": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -1656,6 +1712,10 @@
     "is_diagnostic_agent": false
   },
   "CLONIDINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "CLOPIDOGREL": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -1951,6 +2011,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "DARIFENACIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "DAROLUTAMIDE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -2019,6 +2083,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "DENOSUMAB": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "DEOXYCHOLIC ACID": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -2052,6 +2120,10 @@
     "is_diagnostic_agent": false
   },
   "DESONIDE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "DESOXIMETASONE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -2224,6 +2296,10 @@
     "is_diagnostic_agent": false
   },
   "DIMETHICONE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "DINOPROST": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -2475,6 +2551,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ELETRIPTAN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ELEXACAFTOR": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -2655,6 +2735,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ESCITALOPRAM": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ESKETAMINE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -2747,6 +2831,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ETHYLHEXYLGLYCERIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ETHYNODIOL": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -2832,6 +2920,10 @@
     "is_diagnostic_agent": false
   },
   "FARICIMAB": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "FD&C BLUE NO. 1": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -3083,6 +3175,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "FRAGRANCE 13576": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "FREMANEZUMAB": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -3299,6 +3395,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "GOSERELIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "GRAMICIDIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -3463,6 +3563,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "HYALURONIC ACID": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "HYALURONIDASE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -3600,6 +3704,10 @@
     "is_diagnostic_agent": false
   },
   "IMETELSTAT": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "IMIDUREA": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -3935,6 +4043,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "LAMOTRIGINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "LANADELUMAB": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -3979,6 +4091,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "LEFAMULIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "LEFLUNOMIDE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -3988,6 +4104,10 @@
     "is_diagnostic_agent": false
   },
   "LENACAPAVIR": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "LENALIDOMIDE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -4027,6 +4147,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "LEVETIRACETAM": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "LEVOBUNOLOL": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -4040,6 +4164,10 @@
     "is_diagnostic_agent": false
   },
   "LEVODOPA": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "LEVOFLOXACIN ANHYDROUS": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -4096,6 +4224,10 @@
     "is_diagnostic_agent": false
   },
   "LINDANE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "LINEZOLID": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -4254,6 +4386,10 @@
   "MACIMORELIN": {
     "is_allergen": false,
     "is_diagnostic_agent": true
+  },
+  "MACITENTAN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
   },
   "MAFENIDE": {
     "is_allergen": false,
@@ -4535,6 +4671,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "METRELEPTIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "METRONIDAZOLE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -4604,6 +4744,10 @@
     "is_diagnostic_agent": false
   },
   "MINOXIDIL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "MIRABEGRON": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -4863,6 +5007,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "NICARDIPINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "NICKEL": {
     "is_allergen": true,
     "is_diagnostic_agent": false
@@ -5100,6 +5248,10 @@
     "is_diagnostic_agent": false
   },
   "OPICAPONE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "ORITAVANCIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5443,6 +5595,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "PHENOXYETHANOL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "PHENTERMINE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -5456,6 +5612,10 @@
     "is_diagnostic_agent": false
   },
   "PHENYL SALICYLATE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "PHENYLACETIC ACID": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5535,6 +5695,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "PIROXICAM": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "PIRTOBRUTINIB": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -5595,7 +5759,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "POLYETHYLENE GLYCOL 400": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "POLYMYXIN B": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "POLYSORBATE 20": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5608,6 +5780,10 @@
     "is_diagnostic_agent": false
   },
   "POLYTHIAZIDE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "POMALIDOMIDE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5632,6 +5808,10 @@
     "is_diagnostic_agent": false
   },
   "PORK COLLAGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "POSACONAZOLE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5672,6 +5852,10 @@
     "is_diagnostic_agent": false
   },
   "PRASTERONE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "PRASUGREL": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5771,6 +5955,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "PROPYLENE GLYCOL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "PROPYLTHIOURACIL": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -5847,6 +6035,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "QUETIAPINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "QUINAPRILAT": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -5864,6 +6056,10 @@
     "is_diagnostic_agent": false
   },
   "RABIES VIRUS STRAIN FLURY LEP ANTIGEN (PROPIOLACTONE INACTIVATED)": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "RALOXIFENE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -5991,6 +6187,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "RIFAPENTINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "RIFAXIMIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -6020,6 +6220,10 @@
     "is_diagnostic_agent": false
   },
   "RIMEGEPANT": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "RIOCIGUAT": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6475,7 +6679,19 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 1 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 10A CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 10A CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 11A CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6483,7 +6699,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 12F CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 12F CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 14 CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6491,7 +6715,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 15B CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 16F CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 17F CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6499,11 +6731,35 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 18C CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 19A CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 19A CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 19F CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 2 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 20 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 20A CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 22F CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6519,7 +6775,15 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 23F CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 24F CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 3 CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6531,6 +6795,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 33F CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 33F CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -6539,7 +6807,23 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 4 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 5 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 6A CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 6B CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 7F CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6547,11 +6831,23 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 8 CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 8 CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 9N CAPSULAR POLYSACCHARIDE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "STREPTOCOCCUS PNEUMONIAE TYPE 9N CAPSULAR POLYSACCHARIDE DIPHTHERIA CRM197 PROTEIN CONJUGATE ANTIGEN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "STREPTOCOCCUS PNEUMONIAE TYPE 9V CAPSULAR POLYSACCHARIDE ANTIGEN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6823,6 +7119,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "TAPENTADOL": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "TAPINAROF": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -6875,6 +7175,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "TELAVANCIN": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "TELISOTUZUMAB VEDOTIN": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -6904,6 +7208,10 @@
     "is_diagnostic_agent": false
   },
   "TENAPANOR": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "TENECTEPLASE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -6963,6 +7271,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "TETRACYCLINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "TETRADECYL HYDROGEN SULFATE (ESTER)": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -6972,6 +7284,10 @@
     "is_diagnostic_agent": false
   },
   "TEZEPELUMAB": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "THALIDOMIDE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -7036,6 +7352,10 @@
     "is_diagnostic_agent": true
   },
   "TIAGABINE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "TICAGRELOR": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
@@ -7647,6 +7967,10 @@
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
+  "ZINC PHOSPHIDE": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
   "ZIPRASIDONE": {
     "is_allergen": false,
     "is_diagnostic_agent": false
@@ -7656,6 +7980,10 @@
     "is_diagnostic_agent": false
   },
   "ZOLBETUXIMAB": {
+    "is_allergen": false,
+    "is_diagnostic_agent": false
+  },
+  "ZOLEDRONIC ACID ANHYDROUS": {
     "is_allergen": false,
     "is_diagnostic_agent": false
   },
