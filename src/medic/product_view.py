@@ -85,15 +85,34 @@ def earliest_approval_date(drug: dict) -> str:
     return min(dates) if dates else ""
 
 
-def application_numbers(drug: dict) -> list[str]:
-    """All regulatory application/BLA numbers across the drug's approvals."""
-    out: list[str] = []
+def application_numbers_by_authority(drug: dict) -> dict[str, list[str]]:
+    """Regulatory application/registration numbers, keyed by the authority that issued them.
+
+    These are not interchangeable identifiers. An FDA application number and a Russian GRLS
+    registration number are issued by different regulators under different terms — the FDA's
+    are US government public domain, the GRLS ones are reproduced from a register that grants
+    no open licence at all (see LICENSING.md). Flattening both into one list made the exported
+    field look like a single US-shaped identifier space and left no way to act on the Russian
+    half without touching FDA data.
+    """
+    out: dict[str, list[str]] = {}
     for a in approvals(drug):
+        authority = (a.get("authority") or "").strip() or "UNKNOWN"
         for key in ("application_number", "bla_number"):
             val = (a.get(key) or "").strip()
             if val:
-                out.append(val)
+                out.setdefault(authority, []).append(val)
     return out
+
+
+def application_numbers(drug: dict) -> list[str]:
+    """All regulatory application/BLA numbers across the drug's approvals, any authority.
+
+    Retained for callers that genuinely want "does this drug have any registration number at
+    all" (e.g. the reliability corroboration gate). Anything that *publishes* the numbers should
+    use :func:`application_numbers_by_authority` and keep the provenances apart.
+    """
+    return [n for nums in application_numbers_by_authority(drug).values() for n in nums]
 
 
 # --- IndicationAssociation accessors -------------------------------------------------

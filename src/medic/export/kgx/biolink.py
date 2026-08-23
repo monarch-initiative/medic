@@ -323,7 +323,8 @@ EXTENSION_SLOTS = (
     "medic_features", "medic_is_combination_therapy", "medic_combination_ingredients",
     "medic_combination_ingredient_ids", "medic_approved_authorities",
     "medic_approved_jurisdictions", "medic_earliest_approval_date",
-    "medic_application_numbers", "medic_marketing_status_usa",
+    "medic_application_numbers", "medic_registration_numbers",
+    "medic_marketing_status_usa",
     "medic_regulatory_document_urls",
     # node — disease
     "medic_subsets",

@@ -95,7 +95,20 @@ def drug_node(drug: dict) -> dict | None:
         "medic_approved_jurisdictions": sorted(pv.approved_jurisdictions(drug)),
         "medic_earliest_approval_date": pv.earliest_approval_date(drug),
         "medic_marketing_status_usa": pv.marketing_status_usa(drug),
-        "medic_application_numbers": _uniq(pv.application_numbers(drug)),
+        # Split by issuing authority, not flattened (#52 / LICENSING.md). `medic_application_
+        # numbers` is FDA application/BLA numbers — US government public domain. Registration
+        # numbers from registers that grant no open licence (Russian GRLS) go in their own
+        # field, tagged with the authority, so a consumer can tell the provenances apart and
+        # so the restricted half can be dropped without touching FDA data.
+        "medic_application_numbers": _uniq(
+            pv.application_numbers_by_authority(drug).get("FDA", [])),
+        "medic_registration_numbers": _uniq(
+            f"{authority}:{number}"
+            for authority, numbers in sorted(
+                pv.application_numbers_by_authority(drug).items())
+            if authority != "FDA"
+            for number in numbers
+        ),
         "medic_regulatory_document_urls": _uniq(
             a.get("regulatory_document_url") or "" for a in pv.approvals(drug)),
 

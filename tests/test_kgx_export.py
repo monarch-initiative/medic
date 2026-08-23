@@ -925,3 +925,39 @@ def test_offsets_are_withheld_when_they_do_not_select_the_literal():
     edge = edges.association_edges({**PAIR, "assertions": [assertion]})[0]
     assert "object_location_in_text" not in edge
     assert "subject_location_in_text" not in edge
+
+
+# ---------------------------------------------------------------------------
+# Registration numbers are kept apart from FDA application numbers (#52)
+# ---------------------------------------------------------------------------
+def test_registration_numbers_are_split_from_fda_application_numbers():
+    """An FDA application number and a GRLS registration number are not interchangeable.
+
+    The FDA's are US government public domain; the Russian ones are reproduced from a register
+    that grants no open licence (LICENSING.md). Flattened into one field they looked like a
+    single US-shaped identifier space, and there was no way to act on the restricted half
+    without touching FDA data.
+    """
+    import copy
+
+    from medic.export.kgx import nodes
+
+    record = copy.deepcopy(DRUG_RECORD)
+    record["approvals"][1]["application_number"] = "\u041b\u041f-000035"  # GRLS registration no.
+
+    node = nodes.drug_node(record)
+    assert node["medic_application_numbers"] == ["014214"]
+    assert node["medic_registration_numbers"] == ["MOH_RUSSIA:\u041b\u041f-000035"]
+
+
+def test_a_drug_with_no_foreign_registration_omits_the_field():
+    """The unmodified fixture: the Russian approval carries no number, so nothing to publish.
+
+    `_clean` drops empty values, so the field is absent rather than an empty list — the same
+    convention every other optional node property follows.
+    """
+    from medic.export.kgx import nodes
+
+    node = nodes.drug_node(DRUG_RECORD)
+    assert "medic_registration_numbers" not in node
+    assert node["medic_application_numbers"] == ["014214"]
