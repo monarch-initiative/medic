@@ -118,14 +118,6 @@ assets:
   - path: products/contraindication_list.yaml
     sources: [dailymed]
     ship: true
-
-  - path: products/research_list.yaml
-    sources: [pubmed, cureid]
-    ship: true
-
-  - path: products/adverse_event_list.yaml
-    sources: []
-    ship: false
     note: >-
       Contains ~13.3 MB of verbatim contraindication text (measured 2026-08-21), DailyMed only.
       Same field shape as indication_list: `evidence.snippet` is capped at 500 characters,
@@ -135,7 +127,21 @@ assets:
       because an asset shipping this much verbatim text should not be the one entry in the
       manifest that says nothing about it.
 
-  # ---- exports: legacy tabular -------------------------------------------------
+  - path: products/research_list.yaml
+    # `cureid` was declared here but CURE-ID has never been ingested (#43): all 9 records in
+    # this product are PubMed-derived, and nothing in it carries a CUREID source. Crediting a
+    # source that contributed nothing is an accuracy defect in the very document that carries
+    # the attribution obligations, so it is removed until the ingest actually runs.
+    sources: [pubmed]
+    ship: true
+
+  # products/adverse_event_list.yaml was listed here as a permanently HELD asset. It is gone
+  # in v2.0.0: nothing MedDRA-derived is built, so the product was an empty stub
+  # (`associations: []`) and the entry described an asset that never had content. Holding a
+  # placeholder is not the same as deciding the licence question, and an entry that only ever
+  # says "held" reads like the question has been handled when it has not. Whether PVLens and
+  # FAERS can be ingested at all under the ICH/MSSO terms is tracked as its own issue; when
+  # that is answered, this entry comes back with a real decision attached.
   - path: exports/drug_list_flexible.csv
     sources: [orangebook, purplebook, ema, pmda, grls, cdsco, cde, everycure]
     ship: true

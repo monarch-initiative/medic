@@ -38,7 +38,7 @@ standard exports (KGX, SSSOM) with verifiable provenance.
 
 ## 2. Products (output contract)
 
-MeDIC produces six products and three export families. Paths and schema classes are contractual;
+MeDIC produces five products and three export families. Paths and schema classes are contractual;
 consumers depend on them.
 
 | Product | Schema class (`src/medic/schema/`) | Path | Sources | Status |
@@ -47,7 +47,7 @@ consumers depend on them.
 | **Disease List** | `DiseaseList` (`disease.yaml`) | `products/disease_list.yaml` | Mondo via `everycure/disease-list` | Implemented |
 | **Indications List** | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | DailyMed, EMA, PMDA, CDSCO (India) | Implemented |
 | **Contraindications List** | `IndicationList` (`indication.yaml`) | `products/contraindication_list.yaml` | DailyMed | Implemented (FDA-only) |
-| **Adverse Event List** | `AdverseEventList` (`adverse_event.yaml`) | `products/adverse_event_list.yaml` | PVLens, FAERS | Stub |
+| ~~Adverse Event List~~ | `AdverseEventList` (`adverse_event.yaml`) | — | PVLens, FAERS | **Deferred, not a v2.0.0 product** |
 | **Research List** | `ResearchAssociationList` (`research_source.yaml`) | `products/research_list.yaml` | PubMed, deep research, CURE-ID | Placeholder (9 verified rows, #44) |
 
 **Exports** (`exports/`): legacy CSV/XLSX matching the v1.0.0 column format (`drug_list_flexible.csv`,

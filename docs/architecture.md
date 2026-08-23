@@ -25,7 +25,7 @@ MeDIC produces 6 core products plus several export formats:
 | **Disease List** | Curated disease list with filter flags for rare diseases, hereditary conditions, cancer, etc. | `DiseaseList` (`disease.yaml`) | `products/disease_list.yaml` | Mondo Disease Ontology (via HuggingFace `everycure/disease-list`) | Implemented |
 | **Indications List** | Approved drug-disease associations (on-label indications) | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | FDA DailyMed, EMA, PMDA, CDSCO (India) | Implemented |
 | **Contraindications List** | Drug-disease contraindications | `IndicationList` (`indication.yaml`) | `products/contraindication_list.yaml` | FDA DailyMed | Implemented |
-| **Adverse Event List** | Drug-adverse event associations | `AdverseEventList` (`adverse_event.yaml`) | `products/adverse_event_list.yaml` | PVLens, FAERS | Stub |
+| ~~Adverse Event List~~ | Drug-adverse event associations | `AdverseEventList` (`adverse_event.yaml`) | — | PVLens, FAERS | **Deferred, not a v2.0.0 product** |
 | **Research List** | Literature-derived drug-disease associations with evidence snippets | `ResearchAssociationList` (`research_source.yaml`) | `products/research_list.yaml` | PubMed, CURE-ID | Implemented |
 
 ### Export formats

@@ -263,7 +263,14 @@ build-on-label-list grounding="lexical":
 normalize-disease-ids grounding="lexical":
   uv run python scripts/normalize_disease_ids.py --grounding-backend {{grounding}}
 
-# Build the adverse event list
+# Build the adverse event list.
+#
+# NOT part of `build-all` in v2.0.0. Both inputs (data/pvlens, data/faers) are empty, so this
+# produced an empty `products/adverse_event_list.yaml` that shipped as a permanently HELD
+# asset — a placeholder standing in for a licence question nobody had answered. The recipe
+# stays because the ingesters and schema do; running it is now a deliberate act, and its
+# output is gitignored so it cannot commit MedDRA term text. See the open issues on whether
+# PVLens and FAERS can be ingested under the ICH/MSSO terms at all.
 [group('products')]
 build-adverse-event-list grounding="lexical":
   just ingest-pvlens {{grounding}}
@@ -281,7 +288,8 @@ build-all grounding="lexical":
   just build-drug-list {{grounding}}
   just build-disease-list
   just build-on-label-list {{grounding}}
-  just build-adverse-event-list {{grounding}}
+  # build-adverse-event-list is deliberately absent — see that recipe. Adverse events are not
+  # a v2.0.0 product; building an empty one only created a MedDRA-shaped hole in the release.
   just build-research
   just export-legacy
   just export-kgx

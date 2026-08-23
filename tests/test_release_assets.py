@@ -205,12 +205,17 @@ def test_medic_authored_assets_are_declared_not_inferred(tmp_path):
     assert asset.medic_authored is True
 
 
-def test_repo_manifest_holds_the_adverse_event_product():
-    """MedDRA reaches MeDIC through FAERS/PVLens; that product stays held."""
+def test_repo_manifest_declares_no_adverse_event_product():
+    """v2.0.0 has no adverse-event product at all, held or otherwise.
+
+    This used to assert the AE product was present with `ship: false`. Holding a permanently
+    empty placeholder is not the same as answering the licence question, and an entry that only
+    ever says "held" reads like the question has been handled. The product, its `kb/` tree and
+    its build step are gone until it is established whether PVLens and FAERS can be ingested
+    under the ICH/MSSO terms at all; the ingesters and schema remain, dormant.
+    """
     manifest = ra.load(ra.DEFAULT_MANIFEST)
-    ae = next(a for a in manifest.assets if a.path.endswith("adverse_event_list.yaml"))
-    assert ae.ship is False
-    assert ae.note
+    assert not [a for a in manifest.assets if "adverse_event" in a.path]
 
 
 def test_repo_manifest_notice_matches_the_licensing_document():

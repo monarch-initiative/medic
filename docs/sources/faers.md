@@ -50,6 +50,6 @@ domain — **but the reaction terms in them are MedDRA preferred terms**, and Me
 the ICH/MSSO under a subscription that restricts redistribution of dictionary content.
 
 That makes the FAERS-derived product **blocked for release** until the MSSO terms are confirmed.
-Nothing MedDRA-derived is currently committed (`kb/adverse_events/faers/` holds only a `.gitkeep`)
+Nothing MedDRA-derived is currently committed: as of 2026-08-22 `kb/adverse_events/` is untracked and gitignored, the adverse-event product and its release-manifest entry are removed, and `build-adverse-event-list` is out of `build-all`. Whether this source can be ingested under the ICH/MSSO terms at all is an open question, not a settled one
 and no AE asset is published by `.github/workflows/release.yml`. Keep it that way.
 See [`LICENSING.md`](https://github.com/monarch-initiative/medic/blob/main/LICENSING.md).

@@ -250,3 +250,7 @@ data/raw/
 # The archive is hosted out-of-band and downloaded into background/; it must never be committed.
 sources/manual-sources.zip
 analysis/licensing-risk-2026-08-16.md
+
+# Adverse events are not built or shipped in v2.0.0 (see issues on the MedDRA question).
+# Kept ignored so a future PVLens/FAERS run cannot commit MedDRA term text.
+kb/adverse_events/
