@@ -1,7 +1,7 @@
 # MeDIC Technical Architecture
 
-**Last updated:** 2026-04-10
-**Branch:** `redesign` (v2.0 pipeline)
+**Last updated:** 2026-08-19
+**Branch:** `medic2` (v2.0 pipeline)
 
 ---
 
@@ -22,8 +22,8 @@ MeDIC produces 6 core products plus several export formats:
 | Product | Description | Schema class | Output path | Sources | Status |
 |---------|-------------|-------------|-------------|---------|--------|
 | **Drug List** | Unified list of approved drugs with chemical identifiers, ATC classifications, and property tags | `DrugList` (`drug.yaml`) | `products/drug_list.yaml` | FDA Orange Book, FDA Purple Book, EMA, PMDA, GRLS (Russia), CDSCO (India), CDE (China), EveryCure | Implemented |
-| **Disease List** | Curated disease list with filter flags for rare diseases, hereditary conditions, cancer, etc. | `DiseaseList` (`disease.yaml`) | `products/disease_list.yaml` | Mondo Disease Ontology (via matrix-disease-list.tsv) | Implemented |
-| **Indications List** | Approved drug-disease associations (on-label indications) | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | FDA DailyMed, EMA, PMDA | Implemented |
+| **Disease List** | Curated disease list with filter flags for rare diseases, hereditary conditions, cancer, etc. | `DiseaseList` (`disease.yaml`) | `products/disease_list.yaml` | Mondo Disease Ontology (via HuggingFace `everycure/disease-list`) | Implemented |
+| **Indications List** | Approved drug-disease associations (on-label indications) | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | FDA DailyMed, EMA, PMDA, CDSCO (India) | Implemented |
 | **Contraindications List** | Drug-disease contraindications | `IndicationList` (`indication.yaml`) | `products/contraindication_list.yaml` | FDA DailyMed | Implemented |
 | **Adverse Event List** | Drug-adverse event associations | `AdverseEventList` (`adverse_event.yaml`) | `products/adverse_event_list.yaml` | PVLens, FAERS | Stub |
 | **Research List** | Literature-derived drug-disease associations with evidence snippets | `ResearchAssociationList` (`research_source.yaml`) | `products/research_list.yaml` | PubMed, CURE-ID | Implemented |
@@ -101,7 +101,7 @@ Each pipeline follows the same pattern: **ingest** (parse, standardize, ground) 
 
 All pipelines share:
 
-- **Entity grounding** (`src/medic/grounding/`) -- cascade of 4 backends for mapping free-text names to ontology CURIEs
+- **Entity grounding** (`src/medic/grounding/`) -- deterministic offline two-stage lexical matcher (Stage 1 string->id, Stage 2 id->canonical id). Other backends exist in `factory.py` but are not on the build path; `lexical` is the default and the only one used to build a release.
 - **CURIE handling** (`src/medic/curie_utils.py`) -- all CURIE parsing uses the `curies` package with a bioregistry-backed converter (same pattern as sssom-py), never manual `str.split(":")`
 - **Evidence model** (`src/medic/schema/evidence.yaml`) -- structured evidence items with source type, jurisdiction, references, snippets, and confidence
 - **Validation stack** -- three-layer validation (schema, terms, references)
@@ -123,9 +123,9 @@ MeDIC ingests drugs from 7 regulatory sources plus one curated dataset:
 | **Orange Book** | USA (small molecules) | `medic.ingest.orangebook` | Download ZIP from FDA | Ingredient, approval date, marketing status (RX/OTC/DISCN) |
 | **Purple Book** | USA (biologics) | `medic.ingest.purplebook` | Download CSV from FDA | Proper name, approval date, marketing status |
 | **EMA** | Europe | `medic.ingest.ema` | Download XLSX from EMA | INN, approval date, ATC code, therapeutic indication |
-| **PMDA** | Japan | `medic.ingest.pmda` | Local PDF/CSV (manual download) | Active ingredient, approval date, indications |
+| **PMDA** | Japan | `medic.ingest.pmda` | Consolidated approvals PDF fetched from pmda.go.jp (hard error if unavailable) | Active ingredient, approval date, indications |
 | **Russia (GRLS)** | Russia | `medic.ingest.russia` | Local XLSX (manual export) | INN (Russian, LLM-translated), registration date |
-| **India (CDSCO)** | India | `medic.ingest.india` | Local CSV (manually aggregated) | Drug name, approval date, indication |
+| **India (CDSCO)** | India | `medic.ingest.india` | Year-by-year CDSCO PDFs (JSP-wrapped; hard error if none parse) | Drug name, approval date, indication |
 | **China (CDE)** | China | `medic.ingest.china` | Local CSV (manual scrape, `background/cder_drugs_final_all.csv`) | Drug name (Chinese, LLM-translated to INN), approval date; drug-list-only (no indications) |
 | **EveryCure** | Curated | `medic.ingest.everycure_drugs` | HuggingFace `everycure/drug-list` (1,810 drugs, Parquet) | Pre-grounded CURIEs, drug class, therapeutic area, ATC codes, boolean tags |
 
@@ -133,7 +133,7 @@ Source URLs for downloadable sources are configured in `conf/source_urls.yaml`, 
 
 ### Data acquisition notes
 
-- **PMDA:** The approved products list is published as a PDF. The ingest module attempts to parse it via `pdfplumber`, falling back to a manually prepared CSV at `data/raw/pmda/pmda_approvals.csv`.
+- **PMDA:** The approved products list is published as a PDF, parsed via `pdfplumber`. There is **no fallback** -- a missing or unparseable PDF raises `RuntimeError` (SPEC 3.1, no-legacy-fallback). A row-count floor also refuses a parse that silently yields too few records.
 - **Russia:** The GRLS registry at `https://grls.rosminzdrav.ru/GRLS.aspx` can be exported to Excel via the small Excel icon in the top right, but this is a manual step with no API. Additionally, the GRLS website is unreachable from non-Russian IPs (connection refused as of April 2026), so the export requires a Russian IP or VPN. Drug names are in Russian and are translated to English via the Stage-0 Babelon/DeepL stage, with a deterministic Cyrillic-transliteration fallback. The ingest reads a manually-provided raw GRLS export at `background/grls.zip` (8 register xlsx) and fails loud if it is missing — the v1.0.0 `russia_norm.csv` path is gone. Russia records still carry no per-product GRLS URL ([#39](https://github.com/monarch-initiative/medic/issues/39)).
 - **India:** CDSCO has removed their old JSP-based approval listing and now publishes approvals exclusively as year-by-year PDFs (`https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/`). The ingest parses those PDFs directly (`india/{fetch_primary,parse_pdf}.py`, 39 CDSCO year PDFs via JSP+iframe); the v1.0.0 pre-grounded path is gone. CDSCO publishes no per-drug record page, so the regulatory document URL resolves to the year batch, not the drug.
 - **China:** A Selenium-based scraper (`background/cder_scraper.py`) extracts drug names from the paginated CDE registry. Drug names are in Chinese and require LLM translation.
@@ -151,7 +151,7 @@ Raw Source ──> Parse & Standardize ──> Ground (shared) ──> KB YAML (
 1. Parse raw file into a standardized list of drug names
 2. LLM preprocessing: extract active moiety, translate non-English names
 3. Ground each drug name via the cascade (see Section 9)
-4. Normalize via NodeNorm to canonical CURIEs
+4. Normalize to canonical CURIEs via the Stage-2 mapping index (see 9.6)
 5. Write `DrugSourceRecord` YAML entries to `kb/drugs/<source>/`
 6. Write `grounding_report.yaml` with QC metrics
 
@@ -200,7 +200,7 @@ Multi-source cascade for chemical identifiers:
 
 Results are cached at `cache/enrichment/atc_smiles.json`.
 
-**Note:** The v1.0.0 pipeline also scraped the WHO Collaborating Centre website (whocc.no) as a last-resort ATC lookup. This has been intentionally removed because it violates their terms of service (the website is free to browse but scraping is not permitted), is fragile (HTML parsing breaks on layout changes), and is unnecessary given the 5 other ATC sources that provide ~68% coverage. If higher coverage is needed, the proper approach is to license the WHO ATC/DDD download and load it as a local lookup table.
+**Note:** The v1.0.0 pipeline also scraped the WHO Collaborating Centre website (whocc.no) as a last-resort ATC lookup. This has been intentionally removed because it violates their terms of service (the website is free to browse but scraping is not permitted), is fragile (HTML parsing breaks on layout changes), and is unnecessary given the 5 other ATC sources, which currently cover 1,198 of 4,323 drugs (27.7%). If higher coverage is needed, the proper approach is to license the WHO ATC/DDD download and load it as a local lookup table.
 
 #### Drug classification tags
 
@@ -369,7 +369,7 @@ The disease list pipeline runs via `just build-disease-list`.
 
 ### 6.1 Source
 
-The disease list is ingested from the HuggingFace dataset `everycure/disease-list` (23,148 diseases, Parquet format, CC-BY-4.0). This dataset is derived from the Mondo Disease Ontology with EveryCure curation. Falls back to a local TSV file if HuggingFace is unavailable. The ingest module is at `src/medic/ingest/disease_list/__main__.py`.
+The disease list is ingested from the HuggingFace dataset `everycure/disease-list` (23,148 diseases, Parquet format, CC-BY-4.0). This dataset is derived from the Mondo Disease Ontology with EveryCure curation. HuggingFace is the **single** source -- there is no local-file fallback; an unavailable dataset raises `RuntimeError` (SPEC 9, no-legacy-fallback). The ingest module is at `src/medic/ingest/disease_list/__main__.py`.
 
 ### 6.2 Ingest process
 
@@ -574,14 +574,17 @@ Confidence scores are computed using Jaro-Winkler string similarity (`src/medic/
 
 When confidence falls in the 0.50--0.79 range, the LLM reranker (`src/medic/grounding/reranker.py`) receives the entity name and up to 30 candidates from all backends. It returns a structured selection with reasoning. The selected candidate's score is boosted to at least 0.85. Results are cached at `cache/grounding/reranker.json`.
 
-### 9.6 NodeNorm canonicalization
+### 9.6 Stage-2 canonicalization
 
-After grounding, the selected CURIE is normalized via NodeNorm (SRI Node Normalization Service):
-- Returns the canonical CURIE following Biolink prefix priority
-- Provides a canonical label
-- Collects all equivalent identifiers as `alternate_ids`
+After grounding, the Stage-1 id is normalized to a canonical id (Mondo for diseases, ChEBI for
+drugs) by `src/medic/normalization/`, using an offline index built from the mappings the target
+vocabulary itself asserts (`just build-normalization-index`). Every decision -- including an
+identity normalization -- is written to `mappings/{disease,drug}_normalization.sssom.tsv` and
+emitted as a `NormalizationStep` (I-8, I-11).
 
-This ensures that the same entity grounded via different backends always receives the same canonical identifier.
+This replaced a network call to NodeNorm (SRI Node Normalization Service). NodeNorm is no longer
+used anywhere in `src/`: it made the build non-reproducible and network-dependent, and it could
+not record *why* a mapping was chosen, which I-4 requires.
 
 ### 9.7 Persistent disk cache
 

@@ -1,6 +1,6 @@
 # MeDIC — Specification
 
-**Status:** living document · **Last updated:** 2026-08-15 · **Branch:** `redesign` (v2 pipeline)
+**Status:** living document · **Last updated:** 2026-08-19 · **Branch:** `medic2` (v2 pipeline)
 
 This is the normative specification for MeDIC: what the system is, what it must produce, the rules
 its data must obey, and the live record of decisions and outstanding work. It is the single source
@@ -45,7 +45,7 @@ consumers depend on them.
 |---|---|---|---|---|
 | **Drug List** | `DrugList` (`drug.yaml`) | `products/drug_list.yaml` | Orange Book, Purple Book, EMA, PMDA, GRLS, CDSCO, CDE, EveryCure | Implemented |
 | **Disease List** | `DiseaseList` (`disease.yaml`) | `products/disease_list.yaml` | Mondo via `everycure/disease-list` | Implemented |
-| **Indications List** | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | DailyMed, EMA, PMDA | Implemented |
+| **Indications List** | `IndicationList` (`indication.yaml`) | `products/indication_list.yaml` | DailyMed, EMA, PMDA, CDSCO (India) | Implemented |
 | **Contraindications List** | `IndicationList` (`indication.yaml`) | `products/contraindication_list.yaml` | DailyMed | Implemented (FDA-only) |
 | **Adverse Event List** | `AdverseEventList` (`adverse_event.yaml`) | `products/adverse_event_list.yaml` | PVLens, FAERS | Stub |
 | **Research List** | `ResearchAssociationList` (`research_source.yaml`) | `products/research_list.yaml` | PubMed, deep research, CURE-ID | Placeholder (9 verified rows, #44) |
