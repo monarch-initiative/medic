@@ -221,8 +221,26 @@ The same excerpts appear in `products/indication_list.yaml` (~4.9 MB) and, trunc
   (`exports/medic_drug_mappings.sssom.tsv`) and the in-repo decision stores
   (`mappings/*_grounding.sssom.tsv`) now declare CC BY 4.0 with a `#comment:` recording that
   MeDIC's own mapping decisions are offered as CC0 and that `subject_label` / `match_string`
-  carry verbatim source strings. Regenerate the stores on the next grounding run to pick up
-  the new header; the normalization and Babelon stores still need the same treatment.
+  carry verbatim source strings.
+
+  Fully closed 2026-08-21 (#48). The two **normalization** stores now carry their own header —
+  a different reason, stated separately: their rows are id→id decisions, but `object_label`
+  reproduces Mondo and ChEBI labels, which require attribution. All four SSSOM stores are
+  regenerated and declare CC BY 4.0.
+
+  The **Babelon** table is a deliberate exception and the reason is worth recording, because it
+  is not the obvious one. `babelon.utils.parse_babelon` is a bare `pd.read_csv(sep="\t")` with
+  no comment handling, so a `#` front-matter line is read as the header row and the table stops
+  parsing entirely — the round-trip through `babelon.translate.translate_profile` that the
+  store exists to support. Babelon 0.3.6 defines no external-metadata convention either, so the
+  terms travel in a sidecar, `mappings/drug_translation.babelon.meta.yaml`, which the parser
+  never reads. It says the thing only that file has to say: `source_value` is verbatim Russian
+  GRLS and Chinese CDE register content, `translation_value` is MeDIC's contribution, and the
+  blanket CC BY 4.0 over `mappings/` is a claim about the latter and not the former.
+
+  The test that guards this now **globs** `mappings/` instead of naming two paths. A hardcoded
+  list of the files a policy covers is what let this gap survive a fix written specifically to
+  close it, so a new store can no longer be added without a licence decision.
 - **DrugCentral's licence is asserted from memory** and was not verified against the source.
 - **`.github/workflows/release.yml`** no longer names the deleted `medi/` paths. It creates the
   draft release and ships this file; the data assets are attached from a local build with

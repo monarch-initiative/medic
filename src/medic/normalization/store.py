@@ -13,6 +13,7 @@ from dataclasses import dataclass
 
 from medic.curie_utils import get_prefix
 from medic.curie_utils import MEDIC_W3ID_ROOT
+from medic.mapping_headers import sssom_license_lines
 
 MANUAL = "semapv:ManualMappingCuration"
 COLUMNS = ["subject_id", "predicate_id", "object_id", "object_label",
@@ -40,6 +41,19 @@ def _quality_from_comment(comment: str | None) -> str:
     if not value or value == "none":
         return "identity"
     return value
+
+
+def _license_header() -> list[str]:
+    """The licence lines for a normalization decision store.
+
+    This store carried no licence at all (#48). Its rows are id->id decisions — MeDIC's own
+    contribution, offered without conditions — but ``object_label`` reproduces canonical labels
+    from Mondo and ChEBI, both CC BY, so the set cannot be declared CC0 either.
+    """
+    return sssom_license_lines(
+        "object_label reproduces canonical labels from Mondo and ChEBI, which require "
+        "attribution."
+    )
 
 
 class NormalizationMappingStore:
@@ -78,6 +92,8 @@ class NormalizationMappingStore:
             fh.write(
                 f"# mapping_set_id: {MEDIC_W3ID_ROOT}/mappings/{self.entity_type}_normalization\n"
             )
+            for line in _license_header():
+                fh.write(line)
             writer = csv.DictWriter(fh, fieldnames=COLUMNS, delimiter="\t")
             writer.writeheader()
             for sid in sorted(self._rows):

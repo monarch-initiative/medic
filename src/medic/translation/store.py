@@ -62,6 +62,18 @@ class TranslationStore:
     def save(self) -> None:
         os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
         self.to_dataframe().to_csv(self.path, sep="\t", index=False)
+        # Terms travel in a sidecar, not in the TSV (#48). `babelon.utils.parse_babelon` is a
+        # bare `pd.read_csv(sep="\t")`, so a `#` front-matter line is read as the header row
+        # and the table stops parsing — the round-trip this store exists to support. The
+        # sidecar says what the other stores' `# license:` header says, including the part
+        # only this file has to say: `source_value` is verbatim GRLS/CDE register content.
+        from medic.mapping_headers import write_babelon_sidecar
+
+        langs = sorted({
+            r.get("source_language", "") for r in self._rows.values()
+            if r.get("source_language")
+        })
+        write_babelon_sidecar(self.path, source_languages=langs)
 
     # -- content ------------------------------------------------------------
     def upsert_source(

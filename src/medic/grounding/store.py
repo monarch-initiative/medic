@@ -16,6 +16,7 @@ import os
 from dataclasses import dataclass, field
 
 from medic.curie_utils import MEDIC_W3ID_ROOT
+from medic.mapping_headers import sssom_license_lines
 from medic.grounding.lexical.preprocess import base_normalize
 
 MANUAL = "semapv:ManualMappingCuration"
@@ -97,38 +98,16 @@ class GroundingDecision:
 
 
 def _license_header() -> list[str]:
-    """The licence lines for a decision store.
+    """The licence lines for a grounding decision store.
 
-    Declared **CC BY 4.0, not CC0**, for the same reason as the SSSOM export: this file
-    carries ``subject_label`` and ``match_string``, which reproduce verbatim source strings
-    (``\"Golden Star\" Balm``, EMA and PMDA label text). MeDIC cannot waive rights it never
-    held, and a blanket CC0 tells a consumer attribution is optional when EMA and PMDA both
-    require it. The mapping decisions themselves — MeDIC's actual contribution — are still
-    offered without conditions, and the comment says so.
+    Declared **CC BY 4.0, not CC0**: this file carries ``subject_label`` and ``match_string``,
+    which reproduce verbatim source strings (``"Golden Star" Balm``, EMA and PMDA label text).
+    MeDIC cannot waive rights it never held. The decisions themselves are still offered without
+    conditions, and the comment says so. Shared with the other stores so all five agree.
     """
-    from medic import release_assets
-
-    license_url = "https://creativecommons.org/licenses/by/4.0/"
-    assertions_url = "https://creativecommons.org/publicdomain/zero/1.0/"
-    passthrough = ""
-    try:
-        lic = release_assets.load().license
-        if lic:
-            license_url = lic.medic_contribution or license_url
-            assertions_url = lic.medic_assertions_offered_as or assertions_url
-            passthrough = lic.passthrough
-    except (OSError, ValueError):  # never fail a grounding run over the manifest
-        pass
-
-    comment = (
-        f"The grounding decisions in this file are MeDIC's own contribution and are offered "
-        f"as {assertions_url}. The set is declared {license_url} because subject_label and "
-        f"match_string reproduce verbatim source strings. {passthrough}"
-    ).strip()
-    return [
-        f"# license: {license_url}\n",
-        f"# comment: {comment}\n",
-    ]
+    return sssom_license_lines(
+        "subject_label and match_string reproduce verbatim source strings."
+    )
 
 
 class LiteralMappingStore:

@@ -1,4 +1,6 @@
 # mapping_set_id: https://w3id.org/monarch-initiative/medic/mappings/diseases_normalization
+# license: https://creativecommons.org/licenses/by/4.0/
+# comment: The mapping decisions in this file are MeDIC's own contribution and are offered as https://creativecommons.org/publicdomain/zero/1.0/. The set is declared https://creativecommons.org/licenses/by/4.0/ because object_label reproduces canonical labels from Mondo and ChEBI, which require attribution. MeDIC grants no rights over upstream source content. The original licence of each contributing source remains in force and must be respected; parsing, translation, normalisation and mapping to ontology identifiers do not alter it. Where terms conflict, the stricter governs.
 subject_id	predicate_id	object_id	object_label	mapping_justification	mapping_tool	comment
 HP:0000010	skos:exactMatch	HP:0000010	Recurrent urinary tract infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 HP:0000011	skos:exactMatch	HP:0000011	Neurogenic bladder	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -2796,7 +2798,7 @@ MONDO:0043537	skos:exactMatch	MONDO:0043537	cluster headache syndrome	semapv:Uns
 MONDO:0043541	skos:exactMatch	MONDO:0043541	viral conjunctivitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 MONDO:0043544	skos:exactMatch	MONDO:0043544	nosocomial infection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 MONDO:0043579	skos:exactMatch	MONDO:0043579	enteritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-MONDO:0043606	IAO:0100001	HP:0002756	Pathologic fracture	semapv:UnspecifiedMatching	medic-normalizer/1	deprecated_replacement
+MONDO:0043606	IAO:0100001	HP:0002756		semapv:UnspecifiedMatching	medic-normalizer/1	deprecated_replacement
 MONDO:0043653	skos:exactMatch	MONDO:0043653	herpes labialis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 MONDO:0043693	skos:exactMatch	MONDO:0043693	alcoholic liver disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 MONDO:0043726	skos:exactMatch	MONDO:0043726	multiple organ dysfunction syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -2959,7 +2961,7 @@ UMLS:C0000817	skos:exactMatch	UMLS:C0000817	Abortion, Septic	semapv:UnspecifiedM
 UMLS:C0000821	skos:exactMatch	UMLS:C0000821	Abortion, Threatened	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0000833	skos:exactMatch	MONDO:0005227		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0000925	skos:exactMatch	UMLS:C0000925	Cut	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0001139	skos:exactMatch	MONDO:0006635	Acinetobacter infectious disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0001139	skos:exactMatch	MONDO:0006635		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0001144	skos:exactMatch	UMLS:C0001144	Acne	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0001169	skos:exactMatch	MONDO:0020599	acquired coagulation factor deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0001175	skos:exactMatch	MONDO:0012268		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -2972,17 +2974,17 @@ UMLS:C0001956	skos:exactMatch	UMLS:C0001956	Alcohol Use Disorder	semapv:Unspecif
 UMLS:C0001957	skos:exactMatch	MONDO:0006642		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0001969	skos:exactMatch	UMLS:C0001969	Intoxication, Alcoholic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0001973	skos:exactMatch	MONDO:0007079		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0002066	skos:exactMatch	MONDO:0008753	alkaptonuria	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0002066	skos:exactMatch	MONDO:0008753		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002395	skos:exactMatch	MONDO:0004975		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002438	skos:exactMatch	MONDO:0005644		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002514	skos:exactMatch	UMLS:C0002514	Amino Acid Metabolism, Inborn Error	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0002871	skos:exactMatch	MONDO:0002280	anemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0002875	skos:exactMatch	MONDO:0016486	beta-thalassemia major	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0002878	skos:exactMatch	MONDO:0003664	hemolytic anemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0002871	skos:exactMatch	MONDO:0002280		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0002875	skos:exactMatch	MONDO:0016486		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0002878	skos:exactMatch	MONDO:0003664		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002879	skos:exactMatch	UMLS:C0002879	Anemia, Hemolytic, Acquired	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0002888	skos:exactMatch	MONDO:0001700		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002894	skos:exactMatch	MONDO:0019454		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0002895	skos:exactMatch	MONDO:0011382	sickle cell disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0002895	skos:exactMatch	MONDO:0011382		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0002911	skos:exactMatch	UMLS:C0002911	Anesthesia, Conduction	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0002913	skos:exactMatch	UMLS:C0002913	Anesthesias, Epidural	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0002921	skos:exactMatch	UMLS:C0002921	Anesthesia, Local	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -2992,7 +2994,7 @@ UMLS:C0002963	skos:exactMatch	MONDO:0006021		semapv:UnspecifiedMatching	medic-no
 UMLS:C0002965	skos:exactMatch	MONDO:0006805		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0003107	skos:exactMatch	UMLS:C0003107	Pruritis of skin of anogenital region	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0003125	skos:exactMatch	MONDO:0005351		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0003128	skos:exactMatch	MONDO:0002775	anovulation	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0003128	skos:exactMatch	MONDO:0002775		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0003175	skos:exactMatch	MONDO:0005119		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0003469	skos:exactMatch	MONDO:0005618		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0003492	skos:exactMatch	MONDO:0007345		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3008,12 +3010,12 @@ UMLS:C0004096	skos:exactMatch	MONDO:0004979		semapv:UnspecifiedMatching	medic-no
 UMLS:C0004352	skos:exactMatch	MONDO:0005260		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0004604	skos:exactMatch	UMLS:C0004604	Back Pains	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0004606	skos:exactMatch	MONDO:0001661		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0004610	skos:exactMatch	MONDO:0005229	bacterial infectious disease with sepsis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0004610	skos:exactMatch	MONDO:0005229		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0004623	skos:exactMatch	MONDO:0005113		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0004769	skos:exactMatch	UMLS:C0004769	Bartholinitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0004943	skos:exactMatch	MONDO:0007191		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0005138	skos:exactMatch	UMLS:C0005138	Beryllioses	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0005283	skos:exactMatch	MONDO:0019402	beta thalassemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0005283	skos:exactMatch	MONDO:0019402		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0005417	skos:exactMatch	UMLS:C0005417	Biliary Fistulas	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0005586	skos:exactMatch	MONDO:0004985		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0005604	skos:exactMatch	UMLS:C0005604	Injury, Birth	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3021,7 +3023,7 @@ UMLS:C0005683	skos:exactMatch	MONDO:0006678	bladder calculus	semapv:UnspecifiedM
 UMLS:C0005694	skos:exactMatch	MONDO:0006679		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0005699	skos:exactMatch	MONDO:0006115	blast phase chronic myelogenous leukemia, BCR-ABL1 positive	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0005779	skos:exactMatch	MONDO:0001531		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0005940	skos:exactMatch	MONDO:0005381	bone disorder	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0005940	skos:exactMatch	MONDO:0005381		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0006057	skos:exactMatch	MONDO:0005498		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0006118	skos:exactMatch	MONDO:0021211		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0006142	skos:exactMatch	MONDO:0007254		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3043,7 +3045,7 @@ UMLS:C0007134	skos:exactMatch	MONDO:0005086		semapv:UnspecifiedMatching	medic-no
 UMLS:C0007273	skos:exactMatch	MONDO:0005269		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0007570	skos:exactMatch	MONDO:0005130		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0007684	skos:exactMatch	UMLS:C0007684	Central Nervous System Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0007785	skos:exactMatch	MONDO:0002679	cerebral infarction	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0007785	skos:exactMatch	MONDO:0002679		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0007787	skos:exactMatch	MONDO:0005264		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0007820	skos:exactMatch	MONDO:0011057		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0007869	skos:exactMatch	UMLS:C0007869	Erosion, Cervix	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3054,9 +3056,9 @@ UMLS:C0008312	skos:exactMatch	MONDO:0005388		semapv:UnspecifiedMatching	medic-no
 UMLS:C0008359	skos:exactMatch	UMLS:C0008359	Vaccine, Cholera	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0008526	skos:exactMatch	MONDO:0001280		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0008533	skos:exactMatch	MONDO:0010604		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0008582	skos:exactMatch	MONDO:0015908	chromomycosis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0008582	skos:exactMatch	MONDO:0015908		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0008690	skos:exactMatch	UMLS:C0008690	Chronic iritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0008728	skos:exactMatch	MONDO:0015943	eosinophilic granulomatosis with polyangiitis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0008728	skos:exactMatch	MONDO:0015943		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0009207	skos:exactMatch	MONDO:0016006		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0009241	skos:exactMatch	MONDO:0002039	cognitive disorder	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0009324	skos:exactMatch	MONDO:0005101		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3071,14 +3073,14 @@ UMLS:C0010043	skos:exactMatch	MONDO:0004577		semapv:UnspecifiedMatching	medic-no
 UMLS:C0010068	skos:exactMatch	UMLS:C0010068	Disease, Coronary Heart	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0010073	skos:exactMatch	MONDO:0005356		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0010200	skos:exactMatch	UMLS:C0010200	Cough	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0010232	skos:exactMatch	MONDO:0005720	cowpox	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0010232	skos:exactMatch	MONDO:0005720		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0010340	skos:exactMatch	UMLS:C0010340	Critical Illness	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0010346	skos:exactMatch	MONDO:0005011		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0010356	skos:exactMatch	UMLS:C0010356	Cross Infections	semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C0010481	skos:exactMatch	MONDO:0018912		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0010543	skos:exactMatch	UMLS:C0010543	Cyclitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0010823	skos:exactMatch	MONDO:0005132		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0011226	skos:exactMatch	MONDO:0005789	hepatitis D virus infection	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0011226	skos:exactMatch	MONDO:0005789		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011334	skos:exactMatch	MONDO:0005276		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011389	skos:exactMatch	UMLS:C0011389	Plaque, Dental	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0011574	skos:exactMatch	UMLS:C0011574	Depression, Involutional	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3087,7 +3089,7 @@ UMLS:C0011606	skos:exactMatch	MONDO:0043233		semapv:UnspecifiedMatching	medic-no
 UMLS:C0011615	skos:exactMatch	MONDO:0004980		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011849	skos:exactMatch	MONDO:0005015		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011854	skos:exactMatch	MONDO:0005147		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0011860	skos:exactMatch	MONDO:0005148	type 2 diabetes mellitus	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0011860	skos:exactMatch	MONDO:0005148		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011884	skos:exactMatch	MONDO:0005266		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0011974	skos:exactMatch	UMLS:C0011974	Diaper Rashes	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0012241	skos:exactMatch	UMLS:C0012241	Gastrointestinal anomalies	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3108,13 +3110,13 @@ UMLS:C0013390	skos:exactMatch	MONDO:1060205		semapv:UnspecifiedMatching	medic-no
 UMLS:C0013404	skos:exactMatch	UMLS:C0013404	Short of breath	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0013931	skos:exactMatch	UMLS:C0013931	Embolization, Therapeutic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0014009	skos:exactMatch	MONDO:0005242		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0014013	skos:exactMatch	MONDO:0018667	pleural empyema	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0014013	skos:exactMatch	MONDO:0018667		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014122	skos:exactMatch	MONDO:0006981		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014127	skos:exactMatch	MONDO:0003632		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014347	skos:exactMatch	UMLS:C0014347	Enterobacteriaceae Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0014488	skos:exactMatch	MONDO:0001875		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014544	skos:exactMatch	MONDO:0005027		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0014547	skos:exactMatch	MONDO:0005384	focal epilepsy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0014547	skos:exactMatch	MONDO:0005384		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014553	skos:exactMatch	UMLS:C0014553	Typical absence	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0014556	skos:exactMatch	MONDO:0005115		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0014571	skos:exactMatch	UMLS:C0014571	Slipped Epiphyses	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3144,17 +3146,17 @@ UMLS:C0017145	skos:exactMatch	UMLS:C0017145	Gastric Varix	semapv:UnspecifiedMatc
 UMLS:C0017168	skos:exactMatch	MONDO:0007186		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0017178	skos:exactMatch	UMLS:C0017178	Gastrointestinal disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0017181	skos:exactMatch	UMLS:C0017181	Gastrointestinal Hemorrhage	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0017531	skos:exactMatch	MONDO:0015564	Castleman disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0017531	skos:exactMatch	MONDO:0015564		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0017536	skos:exactMatch	MONDO:0001103		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0017547	skos:exactMatch	MONDO:0020479	pituitary gigantism	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0017575	skos:exactMatch	MONDO:0006865		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0017605	skos:exactMatch	MONDO:0001744		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0017661	skos:exactMatch	MONDO:0005342	IgA glomerulonephritis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0017661	skos:exactMatch	MONDO:0005342		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0018081	skos:exactMatch	MONDO:0004277		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0018129	skos:exactMatch	MONDO:1010185	transplant rejection	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0018133	skos:exactMatch	MONDO:0013730	graft versus host disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0018129	skos:exactMatch	MONDO:1010185		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0018133	skos:exactMatch	MONDO:0013730		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0018213	skos:exactMatch	MONDO:0005364		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0018378	skos:exactMatch	MONDO:0016218	Guillain-Barre syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0018378	skos:exactMatch	MONDO:0016218		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0018621	skos:exactMatch	MONDO:0005324		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0018674	skos:exactMatch	UMLS:C0018674	Craniocerebral Trauma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0018799	skos:exactMatch	MONDO:0005267		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3168,7 +3170,7 @@ UMLS:C0018944	skos:exactMatch	UMLS:C0018944	Hematomas	semapv:UnspecifiedMatching
 UMLS:C0019069	skos:exactMatch	MONDO:0010602		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0019080	skos:exactMatch	UMLS:C0019080	Hemorrhages	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0019163	skos:exactMatch	MONDO:0005344		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0019196	skos:exactMatch	MONDO:0005231	hepatitis C virus infection	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0019196	skos:exactMatch	MONDO:0005231		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0019202	skos:exactMatch	MONDO:0010200		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0019243	skos:exactMatch	MONDO:0019623		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0019342	skos:exactMatch	MONDO:0005770		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3181,31 +3183,31 @@ UMLS:C0019693	skos:exactMatch	MONDO:0005109		semapv:UnspecifiedMatching	medic-no
 UMLS:C0019704	skos:exactMatch	UMLS:C0019704	Immunodeficiency Virus Type 1, Human	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0019829	skos:exactMatch	MONDO:0009348		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020179	skos:exactMatch	MONDO:0007739		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0020437	skos:exactMatch	MONDO:0001566	hypercalcemia disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020437	skos:exactMatch	MONDO:0001566		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020440	skos:exactMatch	UMLS:C0020440	High blood carbon dioxide level	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0020445	skos:exactMatch	MONDO:0005439	familial hypercholesterolemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0020456	skos:exactMatch	MONDO:0002909	hyperglycemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020445	skos:exactMatch	MONDO:0005439		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020456	skos:exactMatch	MONDO:0002909		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020457	skos:exactMatch	UMLS:C0020457	Hyperglycemic Hyperosmolar Nonketotic Coma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020461	skos:exactMatch	UMLS:C0020461	Elevated serum potassium levels	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0020473	skos:exactMatch	MONDO:0021187	hyperlipidemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020473	skos:exactMatch	MONDO:0021187		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020474	skos:exactMatch	MONDO:0007759		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020479	skos:exactMatch	MONDO:0018473		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020480	skos:exactMatch	UMLS:C0020480	Hyperlipoproteinemia, Type IV	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020481	skos:exactMatch	MONDO:0007762		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020488	skos:exactMatch	UMLS:C0020488	High blood sodium levels	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020514	skos:exactMatch	MONDO:0005804		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0020517	skos:exactMatch	MONDO:0005271	allergic disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020517	skos:exactMatch	MONDO:0005271		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020523	skos:exactMatch	UMLS:C0020523	Hypersensitivity, Immediate	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020540	skos:exactMatch	MONDO:0006846		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020542	skos:exactMatch	MONDO:0005149		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020546	skos:exactMatch	UMLS:C0020546	Hypertensive Crisis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020625	skos:exactMatch	UMLS:C0020625	Low blood sodium levels	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0020630	skos:exactMatch	MONDO:0018570	hypophosphatasia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0020630	skos:exactMatch	MONDO:0018570		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020631	skos:exactMatch	UMLS:C0020631	Hypophosphatemia, Familial	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0020659	skos:exactMatch	MONDO:0006799	hypothalamic neoplasm	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0020701	skos:exactMatch	UMLS:C0020701	Hysteria NOS	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0021051	skos:exactMatch	MONDO:0021094	immunodeficiency disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0021141	skos:exactMatch	MONDO:0006802	inappropriate ADH syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0021051	skos:exactMatch	MONDO:0021094		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0021141	skos:exactMatch	MONDO:0006802		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0021270	skos:exactMatch	UMLS:C0021270	Infants	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0021289	skos:exactMatch	UMLS:C0021289	Infants, Newborn	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0021342	skos:exactMatch	UMLS:C0021342	Infectious enteritis NOS	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3228,7 +3230,7 @@ UMLS:C0022658	skos:exactMatch	MONDO:0005240		semapv:UnspecifiedMatching	medic-no
 UMLS:C0022661	skos:exactMatch	MONDO:0024327		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0022671	skos:exactMatch	UMLS:C0022671	Kidney Transplantations	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0022729	skos:exactMatch	UMLS:C0022729	Klebsiella Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0022739	skos:exactMatch	MONDO:0007864	angioosteohypertrophic syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0022739	skos:exactMatch	MONDO:0007864		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0022864	skos:exactMatch	UMLS:C0022864	Labor, Obstetric	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0022876	skos:exactMatch	UMLS:C0022876	Labor, Premature Obstetric	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0023070	skos:exactMatch	UMLS:C0023070	Pharyngolaryngitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3244,14 +3246,14 @@ UMLS:C0023448	skos:exactMatch	MONDO:0005402		semapv:UnspecifiedMatching	medic-no
 UMLS:C0023449	skos:exactMatch	MONDO:0004967		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023461	skos:exactMatch	MONDO:0020334		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023467	skos:exactMatch	MONDO:0018874		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0023470	skos:exactMatch	MONDO:0004643	myeloid leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0023472	skos:exactMatch	MONDO:0021367	leukemia, myeloid, accelerated-phase	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0023470	skos:exactMatch	MONDO:0004643		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0023472	skos:exactMatch	MONDO:0021367		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023473	skos:exactMatch	UMLS:C0023473	LEUKEMIA, CHRONIC MYELOID	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0023474	skos:exactMatch	UMLS:C0023474	Leukemia, Myeloid, Chronic-Phase	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0023480	skos:exactMatch	MONDO:0020311	chronic myelomonocytic leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0023487	skos:exactMatch	MONDO:0012883	acute promyelocytic leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0023480	skos:exactMatch	MONDO:0020311		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0023487	skos:exactMatch	MONDO:0012883		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023524	skos:exactMatch	MONDO:0016318		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0023786	skos:exactMatch	MONDO:0001586	mucopolysaccharidosis type 1	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0023786	skos:exactMatch	MONDO:0001586		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023860	skos:exactMatch	MONDO:0005828		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0023885	skos:exactMatch	UMLS:C0023885	Liver Abscess	semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C0023886	skos:exactMatch	UMLS:C0023886	Liver Abscess, Amebic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3263,7 +3265,7 @@ UMLS:C0024115	skos:exactMatch	MONDO:0005275		semapv:UnspecifiedMatching	medic-no
 UMLS:C0024117	skos:exactMatch	MONDO:0005002		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0024128	skos:exactMatch	UMLS:C0024128	Lung Transplantations	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0024141	skos:exactMatch	MONDO:0007915		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0024214	skos:exactMatch	MONDO:0006840	lymphangiectasis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0024214	skos:exactMatch	MONDO:0006840		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0024299	skos:exactMatch	MONDO:0005062		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0024303	skos:exactMatch	UMLS:C0024303		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0024305	skos:exactMatch	MONDO:0018908		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3274,8 +3276,8 @@ UMLS:C0024537	skos:exactMatch	MONDO:0005921	Plasmodium vivax malaria	semapv:Unsp
 UMLS:C0024623	skos:exactMatch	MONDO:0001056	gastric cancer	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0024709	skos:exactMatch	UMLS:C0024709	Mange	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0024713	skos:exactMatch	MONDO:0024612	manic bipolar affective disorder	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
-UMLS:C0024776	skos:exactMatch	MONDO:0009563	maple syrup urine disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0024790	skos:exactMatch	MONDO:0100244	paroxysmal nocturnal hemoglobinuria	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0024776	skos:exactMatch	MONDO:0009563		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0024790	skos:exactMatch	MONDO:0100244		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0024799	skos:exactMatch	UMLS:C0024799	Ulcer, Marginal	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0025007	skos:exactMatch	MONDO:0004619	measles	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0025162	skos:exactMatch	MONDO:0002105		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3286,9 +3288,9 @@ UMLS:C0025306	skos:exactMatch	MONDO:0042972		semapv:UnspecifiedMatching	medic-no
 UMLS:C0025319	skos:exactMatch	UMLS:C0025319	Menopausal Syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0025323	skos:exactMatch	UMLS:C0025323	Abnormally heavy bleeding during menstruation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0025344	skos:exactMatch	UMLS:C0025344	Menstrual	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0025637	skos:exactMatch	MONDO:0001117	methemoglobinemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0025637	skos:exactMatch	MONDO:0001117		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0025874	skos:exactMatch	UMLS:C0025874	Menstrual spotting	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0026691	skos:exactMatch	MONDO:0012727	Kawasaki disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0026691	skos:exactMatch	MONDO:0012727		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026705	skos:exactMatch	MONDO:0010674		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026709	skos:exactMatch	MONDO:0009661		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026769	skos:exactMatch	MONDO:0005301		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3298,7 +3300,7 @@ UMLS:C0026858	skos:exactMatch	UMLS:C0026858	Musculoskeletal Pain	semapv:Unspecif
 UMLS:C0026865	skos:exactMatch	UMLS:C0026865	Mushroom Poisonings	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0026896	skos:exactMatch	MONDO:0009688		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026914	skos:exactMatch	UMLS:C0026914	Mycobacterium avium-intracellulare	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0026916	skos:exactMatch	MONDO:0005866	Mycobacterium avium complex disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0026916	skos:exactMatch	MONDO:0005866		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026919	skos:exactMatch	UMLS:C0026919	Mycobacterium Infections, Nontuberculous	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0026946	skos:exactMatch	MONDO:0002041		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0026948	skos:exactMatch	MONDO:0009691		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3314,7 +3316,7 @@ UMLS:C0027662	skos:exactMatch	MONDO:0017169		semapv:UnspecifiedMatching	medic-no
 UMLS:C0027708	skos:exactMatch	MONDO:0006058		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0027721	skos:exactMatch	MONDO:0006835		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0027726	skos:exactMatch	MONDO:0005377		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0027765	skos:exactMatch	MONDO:0005071	nervous system disorder	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0027765	skos:exactMatch	MONDO:0005071		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0027773	skos:exactMatch	UMLS:C0027773	Nesidioblastoses	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0027822	skos:exactMatch	MONDO:0006585	neurodermatitis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0027873	skos:exactMatch	MONDO:0019100		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3331,8 +3333,8 @@ UMLS:C0029077	skos:exactMatch	MONDO:0019198		semapv:UnspecifiedMatching	medic-no
 UMLS:C0029104	skos:exactMatch	UMLS:C0029104	Opioid withdrawal	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0029189	skos:exactMatch	UMLS:C0029189	Orchiectomies	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0029401	skos:exactMatch	MONDO:0005382		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0029408	skos:exactMatch	MONDO:0005178	osteoarthritis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0029438	skos:exactMatch	MONDO:0007414	Gorham-Stout disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0029408	skos:exactMatch	MONDO:0005178		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0029438	skos:exactMatch	MONDO:0007414		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0029458	skos:exactMatch	MONDO:0008159		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0029882	skos:exactMatch	MONDO:0005441		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0029927	skos:exactMatch	MONDO:0003282		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3341,7 +3343,7 @@ UMLS:C0030201	skos:exactMatch	UMLS:C0030201	Pain, Postoperative	semapv:Unspecifi
 UMLS:C0030275	skos:exactMatch	UMLS:C0030275	Pancreas Transplantations	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0030319	skos:exactMatch	MONDO:0005383		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0030455	skos:exactMatch	MONDO:0006887		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0030528	skos:exactMatch	MONDO:0018626	paratyphoid fever	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0030528	skos:exactMatch	MONDO:0018626		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0030567	skos:exactMatch	MONDO:0005180		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0030569	skos:exactMatch	MONDO:0006966		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0030636	skos:exactMatch	MONDO:0005901		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3356,7 +3358,7 @@ UMLS:C0030848	skos:exactMatch	MONDO:0008231		semapv:UnspecifiedMatching	medic-no
 UMLS:C0030920	skos:exactMatch	MONDO:0004247	peptic ulcer disease	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0030922	skos:exactMatch	UMLS:C0030922	Peptic Ulcer Hemorrhage	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0031039	skos:exactMatch	MONDO:0001370		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0031069	skos:exactMatch	MONDO:0018088	familial Mediterranean fever	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0031069	skos:exactMatch	MONDO:0018088		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0031139	skos:exactMatch	UMLS:C0031139	Dialyses, Peritoneal	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0031485	skos:exactMatch	MONDO:0009861		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0031572	skos:exactMatch	MONDO:0001247		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3365,10 +3367,10 @@ UMLS:C0032000	skos:exactMatch	MONDO:0006373		semapv:UnspecifiedMatching	medic-no
 UMLS:C0032002	skos:exactMatch	MONDO:0003381		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0032064	skos:exactMatch	MONDO:0019095		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0032269	skos:exactMatch	MONDO:0005114		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0032302	skos:exactMatch	MONDO:0005867	Mycoplasma pneumoniae pneumonia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0032302	skos:exactMatch	MONDO:0005867		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0032320	skos:exactMatch	UMLS:C0032320	Peritoneal cavity free air	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0032460	skos:exactMatch	MONDO:0008487	polycystic ovary syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0032463	skos:exactMatch	MONDO:0009891	acquired polycythemia vera	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0032460	skos:exactMatch	MONDO:0008487		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0032463	skos:exactMatch	MONDO:0009891		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0032708	skos:exactMatch	MONDO:0037821		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0032768	skos:exactMatch	MONDO:0041052	postherpetic neuralgia	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0032797	skos:exactMatch	UMLS:C0032797	Bleeding post-delivery	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3389,7 +3391,7 @@ UMLS:C0034619	skos:exactMatch	UMLS:C0034619	radiotherapy	semapv:UnspecifiedMatch
 UMLS:C0034686	skos:exactMatch	MONDO:0006941		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0034897	skos:exactMatch	UMLS:C0034897	recur	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0035078	skos:exactMatch	MONDO:0001106		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0035086	skos:exactMatch	MONDO:0006946	renal osteodystrophy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0035086	skos:exactMatch	MONDO:0006946		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0035204	skos:exactMatch	MONDO:0005087		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0035220	skos:exactMatch	MONDO:0100077		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0035229	skos:exactMatch	UMLS:C0035229	progressive respiratory failure	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3425,9 +3427,9 @@ UMLS:C0037054	skos:exactMatch	UMLS:C0037054	Cell Traits, Sickle	semapv:Unspecifi
 UMLS:C0037274	skos:exactMatch	MONDO:0005093		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0037278	skos:exactMatch	MONDO:0021201		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0037301	skos:exactMatch	UMLS:C0037301	Premature skin wrinkling	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0037354	skos:exactMatch	MONDO:0004651	smallpox	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0037354	skos:exactMatch	MONDO:0004651		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0037383	skos:exactMatch	UMLS:C0037383	Sneezings	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0037769	skos:exactMatch	MONDO:0018097	infantile spasms	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0037769	skos:exactMatch	MONDO:0018097		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0038013	skos:exactMatch	MONDO:0005306		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0038045	skos:exactMatch	UMLS:C0038045	Sprains	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0038157	skos:exactMatch	UMLS:C0038157	Staphylococcus Aureus Gastroenteritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3446,8 +3448,8 @@ UMLS:C0039590	skos:exactMatch	MONDO:0021348		semapv:UnspecifiedMatching	medic-no
 UMLS:C0039614	skos:exactMatch	MONDO:0005526		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0039730	skos:exactMatch	MONDO:0000984		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0039978	skos:exactMatch	UMLS:C0039978	Thoracic Diseases	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0040015	skos:exactMatch	MONDO:0100326	Glanzmann thrombasthenia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0040028	skos:exactMatch	MONDO:0005029	essential thrombocythemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0040015	skos:exactMatch	MONDO:0100326		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0040028	skos:exactMatch	MONDO:0005029		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0040034	skos:exactMatch	MONDO:0002049		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0040038	skos:exactMatch	UMLS:C0040038	Thromboembolic events	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0040128	skos:exactMatch	UMLS:C0040128	Disease, Thyroid	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3470,7 +3472,7 @@ UMLS:C0040913	skos:exactMatch	UMLS:C0040913	Trichuris trichiura	semapv:Unspecifi
 UMLS:C0040921	skos:exactMatch	MONDO:0002154		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0041234	skos:exactMatch	MONDO:0001444		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0041318	skos:exactMatch	MONDO:0006042		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0041364	skos:exactMatch	MONDO:0043875	tumor lysis syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0041364	skos:exactMatch	MONDO:0043875		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0041466	skos:exactMatch	MONDO:0005619		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0041657	skos:exactMatch	UMLS:C0041657	Passing out	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0041696	skos:exactMatch	UMLS:C0041696	Depressions, Unipolar	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3503,10 +3505,10 @@ UMLS:C0043241	skos:exactMatch	UMLS:C0043241	Infections, Wound	semapv:Unspecified
 UMLS:C0043250	skos:exactMatch	UMLS:C0043250	Wounds	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0043255	skos:exactMatch	UMLS:C0043255	Wound, Stab	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0043515	skos:exactMatch	MONDO:0019610		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0043541	skos:exactMatch	MONDO:0019136	Zygomycosis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0043541	skos:exactMatch	MONDO:0019136		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0059541	skos:exactMatch	UMLS:C0059541	2,2'-bioxirane	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0079027	skos:exactMatch	UMLS:C0079027	Blood Loss, Surgical	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0079218	skos:exactMatch	MONDO:0007608	desmoid tumor	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0079218	skos:exactMatch	MONDO:0007608		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0079294	skos:exactMatch	MONDO:0006543		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0079474	skos:exactMatch	MONDO:0009179		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0079626	skos:exactMatch	UMLS:C0079626	Insect Stings	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3518,20 +3520,20 @@ UMLS:C0080179	skos:exactMatch	UMLS:C0080179	Fractured vertebra	semapv:Unspecifie
 UMLS:C0080194	skos:exactMatch	UMLS:C0080194	Strains	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0080203	skos:exactMatch	UMLS:C0080203	Tachyarrhythmias	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085096	skos:exactMatch	MONDO:0005294		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0085109	skos:exactMatch	MONDO:0006713	corneal neovascularization	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0085109	skos:exactMatch	MONDO:0006713		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085110	skos:exactMatch	MONDO:0015974		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085129	skos:exactMatch	UMLS:C0085129	Bronchial Hyperreactivity	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085132	skos:exactMatch	MONDO:0009662		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085134	skos:exactMatch	UMLS:C0085134	Cessation, Smoking	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085166	skos:exactMatch	MONDO:0005316		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085215	skos:exactMatch	MONDO:0005387	primary ovarian failure	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0085253	skos:exactMatch	MONDO:0019355	adult-onset Still disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0085253	skos:exactMatch	MONDO:0019355		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085280	skos:exactMatch	MONDO:0007318		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085281	skos:exactMatch	UMLS:C0085281	Addictive behavior	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085292	skos:exactMatch	MONDO:0008491		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085393	skos:exactMatch	UMLS:C0085393	Hosts, Immunocompromised	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085394	skos:exactMatch	UMLS:C0085394	Serratia Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0085404	skos:exactMatch	MONDO:0017364	POEMS syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0085404	skos:exactMatch	MONDO:0017364		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085580	skos:exactMatch	MONDO:0001134		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085592	skos:exactMatch	UMLS:C0085592	Heat Cramps	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085606	skos:exactMatch	UMLS:C0085606	Urinary urgency	semapv:UnspecifiedMatching	medic-normalizer/0	identity
@@ -3540,7 +3542,7 @@ UMLS:C0085612	skos:exactMatch	UMLS:C0085612	Ventricular arrhythmias	semapv:Unspe
 UMLS:C0085624	skos:exactMatch	UMLS:C0085624	Burning Sensation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085633	skos:exactMatch	UMLS:C0085633	Mood changes	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085655	skos:exactMatch	MONDO:0019127		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0085681	skos:exactMatch	MONDO:0000328	hyperphosphatemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0085681	skos:exactMatch	MONDO:0000328		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085688	skos:exactMatch	UMLS:C0085688	Engorgement of breasts	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0085762	skos:exactMatch	MONDO:0002046	alcohol abuse	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0085819	skos:exactMatch	UMLS:C0085819	Antibiotic-Associated Colitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3605,15 +3607,15 @@ UMLS:C0152029	skos:exactMatch	UMLS:C0152029	Congestion of nasal sinus	semapv:Uns
 UMLS:C0152030	skos:exactMatch	UMLS:C0152030	Skin Irritation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0152063	skos:exactMatch	MONDO:0020533		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0152072	skos:exactMatch	MONDO:0001601	Plasmodium ovale malaria	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
-UMLS:C0152109	skos:exactMatch	MONDO:0009672	spinal muscular atrophy, type III	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0152116	skos:exactMatch	MONDO:0000481	cervical dystonia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0152109	skos:exactMatch	MONDO:0009672		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0152116	skos:exactMatch	MONDO:0000481		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0152169	skos:exactMatch	UMLS:C0152169	Colics, Renal	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0152452	skos:exactMatch	UMLS:C0152452	Adhesive pericarditis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0153027	skos:exactMatch	UMLS:C0153027	H zoster keratoconjunct	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0153252	skos:exactMatch	MONDO:0042233		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0153254	skos:exactMatch	UMLS:C0153254	Candidal endocarditis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0153257	skos:exactMatch	UMLS:C0153257	Primary coccidioidomycos	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0153467	skos:exactMatch	MONDO:0002087	peritoneum cancer	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0153467	skos:exactMatch	MONDO:0002087		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0153687	skos:exactMatch	UMLS:C0153687	Metastasis to Skin	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0153690	skos:exactMatch	UMLS:C0153690	Bone Metastases	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0153869	skos:exactMatch	UMLS:C0153869	Mult myelm w remission	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3623,7 +3625,7 @@ UMLS:C0154301	skos:exactMatch	MONDO:0001198		semapv:UnspecifiedMatching	medic-no
 UMLS:C0154437	skos:exactMatch	MONDO:0001485		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0154555	skos:exactMatch	UMLS:C0154555	Psychogenic dysmenorrhea	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0154731	skos:exactMatch	MONDO:0016372		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0154778	skos:exactMatch	MONDO:0001383	degenerative myopia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0154778	skos:exactMatch	MONDO:0001383		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0154934	skos:exactMatch	UMLS:C0154934	Peripheral anterior synechiae	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0155393	skos:exactMatch	UMLS:C0155393	Acute bacterial inflammation of external ear	semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C0155591	skos:exactMatch	UMLS:C0155591	Hypertensive heart disease without congestive heart failure	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3638,7 +3640,7 @@ UMLS:C0155992	skos:exactMatch	UMLS:C0155992	Acute duodenal ulcer with hemorrhage
 UMLS:C0156221	skos:exactMatch	UMLS:C0156221	Acute Glomerulonephritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0156403	skos:exactMatch	UMLS:C0156403	Excessive bleeding associated with onset of menstrual periods	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0157997	skos:exactMatch	UMLS:C0157997	Climacteric Arthritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0158266	skos:exactMatch	MONDO:0011385	intervertebral disk degenerative disorder	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0158266	skos:exactMatch	MONDO:0011385		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0158945	skos:exactMatch	UMLS:C0158945	Congenital Cytomegaloviral Infection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0159020	skos:exactMatch	UMLS:C0159020	Neonatal seizure	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0159075	skos:exactMatch	UMLS:C0159075	Chyluria	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3654,37 +3656,37 @@ UMLS:C0162451	skos:exactMatch	UMLS:C0162451	Dermatitides, Poison Ivy	semapv:Unsp
 UMLS:C0162538	skos:exactMatch	UMLS:C0162538	Decreased IgA	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0162557	skos:exactMatch	MONDO:0019542		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0162565	skos:exactMatch	MONDO:0008294		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0162568	skos:exactMatch	MONDO:0001676	erythropoietic protoporphyria	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0162671	skos:exactMatch	MONDO:0010789	MELAS syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0162568	skos:exactMatch	MONDO:0001676		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0162671	skos:exactMatch	MONDO:0010789		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0162702	skos:exactMatch	UMLS:C0162702	Ventriculoperitoneal Shunt	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0162836	skos:exactMatch	MONDO:0006559	hidradenitis suppurativa	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0175816	skos:exactMatch	MONDO:0016450	autoimmune hemolytic anemia, cold type	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0162836	skos:exactMatch	MONDO:0006559		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0175816	skos:exactMatch	MONDO:0016450		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0178879	skos:exactMatch	MONDO:0003330		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0184567	skos:exactMatch	UMLS:C0184567	Acute Pain	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0205642	skos:exactMatch	UMLS:C0205642	Adenocarcinoma, Oxyphilic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0205710	skos:exactMatch	MONDO:0008758		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0205851	skos:exactMatch	MONDO:0005040	germ cell tumor	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0205851	skos:exactMatch	MONDO:0005040		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206061	skos:exactMatch	UMLS:C0206061	Interstitial Pneumonias	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0206172	skos:exactMatch	UMLS:C0206172	Diabetic Feet	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0206178	skos:exactMatch	MONDO:0000878		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206180	skos:exactMatch	MONDO:0020325		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206504	skos:exactMatch	UMLS:C0206504	Tympanic Membrane Perforation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0206638	skos:exactMatch	MONDO:0005674	bone giant cell tumor	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0206638	skos:exactMatch	MONDO:0005674		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206657	skos:exactMatch	MONDO:0011655		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206659	skos:exactMatch	MONDO:0005440		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206664	skos:exactMatch	MONDO:0002599		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0206686	skos:exactMatch	MONDO:0006639	adrenal cortex carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0206686	skos:exactMatch	MONDO:0006639		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206728	skos:exactMatch	MONDO:0003304		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0206754	skos:exactMatch	MONDO:0019496		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0220650	skos:exactMatch	MONDO:1040026		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0220656	skos:exactMatch	UMLS:C0220656	Ascites, Malignant	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0220756	skos:exactMatch	MONDO:0018982	Niemann-Pick disease type C	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0220756	skos:exactMatch	MONDO:0018982		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0220847	skos:exactMatch	UMLS:C0220847	Hepatitis C virus	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0220987	skos:exactMatch	MONDO:0009797		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0220989	skos:exactMatch	MONDO:0012104	acquired partial lipodystrophy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0220989	skos:exactMatch	MONDO:0012104		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0220998	skos:exactMatch	UMLS:C0220998	Hypothalamic Hypothyroidism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0221023	skos:exactMatch	MONDO:0008090	cyclic hematopoiesis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0221032	skos:exactMatch	MONDO:0006536	congenital generalized lipodystrophy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0221023	skos:exactMatch	MONDO:0008090		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0221032	skos:exactMatch	MONDO:0006536		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0221244	skos:exactMatch	UMLS:C0221244	Dandruff	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0221248	skos:exactMatch	UMLS:C0221248	Urate tophi	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0221406	skos:exactMatch	MONDO:0009050		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3753,9 +3755,9 @@ UMLS:C0242129	skos:exactMatch	UMLS:C0242129	Thrombotic Stroke	semapv:Unspecified
 UMLS:C0242154	skos:exactMatch	UMLS:C0242154	Vitamin D poisoning	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0242172	skos:exactMatch	MONDO:0000922		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0242339	skos:exactMatch	UMLS:C0242339	Dyslipidemias	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0242350	skos:exactMatch	MONDO:0005362	erectile dysfunction	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0242350	skos:exactMatch	MONDO:0005362		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0242363	skos:exactMatch	UMLS:C0242363	Islet Cell Tumors	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0242383	skos:exactMatch	MONDO:0005150	age-related macular degeneration	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0242383	skos:exactMatch	MONDO:0005150		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0242459	skos:exactMatch	UMLS:C0242459	Simple Pulmonary Eosinophilia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0242514	skos:exactMatch	UMLS:C0242514	Tachycardia, Reciprocating	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0242648	skos:exactMatch	UMLS:C0242648	Infection Transmission, Vertical	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3799,21 +3801,21 @@ UMLS:C0267509	skos:exactMatch	UMLS:C0267509	Chronic idiopathic constipation	sema
 UMLS:C0267756	skos:exactMatch	UMLS:C0267756	Peritoneal abscess	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0267778	skos:exactMatch	UMLS:C0267778	Adhesions (of) intestine	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0267940	skos:exactMatch	MONDO:0850421		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0267963	skos:exactMatch	MONDO:0001684	exocrine pancreatic insufficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0267963	skos:exactMatch	MONDO:0001684		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268000	skos:exactMatch	UMLS:C0268000	Fluid retention	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268023	skos:exactMatch	UMLS:C0268023	Chronic hyperkalemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268070	skos:exactMatch	UMLS:C0268070	Decreased circulating copper concentration	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268093	skos:exactMatch	UMLS:C0268093	Chromium deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268108	skos:exactMatch	UMLS:C0268108	Chronic gout	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268124	skos:exactMatch	UMLS:C0268124	ADA Deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0268164	skos:exactMatch	MONDO:0009823	primary hyperoxaluria type 1	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0268164	skos:exactMatch	MONDO:0009823		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268217	skos:exactMatch	UMLS:C0268217	Maroteaux-Lamy syndrome, intermediate form	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268251	skos:exactMatch	MONDO:0009267		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268312	skos:exactMatch	MONDO:0015762		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0268328	skos:exactMatch	MONDO:0013000	porphyria due to ALA dehydratase deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0268328	skos:exactMatch	MONDO:0013000		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268390	skos:exactMatch	MONDO:0008633		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268490	skos:exactMatch	MONDO:0010161		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0268547	skos:exactMatch	MONDO:0008815	argininosuccinic aciduria	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0268547	skos:exactMatch	MONDO:0008815		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268548	skos:exactMatch	MONDO:0008814		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0268576	skos:exactMatch	UMLS:C0268576	High blood leucine concentration	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0268723	skos:exactMatch	UMLS:C0268723	Dysuria-frequency syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3837,15 +3839,15 @@ UMLS:C0270835	skos:exactMatch	UMLS:C0270835	Simple partial onset seizure followe
 UMLS:C0270838	skos:exactMatch	UMLS:C0270838	Secondarily generalized seizures	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0270844	skos:exactMatch	UMLS:C0270844	Seizure, Tonic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0270846	skos:exactMatch	UMLS:C0270846	Drop attacks	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0270850	skos:exactMatch	MONDO:0005579	idiopathic generalized epilepsy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0270853	skos:exactMatch	MONDO:0009696	juvenile myoclonic epilepsy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0270850	skos:exactMatch	MONDO:0005579		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0270853	skos:exactMatch	MONDO:0009696		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0270860	skos:exactMatch	MONDO:0043219		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0270862	skos:exactMatch	MONDO:0018925		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0271051	skos:exactMatch	MONDO:0003005	macular retinal edema	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0271051	skos:exactMatch	MONDO:0003005		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0271084	skos:exactMatch	UMLS:C0271084	Exudative senile macular degeneration	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0271105	skos:exactMatch	UMLS:C0271105	Acute iritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0271623	skos:exactMatch	MONDO:0018555	hypogonadotropic hypogonadism	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0271693	skos:exactMatch	MONDO:0019193	acquired generalized lipodystrophy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0271623	skos:exactMatch	MONDO:0018555		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0271693	skos:exactMatch	MONDO:0019193		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0271738	skos:exactMatch	UMLS:C0271738	Secondary adrenocortical insufficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0271795	skos:exactMatch	UMLS:C0271795	Transient hypothyroidism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0271903	skos:exactMatch	UMLS:C0271903	Nutritional anemias (D50-D53)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3856,8 +3858,8 @@ UMLS:C0272275	skos:exactMatch	UMLS:C0272275	Heparin-induced thrombocytopenia wit
 UMLS:C0272285	skos:exactMatch	MONDO:0018048		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0272290	skos:exactMatch	UMLS:C0272290	Drug-induced ITP	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0272293	skos:exactMatch	UMLS:C0272293	Chronic idiopathic thrombocytopenic purpura	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0272322	skos:exactMatch	MONDO:0015719	severe hemophilia A	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0272327	skos:exactMatch	MONDO:0009212	congenital factor X deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0272322	skos:exactMatch	MONDO:0015719		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0272327	skos:exactMatch	MONDO:0009212		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0272375	skos:exactMatch	MONDO:0013144		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0272405	skos:exactMatch	UMLS:C0272405	Functional asplenia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0273112	skos:exactMatch	UMLS:C0273112	Myocardial Contusions	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3879,10 +3881,10 @@ UMLS:C0275556	skos:exactMatch	UMLS:C0275556	Acute bacterial sinusitis	semapv:Uns
 UMLS:C0275665	skos:exactMatch	UMLS:C0275665	Gonorrhea of rectum	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0275879	skos:exactMatch	UMLS:C0275879		semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C0276026	skos:exactMatch	UMLS:C0276026	Pneumonia due to Hemophilus influenzae [H. influenzae]	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0276075	skos:exactMatch	MONDO:0040732	Pseudomonas aeruginosa infectious disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0276075	skos:exactMatch	MONDO:0040732		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0276078	skos:exactMatch	UMLS:C0276078	Proteus mirabilis infection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0276089	skos:exactMatch	UMLS:C0276089	Pneumonia due to escherichia coli [E. coli]	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0276180	skos:exactMatch	MONDO:0002594	monkeypox	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0276180	skos:exactMatch	MONDO:0002594		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0276223	skos:exactMatch	UMLS:C0276223	Recurrent herpes simplex	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0276353	skos:exactMatch	UMLS:C0276353	Influenza caused by Influenza virus, type B (disorder)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0276500	skos:exactMatch	UMLS:C0276500	Human immunodeficiency virus I infection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3914,7 +3916,7 @@ UMLS:C0278554	skos:exactMatch	UMLS:C0278554	Rectal Cancer, Recurrent	semapv:Unsp
 UMLS:C0278556	skos:exactMatch	UMLS:C0278556	Recurrent Anal Cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278579	skos:exactMatch	UMLS:C0278579	Recurrent Carcinoma of Cervix	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278584	skos:exactMatch	UMLS:C0278584	Metastatic Carcinoma in the Uterine Cervix	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0278601	skos:exactMatch	MONDO:0006804	inflammatory breast carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0278601	skos:exactMatch	MONDO:0006804		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0278689	skos:exactMatch	UMLS:C0278689	Recurrent Ovarian Cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278695	skos:exactMatch	UMLS:C0278695	Recurrent Neuroblastoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278701	skos:exactMatch	MONDO:0005036		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -3924,9 +3926,9 @@ UMLS:C0278727	skos:exactMatch	UMLS:C0278727	Recurrent Small Cell Lung Cancer	sem
 UMLS:C0278791	skos:exactMatch	UMLS:C0278791	Chronic Lymphocytic Leukemia Refractory	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278952	skos:exactMatch	UMLS:C0278952	Recurrent Nasopharyngeal Cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0278987	skos:exactMatch	UMLS:C0278987	Stage IV Non-Small Cell Lung Cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0279543	skos:exactMatch	MONDO:0011996	chronic myeloid leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0279543	skos:exactMatch	MONDO:0011996		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0279619	skos:exactMatch	UMLS:C0279619	Adult Acute M6 Leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0279626	skos:exactMatch	MONDO:0005580	esophageal squamous cell carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0279626	skos:exactMatch	MONDO:0005580		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0279637	skos:exactMatch	MONDO:0003199	anal carcinoma	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0279671	skos:exactMatch	MONDO:0006143		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0279780	skos:exactMatch	UMLS:C0279780	Relapsed Hairy Cell Leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3935,7 +3937,7 @@ UMLS:C0280028	skos:exactMatch	MONDO:0015692		semapv:UnspecifiedMatching	medic-no
 UMLS:C0280100	skos:exactMatch	UMLS:C0280100	Solid Tumor	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0280427	skos:exactMatch	UMLS:C0280427	Adult T-Cell Lymphoma/Leukemia Recurrent	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0280785	skos:exactMatch	MONDO:0016686		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0280803	skos:exactMatch	MONDO:0002571	primary central nervous system lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0280803	skos:exactMatch	MONDO:0002571		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0280962	skos:exactMatch	UMLS:C0280962	Bone Marrow Depression	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0281361	skos:exactMatch	MONDO:0006047		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0281773	skos:exactMatch	UMLS:C0281773		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3947,7 +3949,7 @@ UMLS:C0282687	skos:exactMatch	MONDO:0005737	Ebola hemorrhagic fever	semapv:Unspe
 UMLS:C0302160	skos:exactMatch	UMLS:C0302160	Superficial folliculitis (disorder)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0302491	skos:exactMatch	UMLS:C0302491	Path fx vertebrae	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0302507	skos:exactMatch	UMLS:C0302507	Infection, Parainfluenza Virus	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0302592	skos:exactMatch	MONDO:0005131	cervical carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0302592	skos:exactMatch	MONDO:0005131		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0311276	skos:exactMatch	UMLS:C0311276	Severe malnutrition	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0311375	skos:exactMatch	UMLS:C0311375	Arsenic Poisoning	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0312854	skos:exactMatch	UMLS:C0312854	Extravascular Hemolysis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -3996,7 +3998,7 @@ UMLS:C0340510	skos:exactMatch	UMLS:C0340510	Heart failure as a complication of c
 UMLS:C0340517	skos:exactMatch	UMLS:C0340517	Atrial Thrombus	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0340530	skos:exactMatch	UMLS:C0340530	Cardiac transplant rejection (disorder)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0340535	skos:exactMatch	UMLS:C0340535	Acute massive pulmonary embolism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0340543	skos:exactMatch	MONDO:0017148	heritable pulmonary arterial hypertension	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0340543	skos:exactMatch	MONDO:0017148		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0340654	skos:exactMatch	UMLS:C0340654	Arterial hemorrhage	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0340708	skos:exactMatch	UMLS:C0340708	Deep vein thromboses	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0340845	skos:exactMatch	UMLS:C0340845	Mixed vascular malformation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4022,17 +4024,17 @@ UMLS:C0342442	skos:exactMatch	MONDO:0020528		semapv:UnspecifiedMatching	medic-no
 UMLS:C0342543	skos:exactMatch	MONDO:0019165		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0342579	skos:exactMatch	UMLS:C0342579	Electrolyte disturbances	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342687	skos:exactMatch	UMLS:C0342687	dopamine beta hydroxylase deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0342731	skos:exactMatch	MONDO:0017708	mevalonate kinase deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0342731	skos:exactMatch	MONDO:0017708		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0342751	skos:exactMatch	UMLS:C0342751	Alpha-1,4-Glucosidase Deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342788	skos:exactMatch	MONDO:0008919		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0342879	skos:exactMatch	UMLS:C0342879	Primary hypercholesterolemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0342881	skos:exactMatch	MONDO:0018328	homozygous familial hypercholesterolemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0342881	skos:exactMatch	MONDO:0018328		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0342882	skos:exactMatch	UMLS:C0342882	Familial hypercholesterolemia - heterozygous	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342919	skos:exactMatch	UMLS:C0342919	Essential fatty acid deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342921	skos:exactMatch	UMLS:C0342921	Chloride deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342936	skos:exactMatch	UMLS:C0342936	Infantile beriberi	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0342951	skos:exactMatch	UMLS:C0342951	Hypervitaminosis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0343055	skos:exactMatch	MONDO:0100491	generalized pustular psoriasis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0343055	skos:exactMatch	MONDO:0100491		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0343065	skos:exactMatch	UMLS:C0343065	Dermographism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0343068	skos:exactMatch	MONDO:0018768		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0343363	skos:exactMatch	UMLS:C0343363	Rotaviral Enteritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4057,7 +4059,7 @@ UMLS:C0345468	skos:exactMatch	UMLS:C0345468	Transplanted organ rejection	semapv:
 UMLS:C0345904	skos:exactMatch	MONDO:0002691		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0346208	skos:exactMatch	UMLS:C0346208	Vaginal Intraepithelial Neoplasia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0346234	skos:exactMatch	UMLS:C0346234	Regressed malignant testicular tumor	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0346421	skos:exactMatch	MONDO:0015687	chronic eosinophilic leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0346421	skos:exactMatch	MONDO:0015687		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0347869	skos:exactMatch	UMLS:C0347869	Epilepsy, Akinetic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0348024	skos:exactMatch	UMLS:C0348024	Thyroid dysfunction	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0348321	skos:exactMatch	UMLS:C0348321	Haemophilus influenzae Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4069,7 +4071,7 @@ UMLS:C0349071	skos:exactMatch	UMLS:C0349071	Chronic anal fissure	semapv:Unspecif
 UMLS:C0349208	skos:exactMatch	UMLS:C0349208	Manic Episode	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0349506	skos:exactMatch	MONDO:0005434		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0349554	skos:exactMatch	UMLS:C0349554	Grade 1 Vaginal Intraepithelial Neoplasia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0362046	skos:exactMatch	MONDO:0006920	prediabetes syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0362046	skos:exactMatch	MONDO:0006920		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0375071	skos:exactMatch	MONDO:0001528	vulva cancer	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C0376249	skos:exactMatch	UMLS:C0376249	frequency	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0376545	skos:exactMatch	UMLS:C0376545	Hematological neoplasm	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4081,20 +4083,20 @@ UMLS:C0392182	skos:exactMatch	UMLS:C0392182	Delayed ovulation	semapv:Unspecified
 UMLS:C0392445	skos:exactMatch	UMLS:C0392445	Necrobiosis Lipoidica Diabeticorum	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0392607	skos:exactMatch	MONDO:0007064		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0392618	skos:exactMatch	UMLS:C0392618	Postoperative Infection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0392788	skos:exactMatch	MONDO:0019472	extranodal nasal NK/T cell lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0393538	skos:exactMatch	MONDO:0009673	spinal muscular atrophy, type II	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0392788	skos:exactMatch	MONDO:0019472		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0393538	skos:exactMatch	MONDO:0009673		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0393736	skos:exactMatch	UMLS:C0393736	Muscular headache	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0393739	skos:exactMatch	UMLS:C0393739	Episodic Cluster Headache	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0393759	skos:exactMatch	UMLS:C0393759	Insomnia, Transient	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0393761	skos:exactMatch	UMLS:C0393761	Middle Insomnia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0393819	skos:exactMatch	MONDO:0006702	chronic inflammatory demyelinating polyradiculoneuropathy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0393819	skos:exactMatch	MONDO:0006702		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0395866	skos:exactMatch	UMLS:C0395866	Recurrent acute otitis media	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0398607	skos:exactMatch	UMLS:C0398607	Congenital factor IX deficiency variant	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0398623	skos:exactMatch	MONDO:0002305		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0398625	skos:exactMatch	UMLS:C0398625	Reduced protein C activity	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0398650	skos:exactMatch	MONDO:0008558		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0398686	skos:exactMatch	MONDO:0003778		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0398691	skos:exactMatch	MONDO:0009849	hyperimmunoglobulinemia D with periodic fever	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0398691	skos:exactMatch	MONDO:0009849		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0400843	skos:exactMatch	UMLS:C0400843	Mechanical ileus	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0400877	skos:exactMatch	UMLS:C0400877	Postoperative ileus	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0400968	skos:exactMatch	UMLS:C0400968	Liver transplant rejection	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4156,7 +4158,7 @@ UMLS:C0452160	skos:exactMatch	UMLS:C0452160	Lumbago with sciatica	semapv:Unspeci
 UMLS:C0455533	skos:exactMatch	UMLS:C0455533	H/O: thromboembolism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0455544	skos:exactMatch	UMLS:C0455544	H/O: asthma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0455550	skos:exactMatch	UMLS:C0455550	H/O: liver disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0456863	skos:exactMatch	MONDO:0044889	high grade B-cell lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0456863	skos:exactMatch	MONDO:0044889		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0457949	skos:exactMatch	UMLS:C0457949	Chronic low back pain	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0458074	skos:exactMatch	UMLS:C0458074	HIV Status	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0458960	skos:exactMatch	UMLS:C0458960	Peripheral neuropathic pain	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4183,7 +4185,7 @@ UMLS:C0497247	skos:exactMatch	UMLS:C0497247	Increased blood pressure	semapv:Unsp
 UMLS:C0520539	skos:exactMatch	UMLS:C0520539	Hypertensive Episode	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0520575	skos:exactMatch	MONDO:0003529		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0520676	skos:exactMatch	MONDO:1010182		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0520679	skos:exactMatch	MONDO:0007147	obstructive sleep apnea syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0520679	skos:exactMatch	MONDO:0007147		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0520752	skos:exactMatch	UMLS:C0520752	Traumatic spinal cord compression	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0520757	skos:exactMatch	UMLS:C0520757	Delayed Emergence from Anesthesia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0520767	skos:exactMatch	UMLS:C0520767	Staphylococcal endocarditis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4223,7 +4225,7 @@ UMLS:C0549398	skos:exactMatch	UMLS:C0549398	Meibomitis	semapv:UnspecifiedMatchin
 UMLS:C0549406	skos:exactMatch	UMLS:C0549406		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0553526	skos:exactMatch	UMLS:C0553526	Stibialism (disorder)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0553576	skos:exactMatch	MONDO:0000256		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0553580	skos:exactMatch	MONDO:0012817	Ewing sarcoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0553580	skos:exactMatch	MONDO:0012817		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0553684	skos:exactMatch	UMLS:C0553684		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0554628	skos:exactMatch	UMLS:C0554628	Group A Streptococcal Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0559162	skos:exactMatch	UMLS:C0559162	H/O: thrombosis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4268,7 +4270,7 @@ UMLS:C0600139	skos:exactMatch	MONDO:0005159		semapv:UnspecifiedMatching	medic-no
 UMLS:C0600142	skos:exactMatch	UMLS:C0600142	Hot Flashes	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0600260	skos:exactMatch	UMLS:C0600260	Obstructive lung disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0600502	skos:exactMatch	MONDO:0003159	vascular hemostatic disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0600518	skos:exactMatch	MONDO:0810000	choroidal neovascularization	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0600518	skos:exactMatch	MONDO:0810000		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0630132	skos:exactMatch	UMLS:C0630132	3-(2-methoxyphenyl)-5-methoxy-1,3,4-oxadiazol-2(3H)-one	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0677930	skos:exactMatch	UMLS:C0677930	Primary Tumor	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0678222	skos:exactMatch	MONDO:0004989		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -4286,14 +4288,14 @@ UMLS:C0700613	skos:exactMatch	UMLS:C0700613	Anxiety states	semapv:UnspecifiedMat
 UMLS:C0701807	skos:exactMatch	UMLS:C0701807	Anterior uveitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0701836	skos:exactMatch	UMLS:C0701836	Thermal Burn	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0728899	skos:exactMatch	UMLS:C0728899		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0730285	skos:exactMatch	MONDO:0004728	diabetic macular edema	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0730285	skos:exactMatch	MONDO:0004728		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0730607	skos:exactMatch	UMLS:C0730607	Severe chronic obstructive pulmonary disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0740302	skos:exactMatch	UMLS:C0740302	5q- syndrome	semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C0740304	skos:exactMatch	UMLS:C0740304		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0740380	skos:exactMatch	UMLS:C0740380		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0740394	skos:exactMatch	UMLS:C0740394	High blood uric acid level	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0740447	skos:exactMatch	UMLS:C0740447	Diabetic peripheral neuropathy	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0740457	skos:exactMatch	MONDO:0002367	kidney cancer	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0740457	skos:exactMatch	MONDO:0002367		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0740914	skos:exactMatch	UMLS:C0740914	Allergy to dust	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0741292	skos:exactMatch	UMLS:C0741292	Atrial flutter, paroxysmal	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0741682	skos:exactMatch	UMLS:C0741682		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4318,19 +4320,19 @@ UMLS:C0750151	skos:exactMatch	UMLS:C0750151	Sickle Cell Crisis	semapv:Unspecifie
 UMLS:C0750196	skos:exactMatch	UMLS:C0750196	Pulseless ventricular tachycardia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0750197	skos:exactMatch	UMLS:C0750197	Ventricular Tachycardia, Sustained	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0750272	skos:exactMatch	UMLS:C0750272		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0750952	skos:exactMatch	MONDO:0003060	biliary tract cancer	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0751122	skos:exactMatch	MONDO:0100135	Dravet syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0750952	skos:exactMatch	MONDO:0003060		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0751122	skos:exactMatch	MONDO:0100135		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0751249	skos:exactMatch	UMLS:C0751249	Chronic Insomnia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0751435	skos:exactMatch	UMLS:C0751435	Hyperphenylalaninaemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0751436	skos:exactMatch	MONDO:0016543	hyperphenylalaninemia due to tetrahydrobiopterin deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0751436	skos:exactMatch	MONDO:0016543		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0751494	skos:exactMatch	UMLS:C0751494	Motor seizure	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0751495	skos:exactMatch	UMLS:C0751495	Focal seizures	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0751964	skos:exactMatch	MONDO:0000451	primary progressive multiple sclerosis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0751965	skos:exactMatch	MONDO:0000450	secondary progressive multiple sclerosis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0751967	skos:exactMatch	MONDO:0005314	relapsing-remitting multiple sclerosis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0752166	skos:exactMatch	MONDO:0015229	Bardet-Biedl syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0751965	skos:exactMatch	MONDO:0000450		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0751967	skos:exactMatch	MONDO:0005314		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0752166	skos:exactMatch	MONDO:0015229		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0752347	skos:exactMatch	MONDO:0007488		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0795889	skos:exactMatch	MONDO:0010354	Allan-Herndon-Dudley syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0795889	skos:exactMatch	MONDO:0010354		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0812470	skos:exactMatch	UMLS:C0812470	Incomplete Abortion	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0813148	skos:exactMatch	UMLS:C0813148		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0813173	skos:exactMatch	UMLS:C0813173	Schizophreniform disorder, unspecified	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4346,7 +4348,7 @@ UMLS:C0851749	skos:exactMatch	UMLS:C0851749		semapv:UnspecifiedMatching	medic-no
 UMLS:C0851881	skos:exactMatch	UMLS:C0851881		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0851955	skos:exactMatch	UMLS:C0851955	Dental Pain and Sensation Disorder	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0851989	skos:exactMatch	UMLS:C0851989		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0852036	skos:exactMatch	MONDO:0024664	hypertension, pregnancy-induced	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0852036	skos:exactMatch	MONDO:0024664		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0852131	skos:exactMatch	UMLS:C0852131		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0852158	skos:exactMatch	UMLS:C0852158		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0852498	skos:exactMatch	UMLS:C0852498		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4385,7 +4387,7 @@ UMLS:C0855095	skos:exactMatch	UMLS:C0855095	Diffuse Well Differentiated Lymphocy
 UMLS:C0855096	skos:exactMatch	UMLS:C0855096	Recurrent B-Cell Small Lymphocytic Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0855097	skos:exactMatch	UMLS:C0855097	Refractory B-Cell Small Lymphocytic Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0855111	skos:exactMatch	UMLS:C0855111	Recurrent Diffuse Large B-Cell Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0855112	skos:exactMatch	MONDO:0000901	relapsed/refractory diffuse large B-cell lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0855112	skos:exactMatch	MONDO:0000901		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0855124	skos:exactMatch	UMLS:C0855124		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0855138	skos:exactMatch	UMLS:C0855138	Refractory Mantle Cell Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0855153	skos:exactMatch	UMLS:C0855153	Recurrent Primary Mediastinal Large B-Cell Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4443,7 +4445,7 @@ UMLS:C0878588	skos:exactMatch	UMLS:C0878588	Sphincter of Oddi dysfunction	semapv
 UMLS:C0878675	skos:exactMatch	MONDO:0018153		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0878773	skos:exactMatch	MONDO:0006624		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0878787	skos:exactMatch	UMLS:C0878787	Growth Failure	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0917796	skos:exactMatch	MONDO:0010788	Leber hereditary optic neuropathy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0917796	skos:exactMatch	MONDO:0010788		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0917801	skos:exactMatch	MONDO:0013600		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0917996	skos:exactMatch	UMLS:C0917996	Cerebral aneurysm	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0919267	skos:exactMatch	MONDO:0021068		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -4455,8 +4457,8 @@ UMLS:C0919923	skos:exactMatch	UMLS:C0919923		semapv:UnspecifiedMatching	medic-no
 UMLS:C0920064	skos:exactMatch	UMLS:C0920064	Alloimmune platelet transfusion refractoriness	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0936249	skos:exactMatch	UMLS:C0936249	Eczema Vaccinatum	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0947781	skos:exactMatch	UMLS:C0947781		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C0948008	skos:exactMatch	MONDO:1060198	ischemic stroke	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C0948089	skos:exactMatch	MONDO:0005542	acute coronary syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0948008	skos:exactMatch	MONDO:1060198		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C0948089	skos:exactMatch	MONDO:0005542		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C0948109	skos:exactMatch	UMLS:C0948109		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0948205	skos:exactMatch	UMLS:C0948205	Infection caused by Enterobacter	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0948245	skos:exactMatch	MONDO:0600008		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -4468,7 +4470,7 @@ UMLS:C0948840	skos:exactMatch	UMLS:C0948840	Leukemic Leptomeningitis	semapv:Unsp
 UMLS:C0948887	skos:exactMatch	UMLS:C0948887		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0948896	skos:exactMatch	UMLS:C0948896	Hypergonadotrophic hypogonadism	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C0949083	skos:exactMatch	UMLS:C0949083	Pneumonia, Hospital Acquired	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1096116	skos:exactMatch	MONDO:0019139	acquired hemophilia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1096116	skos:exactMatch	MONDO:0019139		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1096244	skos:exactMatch	UMLS:C1096244		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1096266	skos:exactMatch	UMLS:C1096266		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1096485	skos:exactMatch	UMLS:C1096485		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4520,7 +4522,7 @@ UMLS:C1265425	skos:exactMatch	UMLS:C1265425	Hookworm	semapv:UnspecifiedMatching	
 UMLS:C1265792	skos:exactMatch	UMLS:C1265792	Chronic emphysema	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1269683	skos:exactMatch	MONDO:0002009		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1270972	skos:exactMatch	UMLS:C1270972	Mild Neurocognitive Disorder	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1274103	skos:exactMatch	MONDO:0018124	Oncogenic osteomalacia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1274103	skos:exactMatch	MONDO:0018124		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1274321	skos:exactMatch	UMLS:C1274321	Recurrent oral herpes	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1274469	skos:exactMatch	UMLS:C1274469	Onychomycosis of fingernails	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1274470	skos:exactMatch	UMLS:C1274470	Onychomycosis of toenails	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4528,7 +4530,7 @@ UMLS:C1274598	skos:exactMatch	UMLS:C1274598	Multiple actinic keratoses	semapv:Un
 UMLS:C1274694	skos:exactMatch	UMLS:C1274694	Postmenopausal androgenetic alopecia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1274727	skos:exactMatch	UMLS:C1274727	Acne nodule	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1274831	skos:exactMatch	UMLS:C1274831	Anal intraepithelial neoplasia (AIN III)	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1275126	skos:exactMatch	MONDO:0007727	TNF receptor 1-associated periodic fever syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1275126	skos:exactMatch	MONDO:0007727		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1275835	skos:exactMatch	UMLS:C1275835	History of - myocardial infarction	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1276092	skos:exactMatch	UMLS:C1276092	Chronic hand eczema	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1277190	skos:exactMatch	UMLS:C1277190	Suspected breast cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4547,7 +4549,7 @@ UMLS:C1292754	skos:exactMatch	MONDO:0020323	primary mediastinal large B-cell lym
 UMLS:C1299432	skos:exactMatch	UMLS:C1299432	Multi vessel coronary artery disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1299544	skos:exactMatch	UMLS:C1299544	History of substance abuse	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1300127	skos:exactMatch	MONDO:0006359	neoplasm with perivascular epithelioid cell differentiation	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
-UMLS:C1301355	skos:exactMatch	MONDO:0006311	myelodysplastic/myeloproliferative neoplasm	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1301355	skos:exactMatch	MONDO:0006311		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1301365	skos:exactMatch	MONDO:0020332		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1303258	skos:exactMatch	UMLS:C1303258	Acute ST segment elevation myocardial infarction	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1304119	skos:exactMatch	UMLS:C1304119	Chronic stable plaque psoriasis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4560,7 +4562,7 @@ UMLS:C1306274	skos:exactMatch	UMLS:C1306274		semapv:UnspecifiedMatching	medic-no
 UMLS:C1306571	skos:exactMatch	UMLS:C1306571	Insufficiency, Hepatic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1306762	skos:exactMatch	UMLS:C1306762		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1306878	skos:exactMatch	UMLS:C1306878		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1318543	skos:exactMatch	MONDO:0002522	tenosynovial giant cell tumor	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1318543	skos:exactMatch	MONDO:0002522		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1320547	skos:exactMatch	UMLS:C1320547	Allergic otitis externa	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1320716	skos:exactMatch	UMLS:C1320716	Cardiovascular event	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1320835	skos:exactMatch	UMLS:C1320835	Drug-induced hyperpyrexia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4571,7 +4573,7 @@ UMLS:C1328252	skos:exactMatch	MONDO:0005859		semapv:UnspecifiedMatching	medic-no
 UMLS:C1328480	skos:exactMatch	UMLS:C1328480	Partial obstruction of intestine	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1328500	skos:exactMatch	UMLS:C1328500		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1328504	skos:exactMatch	MONDO:0850353		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C1332166	skos:exactMatch	MONDO:0003219	gastroesophageal junction adenocarcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1332166	skos:exactMatch	MONDO:0003219		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1333034	skos:exactMatch	UMLS:C1333034	Chronic Cancer Pain	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1333064	skos:exactMatch	UMLS:C1333064	Classical Hodgkin Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1333782	skos:exactMatch	MONDO:0006226	gastric mucosa-associated lymphoid tissue lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -4620,7 +4622,7 @@ UMLS:C1504539	skos:exactMatch	UMLS:C1504539		semapv:UnspecifiedMatching	medic-no
 UMLS:C1510446	skos:exactMatch	UMLS:C1510446	Acute ischemic heart disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1510467	skos:exactMatch	UMLS:C1510467	injuries	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1510471	skos:exactMatch	MONDO:0024298	vitamin deficiency disorder	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
-UMLS:C1510586	skos:exactMatch	MONDO:0005258	autism spectrum disorder	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1510586	skos:exactMatch	MONDO:0005258		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1512508	skos:exactMatch	MONDO:0005187	human herpesvirus 8 infection	semapv:UnspecifiedMatching	medic-normalizer/0	asserted_exact
 UMLS:C1518004	skos:exactMatch	UMLS:C1518004	Low Grade B-Cell Non-Hodgkin's Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1518005	skos:exactMatch	UMLS:C1518005	Cervical Squamous Intraepithelial Neoplasia 1	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4631,7 +4633,7 @@ UMLS:C1527396	skos:exactMatch	UMLS:C1527396	Pancreas Fibrocystic Disease	semapv:
 UMLS:C1527401	skos:exactMatch	UMLS:C1527401	Shock, Insulin	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1527410	skos:exactMatch	UMLS:C1527410	Rickets, Renal	semapv:UnspecifiedMatching	medic-normalizer/0	identity
 UMLS:C1527411	skos:exactMatch	UMLS:C1527411	Retinal Vein Thromboses	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1531608	skos:exactMatch	MONDO:0005235	smoldering plasma cell myeloma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1531608	skos:exactMatch	MONDO:0005235		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1532338	skos:exactMatch	UMLS:C1532338	Coronary Interventions, Percutaneous	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1532533	skos:exactMatch	UMLS:C1532533	Fungal Endophthalmitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1535939	skos:exactMatch	MONDO:0019121		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
@@ -4669,7 +4671,7 @@ UMLS:C1704212	skos:exactMatch	UMLS:C1704212	Embolism	semapv:UnspecifiedMatching	
 UMLS:C1704272	skos:exactMatch	MONDO:0010811		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1704319	skos:exactMatch	UMLS:C1704319	Nematoda	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1704321	skos:exactMatch	UMLS:C1704321	Minimal Change Nephrotic Syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1704436	skos:exactMatch	MONDO:0005386	peripheral arterial disease	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1704436	skos:exactMatch	MONDO:0005386		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1704632	skos:exactMatch	UMLS:C1704632	Response	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1705576	skos:exactMatch	UMLS:C1705576	Allogeneic Hematopoietic Cell Transplantation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1705714	skos:exactMatch	UMLS:C1705714	WARTS	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4704,7 +4706,7 @@ UMLS:C1851475	skos:exactMatch	UMLS:C1851475	ESTERASE ES-2, REGULATOR FOR	semapv:
 UMLS:C1857287	skos:exactMatch	UMLS:C1857287	Stroke-like episode	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1859443	skos:exactMatch	UMLS:C1859443	Severe generalized osteoporosis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1861151	skos:exactMatch	UMLS:C1861151	Severe acne	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1862839	skos:exactMatch	MONDO:0019503	anterior segment dysgenesis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1862839	skos:exactMatch	MONDO:0019503		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1868698	skos:exactMatch	UMLS:C1868698		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1868885	skos:exactMatch	UMLS:C1868885		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1868895	skos:exactMatch	UMLS:C1868895	HER2-positive gastric cancer	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4714,7 +4716,7 @@ UMLS:C1868976	skos:exactMatch	UMLS:C1868976		semapv:UnspecifiedMatching	medic-no
 UMLS:C1880960	skos:exactMatch	UMLS:C1880960	Glomerulations	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1881055	skos:exactMatch	UMLS:C1881055	Personal History of Coronary Artery Disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1883018	skos:exactMatch	UMLS:C1883018		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1955629	skos:exactMatch	MONDO:0027029	HHV-6 encephalitis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1955629	skos:exactMatch	MONDO:0027029		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1956346	skos:exactMatch	MONDO:0005010		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1960047	skos:exactMatch	UMLS:C1960047	Moderate persistent asthma NOS	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1960274	skos:exactMatch	UMLS:C1960274	Nongonococcal cervicitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4722,7 +4724,7 @@ UMLS:C1960448	skos:exactMatch	UMLS:C1960448	Hyperammonemic encephalopathy	semapv
 UMLS:C1960510	skos:exactMatch	UMLS:C1960510	Female infertility due to oligo-ovulation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1960629	skos:exactMatch	UMLS:C1960629	History of headache	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1960636	skos:exactMatch	UMLS:C1960636	Dysglycemia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C1961099	skos:exactMatch	MONDO:0004963	T-cell acute lymphoblastic leukemia	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C1961099	skos:exactMatch	MONDO:0004963		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1961100	skos:exactMatch	UMLS:C1961100		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C1961835	skos:exactMatch	MONDO:0009265		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C1963916	skos:exactMatch	UMLS:C1963916		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4762,7 +4764,7 @@ UMLS:C2348199	skos:exactMatch	MONDO:0000453		semapv:UnspecifiedMatching	medic-no
 UMLS:C2349276	skos:exactMatch	UMLS:C2349276	Acute myeloid leukemia, in relapse	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2349994	skos:exactMatch	MONDO:0000242		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C2350390	skos:exactMatch	UMLS:C2350390	Myocardial Perfusion Imaging	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C2350529	skos:exactMatch	MONDO:0000266	pulmonary aspergilloma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C2350529	skos:exactMatch	MONDO:0000266		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C2355609	skos:exactMatch	UMLS:C2355609	Madura Foot	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2363741	skos:exactMatch	UMLS:C2363741		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2363784	skos:exactMatch	UMLS:C2363784		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4796,7 +4798,7 @@ UMLS:C2748361	skos:exactMatch	UMLS:C2748361		semapv:UnspecifiedMatching	medic-no
 UMLS:C2748507	skos:exactMatch	MONDO:0013021		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C2748540	skos:exactMatch	UMLS:C2748540		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2748695	skos:exactMatch	UMLS:C2748695	Obstructive liver disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C2751492	skos:exactMatch	MONDO:0971004	amyloidosis, hereditary systemic 1	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C2751492	skos:exactMatch	MONDO:0971004		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C2825139	skos:exactMatch	UMLS:C2825139	AML with Myelodysplasia-Related Changes	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2826330	skos:exactMatch	UMLS:C2826330	Refractory Anemia with Ring Sideroblasts Associated with Marked Thrombocytosis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2826362	skos:exactMatch	UMLS:C2826362	Not Pregnant	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4817,8 +4819,8 @@ UMLS:C2931193	skos:exactMatch	UMLS:C2931193	Prinzmetal's variant angina	semapv:U
 UMLS:C2931495	skos:exactMatch	UMLS:C2931495	Arthrogryposis epileptic seizures migrational brain disorder	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2931591	skos:exactMatch	UMLS:C2931591	Juvenile systemic scleroderma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2931618	skos:exactMatch	UMLS:C2931618	Disease, Gestational Trophoblastic	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C2931788	skos:exactMatch	MONDO:0016244	atypical hemolytic-uremic syndrome	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C2931822	skos:exactMatch	MONDO:0015459	nasopharyngeal carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C2931788	skos:exactMatch	MONDO:0016244		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C2931822	skos:exactMatch	MONDO:0015459		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C2931924	skos:exactMatch	UMLS:C2931924	Amoebic dysentery due to Entamoeba histolytica	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2939070	skos:exactMatch	UMLS:C2939070		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C2939459	skos:exactMatch	UMLS:C2939459	Cataract Surgery	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4838,7 +4840,7 @@ UMLS:C3160889	skos:exactMatch	UMLS:C3160889		semapv:UnspecifiedMatching	medic-no
 UMLS:C3160891	skos:exactMatch	UMLS:C3160891		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3160898	skos:exactMatch	UMLS:C3160898	Controlled ovarian stimulation	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3161650	skos:exactMatch	UMLS:C3161650	Focal glomerulonephritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C3203102	skos:exactMatch	MONDO:0001999	idiopathic pulmonary arterial hypertension	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C3203102	skos:exactMatch	MONDO:0001999		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C3203460	skos:exactMatch	UMLS:C3203460		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3203466	skos:exactMatch	UMLS:C3203466		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3203547	skos:exactMatch	UMLS:C3203547	Axial spondyloarthritis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4878,8 +4880,8 @@ UMLS:C3541994	skos:exactMatch	MONDO:0015340		semapv:UnspecifiedMatching	medic-no
 UMLS:C3544094	skos:exactMatch	UMLS:C3544094		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3544218	skos:exactMatch	UMLS:C3544218		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3544321	skos:exactMatch	MONDO:0005414		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C3554224	skos:exactMatch	MONDO:0013991	obesity due to congenital leptin deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C3554225	skos:exactMatch	MONDO:0013992	obesity due to leptin receptor gene deficiency	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C3554224	skos:exactMatch	MONDO:0013991		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C3554225	skos:exactMatch	MONDO:0013992		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C3640030	skos:exactMatch	UMLS:C3640030	Congenital Supraventricular Tachycardia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3647833	skos:exactMatch	UMLS:C3647833	Follicular Lymphoma Grade 3b	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3650625	skos:exactMatch	UMLS:C3650625	Dysfunctional uterine bleeding	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4901,7 +4903,7 @@ UMLS:C3697982	skos:exactMatch	UMLS:C3697982	Pulmonary arterial hypertension asso
 UMLS:C3698093	skos:exactMatch	UMLS:C3698093	Nonsustained paroxysmal supraventricular tachycardia	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3714514	skos:exactMatch	UMLS:C3714514	Infections	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3714757	skos:exactMatch	UMLS:C3714757	Rheumatoid arthritis, juvenile	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C3714758	skos:exactMatch	MONDO:0019436	psoriasis-related juvenile idiopathic arthritis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C3714758	skos:exactMatch	MONDO:0019436		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C3805119	skos:exactMatch	UMLS:C3805119		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3805143	skos:exactMatch	UMLS:C3805143		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3805211	skos:exactMatch	UMLS:C3805211		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4926,7 +4928,7 @@ UMLS:C3873497	skos:exactMatch	UMLS:C3873497	Severe Acute Respiratory Infection	s
 UMLS:C3875321	skos:exactMatch	MONDO:0002406		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C3887021	skos:exactMatch	UMLS:C3887021	History of pancreatitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3887558	skos:exactMatch	MONDO:0015540		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
-UMLS:C3888018	skos:exactMatch	MONDO:0017182	familial hyperinsulinism	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C3888018	skos:exactMatch	MONDO:0017182		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C3888500	skos:exactMatch	UMLS:C3888500		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3888796	skos:exactMatch	UMLS:C3888796		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C3888896	skos:exactMatch	UMLS:C3888896		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4951,7 +4953,7 @@ UMLS:C4025204	skos:exactMatch	UMLS:C4025204	Recurrent Haemophilus influenzae inf
 UMLS:C4039184	skos:exactMatch	UMLS:C4039184	High risk of bleeding	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4041248	skos:exactMatch	UMLS:C4041248	Severe persistent allergic asthma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4048294	skos:exactMatch	UMLS:C4048294	Infants, Preterm	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C4048328	skos:exactMatch	MONDO:0002974	cervical cancer	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C4048328	skos:exactMatch	MONDO:0002974		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C4049395	skos:exactMatch	UMLS:C4049395		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4049497	skos:exactMatch	UMLS:C4049497		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4049507	skos:exactMatch	UMLS:C4049507	Recurrent Urothelial Carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -4974,7 +4976,7 @@ UMLS:C4086165	skos:exactMatch	UMLS:C4086165		semapv:UnspecifiedMatching	medic-no
 UMLS:C4087124	skos:exactMatch	UMLS:C4087124	Immunoglobulin G4 Related Disease	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4087141	skos:exactMatch	UMLS:C4087141	Metastatic Skin Squamous Cell Carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4087198	skos:exactMatch	UMLS:C4087198		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C4087273	skos:exactMatch	MONDO:0018013	complement 3 glomerulopathy	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C4087273	skos:exactMatch	MONDO:0018013		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C4087338	skos:exactMatch	UMLS:C4087338		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4087471	skos:exactMatch	UMLS:C4087471	Metastatic Cholangiocarcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4087506	skos:exactMatch	UMLS:C4087506		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -5025,7 +5027,7 @@ UMLS:C4511461	skos:exactMatch	UMLS:C4511461	History of torsades type ventricular
 UMLS:C4512006	skos:exactMatch	UMLS:C4512006	History of anaphylaxis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4518725	skos:exactMatch	UMLS:C4518725	Noninfectious panuveitis	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4520721	skos:exactMatch	UMLS:C4520721	Relapsed Cutaneous T-Cell Lymphoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C4521004	skos:exactMatch	MONDO:0018456	polyarticular juvenile idiopathic arthritis	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C4521004	skos:exactMatch	MONDO:0018456		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C4521228	skos:exactMatch	UMLS:C4521228		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4523850	skos:exactMatch	UMLS:C4523850		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4524015	skos:exactMatch	UMLS:C4524015		semapv:UnspecifiedMatching	medic-normalizer/1	identity
@@ -5099,7 +5101,7 @@ UMLS:C4727977	skos:exactMatch	UMLS:C4727977		semapv:UnspecifiedMatching	medic-no
 UMLS:C4727978	skos:exactMatch	UMLS:C4727978		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4728082	skos:exactMatch	UMLS:C4728082		semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4728198	skos:exactMatch	UMLS:C4728198		semapv:UnspecifiedMatching	medic-normalizer/1	identity
-UMLS:C4733095	skos:exactMatch	MONDO:0000618	Her2-receptor negative breast cancer	semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
+UMLS:C4733095	skos:exactMatch	MONDO:0000618		semapv:UnspecifiedMatching	medic-normalizer/1	asserted_exact
 UMLS:C4743636	skos:exactMatch	UMLS:C4743636	Unresectable Renal Cell Carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4744429	skos:exactMatch	UMLS:C4744429	Locally Advanced Unresectable Gastric Adenocarcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
 UMLS:C4744564	skos:exactMatch	UMLS:C4744564	Metastatic Colorectal Carcinoma	semapv:UnspecifiedMatching	medic-normalizer/1	identity
