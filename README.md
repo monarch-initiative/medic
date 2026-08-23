@@ -31,8 +31,8 @@ walked back to its source.
 
 | | |
 |---|---|
-| **6,504** drug–disease indication pairs | from **9,716** individual source-document attestations |
-| **2,399** contraindication pairs | from **2,978** attestations |
+| **7,483** drug–disease indication pairs | from **11,360** individual source-document attestations |
+| **2,659** contraindication pairs | from **3,305** attestations |
 | **4,323** drugs | grounded to ChEBI |
 | **23,224** diseases | grounded to Mondo |
 | **6 jurisdictions** | USA, EU, Japan, India, Russia, China |

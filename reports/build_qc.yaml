@@ -1,50 +1,51 @@
 checks:
   approval_date_authority:
-    checked: 9594
+    checked: 10845
     status: PASS
     violations: 0
   counts:
     observed:
-      contraindication_list.assertions: 3031
-      contraindication_list.by_source.DAILYMED: 3031
-      contraindication_list.pairs: 2448
+      contraindication_list.assertions: 3305
+      contraindication_list.by_source.DAILYMED: 3305
+      contraindication_list.pairs: 2659
       drug_list.drugs: 4323
-      indication_list.assertions: 9716
-      indication_list.by_source.DAILYMED: 3910
+      indication_list.assertions: 11360
+      indication_list.by_source.DAILYMED: 5554
       indication_list.by_source.EMA: 3054
       indication_list.by_source.INDIA: 132
       indication_list.by_source.PMDA: 2620
-      indication_list.pairs: 6504
+      indication_list.pairs: 7483
     status: PASS
   distributions:
     contraindication_list:
       confidence_basis:
-        DETERMINISTIC: 9243
-        MEASURED: 9093
+        DETERMINISTIC: 10150
+        MEASURED: 9903
+        PRIOR: 12
       reliability:
-        HIGH: 1810
-        LOW: 326
-        MEDIUM: 312
+        HIGH: 1986
+        LOW: 337
+        MEDIUM: 336
       span_roles:
-        LIMITATION_STATEMENT: 150
-        SECTION_HEADER: 19
-        SECTION_TEXT: 3031
-        SUBSECTION_HEADER: 150
+        LIMITATION_STATEMENT: 200
+        SECTION_HEADER: 1449
+        SECTION_TEXT: 3305
+        SUBSECTION_HEADER: 200
     indication_list:
       confidence_basis:
-        DETERMINISTIC: 29400
-        MEASURED: 29037
-        PRIOR: 111
+        DETERMINISTIC: 34390
+        MEASURED: 33939
+        PRIOR: 141
       reliability:
-        HIGH: 5473
-        LOW: 346
-        MEDIUM: 685
+        HIGH: 6226
+        LOW: 440
+        MEDIUM: 817
       span_roles:
-        LIMITATION_STATEMENT: 234
-        SECTION_HEADER: 24
-        SECTION_TEXT: 6530
+        LIMITATION_STATEMENT: 813
+        SECTION_HEADER: 1944
+        SECTION_TEXT: 8174
         STRUCTURED_FIELD: 3054
-        SUBSECTION_HEADER: 234
+        SUBSECTION_HEADER: 813
         TABLE_CELL: 132
     status: PASS
   enums:
@@ -62,17 +63,17 @@ checks:
     total: 5
     uncalibrated: 5
   reconciliation:
-    assertions_total: 12747
-    kept_total: 12754
+    assertions_total: 14665
+    kept_total: 14673
     sources:
       DAILYMED/contraindications:
-        dropped_duplicate_document: 10
-        kept: 3031
-        rows_in: 3041
+        dropped_duplicate_document: 6
+        kept: 3306
+        rows_in: 3312
       DAILYMED/indications:
-        dropped_duplicate_document: 114
-        kept: 3910
-        rows_in: 4024
+        dropped_duplicate_document: 133
+        kept: 5554
+        rows_in: 5687
       EMA/indications:
         dropped_duplicate_document: 140
         kept: 3055
@@ -87,16 +88,16 @@ checks:
         rows_in: 2677
     status: PASS
   source_isolation:
-    checked: 25494
+    checked: 29330
     status: PASS
     violations: 0
   stores:
     mappings/disease_grounding.sssom.tsv:
       blank_subject_id: 0
-      rows: 7574
+      rows: 8356
     mappings/drug_grounding.sssom.tsv:
       blank_subject_id: 0
-      rows: 21186
+      rows: 21227
     status: PASS
 summary:
   PASS: 10

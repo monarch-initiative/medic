@@ -355,7 +355,7 @@ fill build regenerates every product. Known counts from that run (`redesign` bra
 | Drug list | 4,250 drugs (lexical-grounded; more unresolved than v1 as non-English/formulation strings now fail loudly rather than via LLM/NameRes) |
 | Disease list | 23,224 |
 | Sources ingested | Orange Book 2,725 (2,606 grounded) · Purple Book 642 · EMA 995 + 3,185 indications · PMDA 1,174 + 1,966 indications · Russia 5,885 (992 grounded, Cyrillic) · India 112 (0 grounded — formulation noise) · DailyMed 1,819 SPLs |
-| Indications / Contraindications | 6,504 indication pairs / 9,716 assertions · 2,399 contraindication pairs / 2,978 assertions |
+| Indications / Contraindications | 7,483 indication pairs / 11,360 assertions · 2,659 contraindication pairs / 3,305 assertions |
 | Research associations | **9** (was 164; see below) |
 
 **The research axis was cut to 9 associations on 2026-08-15** (#44). 155 of the 164 evidence rows

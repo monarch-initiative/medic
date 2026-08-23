@@ -9,18 +9,29 @@
 # its assertions rose 1,841 -> 2,620 (+42%) and total indication pairs 6,338 -> 6,504. QC caught
 # the drift on the first run after the re-ingest, which is what it is for.
 
+# 2026-08-19: the DailyMed SPL extractor was reading only the direct <text> child of the
+# LOINC-coded section, so on labels that nest their indication list in <component><section>
+# children it returned the lead-in sentence and dropped the rest. 431 of 1,875 labels extracted
+# to *empty* and contributed nothing; ~65% of the rest were truncated. Because only the lead-in
+# reached the LLM, the model completed the list from prior knowledge — VABYSMO shipped a
+# fabricated `faricimab -> diabetic retinopathy` indication while its real third indication
+# (macular edema following retinal vein occlusion) was lost. Reading the whole section subtree
+# recovered the missing text, so DailyMed indication assertions rose 3,910 -> 5,554 (+42%) and
+# contraindications 2,978 -> 3,305 (+11%). EMA, PMDA, INDIA and the drug list are unchanged,
+# which is the check that this was isolated to the extractor and not a merge-wide drift.
+
 tolerance:
   warn_pct: 5     # drift a human should look at
   fail_pct: 20    # drift that stops the build
 
 counts:
-  indication_list.pairs: 6504
-  indication_list.assertions: 9716
-  indication_list.by_source.DAILYMED: 3910
+  indication_list.pairs: 7483
+  indication_list.assertions: 11360
+  indication_list.by_source.DAILYMED: 5554
   indication_list.by_source.EMA: 3054
   indication_list.by_source.PMDA: 2620
   indication_list.by_source.INDIA: 132
-  contraindication_list.pairs: 2399
-  contraindication_list.assertions: 2978
-  contraindication_list.by_source.DAILYMED: 2978
+  contraindication_list.pairs: 2659
+  contraindication_list.assertions: 3305
+  contraindication_list.by_source.DAILYMED: 3305
   drug_list.drugs: 4323
