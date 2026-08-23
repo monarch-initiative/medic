@@ -6137,14 +6137,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:756751|UMLS:C3665464
@@ -6166,7 +6166,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:756751
   final_normalized_drug_label: donanemab
   indications_text: A drug with a new active ingredient indicated for slowing the progression of mild cognitive impairment and mild dementia due to Alzheimer’s disease.
@@ -6251,14 +6251,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:756751|UMLS:C3665464
@@ -6280,7 +6280,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:756751
   final_normalized_drug_label: donanemab
   indications_text: A drug with a new dosage indicated for slowing the progression of mild cognitive impairment and mild dementia due to Alzheimer’s disease.
@@ -13864,14 +13864,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:755541|UMLS:C3665464
@@ -13891,7 +13891,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:755541
   final_normalized_drug_label: flortaucipir f 18
   indications_text: A drug with a new active ingredient indicated for the support of selection of patients with mild cognitive impairment and mild dementia due to Alzheimer's disease, for whom donanemab (genetical recombination) is indicated. [Expedited review]
@@ -24888,14 +24888,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:755918|UMLS:C3665464
@@ -24917,7 +24917,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:755918
   final_normalized_drug_label: lecanemab
   indications_text: Drugs with a new active ingredient indicated for slowing the progression of mild cognitive impairment and mild dementia due to Alzheimer’s disease. [Priority review]
@@ -26715,14 +26715,14 @@
 - disease_grounding:
     confidence: 0.9
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_normalized
     original_string: dementia due to Alzheimer's disease
     subject_id: MEDICNE:a584df96-88d2-5e38-99ec-d6ec96e46707
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:749082|UMLS:C3665464
@@ -26742,7 +26742,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:749082
   final_normalized_drug_label: flutemetamol
   indications_text: A drug with a new indication for the visualization of beta‑amyloid plaques in the brain of patients suspected of mild cognitive impairment or dementia due to Alzheimer's disease. [Expedited review]
@@ -26823,14 +26823,14 @@
 - disease_grounding:
     confidence: 0.9
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_normalized
     original_string: dementia due to Alzheimer's disease
     subject_id: MEDICNE:a584df96-88d2-5e38-99ec-d6ec96e46707
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:750271|UMLS:C3665464
@@ -26850,7 +26850,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:750271
   final_normalized_drug_label: florbetapir
   indications_text: A drug with a new indication for the visualization of beta‑amyloid plaques in the brain of patients suspected of mild cognitive impairment or dementia due to Alzheimer's disease. [Expedited review]

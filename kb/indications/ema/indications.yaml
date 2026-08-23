@@ -41902,14 +41902,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:756751|UMLS:C3665464
@@ -41930,7 +41930,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:756751
   final_normalized_drug_label: donanemab
   indications_text: Donanemab is indicated for the treatment of adult patients with a clinical diagnosis of mild cognitive impairment and mild dementia due to Alzheimer’s disease (Early symptomatic Alzheimer’s disease) who are apolipoprotein&nbsp;E&nbsp;ε4 (ApoE&nbsp;ε4) heterozygotes or non-carriers with confirmed amyloid pathology (see section 4.4).&nbsp;
@@ -55331,14 +55331,14 @@
 - disease_grounding:
     confidence: 0.75
     grounded_id: UMLS:C3665464
-    grounded_label: Dementia in Alzheimer's disease
+    grounded_label: DAT - Dementia Alzheimer's type
     grounding_quality: lexical_exact_surgery
     original_string: mild dementia due to Alzheimer's disease
     subject_id: MEDICNE:318ba891-1f57-54f4-b76f-69f301cd183a
   disease_normalization:
     normalization_quality: identity
     normalized_id: UMLS:C3665464
-    normalized_label: Dementia in Alzheimer's disease
+    normalized_label: DAT - Dementia Alzheimer's type
     original_id: UMLS:C3665464
     tool: medic-normalizer/1
   drug_disease: CHEBI:755918|UMLS:C3665464
@@ -55359,7 +55359,7 @@
     source_type: REGULATORY
   fda: false
   final_normalized_disease_id: UMLS:C3665464
-  final_normalized_disease_label: Dementia in Alzheimer's disease
+  final_normalized_disease_label: DAT - Dementia Alzheimer's type
   final_normalized_drug_id: CHEBI:755918
   final_normalized_drug_label: lecanemab
   indications_text: Leqembi is indicated for the treatment of adult patients with a clinical diagnosis of mild cognitive impairment and mild dementia due to Alzheimer’s disease (Early Alzheimer’s disease) who are apolipoprotein E 4 (ApoE&nbsp;ε4) non-carriers or heterozygotes with confirmed amyloid pathology (see section 4.4).
