@@ -99,8 +99,21 @@ assets:
     sources: [dailymed, ema, pmda, cdsco]
     ship: true
     note: >-
-      Contains ~4.9 MB of verbatim indication text, each excerpt capped at 500 characters
-      (PMDA 988). EMA and PMDA account for ~1.9 MB and both require attribution.
+      Contains ~45 MB of verbatim indication text across three fields, measured 2026-08-21.
+      An earlier version of this note said "~4.9 MB ... each excerpt capped at 500 characters
+      (PMDA 988)". Only ONE of the three fields is capped, and the volume was understated by
+      roughly an order of magnitude — so the redistribution decision was signed off against a
+      description of the data that was wrong. Restated per source and per field:
+      `evidence.snippet` IS capped (DailyMed/EMA/India 500, PMDA 988). `span.text` and each
+      resolution step's `input_value` are NOT capped and carry the bulk: DailyMed text reaches
+      14,474 characters (10.0 MB over 9,124 spans) and input_value 9,486 (20.2 MB); EMA reaches
+      8,249 in both (3.1 MB and 7.7 MB) — an 8,249-character EMA span is an entire SmPC
+      "Therapeutic indications" section reproduced verbatim, 1,714 of them over 500 characters.
+      By source: DailyMed ~32.7 MB (US government public domain, so volume is a size question,
+      not a rights one), EMA ~12.0 MB and PMDA ~3.1 MB (both require attribution), India
+      ~0.2 MB (terms unverified). Whether whole-section reproduction is acceptable for EMA and
+      PMDA is a live decision (#51); this note now describes what actually ships so that
+      decision is made against the real thing.
 
   - path: products/contraindication_list.yaml
     sources: [dailymed]
@@ -114,10 +127,13 @@ assets:
     sources: []
     ship: false
     note: >-
-      HELD. MedDRA reaches MeDIC through FAERS and PVLens under an ICH/MSSO subscription
-      licence that restricts redistribution of dictionary terms. Nothing MedDRA-derived is
-      built today (the product is an empty stub and kb/adverse_events/ holds only
-      .gitkeep); this entry keeps it that way once the ingest lands.
+      Contains ~13.3 MB of verbatim contraindication text (measured 2026-08-21), DailyMed only.
+      Same field shape as indication_list: `evidence.snippet` is capped at 500 characters,
+      `span.text` and step `input_value` are not — both reach 14,011 characters, an entire
+      CONTRAINDICATIONS section reproduced verbatim. DailyMed SPLs are US government public
+      domain, so this is a size question rather than a rights one, and it is recorded here
+      because an asset shipping this much verbatim text should not be the one entry in the
+      manifest that says nothing about it.
 
   # ---- exports: legacy tabular -------------------------------------------------
   - path: exports/drug_list_flexible.csv
@@ -171,8 +187,15 @@ assets:
     sources: [dailymed, ema, pmda, cdsco, pubmed]
     ship: true
     note: >-
-      Contains ~4.6 MB of verbatim label text in supporting_text — the same excerpts as
-      products/indication_list.yaml, capped identically. EMA+PMDA ~1.8 MB.
+      Contains ~12.2 MB of verbatim label text in supporting_text, measured 2026-08-21. These
+      are the same excerpts as products/indication_list.yaml but are NOT "capped identically",
+      as this note previously claimed: supporting_text is capped at 2,000 characters here
+      against 500 for the product's snippet field, and 2,468 edges carry
+      medic_supporting_text_truncated to say so. By source: DailyMed 9.1 MB over 8,859 edges
+      (max 2,000), EMA 2.5 MB over 3,054 (max 2,000), PMDA 0.6 MB (max 988, its natural
+      length), India 0.03 MB. EMA and PMDA both require attribution. If a cap is ever added to
+      the product's span.text, note that object_location_in_text offsets index into these
+      strings and must be recomputed with it.
 
   - path: exports/medic_kgx_metadata.yaml
     sources: []
