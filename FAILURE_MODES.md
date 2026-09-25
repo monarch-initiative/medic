@@ -20,12 +20,13 @@ would anything catch it?*
 > | Layer | Where | Flags |
 > |---|---|---|
 > | Entity recognition + linking | `Mention.resolution.pipeline` steps | `ExtractionFlag` (§5.1 `hallucination`, §5.6 `truncated_snippet`, §5.5 `coreference_ambiguity`) · `TranslationFlag` (§7.3 `unreviewed_machine`, §7.4 `trade_name_source`) · `GroundingFlag` (§2.5 `script_transliteration`, §11.2 `broadened`, …) · `NormalizationFlag` (§10.2 `no_target_xref`) |
-> | The claim / relation | `IndicationAssociation.assertion` | `AssertionFlag` (§4.1–4.2 `negated_inversion`, §5.2 `over_extraction`, §3.5 `wrong_section`, §5.4 `wrong_pairing`) |
+> | The claim / relation | `IndicationAssociation.assertion` | `AssertionFlag` (§4.1–4.2 `negated_inversion` / `polarity_unverified`, §5.2 `over_extraction`, §3.5 `wrong_section`, §5.4 `wrong_pairing`) |
 >
 > So §5.2 over-extraction (VITAMIN A → hyperthyroidism, a *depleting condition*) is a flag on the
 > **assertion** — the disease mention itself was recognised correctly. Detector maturity varies: the
-> assertion `confidence` and `negated_inversion` are auto-populated; richer flags (`over_extraction`,
-> `hallucination`, `wrong_section`) are curator- or future-detector-set — the slot exists regardless. The
+> assertion `confidence`, `negated_inversion`, `over_extraction` and `polarity_unverified` are
+> auto-populated by `on_label_merge._polarity_flags`; richer flags (`hallucination`, `wrong_section`)
+> are curator- or future-detector-set — the slot exists regardless. The
 > record-level `reliability` tier is computed from these. See `docs/architecture.md` §9.9 and
 > `docs/provenance-walkthrough.md`.
 
@@ -125,8 +126,14 @@ The most consequential fidelity class: recording the *right entities* in the *wr
   → **Mitigation:** ✅ deterministic negation/polarity second pass now runs — at *ingest* it drops an
   indication the source states only negatively (strict full-phrase, all occurrences negated, every drop
   logged; `medic.validation.extraction_fidelity.screen_indications`), and `just validate-extraction`
-  flags the sensitive superset for review. 🟡 still no check that a *positive* extraction came from the
-  right section (entailment flags help but don't prove section provenance).
+  flags the sensitive superset for review. The screen is **scoped to the spans a claim may be read
+  from** (`medic.spans.readable_span_indices` — the same definition `on_label_merge` uses), so a cue
+  inside a `Limitations of Use` subsection no longer reaches across and kills the approval above it;
+  it separately drops a disease whose *only* basis is a strictly-negated limitation span. The
+  contraindication extractor is screened too, with its own cue list — in a §4.3 section
+  "contraindicated in X" is the claim, and what negates it is "no known contraindications" /
+  "not contraindicated in X" (`screen_contraindications`). 🟡 still no check that a *positive*
+  extraction came from the right section (entailment flags help but don't prove section provenance).
   **Do NOT re-route a dropped negated indication to a contraindication.** Empirically only ~1/3 of
   negated indications carry a `contraindicated` cue; the rest are *limitations* ("except in active TB")
   or plain *absence of indication* (metformin "should not be used in type 1 diabetes" is **not** a
@@ -136,7 +143,12 @@ The most consequential fidelity class: recording the *right entities* in the *wr
 - **4.2 Negation missed.** "Not indicated for X", "should not be used in X", "except X" → X extracted
   as a positive indication. LLM free-text extraction is the weak point. → **Mitigation:** ✅ addressed by
   the same deterministic negation screen (4.1). Residual: synonym phrasing the cue-matcher can't locate
-  (kept, then caught by the entailment flag).
+  (kept, then caught by the entailment flag) — **1414 of 11696 shipped INDICATIONs (12%)** are in that
+  state, most of them because the extraction prompt asks the LLM to canonicalise a name the source
+  spells differently. Those are no longer silent: the screen reports them in
+  `ScreenResult.unlocatable`, and where no anchor reaches a verdict at all the merge stamps the claim
+  `polarity_unverified` (207 rows, 1.8%) so "not checked" stays distinguishable from "checked and
+  clean". Closing the gap needs the verbatim source substring from the extractor (#59 follow-up).
 - **4.3 Warning / precaution / dosing condition read as indication.** Renal-impairment dosing, boxed
   warnings, drug-interaction conditions mention diseases that are not indications. DailyMed extracts
   only from the Indications section (good), but EMA/PMDA free-text notes are less clean.

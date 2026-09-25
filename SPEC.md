@@ -498,6 +498,13 @@ Highest-value outstanding work:
   across substances differing only inside brackets), **#22** (snippet entailment is lexical, demoting
   206 correct synonym extractions to LOW), **#24** (clinical qualifiers are dropped, so distinct claims
   collapse at merge) and **#35** (register the w3id redirect before publishing the schema).
+  One further residual, not yet filed: the extraction prompts ask the LLM to *canonicalise* disease
+  names, so the first recorded step's "verbatim source string" is frequently a value the document never
+  wrote — 1414 of 11696 shipped INDICATIONs (12%) carry a disease label not locatable in its own source
+  text, which also denies them `char_start`/`char_end`. **#59** made that state visible rather than
+  silent (the ingest screen reports it, and the merge stamps `polarity_unverified` where no anchor
+  reaches a verdict at all); closing it needs the extractor to return the verbatim substring alongside
+  the canonical name, which changes the extraction contract and invalidates the LLM caches.
 - **Translation stage follow-ups.** (a) The disease-side Babelon store
   (`mappings/disease_translation.babelon.tsv`) is not yet wired — no non-English disease sources exist
   today, but the plumbing (`DISEASE_TRANSLATION_STORE`, `entity_type="diseases"`) is ready. (b) The

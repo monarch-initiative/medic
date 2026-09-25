@@ -62,7 +62,7 @@ def _records_for_approval(
         ref_url = "https://www.pmda.go.jp/PmdaSearch/iyakuSearch/" if search_query else ""
 
     try:
-        diseases = extract_diseases_from_text(ind_text)
+        diseases = extract_diseases_from_text(ind_text, source="PMDA")
     except Exception as e:
         logger.warning("Disease extraction failed for %s: %s", drug_label, e)
         diseases = []
@@ -291,7 +291,8 @@ def _build_pmda_contraindication_records(
         drugs_with_section += 1
 
         try:
-            diseases = extract_contraindicated_diseases_from_text(section_text)
+            diseases = extract_contraindicated_diseases_from_text(
+                section_text, source="PMDA")
         except Exception as e:
             logger.warning("Disease extraction failed for %s: %s", drug_label, e)
             diseases = []

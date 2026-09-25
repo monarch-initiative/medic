@@ -222,11 +222,12 @@ enums:
       as a *depleting condition*, not an indication — the mention is right, the relation is
       wrong. See FAILURE_MODES.md §4-5.
 
-      **Which of these the pipeline emits:** `negated_inversion` and `over_extraction` from
-      `on_label_merge._polarity_flags`, `wrong_section` from `build_assertion` when the only
-      cue in the quote contradicts the recorded relation. `wrong_pairing` has no detector —
-      deciding which active moiety of a combination label a relation attaches to needs the
-      hyperrelational context pass, not a lexical rule — so it is curator-supplied.
+      **Which of these the pipeline emits:** `negated_inversion`, `over_extraction` and
+      `polarity_unverified` from `on_label_merge._polarity_flags`, `wrong_section` from
+      `build_assertion` when the only cue in the quote contradicts the recorded relation.
+      `wrong_pairing` has no detector — deciding which active moiety of a combination label
+      a relation attaches to needs the hyperrelational context pass, not a lexical rule — so
+      it is curator-supplied.
     permissible_values:
       negated_inversion:
         description: The source states the relation negatively; recording it positively inverts the claim (4.1/4.2).
@@ -236,6 +237,15 @@ enums:
         description: The claim was drawn from a section that does not assert this relationship (3.5).
       wrong_pairing:
         description: The relation was attributed to the wrong subject, e.g. the wrong active moiety in a combination label (5.4).
+      polarity_unverified:
+        description: >-
+          The negation check could not run: the disease string was not locatable in the
+          source text, so the claim is neither confirmed positive nor confirmed inverted.
+          Distinct from the absence of a flag, which means the check ran and found nothing —
+          conflating the two was issue #59. The usual cause is the extraction prompt asking
+          the LLM to canonicalise a name the source spells differently. A recording flag,
+          not a verdict: it deliberately does not move the reliability tier, because the
+          entailment score already grades how well the source supports the claim.
   TranslationFlag:
     description: Failure-mode signals on a translation step.
     permissible_values:

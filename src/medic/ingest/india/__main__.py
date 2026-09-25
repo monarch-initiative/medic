@@ -58,7 +58,7 @@ def _build_india_indication_records(grounded_drugs: list[dict], grounding_backen
         ref_url = "https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/"
 
         try:
-            diseases = extract_diseases_from_text(ind_text)
+            diseases = extract_diseases_from_text(ind_text, source="INDIA")
         except Exception as e:
             logger.warning("Disease extraction failed for %s: %s", drug_label, e)
             diseases = []
