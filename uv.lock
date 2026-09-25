@@ -2217,6 +2217,7 @@ dependencies = [
     { name = "aiohttp" },
     { name = "anthropic" },
     { name = "babelon" },
+    { name = "biolink-model" },
     { name = "curies" },
     { name = "datasets" },
     { name = "deepl" },
@@ -2245,9 +2246,6 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
-export = [
-    { name = "biolink-model" },
-]
 research = [
     { name = "deep-research-client", extra = ["cyberian"] },
 ]
@@ -2257,6 +2255,7 @@ requires-dist = [
     { name = "aiohttp", specifier = ">=3.9.0" },
     { name = "anthropic", specifier = ">=0.40.0" },
     { name = "babelon", specifier = ">=0.3.6" },
+    { name = "biolink-model", specifier = "==4.3.7" },
     { name = "curies", specifier = ">=0.9.0" },
     { name = "datasets", specifier = ">=4.8.4" },
     { name = "deepl", specifier = ">=1.30.0" },
@@ -2285,7 +2284,6 @@ dev = [
     { name = "pytest", specifier = ">=7.0" },
     { name = "ruff", specifier = ">=0.4.0" },
 ]
-export = [{ name = "biolink-model", specifier = "==4.3.7" }]
 research = [{ name = "deep-research-client", extras = ["cyberian"], specifier = ">=0.2.0" }]
 
 [[package]]

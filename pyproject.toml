@@ -38,6 +38,16 @@ dependencies = [
   "litellm>=1.82.6",
   "babelon>=0.3.6",
   "deepl>=1.30.0",
+  # Pinned exactly: the KGX export validates every category, predicate and slot it emits
+  # against this exact model (src/medic/export/kgx/biolink.py), and a silent model upgrade can
+  # change which predicates exist. Bump deliberately and re-run tests/test_kgx_export.py.
+  #
+  # This is a runtime dependency, not an optional extra. It lived in a `export` dependency
+  # group, which meant a plain `uv sync` produced a venv where `just export-kgx` failed, CI had
+  # to remember `--group export`, and `pip install medic` could not run the KGX export at all.
+  # KGX is one of the three export families SPEC section 2 declares as product contract — the
+  # same standing as the SSSOM/Babelon exports, whose dependencies were already here.
+  "biolink-model==4.3.7",
 ]
 
 [dependency-groups]
@@ -49,12 +59,6 @@ dev = [
 ]
 research = [
   "deep-research-client[cyberian]>=0.2.0",
-]
-export = [
-  # Pinned: the KGX export validates every category, predicate and slot it emits against
-  # this exact model (src/medic/export/kgx/biolink.py). A silent model upgrade can change
-  # which predicates exist, so bump it deliberately and re-run tests/test_kgx_export.py.
-  "biolink-model==4.3.7",
 ]
 
 [tool.hatch.version]

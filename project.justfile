@@ -594,12 +594,12 @@ export-legacy:
 # Generate KGX biolink-compliant export (nodes, edges, metadata, infores entry)
 [group('export')]
 export-kgx:
-  uv run --group export python -m medic.export.kgx export
+  uv run python -m medic.export.kgx export
 
 # Validate the built KGX export against the pinned Biolink model
 [group('QC')]
 validate-kgx:
-  uv run --group export python -m medic.export.kgx validate
+  uv run python -m medic.export.kgx validate
 
 # Generate SSSOM drug mappings export
 [group('export')]
