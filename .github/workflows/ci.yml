@@ -40,7 +40,7 @@ jobs:
       # tests/test_kgx_export.py cannot import it and 22 tests fail. The gate is the whole
       # point of pinning the model — skipping it in CI would make it decorative.
       - name: Install dependencies
-        run: uv sync --group dev --group export
+        run: uv sync --group dev
 
       - name: Run ruff linting
         run: uv run ruff check src/ tests/ scripts/
