@@ -69,3 +69,54 @@ def test_a_source_without_dailymed_structure_still_gets_one_typed_span():
         record, assoc, "MONDO:0011918", "anxiety")
     assert [s["role"] for s in mention["source_spans"]] == ["TABLE_CELL"]
     assert assertion["span_index"] == 0
+
+
+# ---------------------------------------------------------------------------
+# polarity_unverified — the screen says when it could not run (#59)
+# ---------------------------------------------------------------------------
+def test_an_unlocatable_disease_is_flagged_polarity_unverified():
+    """The canonicalisation case the extraction prompt actively asks for: the label writes
+    "type 2 diabetes", the LLM returns "type 2 diabetes mellitus", and neither the full
+    phrase nor its head word ("mellitus") is in the text. No check can reach a verdict.
+    Recording nothing laundered "not checked" into "checked and clean" (#59)."""
+    _mention, assertion = _assoc(
+        "XYZ is indicated for the treatment of patients with type 2 diabetes.",
+        disease="type 2 diabetes mellitus")
+    assert "polarity_unverified" in (assertion.get("flags") or [])
+
+
+def test_a_located_disease_is_not_flagged_polarity_unverified():
+    # "migraine" is written verbatim in the indication sentence, so the check can run.
+    # (The fixture's default, "migraine with aura", is NOT — the label says "migraine with
+    # or without aura" — which is exactly the canonicalisation case the flag exists for.)
+    _mention, assertion = _assoc(UBRELVY, disease="migraine")
+    assert "polarity_unverified" not in (assertion.get("flags") or [])
+
+
+def test_a_head_word_hit_is_a_verdict_not_an_unverified_claim():
+    """`migraine with aura` is not in "migraine with or without aura", but its head word
+    is. The lenient anchor reaches a verdict, so the claim is checked, not unverified."""
+    _mention, assertion = _assoc(UBRELVY)
+    assert "polarity_unverified" not in (assertion.get("flags") or [])
+
+
+def test_a_confirmed_inversion_is_not_also_unverified():
+    _mention, assertion = _assoc(
+        "PRODUCT is not indicated for the treatment of migraine with aura.")
+    flags = assertion.get("flags") or []
+    assert "negated_inversion" in flags
+    assert "polarity_unverified" not in flags
+
+
+def test_polarity_unverified_does_not_change_the_reliability_tier():
+    """Deliberate: whether these rows change tier is a separate decision from making
+    them visible (207 shipped INDICATIONs carry the flag). It records that the check did
+    not run; the entailment score still grades how well the source supports the claim."""
+    from medic.reliability import ReliabilityTier, StatementType, _assertion_gate
+
+    def gate(flags):
+        record = {"assertion": {"flags": flags, "confidence": {"overall": 0.9},
+                                "relationship_type": "INDICATION"}}
+        return _assertion_gate(record, StatementType.INDICATION)
+
+    assert gate(["polarity_unverified"]) == gate([]) == ReliabilityTier.HIGH
