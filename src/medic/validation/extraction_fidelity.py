@@ -36,9 +36,12 @@ from __future__ import annotations
 import glob
 import re
 import unicodedata
+from typing import NamedTuple
 
 import typer
 import yaml
+
+from medic.spans import readable_spans, spans_for_source, spans_with_role
 
 app = typer.Typer(add_completion=False)
 
@@ -106,12 +109,26 @@ _NEGATION_CUES = (
     "limitation of use", "limitations of use",
     "except", "unless", "other than", "but not", "rather than",
 )
+# The contraindication-side cue list. Disjoint from _NEGATION_CUES by necessity: in a
+# contraindications section "contraindicated in X" / "should not be used in X" is the
+# *positive* assertion, so those cues would negate every row. What negates a
+# contraindication is the source denying it, or excepting the condition from a class.
+_CONTRA_NEGATION_CUES = (
+    "no known contraindication", "no contraindications", "no contraindication",
+    "not contraindicated", "no absolute contraindication", "none known",
+    "except", "unless", "other than",
+)
+
 # Sentence boundaries we scan back to (keep the raw text; _normalize drops these).
 _SENTENCE_BOUNDARY = re.compile(r"[.;:\n]")
 
 
 def assertion_negated(
-    disease_label: str, source_text: str, *, head_fallback: bool = True
+    disease_label: str,
+    source_text: str,
+    *,
+    head_fallback: bool = True,
+    cues: tuple[str, ...] = _NEGATION_CUES,
 ) -> tuple[int, int, str]:
     """Count how many of the disease's mentions sit in a negated/excluded scope.
 
@@ -126,6 +143,10 @@ def assertion_negated(
     borrowing the negation of "hip fractures"). Callers that only *flag for review* keep
     it on; callers that *drop* records (see :func:`screen_indications`) turn it off so a
     drop only ever fires on a full-phrase match.
+
+    ``cues`` — which phrases count as negating. Defaults to the indication cue list. A
+    contraindication section needs a *different* one: "contraindicated in X" is how that
+    section states its claim, not how it negates it (see :data:`_CONTRA_NEGATION_CUES`).
     """
     low = (source_text or "").lower()
     phrase = (disease_label or "").lower().strip()
@@ -148,42 +169,140 @@ def assertion_negated(
     for pos in anchors:
         boundaries = [m.end() for m in _SENTENCE_BOUNDARY.finditer(low, 0, pos)]
         window = low[(boundaries[-1] if boundaries else 0):pos]
-        cue = next((c for c in _NEGATION_CUES if c in window), None)
+        cue = next((c for c in cues if c in window), None)
         if cue:
             negated += 1
             reason = reason or cue
     return negated, len(anchors), reason
 
 
-def screen_indications(
-    disease_names: list[str], source_text: str
-) -> tuple[list[str], list[dict]]:
-    """Split extracted *indication* disease names into ``(kept, dropped)``.
+def _claim_and_limitation_text(source_text: str, source: str) -> tuple[str, str]:
+    """Split ``source_text`` into (text a claim may be read from, limitation text).
 
-    Prevention half of the second-pass verifier, called at **ingest** time: a disease
-    whose every locatable mention in ``source_text`` sits inside a negated/excluded
-    scope ("should not be used in…", "except…", "not indicated for…", "contraindicated
-    in…") is a near-certain inversion — the source states it negatively, so it must not
-    be recorded as a positive indication. Those names are dropped; everything else
-    (including diseases the source spells as a synonym, which we cannot safely judge) is
-    kept. Conservative by design: a disease mentioned both positively and negatively, or
-    not locatable in the text, is kept.
+    The ingest gate used to run over the whole concatenated section, so a cue inside a
+    ``Limitations of Use`` subsection was in scope for the indication sentence — the §4.3
+    span-scoping bug, fixed for the reporting half in ``on_label_merge`` but never for the
+    destructive half (issue #59). Both halves now read scope from
+    :func:`medic.spans.readable_span_indices`.
+    """
+    spans = spans_for_source(source, source_text, document="", section_code="")
+    if not spans:
+        return (source_text or "").strip(), ""
+    claim = " ".join(s["text"] for s in readable_spans(spans))
+    limitation = " ".join(
+        s["text"] for s in spans_with_role(spans, "LIMITATION_STATEMENT"))
+    return claim or (source_text or "").strip(), limitation
+
+
+class ScreenResult(NamedTuple):
+    """Outcome of a destructive screen, one bucket per verdict.
+
+    ``unlocatable`` is the bucket that did not exist: a disease the screen could not find
+    in the text stayed in ``kept`` with nothing recorded, so "not checked" was
+    indistinguishable from "checked and clean". It is ~12% of rows (1414 of 11696 shipped
+    INDICATIONs), because the extraction prompt asks the LLM to canonicalise names and a
+    canonicalised name is not a substring of the source. Those names are still kept —
+    dropping them on a check that never ran would be far worse — but they are enumerable
+    now, and the merge marks them ``polarity_unverified``.
+    """
+
+    kept: list[str]
+    dropped: list[dict]
+    unlocatable: list[str]
+
+
+def _screen(
+    disease_names: list[str],
+    source_text: str,
+    *,
+    source: str,
+    cues: tuple[str, ...],
+    check_limitations: bool,
+) -> ScreenResult:
+    """Shared body of :func:`screen_indications` and :func:`screen_contraindications`."""
+    claim_text, limitation_text = _claim_and_limitation_text(source_text, source)
+    kept: list[str] = []
+    dropped: list[dict] = []
+    unlocatable: list[str] = []
+
+    for name in disease_names:
+        # Strict, full-phrase matching only — a destructive drop must never fire on a
+        # head-word that belongs to a different disease.
+        neg, total, reason = assertion_negated(
+            name, claim_text, head_fallback=False, cues=cues)
+        if total and neg == total:
+            dropped.append({"disease": name, "reason": reason or "negated",
+                            "scope": "claim"})
+            continue
+        if total:
+            kept.append(name)
+            continue
+
+        # Not locatable in the spans the claim was read from. Before conceding, check the
+        # scope restrictions the claim's own span excluded: a disease whose *only* textual
+        # basis is a strictly-negated Limitations-of-Use sentence was never indicated at
+        # all. Guarded on zero entailment, so "indicated for X" plus "Limitations of Use:
+        # not indicated for X under 12" stays a legitimate restricted indication. Mirrors
+        # on_label_merge._polarity_flags' third check.
+        if check_limitations and limitation_text and entailment_score(name, claim_text) == 0.0:
+            lneg, ltotal, lreason = assertion_negated(
+                name, limitation_text, head_fallback=False, cues=cues)
+            if ltotal and lneg == ltotal:
+                dropped.append({"disease": name, "reason": lreason or "negated",
+                                "scope": "limitation"})
+                continue
+        kept.append(name)
+        unlocatable.append(name)
+    return ScreenResult(kept, dropped, unlocatable)
+
+
+def screen_indications(
+    disease_names: list[str], source_text: str, *, source: str = "DAILYMED"
+) -> ScreenResult:
+    """Split extracted *indication* disease names into kept / dropped / unlocatable.
+
+    Prevention half of the second-pass verifier, called at **ingest** time: a disease whose
+    every locatable mention sits inside a negated/excluded scope ("should not be used in…",
+    "except…", "not indicated for…", "contraindicated in…") is a near-certain inversion —
+    the source states it negatively, so it must not be recorded as a positive indication.
+
+    Scope is the spans a claim may be read from, not the whole concatenated section: a cue
+    in a ``Limitations of Use`` subsection no longer reaches across and kills the real
+    approval in the sentence above it. ``source`` selects the split
+    (:func:`medic.spans.spans_for_source`); only DailyMed has inner structure to recover,
+    so this is a deliberate no-op for EMA/PMDA/India.
+
+    Conservative by design: a disease mentioned both positively and negatively, or not
+    locatable at all, is kept — but an unlocatable one is now reported in
+    :attr:`ScreenResult.unlocatable` rather than passing as clean.
 
     Entailment is intentionally *not* a drop criterion here — a score of 0 is often just
     LLM canonicalization / a synonym, so it stays a review flag (see the validator), not
     a silent ingest drop.
     """
-    kept: list[str] = []
-    dropped: list[dict] = []
-    for name in disease_names:
-        # Strict, full-phrase matching only — a destructive drop must never fire on a
-        # head-word that belongs to a different disease.
-        neg, total, reason = assertion_negated(name, source_text, head_fallback=False)
-        if total and neg == total:
-            dropped.append({"disease": name, "reason": reason or "negated"})
-        else:
-            kept.append(name)
-    return kept, dropped
+    return _screen(disease_names, source_text, source=source,
+                   cues=_NEGATION_CUES, check_limitations=True)
+
+
+def screen_contraindications(
+    disease_names: list[str], source_text: str, *, source: str = "DAILYMED"
+) -> ScreenResult:
+    """The contraindication-side screen. Same shape, opposite polarity.
+
+    The contraindication extractor was never screened at all (issue #59). It cannot reuse
+    :data:`_NEGATION_CUES`: that list contains "contraindicat", "should not" and "not be
+    used", which in a contraindications section are how the claim is *stated*. Screening
+    with it would drop nearly every contraindication.
+
+    What negates a contraindication is the source saying the condition is *not* one —
+    "no known contraindications", "not contraindicated in…" — or excepting it from a
+    broader class (see :data:`_CONTRA_NEGATION_CUES`).
+
+    Limitations-of-Use splitting does not apply: it is a structure of SPL *indications*
+    sections, so the limitation pass is off here.
+    """
+    return _screen(disease_names, source_text, source=source,
+                   cues=_CONTRA_NEGATION_CUES, check_limitations=False)
 
 
 def _source_text_for(record: dict, evidence: dict) -> str:

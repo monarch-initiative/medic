@@ -14,7 +14,7 @@ from medic import product_view as pv
 from medic.grounding_store_view import GroundingStoreView
 from medic.mention import mint_mention_id
 from medic.confidence import corroboration
-from medic.spans import is_truncated, spans_for_source
+from medic.spans import is_truncated, readable_span_indices, spans_for_source, spans_with_role
 from medic.validation.extraction_fidelity import assertion_negated, entailment_score
 from medic.provenance_build import (
     build_assertion,
@@ -1066,6 +1066,12 @@ def _polarity_flags(
     The third check exists because the span filter that keeps LIMITATION_STATEMENT out of the
     claim's scope also kept it out of the negation check's scope — so the one place inversions
     are most likely to hide was the one place nothing looked.
+
+    When none of the three can locate the disease in the source at all, the claim earns
+    ``polarity_unverified``: the check did not run, which is not the same as passing it
+    (#59). That is a recording flag, not a verdict — it deliberately does not move the
+    reliability tier, since the entailment score already grades how well the source
+    supports the claim.
     """
     strict_neg, strict_total, _ = assertion_negated(raw, check_text, head_fallback=False)
     if strict_total and strict_neg == strict_total:
@@ -1079,13 +1085,27 @@ def _polarity_flags(
     # Only meaningful when the claim's own span gives the disease no positive support.
     if entailment_score(raw, check_text) == 0.0:
         limitation = " ".join(
-            s["text"] for i, s in enumerate(spans)
-            if i != span_index and s.get("role") == "LIMITATION_STATEMENT"
+            s["text"] for s in spans_with_role(
+                spans, "LIMITATION_STATEMENT", exclude=span_index)
         )
         if limitation:
             neg, total, _ = assertion_negated(raw, limitation, head_fallback=False)
             if total and neg == total:
                 return True, flags
+
+    # Nothing above reached a verdict: neither the strict nor the lenient anchor could
+    # locate the disease, and no limitation span spoke to it. Recording nothing here
+    # laundered "not checked" into "checked and clean" — the #59 hole. The usual cause is
+    # the extraction prompt asking the LLM to canonicalise a name the source spells
+    # differently, which leaves no anchor to scan back from.
+    #
+    # `lenient_total` is part of the condition on purpose: a head-word hit is too loose to
+    # drop a record on, but it *is* a verdict — it is what produced `over_extraction` above.
+    # A claim carrying that flag was checked and found wanting, not left unchecked. That
+    # narrows the flag to 207 of 11696 shipped INDICATIONs (1.8%); the ingest screen's own
+    # strict-only bucket is the wider 12% (see extraction_fidelity.ScreenResult).
+    if strict_total == 0 and lenient_total == 0:
+        flags.append("polarity_unverified")
     return False, flags
 
 
@@ -1209,13 +1229,11 @@ def _build_disease_provenance(
     spans = spans_for_source(
         source, section or snippet, document=document, section_code=section_code)
 
-    # The extraction reads the first span that is neither a header nor a scope restriction. A
-    # LIMITATION_STATEMENT restricts a claim made elsewhere; reading it as the claim — or
-    # letting it bear on the claim's entailment and negation checks — is the §4.3 bug. The
-    # check used to run over " ".join([snippet, section]), i.e. the whole flattened section.
-    readable = [i for i, s in enumerate(spans)
-                if s["role"] not in ("SECTION_HEADER", "SUBSECTION_HEADER",
-                                     "LIMITATION_STATEMENT")]
+    # The extraction reads the first span that is neither a header nor a scope restriction
+    # (medic.spans.readable_span_indices — the same definition the destructive ingest screen
+    # now reads, so the two halves cannot drift again; that drift was issue #59). The check
+    # used to run over " ".join([snippet, section]), i.e. the whole flattened section.
+    readable = readable_span_indices(spans)
     span_index = readable[0] if readable else None
 
     # --- claim-level: how well does the source support THIS relation, and is it negated? ---

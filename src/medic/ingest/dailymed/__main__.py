@@ -27,7 +27,11 @@ import pandas as pd
 import yaml
 
 from medic.enrichment.cache import EnrichmentCache
-from medic.ingest.common import _clean_for_yaml, should_skip_expensive_calls
+from medic.ingest.common import (
+    _clean_for_yaml,
+    looks_like_disease_name,
+    should_skip_expensive_calls,
+)
 from medic.mention import mint_mention_id
 
 logger = logging.getLogger(__name__)
@@ -312,9 +316,13 @@ def _parse_llm_disease_list(text: str) -> list[str]:
     In practice the model sometimes returns prose like
     `"None\\n\\nThe text lists diagnostic procedures..."` when the input has
     no diseases. The naive parser treats that whole prose as a single
-    "disease" and sends it to the grounder. Two defenses here: (a) treat any
-    response that *starts* with "none" as empty, and (b) drop any item over
-    `_MAX_DISEASE_NAME_LEN` since real disease names don't run that long.
+    "disease" and sends it to the grounder. Three defenses here: (a) treat any
+    response that *starts* with "none" as empty, (b) drop any item over
+    `_MAX_DISEASE_NAME_LEN` since real disease names don't run that long, and
+    (c) apply `looks_like_disease_name`, which rejects refusal-prefixed and
+    sentence-shaped items. (c) used to live in `ema/__main__.py` and guarded only
+    the EU path; running it here gives DailyMed, EMA, PMDA and India the same
+    defence, for indications and contraindications alike (issue #59).
     """
     stripped = (text or "").strip()
     if not stripped or stripped.lower().startswith("none"):
@@ -325,10 +333,13 @@ def _parse_llm_disease_list(text: str) -> list[str]:
         if d.strip()
         and d.strip().lower() != "none"
         and len(d.strip()) <= _MAX_DISEASE_NAME_LEN
+        and looks_like_disease_name(d.strip())
     ]
 
 
-def _screen_negated_indications(diseases: list[str], indication_text: str) -> list[str]:
+def _screen_negated_indications(
+    diseases: list[str], indication_text: str, source: str
+) -> list[str]:
     """Drop extracted 'indications' the source actually negates/excludes (inversions).
 
     Deterministic prevention pass (FAILURE_MODES §4.1-4.2): a disease stated only inside
@@ -337,23 +348,71 @@ def _screen_negated_indications(diseases: list[str], indication_text: str) -> li
     silently); the offline validator (`just validate-extraction`) is the detection net
     for anything that slips through. Raw LLM output is cached upstream, so re-screening a
     cache hit is free and stays correct if the cue list is tuned.
+
+    ``source`` selects how the text is split into spans, so a cue inside a
+    ``Limitations of Use`` subsection no longer reaches across into the indication
+    sentence above it (issue #59).
+
+    Names the screen could not locate are kept, but logged as a count: the check did not
+    run on them, which is not the same as their passing it. The merge records the same
+    fact per row as the ``polarity_unverified`` assertion flag.
     """
     from medic.validation.extraction_fidelity import screen_indications
 
-    kept, dropped = screen_indications(diseases, indication_text)
-    for d in dropped:
+    result = screen_indications(diseases, indication_text, source=source)
+    for d in result.dropped:
         logger.warning(
-            "Dropping negated 'indication' %r (cue: %r) — source states it negatively, "
-            "not as an approval", d["disease"], d["reason"],
+            "Dropping negated 'indication' %r (cue: %r, scope: %s) — source states it "
+            "negatively, not as an approval",
+            d["disease"], d["reason"], d.get("scope", "claim"),
         )
-    return kept
+    if result.unlocatable:
+        logger.info(
+            "Polarity not evaluable for %d/%d extracted indication(s) — not locatable in "
+            "the source text (LLM canonicalisation): %s",
+            len(result.unlocatable), len(diseases), result.unlocatable,
+        )
+    return result.kept
 
 
-def extract_diseases_from_text(indication_text: str) -> list[str]:
+def _screen_negated_contraindications(
+    diseases: list[str], contraindication_text: str, source: str
+) -> list[str]:
+    """The contraindication-side screen, which did not exist at all (issue #59).
+
+    Opposite polarity to the indication screen: here "contraindicated in X" is the claim,
+    and what negates it is the source denying it ("no known contraindications", "not
+    contraindicated in X") or excepting the condition from a broader class. See
+    ``extraction_fidelity._CONTRA_NEGATION_CUES``.
+    """
+    from medic.validation.extraction_fidelity import screen_contraindications
+
+    result = screen_contraindications(diseases, contraindication_text, source=source)
+    for d in result.dropped:
+        logger.warning(
+            "Dropping non-contraindication %r (cue: %r) — source states the condition is "
+            "not contraindicated", d["disease"], d["reason"],
+        )
+    if result.unlocatable:
+        logger.info(
+            "Polarity not evaluable for %d/%d extracted contraindication(s) — not "
+            "locatable in the source text",
+            len(result.unlocatable), len(diseases),
+        )
+    return result.kept
+
+
+def extract_diseases_from_text(
+    indication_text: str, *, source: str = "DAILYMED"
+) -> list[str]:
     """Extract disease names from indication free text via LLM.
 
     The raw LLM extraction is cached; a deterministic negation screen then drops any
     disease the source states negatively (see :func:`_screen_negated_indications`).
+
+    ``source`` is the ingester calling in (``EMA``, ``PMDA``, ``INDIA``, default
+    ``DAILYMED``). It selects how the text is split into typed spans for the screen;
+    only SPL sections have recoverable inner structure, so it is a no-op elsewhere.
     """
     if not indication_text:
         return []
@@ -362,7 +421,8 @@ def extract_diseases_from_text(indication_text: str) -> list[str]:
     key = _text_hash(indication_text)
     cached = cache.get(key)
     if cached is not None:
-        return _screen_negated_indications(cached.get("diseases", []), indication_text)
+        return _screen_negated_indications(
+            cached.get("diseases", []), indication_text, source)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("indication")
@@ -388,10 +448,12 @@ def extract_diseases_from_text(indication_text: str) -> list[str]:
     # Cache the RAW extraction (faithful to the LLM); screen on return.
     cache.put(key, {"diseases": diseases, "text_prefix": indication_text[:200]})
     _checkpoint(cache)
-    return _screen_negated_indications(diseases, indication_text)
+    return _screen_negated_indications(diseases, indication_text, source)
 
 
-def extract_contraindicated_diseases_from_text(contraindication_text: str) -> list[str]:
+def extract_contraindicated_diseases_from_text(
+    contraindication_text: str, *, source: str = "DAILYMED"
+) -> list[str]:
     """Extract disease names from contraindication free text via LLM.
 
     Sister to `extract_diseases_from_text`, but tuned for contraindication
@@ -404,6 +466,11 @@ def extract_contraindicated_diseases_from_text(contraindication_text: str) -> li
     Used by all contra ingest paths. Cache is namespaced separately
     (`dailymed_contra_diseases.json`) so it cannot collide with the indication
     cache even if the same source text is processed both ways.
+
+    Like its indication sister, the cached raw extraction is screened on return —
+    see :func:`_screen_negated_contraindications`. That screen did not exist before
+    issue #59, so a "not contraindicated in X" sentence published X as a
+    contraindication.
     """
     if not contraindication_text:
         return []
@@ -412,7 +479,8 @@ def extract_contraindicated_diseases_from_text(contraindication_text: str) -> li
     key = _text_hash(contraindication_text)
     cached = cache.get(key)
     if cached is not None:
-        return cached.get("diseases", [])
+        return _screen_negated_contraindications(
+            cached.get("diseases", []), contraindication_text, source)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("contraindication")
@@ -446,12 +514,13 @@ def extract_contraindicated_diseases_from_text(contraindication_text: str) -> li
     )
     diseases = _parse_llm_disease_list(text)
 
+    # Cache the RAW extraction (faithful to the LLM); screen on return.
     cache.put(
         key,
         {"diseases": diseases, "text_prefix": contraindication_text[:200]},
     )
     _checkpoint(cache)
-    return diseases
+    return _screen_negated_contraindications(diseases, contraindication_text, source)
 
 
 def is_allergen_or_diagnostic(drug_name: str) -> dict:
@@ -599,7 +668,8 @@ def _process_spl_data(
             # Extract and ground diseases from indications
             if indications_text:
                 try:
-                    diseases = extract_diseases_from_text(indications_text)
+                    diseases = extract_diseases_from_text(
+                        indications_text, source="DAILYMED")
                 except Exception as exc:
                     logger.warning("Disease extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)
@@ -664,7 +734,8 @@ def _process_spl_data(
             # Extract and ground diseases from contraindications
             if contras_text:
                 try:
-                    contra_diseases = extract_contraindicated_diseases_from_text(contras_text)
+                    contra_diseases = extract_contraindicated_diseases_from_text(
+                        contras_text, source="DAILYMED")
                 except Exception as exc:
                     logger.warning("Contraindication extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)
