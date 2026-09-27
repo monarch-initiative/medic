@@ -526,6 +526,24 @@ class StatementReviewStore:
         return self._rows.get(statement_key(record), "")
 
 
+_DEFAULT_REVIEW_STORE: StatementReviewStore | None = None
+
+
+def default_review_store() -> StatementReviewStore:
+    """The process-wide review store, loaded once from :data:`REVIEW_STORE_PATH`.
+
+    Exists so a caller that forgets to thread a store still gets the curator's verdicts
+    rather than silently discarding them. That omission is what let a ``REJECTED``
+    statement ship as ``medic_reliability: HIGH`` from the KGX export (#62): every other
+    caller passed a status, the export did not, and nothing in the type signature made the
+    difference visible.
+    """
+    global _DEFAULT_REVIEW_STORE
+    if _DEFAULT_REVIEW_STORE is None:
+        _DEFAULT_REVIEW_STORE = StatementReviewStore().load()
+    return _DEFAULT_REVIEW_STORE
+
+
 # ---------------------------------------------------------------------------
 # Report
 # ---------------------------------------------------------------------------
