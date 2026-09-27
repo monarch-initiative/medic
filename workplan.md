@@ -1,0 +1,127 @@
+# MeDIC workplan — reliability and extraction fidelity
+
+Sequencing for Kevin Schaper's four tracker issues (#59–#62) and the nine drafts in `issues/`.
+Ordered by dependency, not by severity: several of these change what a *tier* means, so anything
+that reasons about tiers waits until they settle.
+
+All work lands on `fix/59-negation-screen-scoping`, pushed incrementally. One consequence worth
+naming up front: that branch stops being a single-issue branch, so its PR grows into a
+multi-issue PR. That is the chosen tradeoff, not an oversight.
+
+---
+
+## Phase 0 — land what is already done ✅ code complete, unpushed
+
+The #59 fix: span-scoped ingest negation screen, contraindication screening, shared disease-name
+guard, `polarity_unverified` flag. Committed as `da987c7`, 18 files, 853 tests green.
+
+Blocked on one decision: `origin/medic2` is nine commits behind local `medic2`, so the PR diff
+would show 180,762 lines instead of 699 until `medic2` is pushed.
+
+---
+
+## Phase 1 — a curator's rejection is being published as HIGH
+
+**#62 — KGX export recomputes reliability without the review store**
+
+First because it is severe, isolated, and small. Four call sites in `export/kgx/` call
+`score_reliability` without `review_status`, so a human `REJECTED` verdict is silently discarded
+and the record ships as `medic_reliability: HIGH`. Every other caller in the repo passes it.
+
+No dependencies. Does not touch the fold, so it is unaffected by Phases 2–3.
+
+---
+
+## Phase 2 — the tier's foundations
+
+These two rewrite how gate outcomes combine. Everything downstream that reads a tier waits.
+
+**#60 — nothing reaches HIGH by absence of signal, except it does**
+
+`_worst([])` returns `HIGH`, the provenance gate returns `HIGH` on 9,000 of 9,000 pairs, and a
+missing confidence is read as `1.0`. A record with one evidence field and nothing else scores HIGH
+and enters the published soft-launch subset.
+
+Do before #61: #61 restructures the fold, and this fixes the fold's identity element and its
+missing-vs-perfect confusion. Fixing them in the other order means doing the fold twice.
+
+**#61 — corroboration lowers the tier**
+
+Every gate folds with `_worst` across a pair's assertions, so a pair attested by four regulators is
+scored by whichever read worst — 0% of four-source pairs reach HIGH. `confidence.corroboration()`
+moves the opposite way on the same record. Needs #60 settled first.
+
+Dependency: **#47** (reliability gates reading flags no code path emits) overlaps here. Decide
+whether to fold it in or keep it separate once #60 is scoped.
+
+---
+
+## Phase 3 — settle the decision #59 deferred
+
+**`issues/issue_polarity_unverified_tiering.md`**
+
+Whether a claim whose negation check never ran should be capped below HIGH. Deliberately left open
+in #59. Must come after Phase 2, because the answer depends on what the tiers mean once the fold is
+fixed — there is no point choosing a cap against a scale that is about to change.
+
+Related: **#22** (lexical entailment demoting 206 correct synonyms) is the same population seen from
+the other side. Resolve together.
+
+---
+
+## Phase 4 — ingest span correctness
+
+**`issues/issue_spl_limitation_span_overcapture.md`**
+
+`split_dailymed_section` splits on the *first* `Limitations of Use` marker. 222 of 259
+limitation-bearing DailyMed labels have more than one, and 79 have positive "is indicated for" text
+typed as a scope restriction. The #59 work now depends on these boundaries, so this is repairing
+the foundation under code already written.
+
+**`issues/issue_limitation_drop_evidence_threshold.md`**
+
+The destructive limitation drop fires on zero entailment, which an abbreviation defeats
+(aspirin/omeprazole "MI" vs "myocardial infarction"). Do after the span fix and **re-measure
+first** — some of the pressure to loosen this threshold comes from bad span boundaries, and that
+pressure may disappear once they are correct.
+
+---
+
+## Phase 5 — the expensive one, batched
+
+Three items that each require a full LLM run across four sources. Run once, not three times.
+
+1. **#57 — DailyMed contraindication cache is never flushed.** 2,484 LLM calls re-run every build,
+   returning different answers. Until this is fixed no rebuild is reproducible. Must go first.
+2. **`issues/issue_verbatim_extraction_span.md`** — change the extraction contract so the LLM
+   returns the verbatim source substring. Closes the 12% of rows where the negation check cannot
+   run, and the abbreviation case from Phase 4. Invalidates both caches by design.
+3. **`issues/issue_rebuild_after_negation_screen.md`** — rebuild and re-measure. `screen_contraindications`
+   has never executed against real data; its cue list is asserted by unit tests alone, across 3,312
+   contraindication rows.
+
+---
+
+## Not in this sequence
+
+Independent tracks with their own gating, listed so they are not lost:
+
+| draft | nature |
+|---|---|
+| `issue_faers_meddra_licence.md` | licensing decision — blocks the adverse-event product entirely |
+| `issue_pvlens_meddra_licence.md` | same |
+| `issue_mhra_licensed_indications.md` | new source; source + licensing decision |
+| `issue_branch_history_publishes_background.md` | release hygiene; do before any public merge |
+
+---
+
+## Order of work
+
+```
+Phase 0  land #59                    ← code done, needs medic2 pushed
+Phase 1  #62                         ← no deps, severe, small
+Phase 2  #60 → #61                   ← foundations; strictly ordered
+Phase 3  polarity_unverified_tiering ← needs Phase 2
+Phase 4  span_overcapture → drop_threshold
+Phase 5  #57 → verbatim_extraction → rebuild
+```
