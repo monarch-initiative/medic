@@ -123,6 +123,26 @@ def _worst(tiers: list[ReliabilityTier | None]) -> ReliabilityTier:
     return min(applicable, key=lambda t: _TIER_ORDER[t])
 
 
+def _aggregate_pair(tiers: list[ReliabilityTier]) -> ReliabilityTier:
+    """Fold per-assertion tiers into the pair's tier: the strongest attestation wins.
+
+    The counterpart to :func:`_worst`, and deliberately its opposite. ``_worst`` is right
+    *within* one assertion — a claim is only as good as its weakest link, and each gate
+    there asks a different way the same claim could be wrong. Across assertions it inverts
+    the meaning: three regulators independently stating the same drug-disease relationship
+    is the strongest signal MeDIC has, and scoring the pair by whichever read worst turned
+    corroboration into a liability (#61). Measured over the products, 82.2% of
+    single-source pairs reached HIGH against 0% of four-source pairs.
+
+    **Adding an attestation must never lower a pair's tier.** That is why this is `max` and
+    not something cleverer: a "best, floored one tier above the worst" rule reads as more
+    cautious, but a new bad attestation drags the floor down and demotes the pair — the
+    exact property this issue exists to remove. A weak attestation is still visible per
+    edge, where ``export/kgx/edges.py`` scores each one on its own.
+    """
+    return max(tiers, key=lambda t: _TIER_ORDER[t]) if tiers else ReliabilityTier.LOW
+
+
 # ---------------------------------------------------------------------------
 # Statement typing
 # ---------------------------------------------------------------------------
@@ -496,6 +516,22 @@ def score_reliability(
     if verdict == "confirm":
         return ReliabilityTier.HIGH
     st = statement_type or classify_statement(record)
+
+    # A pair carries one assertion per attesting source. Score each in isolation and take
+    # the strongest, so corroboration moves the tier the same direction as
+    # `confidence.corroboration()` rather than against it (#61). Within one assertion the
+    # gates still fold with `_worst`.
+    assertions = pv.assoc_assertions(record)
+    if len(assertions) > 1:
+        scalars = {k: v for k, v in record.items() if k != "assertions"}
+        return _aggregate_pair([
+            _score_one({**scalars, "assertions": [a]}, st) for a in assertions
+        ])
+    return _score_one(record, st)
+
+
+def _score_one(record: dict, st: StatementType) -> ReliabilityTier:
+    """The automated gates for a single attestation (or a record with no assertions)."""
     # The gates that speak to whether the record is *right*: was the entity grounded, was
     # it recognised in the source, does the source assert this relation, did the name
     # survive translation. Each returns None when it has nothing to say.
