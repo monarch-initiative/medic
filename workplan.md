@@ -65,7 +65,7 @@ whether to fold it in or keep it separate once #60 is scoped.
 
 ## Phase 3 — settle the decision #59 deferred
 
-**`issues/issue_polarity_unverified_tiering.md`**
+**#68 — decide whether `polarity_unverified` should affect the reliability tier**
 
 Whether a claim whose negation check never ran should be capped below HIGH. Deliberately left open
 in #59. Must come after Phase 2, because the answer depends on what the tiers mean once the fold is
@@ -78,14 +78,14 @@ the other side. Resolve together.
 
 ## Phase 4 — ingest span correctness
 
-**`issues/issue_spl_limitation_span_overcapture.md`**
+**#65 — Limitations-of-Use splitting swallows positive indication text**
 
 `split_dailymed_section` splits on the *first* `Limitations of Use` marker. 222 of 259
 limitation-bearing DailyMed labels have more than one, and 79 have positive "is indicated for" text
 typed as a scope restriction. The #59 work now depends on these boundaries, so this is repairing
 the foundation under code already written.
 
-**`issues/issue_limitation_drop_evidence_threshold.md`**
+**#66 — a destructive drop fires on zero entailment**
 
 The destructive limitation drop fires on zero entailment, which an abbreviation defeats
 (aspirin/omeprazole "MI" vs "myocardial infarction"). Do after the span fix and **re-measure
@@ -100,10 +100,10 @@ Three items that each require a full LLM run across four sources. Run once, not 
 
 1. **#57 — DailyMed contraindication cache is never flushed.** 2,484 LLM calls re-run every build,
    returning different answers. Until this is fixed no rebuild is reproducible. Must go first.
-2. **`issues/issue_verbatim_extraction_span.md`** — change the extraction contract so the LLM
+2. **#64** — change the extraction contract so the LLM
    returns the verbatim source substring. Closes the 12% of rows where the negation check cannot
    run, and the abbreviation case from Phase 4. Invalidates both caches by design.
-3. **`issues/issue_rebuild_after_negation_screen.md`** — rebuild and re-measure. `screen_contraindications`
+3. **#67** — rebuild and re-measure. `screen_contraindications`
    has never executed against real data; its cue list is asserted by unit tests alone, across 3,312
    contraindication rows.
 
@@ -113,7 +113,7 @@ Three items that each require a full LLM run across four sources. Run once, not 
 
 Independent tracks with their own gating, listed so they are not lost:
 
-| draft | nature |
+| draft (unfiled, in `issues/`) | nature |
 |---|---|
 | `issue_faers_meddra_licence.md` | licensing decision — blocks the adverse-event product entirely |
 | `issue_pvlens_meddra_licence.md` | same |
@@ -125,10 +125,11 @@ Independent tracks with their own gating, listed so they are not lost:
 ## Order of work
 
 ```
-Phase 0  land #59                    ← code done, needs medic2 pushed
-Phase 1  #62                         ← no deps, severe, small
-Phase 2  #60 → #61                   ← foundations; strictly ordered
-Phase 3  polarity_unverified_tiering ← needs Phase 2
-Phase 4  span_overcapture → drop_threshold
-Phase 5  #57 → verbatim_extraction → rebuild
+Phase 0  #59   ✅ landed on fix/59-negation-screen-scoping (PR #63)
+Phase 1  #62   ✅ landed — changed 0 rows; the review store was never wired in
+Phase 2  #60   ✅ landed — moved 9 rows, all research placeholders
+         #61   ← NEXT. First one that moves real records.
+Phase 3  #68          ← needs Phase 2 settled
+Phase 4  #65 → #66    ← #65 first; #59's shipped code depends on those boundaries
+Phase 5  #57 → #64 → #67   ← one LLM re-extraction run, not three
 ```
