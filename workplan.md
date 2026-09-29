@@ -20,9 +20,11 @@ would show 180,762 lines instead of 699 until `medic2` is pushed.
 
 ---
 
-## Phase 1 — a curator's rejection is being published as HIGH
+## Phase 1 — a curator's rejection is being published as HIGH ✅ done
 
-**#62 — KGX export recomputes reliability without the review store**
+**#62 — KGX export recomputes reliability without the review store** — done, `1a5e75b`.
+Changed zero rows today: `mappings/statement_review.tsv` does not exist, so the store
+loads empty. The review store has never influenced a published artifact.
 
 First because it is severe, isolated, and small. Four call sites in `export/kgx/` call
 `score_reliability` without `review_status`, so a human `REJECTED` verdict is silently discarded
@@ -36,7 +38,12 @@ No dependencies. Does not touch the fold, so it is unaffected by Phases 2–3.
 
 These two rewrite how gate outcomes combine. Everything downstream that reads a tier waits.
 
-**#60 — nothing reaches HIGH by absence of signal, except it does**
+**#60 — nothing reaches HIGH by absence of signal, except it does** — done, `4c780f5`.
+Moved 9 of 14,474 records (HIGH→LOW), all research placeholders, none in the published
+subset. The grounding-confidence half was latent: all 33,653 shipped steps carry a value.
+The calibration mismatch (`_assertion_gate` ≥0.5 vs `_grounding_tier` ≥0.9) is **not**
+addressed — it is raised as context in #60, not in its Fix, and moving a threshold moves
+real records. Decide it with #61.
 
 `_worst([])` returns `HIGH`, the provenance gate returns `HIGH` on 9,000 of 9,000 pairs, and a
 missing confidence is read as `1.0`. A record with one evidence field and nothing else scores HIGH
