@@ -208,3 +208,49 @@ def write_grounding_report(report: dict, output_dir: Path, source_name: str) -> 
         f.write(content)
     logger.info("Wrote grounding report to %s", output_path)
     return output_path
+
+
+# --- LLM disease-name output guard ----------------------------------------
+# Phrases an LLM starts a refusal / commentary with when the section holds no diseases.
+# These slip past the "None" sentinel in _parse_llm_disease_list and reach the grounder.
+_REFUSAL_STARTS = (
+    "these are", "this is", "the text", "no diseases",
+    "i cannot", "i can't", "n/a", "not applicable",
+    "note:", "warning:",
+)
+
+#: Real disease names are short. Anything longer is LLM prose that leaked.
+_MAX_DISEASE_NAME_WORDS_WITH_PERIOD = 6
+_MAX_DISEASE_NAME_CHARS = 120
+
+
+def looks_like_disease_name(name: str) -> bool:
+    """Defensive filter for LLM disease-extraction output.
+
+    The extraction prompts are tuned per section and occasionally get a refusal sentence
+    back ("These are contraindications, not indications…") that bypasses the ``None``
+    sentinel and gets grounded as if it were a disease. This rejects strings that are
+    clearly not disease names: too long, sentence-shaped, or refusal-prefixed. It is
+    conservative — real names like "primary biliary cholangitis" pass.
+
+    Lifted out of ``ema/__main__.py``, where it guarded only the EU path; PMDA and India
+    had no second line of defence at all (issue #59). It now runs inside
+    ``_parse_llm_disease_list``, the one parser every source's extraction passes through.
+
+    One rule changed in the move. The original rejected **any** string containing a period,
+    on the grounds that real disease names rarely have one. Measured against the shipped
+    knowledge base that rule's entire effect was to delete four correct
+    ``H. pylori infection`` rows, so it is now "a period *and* prose-length", which still
+    catches the sentences it was written for.
+    """
+    name = (name or "").strip()
+    if not name:
+        return False
+    if len(name) > _MAX_DISEASE_NAME_CHARS:
+        return False
+    lower = name.lower()
+    if any(lower.startswith(p) for p in _REFUSAL_STARTS):
+        return False
+    if "." in name and len(name.split()) > _MAX_DISEASE_NAME_WORDS_WITH_PERIOD:
+        return False
+    return True

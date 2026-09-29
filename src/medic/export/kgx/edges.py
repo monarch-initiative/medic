@@ -22,7 +22,12 @@ import uuid
 
 from medic import product_view as pv
 from medic.export.kgx import biolink as bl
-from medic.reliability import StatementType, score_reliability
+from medic.reliability import (
+    StatementReviewStore,
+    StatementType,
+    default_review_store,
+    score_reliability,
+)
 
 #: Quoted label text is truncated here. Whole SPL sections run to tens of kilobytes, and an
 #: edge property is not a document store; the full text stays in the products.
@@ -121,14 +126,23 @@ def _supporting_text(text: str) -> tuple[str, bool]:
     return text[:MAX_SUPPORTING_TEXT], True
 
 
-def _assertion_reliability(pair: dict, assertion: dict) -> str:
+def _assertion_reliability(
+    pair: dict, assertion: dict, review: StatementReviewStore
+) -> str:
     """Reliability of *this* assertion, scored by the existing gates.
 
     Built by handing the scorer a synthetic single-assertion record, so the export reuses
     ``medic.reliability`` unchanged rather than reimplementing its gates.
+
+    The curator verdict is keyed on the *pair*, not the assertion, because that is what
+    ``statement_key`` addresses — a human rejects a drug-disease claim, not one regulator's
+    attestation of it. Omitting it here published a REJECTED statement as HIGH (#62).
     """
     scalars = {k: v for k, v in pair.items() if k != "assertions"}
-    return score_reliability({**scalars, "assertions": [assertion]}).value
+    return score_reliability(
+        {**scalars, "assertions": [assertion]},
+        review_status=review.status(pair),
+    ).value
 
 
 # ---------------------------------------------------------------------------
@@ -145,8 +159,11 @@ def _indication_predicate(status: str) -> str:
     return bl.INDICATION_UNAPPROVED_PREDICATE
 
 
-def association_edges(pair: dict) -> list[dict]:
+def association_edges(
+    pair: dict, review: StatementReviewStore | None = None
+) -> list[dict]:
     """One edge per ``SourceAssertion`` on an indication/contraindication pair."""
+    review = review or default_review_store()
     subject = pv.assoc_drug_id(pair)
     obj = pv.assoc_disease_id(pair)
     if not subject or not obj:
@@ -274,7 +291,7 @@ def association_edges(pair: dict) -> list[dict]:
             "medic_confidence_relationship": confidence.get("relationship"),
             "medic_confidence_overall": confidence.get("overall"),
             "medic_confidence_basis": confidence.get("basis") or "",
-            "medic_reliability": _assertion_reliability(pair, assertion),
+            "medic_reliability": _assertion_reliability(pair, assertion, review),
 
             **_mention_properties(drug_mention, "subject"),
             **_mention_properties(disease_mention, "object"),
@@ -329,7 +346,9 @@ def _research_source(evidence: dict) -> str:
     return bl.MEDIC_CURATION
 
 
-def research_edges(record: dict) -> list[dict]:
+def research_edges(
+    record: dict, review: StatementReviewStore | None = None
+) -> list[dict]:
     """Research edges for one association, one per (predicate, knowledge source) group.
 
     Several evidence items citing the same kind of study from the same source are one claim
@@ -347,7 +366,10 @@ def research_edges(record: dict) -> list[dict]:
             (_research_predicate(evidence), _research_source(evidence)), []
         ).append(evidence)
 
-    reliability = score_reliability(record, StatementType.RESEARCH_ASSOCIATION).value
+    review = review or default_review_store()
+    reliability = score_reliability(
+        record, StatementType.RESEARCH_ASSOCIATION,
+        review_status=review.status(record)).value
 
     built = []
     for (predicate, primary), items in sorted(groups.items()):
@@ -406,7 +428,9 @@ _AE_PREDICATE_BY_SOURCE = {
 }
 
 
-def adverse_event_edges(record: dict) -> list[dict]:
+def adverse_event_edges(
+    record: dict, review: StatementReviewStore | None = None
+) -> list[dict]:
     """One edge per contributing adverse-event source."""
     subject = record.get("drug_id") or ""
     obj = record.get("adverse_event_hpo_id") or record.get("adverse_event_id") or ""
@@ -415,7 +439,10 @@ def adverse_event_edges(record: dict) -> list[dict]:
 
     evidence = pv.assoc_evidence(record)
     first = evidence[0] if evidence else {}
-    reliability = score_reliability(record, StatementType.ADVERSE_EVENT).value
+    review = review or default_review_store()
+    reliability = score_reliability(
+        record, StatementType.ADVERSE_EVENT,
+        review_status=review.status(record)).value
 
     built = []
     for source in record.get("sources") or []:
@@ -455,12 +482,14 @@ def build_edges(
     contraindications: list[dict],
     research: list[dict],
     adverse_events: list[dict],
+    review: StatementReviewStore | None = None,
 ) -> tuple[list[dict], dict[str, str]]:
     """All edges, sorted deterministically, plus the labels of every endpoint they touch.
 
     The endpoint map feeds ``nodes.build_nodes`` so unknown endpoints become stubs and the
     graph stays referentially closed.
     """
+    review = review or default_review_store()
     built: list[dict] = []
     referenced: dict[str, str] = {}
 
@@ -469,17 +498,17 @@ def build_edges(
             referenced[curie] = label or ""
 
     for pair in [*indications, *contraindications]:
-        built.extend(association_edges(pair))
+        built.extend(association_edges(pair, review))
         note(pv.assoc_drug_id(pair), pv.assoc_drug_label(pair))
         note(pv.assoc_disease_id(pair), pv.assoc_disease_label(pair))
 
     for record in research:
-        built.extend(research_edges(record))
+        built.extend(research_edges(record, review))
         note(record.get("drug_id") or "", record.get("drug_label") or "")
         note(record.get("disease_id") or "", record.get("disease_label") or "")
 
     for record in adverse_events:
-        edges_for_record = adverse_event_edges(record)
+        edges_for_record = adverse_event_edges(record, review)
         built.extend(edges_for_record)
         note(record.get("drug_id") or "", record.get("drug_label") or "")
         for edge in edges_for_record:

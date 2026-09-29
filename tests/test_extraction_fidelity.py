@@ -142,17 +142,20 @@ def test_contraindication_polarity_not_evaluated():
 # ---------------------------------------------------------------------------
 def test_screen_drops_negated_keeps_positive():
     text = "Indicated for hypertension. Should not be used in patients with type 1 diabetes."
-    kept, dropped = screen_indications(["hypertension", "type 1 diabetes"], text)
-    assert kept == ["hypertension"]
-    assert [d["disease"] for d in dropped] == ["type 1 diabetes"]
-    assert dropped[0]["reason"]  # a cue was recorded
+    result = screen_indications(["hypertension", "type 1 diabetes"], text)
+    assert result.kept == ["hypertension"]
+    assert [d["disease"] for d in result.dropped] == ["type 1 diabetes"]
+    assert result.dropped[0]["reason"]  # a cue was recorded
 
 
 def test_screen_keeps_unlocatable_disease():
-    # A synonym the source spells differently can't be judged -> kept, not dropped.
-    kept, dropped = screen_indications(["hypertension"], "treatment of high blood pressure")
-    assert kept == ["hypertension"]
-    assert dropped == []
+    # A synonym the source spells differently can't be judged -> kept, not dropped. It is
+    # reported in the `unlocatable` bucket so "not checked" stays distinguishable from
+    # "checked and clean" (issue #59).
+    result = screen_indications(["hypertension"], "treatment of high blood pressure")
+    assert result.kept == ["hypertension"]
+    assert result.dropped == []
+    assert result.unlocatable == ["hypertension"]
 
 
 def test_screen_does_not_drop_on_shared_head_word():
@@ -160,16 +163,15 @@ def test_screen_does_not_drop_on_shared_head_word():
     # negation belongs to 'hip fractures', which merely shares the head word 'fractures'.
     # A destructive drop must not fire here (regression for the raloxifene over-drop).
     text = "A significant reduction in the incidence of vertebral, but not hip fractures."
-    kept, dropped = screen_indications(["vertebral fractures"], text)
-    assert kept == ["vertebral fractures"]
-    assert dropped == []
+    result = screen_indications(["vertebral fractures"], text)
+    assert result.kept == ["vertebral fractures"]
+    assert result.dropped == []
 
 
 def test_screen_keeps_disease_mentioned_both_ways():
     text = "Indicated for epilepsy; not indicated for febrile epilepsy in some patients."
     # "epilepsy" appears positively (first clause) and inside a negation -> not all negated -> kept.
-    kept, _ = screen_indications(["epilepsy"], text)
-    assert kept == ["epilepsy"]
+    assert screen_indications(["epilepsy"], text).kept == ["epilepsy"]
 
 
 def test_extractor_drops_negated_indication_via_cache(monkeypatch):

@@ -35,7 +35,8 @@ def test_quality_and_flag_enums():
         "hallucination", "truncated_snippet", "coreference_ambiguity", "scope_narrowed"}
     # AssertionFlag = relation/claim failures (entity may be recognised perfectly)
     assert set(sv.get_enum("AssertionFlag").permissible_values) == {
-        "negated_inversion", "over_extraction", "wrong_section", "wrong_pairing"}
+        "negated_inversion", "over_extraction", "wrong_section", "wrong_pairing",
+        "polarity_unverified"}
     assert set(sv.get_enum("TranslationFlag").permissible_values) == {
         "unreviewed_machine", "trade_name_source"}
     assert set(sv.get_enum("GroundingFlag").permissible_values) == {

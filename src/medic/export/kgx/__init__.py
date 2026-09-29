@@ -25,6 +25,7 @@ from medic.export.kgx import edges as edge_builders
 from medic.export.kgx import metadata as metadata_builders
 from medic.export.kgx import nodes as node_builders
 from medic.export.kgx import writer
+from medic.reliability import StatementReviewStore
 
 logger = logging.getLogger(__name__)
 
@@ -68,14 +69,20 @@ def export_kgx(
     products = _load_all(Path(products_dir))
     exports_dir = Path(exports_dir)
 
+    # One store for the whole export, loaded once. Without it the builders recompute the
+    # tier from the automated gates alone and a curator's REJECTED is discarded at the
+    # point of publication (#62).
+    review = StatementReviewStore().load()
+
     built_edges, referenced = edge_builders.build_edges(
         products["indications"],
         products["contraindications"],
         products["research"],
         products["adverse_events"],
+        review=review,
     )
     built_nodes = node_builders.build_nodes(
-        products["drugs"], products["diseases"], referenced
+        products["drugs"], products["diseases"], referenced, review=review
     )
 
     writer.write_jsonl(built_nodes, exports_dir / NODES_FILE)
