@@ -89,16 +89,35 @@ def split_dailymed_section(text: str, *, document: str, section_code: str) -> li
 
 
 def spans_for_source(
-    source: str, text: str, *, document: str, section_code: str
+    source: str, text: str, *, document: str, section_code: str,
+    parts: list[str] | None = None,
 ) -> list[dict]:
-    """Typed spans for one source record. Empty text yields no spans, never an empty span."""
+    """Typed spans for one source record. Empty text yields no spans, never an empty span.
+
+    ``parts`` — the source's own structural chunks, when the ingester kept them. For
+    DailyMed these are the section's `<title>`/`<text>` elements
+    (``_section_chunks``). Each is split independently, so a ``Limitations of Use``
+    marker can only ever govern text inside the element that contains it.
+
+    Splitting the concatenation instead put the Highlights summary, which restates the
+    indication, inside a LIMITATION_STATEMENT span on 203 of the 306 labels carrying the
+    marker; per-element splitting reduces that to 9 (#65). ``parts`` is optional because
+    records mined before it existed only have the flat string, and a degraded split is
+    better than no spans.
+    """
     src = (source or "").upper()
     body = (text or "").strip()
     if not body:
         return []
-    if src == "DAILYMED":
+    if src != "DAILYMED":
+        return [_span(_SOURCE_ROLE.get(src, "UNKNOWN"), body, document, section_code)]
+    if not parts:
         return split_dailymed_section(body, document=document, section_code=section_code)
-    return [_span(_SOURCE_ROLE.get(src, "UNKNOWN"), body, document, section_code)]
+    out: list[dict] = []
+    for part in parts:
+        out.extend(split_dailymed_section(
+            part, document=document, section_code=section_code))
+    return out
 
 
 #: Roles a claim may NOT be read from. A SECTION_HEADER / SUBSECTION_HEADER names the

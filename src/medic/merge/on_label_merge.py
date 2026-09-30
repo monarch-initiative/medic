@@ -1219,6 +1219,13 @@ def _build_disease_provenance(
     # the association — it lives once here as the Mention's TextSpan).
     section = (record.get("indications_text") or record.get("raw_indication_text") or "").strip()
     snippet = (ev0.get("snippet") or "").strip()
+    # The SPL's own element boundaries, when the ingester kept them. Splitting the
+    # concatenation instead let a `Limitations of Use` marker in one element govern the
+    # next one's text (#65). Absent on records mined before that was recorded.
+    parts = record.get(
+        "contraindications_text_parts" if rel == "CONTRAINDICATION"
+        else "indications_text_parts")
+    parts = [p for p in parts if isinstance(p, str)] if isinstance(parts, list) else None
 
     source = (record.get("source") or "").upper()
     # Same document id the owning assertion uses, so every span says which document it came
@@ -1227,7 +1234,10 @@ def _build_disease_provenance(
     document = _document_for(record, ev0)
     section_code = _LOINC_SECTION.get(rel, "") if source == "DAILYMED" else ""
     spans = spans_for_source(
-        source, section or snippet, document=document, section_code=section_code)
+        source, section or snippet, document=document, section_code=section_code,
+        # Only meaningful when the spans describe the section; a snippet fallback is
+        # already one chunk, and the parts would not line up with it.
+        parts=parts if section else None)
 
     # The extraction reads the first span that is neither a header nor a scope restriction
     # (medic.spans.readable_span_indices — the same definition the destructive ingest screen

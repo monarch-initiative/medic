@@ -176,7 +176,9 @@ def assertion_negated(
     return negated, len(anchors), reason
 
 
-def _claim_and_limitation_text(source_text: str, source: str) -> tuple[str, str]:
+def _claim_and_limitation_text(
+    source_text: str, source: str, parts: list[str] | None = None
+) -> tuple[str, str]:
     """Split ``source_text`` into (text a claim may be read from, limitation text).
 
     The ingest gate used to run over the whole concatenated section, so a cue inside a
@@ -185,7 +187,8 @@ def _claim_and_limitation_text(source_text: str, source: str) -> tuple[str, str]
     destructive half (issue #59). Both halves now read scope from
     :func:`medic.spans.readable_span_indices`.
     """
-    spans = spans_for_source(source, source_text, document="", section_code="")
+    spans = spans_for_source(
+        source, source_text, document="", section_code="", parts=parts)
     if not spans:
         return (source_text or "").strip(), ""
     claim = " ".join(s["text"] for s in readable_spans(spans))
@@ -218,9 +221,10 @@ def _screen(
     source: str,
     cues: tuple[str, ...],
     check_limitations: bool,
+    parts: list[str] | None = None,
 ) -> ScreenResult:
     """Shared body of :func:`screen_indications` and :func:`screen_contraindications`."""
-    claim_text, limitation_text = _claim_and_limitation_text(source_text, source)
+    claim_text, limitation_text = _claim_and_limitation_text(source_text, source, parts)
     kept: list[str] = []
     dropped: list[dict] = []
     unlocatable: list[str] = []
@@ -257,7 +261,8 @@ def _screen(
 
 
 def screen_indications(
-    disease_names: list[str], source_text: str, *, source: str = "DAILYMED"
+    disease_names: list[str], source_text: str, *, source: str = "DAILYMED",
+    parts: list[str] | None = None,
 ) -> ScreenResult:
     """Split extracted *indication* disease names into kept / dropped / unlocatable.
 
@@ -281,11 +286,12 @@ def screen_indications(
     a silent ingest drop.
     """
     return _screen(disease_names, source_text, source=source,
-                   cues=_NEGATION_CUES, check_limitations=True)
+                   cues=_NEGATION_CUES, check_limitations=True, parts=parts)
 
 
 def screen_contraindications(
-    disease_names: list[str], source_text: str, *, source: str = "DAILYMED"
+    disease_names: list[str], source_text: str, *, source: str = "DAILYMED",
+    parts: list[str] | None = None,
 ) -> ScreenResult:
     """The contraindication-side screen. Same shape, opposite polarity.
 
@@ -302,7 +308,7 @@ def screen_contraindications(
     sections, so the limitation pass is off here.
     """
     return _screen(disease_names, source_text, source=source,
-                   cues=_CONTRA_NEGATION_CUES, check_limitations=False)
+                   cues=_CONTRA_NEGATION_CUES, check_limitations=False, parts=parts)
 
 
 def _source_text_for(record: dict, evidence: dict) -> str:

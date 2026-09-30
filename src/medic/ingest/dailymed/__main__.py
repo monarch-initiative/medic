@@ -71,16 +71,31 @@ def _flatten_section_text(section: ET.Element) -> str:
     appears only in its heading. Structural elements (<code>, <ingredient>) are
     skipped so ingredient names cannot leak into the indication text.
     """
+    return " ".join(_section_chunks(section))
+
+
+def _section_chunks(section: ET.Element) -> list[str]:
+    """The section's <title>/<text> elements, one string each, in document order.
+
+    The structured form of :func:`_flatten_section_text`, which is the same thing joined
+    with a space. That join is worth avoiding where it can be: a real SPL indications
+    section carries the Full Prescribing Information body and the Highlights summary as two
+    sibling <text> elements, and flattening them makes a `Limitations of Use` marker in the
+    first appear to govern the second. `medic.spans` then reconstructed the lost boundary
+    with a regex over the concatenation and got it wrong on 203 of the 306 labels that carry
+    the marker (#65). Callers that build TextSpans should pass these chunks; callers that
+    show text to an LLM still want the flat form, so both exist.
+    """
     wanted = (f"{{{NS['v3']}}}title", f"{{{NS['v3']}}}text")
-    parts: list[str] = []
+    chunks: list[str] = []
     for elem in section.iter():
         if elem.tag in wanted:
             raw = ET.tostring(elem, encoding="unicode")
             clean = re.sub(r"<[^>]+>", " ", raw)
             chunk = " ".join(clean.split())
             if chunk:
-                parts.append(chunk)
-    return " ".join(parts)
+                chunks.append(chunk)
+    return chunks
 
 
 def extract_section_text(xml_path: str | Path, loinc_code: str) -> str:
@@ -107,8 +122,10 @@ def _row_from_spl_root(root: ET.Element) -> dict | None:
     Returns None when the label has no active ingredient or no
     indications/contraindications text worth keeping.
     """
-    indications = _extract_section_text_from_root(root, LOINC_INDICATIONS)
-    contras = _extract_section_text_from_root(root, LOINC_CONTRAINDICATIONS)
+    indication_parts = _extract_section_chunks_from_root(root, LOINC_INDICATIONS)
+    contra_parts = _extract_section_chunks_from_root(root, LOINC_CONTRAINDICATIONS)
+    indications = " ".join(indication_parts)
+    contras = " ".join(contra_parts)
     ingredients = _extract_ingredients_from_root(root)
 
     # Extract set_id from SPL document element. Real SPL XML carries the setid
@@ -124,6 +141,11 @@ def _row_from_spl_root(root: ET.Element) -> dict | None:
             "drug_names": ingredients,
             "indications_text": indications,
             "contraindications_text": contras,
+            # The same text with the SPL's own element boundaries kept, so span building
+            # does not have to guess them back out of the concatenation (#65). The flat
+            # fields stay authoritative for anything that shows text to an LLM.
+            "indications_text_parts": indication_parts,
+            "contraindications_text_parts": contra_parts,
             "set_id": set_id,
         }
     return None
@@ -199,11 +221,28 @@ def _extract_section_text_from_root(root: ET.Element, loinc_code: str) -> str:
 
     Reads the whole matched section subtree — see `_flatten_section_text`.
     """
+    section = _find_coded_section(root, loinc_code)
+    return _flatten_section_text(section) if section is not None else ""
+
+
+def _find_coded_section(root: ET.Element, loinc_code: str) -> ET.Element | None:
+    """The first <section> carrying ``loinc_code``, or None.
+
+    First, not all: only 3 of 1,976 acquired labels carry the code on more than one
+    section, so the duplication that used to show up in the extracted text came from
+    sibling <text> elements inside one section, not from two sections being joined.
+    """
     for section in root.iter(f"{{{NS['v3']}}}section"):
         code = section.find("v3:code", NS)
         if code is not None and code.get("code") == loinc_code:
-            return _flatten_section_text(section)
-    return ""
+            return section
+    return None
+
+
+def _extract_section_chunks_from_root(root: ET.Element, loinc_code: str) -> list[str]:
+    """The coded section's element-level chunks (see :func:`_section_chunks`)."""
+    section = _find_coded_section(root, loinc_code)
+    return _section_chunks(section) if section is not None else []
 
 
 def _extract_ingredients_from_root(root: ET.Element) -> list[str]:
@@ -338,7 +377,8 @@ def _parse_llm_disease_list(text: str) -> list[str]:
 
 
 def _screen_negated_indications(
-    diseases: list[str], indication_text: str, source: str
+    diseases: list[str], indication_text: str, source: str,
+    parts: list[str] | None = None,
 ) -> list[str]:
     """Drop extracted 'indications' the source actually negates/excludes (inversions).
 
@@ -359,7 +399,8 @@ def _screen_negated_indications(
     """
     from medic.validation.extraction_fidelity import screen_indications
 
-    result = screen_indications(diseases, indication_text, source=source)
+    result = screen_indications(
+        diseases, indication_text, source=source, parts=parts)
     for d in result.dropped:
         logger.warning(
             "Dropping negated 'indication' %r (cue: %r, scope: %s) — source states it "
@@ -376,7 +417,8 @@ def _screen_negated_indications(
 
 
 def _screen_negated_contraindications(
-    diseases: list[str], contraindication_text: str, source: str
+    diseases: list[str], contraindication_text: str, source: str,
+    parts: list[str] | None = None,
 ) -> list[str]:
     """The contraindication-side screen, which did not exist at all (issue #59).
 
@@ -387,7 +429,8 @@ def _screen_negated_contraindications(
     """
     from medic.validation.extraction_fidelity import screen_contraindications
 
-    result = screen_contraindications(diseases, contraindication_text, source=source)
+    result = screen_contraindications(
+        diseases, contraindication_text, source=source, parts=parts)
     for d in result.dropped:
         logger.warning(
             "Dropping non-contraindication %r (cue: %r) — source states the condition is "
@@ -403,7 +446,8 @@ def _screen_negated_contraindications(
 
 
 def extract_diseases_from_text(
-    indication_text: str, *, source: str = "DAILYMED"
+    indication_text: str, *, source: str = "DAILYMED",
+    parts: list[str] | None = None,
 ) -> list[str]:
     """Extract disease names from indication free text via LLM.
 
@@ -422,7 +466,7 @@ def extract_diseases_from_text(
     cached = cache.get(key)
     if cached is not None:
         return _screen_negated_indications(
-            cached.get("diseases", []), indication_text, source)
+            cached.get("diseases", []), indication_text, source, parts)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("indication")
@@ -448,11 +492,12 @@ def extract_diseases_from_text(
     # Cache the RAW extraction (faithful to the LLM); screen on return.
     cache.put(key, {"diseases": diseases, "text_prefix": indication_text[:200]})
     _checkpoint(cache)
-    return _screen_negated_indications(diseases, indication_text, source)
+    return _screen_negated_indications(diseases, indication_text, source, parts)
 
 
 def extract_contraindicated_diseases_from_text(
-    contraindication_text: str, *, source: str = "DAILYMED"
+    contraindication_text: str, *, source: str = "DAILYMED",
+    parts: list[str] | None = None,
 ) -> list[str]:
     """Extract disease names from contraindication free text via LLM.
 
@@ -480,7 +525,7 @@ def extract_contraindicated_diseases_from_text(
     cached = cache.get(key)
     if cached is not None:
         return _screen_negated_contraindications(
-            cached.get("diseases", []), contraindication_text, source)
+            cached.get("diseases", []), contraindication_text, source, parts)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("contraindication")
@@ -520,7 +565,8 @@ def extract_contraindicated_diseases_from_text(
         {"diseases": diseases, "text_prefix": contraindication_text[:200]},
     )
     _checkpoint(cache)
-    return _screen_negated_contraindications(diseases, contraindication_text, source)
+    return _screen_negated_contraindications(
+        diseases, contraindication_text, source, parts)
 
 
 def is_allergen_or_diagnostic(drug_name: str) -> dict:
@@ -647,6 +693,10 @@ def _process_spl_data(
         drug_names: list[str] = row["drug_names"]
         indications_text: str = row.get("indications_text", "")
         contras_text: str = row.get("contraindications_text", "")
+        # The SPL's own element boundaries, so the destructive negation screen scopes cues
+        # to the element that contains them rather than the whole concatenation (#65).
+        ind_parts = row.get("indications_text_parts")
+        contra_parts_row = row.get("contraindications_text_parts")
         set_id: str = row.get("set_id", "")
 
         # Ground each drug
@@ -669,7 +719,7 @@ def _process_spl_data(
             if indications_text:
                 try:
                     diseases = extract_diseases_from_text(
-                        indications_text, source="DAILYMED")
+                        indications_text, source="DAILYMED", parts=ind_parts)
                 except Exception as exc:
                     logger.warning("Disease extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)
@@ -735,7 +785,7 @@ def _process_spl_data(
             if contras_text:
                 try:
                     contra_diseases = extract_contraindicated_diseases_from_text(
-                        contras_text, source="DAILYMED")
+                        contras_text, source="DAILYMED", parts=contra_parts_row)
                 except Exception as exc:
                     logger.warning("Contraindication extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)

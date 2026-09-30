@@ -29,7 +29,9 @@ def test_contra_extractor_function_exists():
     # to split the text into spans (issue #59); it must never be positional, or a caller
     # could silently pass a section body where a source name belongs.
     assert all(q.kind is inspect.Parameter.KEYWORD_ONLY for q in params[1:])
-    assert set(sig.parameters) == {"contraindication_text", "source"}
+    # `source` selects the span split; `parts` carries the source's own element
+    # boundaries so a cue cannot reach across them (#65).
+    assert set(sig.parameters) == {"contraindication_text", "source", "parts"}
 
 
 def test_contra_cache_is_separate_from_indication_cache():
