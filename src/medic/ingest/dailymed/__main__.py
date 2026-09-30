@@ -407,6 +407,13 @@ def _screen_negated_indications(
             "negatively, not as an approval",
             d["disease"], d["reason"], d.get("scope", "claim"),
         )
+    for d in result.limitation_only:
+        logger.warning(
+            "Keeping %r although its only mention is a negated scope restriction "
+            "(cue: %r) — evidence too weak to drop on, so the merge flags it "
+            "negated_inversion and the reliability gate excludes it (#66)",
+            d["disease"], d["reason"],
+        )
     if result.unlocatable:
         logger.info(
             "Polarity not evaluable for %d/%d extracted indication(s) — not locatable in "

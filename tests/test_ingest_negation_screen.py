@@ -56,16 +56,34 @@ def test_a_limitations_clause_does_not_drop_the_positive_claim():
     assert result.dropped == []
 
 
-def test_a_disease_stated_only_inside_a_limitation_is_dropped():
-    """A disease whose sole textual basis is a negated Limitations-of-Use sentence was
-    never indicated — the mirror of on_label_merge._polarity_flags' third check."""
+def test_a_disease_stated_only_inside_a_limitation_is_reported_not_dropped():
+    """The mirror of on_label_merge._polarity_flags' third check — but reported, not
+    dropped. Zero entailment on the claim span is too weak an evidence bar for a
+    destructive, silent action (#66); the merge excludes it instead."""
     text = (
         "PRODUCT is indicated for the acute treatment of migraine. Limitations of Use "
         "PRODUCT is not indicated for cluster headache."
     )
     result = screen_indications(["cluster headache"], text)
-    assert result.kept == []
-    assert [d["disease"] for d in result.dropped] == ["cluster headache"]
+    assert result.kept == ["cluster headache"]
+    assert result.dropped == []
+    assert [d["disease"] for d in result.limitation_only] == ["cluster headache"]
+
+
+def test_an_abbreviated_indication_is_not_lost_to_its_own_restriction():
+    """aspirin/omeprazole: the label writes "MI" in the indication and spells out
+    "myocardial infarction" in the negated restriction, so entailment on the claim span
+    scores zero. This was a real dropped approval (#66)."""
+    text = (
+        "1 INDICATIONS AND USAGE ASPIRIN AND OMEPRAZOLE is indicated for reducing the "
+        "combined risk of death and nonfatal MI in patients with a previous MI. "
+        "Limitations of Use : Not for use as the initial dose of aspirin therapy during "
+        "onset of acute coronary syndrome, acute myocardial infarction or before "
+        "percutaneous coronary intervention."
+    )
+    result = screen_indications(["myocardial infarction"], text)
+    assert result.kept == ["myocardial infarction"]
+    assert result.dropped == []
 
 
 def test_a_genuinely_negated_claim_is_still_dropped():

@@ -207,11 +207,24 @@ class ScreenResult(NamedTuple):
     canonicalised name is not a substring of the source. Those names are still kept —
     dropping them on a check that never ran would be far worse — but they are enumerable
     now, and the merge marks them ``polarity_unverified``.
+
+    ``limitation_only`` is a *verdict* rather than a drop: the disease has no positive
+    support in the claim spans and its only mention is a strictly-negated scope
+    restriction. That used to be dropped. It is not any more, because the evidence is too
+    weak for a destructive, silent, unrecoverable action — 1 of the 3 drops it produced
+    over the DailyMed cache was a genuine approval (aspirin/omeprazole →
+    ``myocardial infarction``, where the label abbreviates to "MI" in the indication and
+    spells it out in the restriction, so entailment scores zero). These names are kept and
+    reported; ``on_label_merge._polarity_flags`` reaches the same verdict and marks the
+    claim ``negated_inversion``, which the reliability gate turns into EXCLUDED. The row
+    therefore still leaves the published subset, but it stays in the knowledge base with
+    its reason attached and a curator can overturn it through the review store (#66).
     """
 
     kept: list[str]
     dropped: list[dict]
     unlocatable: list[str]
+    limitation_only: list[dict] = []
 
 
 def _screen(
@@ -228,6 +241,7 @@ def _screen(
     kept: list[str] = []
     dropped: list[dict] = []
     unlocatable: list[str] = []
+    limitation_only: list[dict] = []
 
     for name in disease_names:
         # Strict, full-phrase matching only — a destructive drop must never fire on a
@@ -242,22 +256,30 @@ def _screen(
             kept.append(name)
             continue
 
-        # Not locatable in the spans the claim was read from. Before conceding, check the
-        # scope restrictions the claim's own span excluded: a disease whose *only* textual
-        # basis is a strictly-negated Limitations-of-Use sentence was never indicated at
-        # all. Guarded on zero entailment, so "indicated for X" plus "Limitations of Use:
-        # not indicated for X under 12" stays a legitimate restricted indication. Mirrors
-        # on_label_merge._polarity_flags' third check.
+        # Not locatable in the spans the claim was read from. Check the scope restrictions
+        # the claim's own span excluded: a disease with no positive support whose only
+        # mention is a strictly-negated Limitations-of-Use sentence was probably never
+        # indicated. Guarded on zero entailment, so "indicated for X" plus "Limitations of
+        # Use: not indicated for X under 12" stays a legitimate restricted indication.
+        #
+        # Reported, not dropped. Zero entailment only means the claim span does not use
+        # these words, which a label that abbreviates defeats — aspirin/omeprazole writes
+        # "MI" in the indication and "myocardial infarction" in the restriction, and 1 of
+        # the 3 drops this produced over the DailyMed cache was that genuine approval.
+        # `head_fallback=False` above exists precisely so a destructive drop needs strong
+        # evidence; this verdict does not meet that bar (#66). The merge reaches the same
+        # conclusion and marks the claim `negated_inversion` -> EXCLUDED, which removes it
+        # from the published subset while leaving it auditable and curator-overridable.
         if check_limitations and limitation_text and entailment_score(name, claim_text) == 0.0:
             lneg, ltotal, lreason = assertion_negated(
                 name, limitation_text, head_fallback=False, cues=cues)
             if ltotal and lneg == ltotal:
-                dropped.append({"disease": name, "reason": lreason or "negated",
-                                "scope": "limitation"})
+                limitation_only.append({"disease": name, "reason": lreason or "negated"})
+                kept.append(name)
                 continue
         kept.append(name)
         unlocatable.append(name)
-    return ScreenResult(kept, dropped, unlocatable)
+    return ScreenResult(kept, dropped, unlocatable, limitation_only)
 
 
 def screen_indications(
