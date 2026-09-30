@@ -129,7 +129,8 @@ Phase 0  #59   ✅ landed on fix/59-negation-screen-scoping (PR #63)
 Phase 1  #62   ✅ landed — changed 0 rows; the review store was never wired in
 Phase 2  #60   ✅ landed — moved 9 rows, all research placeholders
          #61   ← NEXT. First one that moves real records.
-Phase 3  #68          ← needs Phase 2 settled
-Phase 4  #65 → #66    ← #65 first; #59's shipped code depends on those boundaries
-Phase 5  #57 → #64 → #67   ← one LLM re-extraction run, not three
+Phase 3  #68   ✅ closed by measurement, no code — capping moved 2 pairs of 7,483
+Phase 4  #65   ✅ landed — span boundaries follow the SPL's own elements; 203 → 9 labels
+         #66   ✅ landed — limitation verdict reported, not dropped; 16 drops → 13
+Phase 5  #57 → #64 → #67   ← NEXT. One LLM re-extraction run, not three.
 ```
