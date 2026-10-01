@@ -68,7 +68,8 @@ def _records_for_approval(
         diseases = []
 
     out: list[dict] = []
-    for disease_name in diseases:
+    for _extracted in diseases:
+        disease_name, disease_verbatim = _extracted.name, _extracted.verbatim
         record: dict = {}
         try:
             disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -98,6 +99,7 @@ def _records_for_approval(
             "snippet": ind_text,
             "original_drug_label": drug_rec.get("source_name", "") or drug_label,
             "original_disease_label": disease_name,
+            "original_disease_verbatim": disease_verbatim,
         }
         if original_drug_id:
             evidence_item["original_drug_id"] = original_drug_id
@@ -300,7 +302,8 @@ def _build_pmda_contraindication_records(
         approval_date = drug_rec.get("approval_date", "") or ""
         original_drug_id = (drug_rec.get("yj_code", "") or "").strip() or None
 
-        for disease_name in diseases:
+        for _extracted in diseases:
+            disease_name, disease_verbatim = _extracted.name, _extracted.verbatim
             record: dict = {}
             try:
                 disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -328,6 +331,7 @@ def _build_pmda_contraindication_records(
                 "language": section.get("language", ""),
                 "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                 "original_disease_label": disease_name,
+                "original_disease_verbatim": disease_verbatim,
                 "reference": ref_url,
             }
             if ref_url.lower().endswith(".pdf") and "pmda.go.jp" in ref_url.lower():

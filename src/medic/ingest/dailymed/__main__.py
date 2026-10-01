@@ -21,6 +21,7 @@ import os
 import re
 import xml.etree.ElementTree as ET
 import zipfile
+from typing import NamedTuple
 from pathlib import Path
 
 import pandas as pd
@@ -47,8 +48,12 @@ KB_INDICATIONS_DIR = Path("kb/indications/dailymed")
 PRODUCTS_DIR = Path("products")
 
 # Cache paths
-DISEASE_CACHE_PATH = Path("cache/enrichment/dailymed_diseases.json")
-CONTRA_DISEASE_CACHE_PATH = Path("cache/enrichment/dailymed_contra_diseases.json")
+# v2 = the verbatim-substring contract (#64). The prompt changed, so the old answers are
+# answers to a different question: they carry no verbatim half and cannot be upgraded
+# without asking again. New files rather than new keys, so the v1 caches stay on disk and a
+# rollback does not have to re-extract anything.
+DISEASE_CACHE_PATH = Path("cache/enrichment/dailymed_diseases_v2.json")
+CONTRA_DISEASE_CACHE_PATH = Path("cache/enrichment/dailymed_contra_diseases_v2.json")
 ALLERGEN_CACHE_PATH = Path("cache/enrichment/dailymed_allergen.json")
 
 
@@ -346,10 +351,36 @@ def _raise_if_rows_were_silently_dropped() -> None:
 _MAX_DISEASE_NAME_LEN = 200
 
 
-def _parse_llm_disease_list(text: str) -> list[str]:
+#: Separator between the canonical disease name and the verbatim source substring.
+_VERBATIM_SEP = "::"
+
+
+class Extracted(NamedTuple):
+    """One extracted disease: the canonical name, and the source's own wording.
+
+    ``verbatim`` is the substring the LLM copied out of the text it was shown, and it is
+    the half that makes the downstream checks work. The prompt asks for a canonicalised
+    name, so the name frequently does not occur in the source — 1,414 of 11,696 shipped
+    INDICATIONs (12%) could not be located in their own section text, which left the
+    negation screen unable to judge polarity and left `char_start`/`char_end` unrecordable
+    (#64). The verbatim form is present by construction.
+
+    Empty when the model ignored the format or when the answer came from a cache written
+    before this existed. Callers must treat it as optional, never assume it is findable —
+    a model can hallucinate a quote as easily as a name.
+    """
+
+    name: str
+    verbatim: str = ""
+
+
+def _parse_llm_disease_list(text: str) -> list[Extracted]:
     """Parse the LLM's pipe-separated disease list, robust to refusal prose.
 
-    The prompts ask for `disease1|disease2|...` or the literal token `None`.
+    The prompts ask for `name :: verbatim|name :: verbatim|...` or the literal token
+    `None`. A bare `name` with no separator still parses, with an empty verbatim: cached
+    answers predate the format, and a model sometimes ignores it.
+
     In practice the model sometimes returns prose like
     `"None\\n\\nThe text lists diagnostic procedures..."` when the input has
     no diseases. The naive parser treats that whole prose as a single
@@ -360,24 +391,63 @@ def _parse_llm_disease_list(text: str) -> list[str]:
     sentence-shaped items. (c) used to live in `ema/__main__.py` and guarded only
     the EU path; running it here gives DailyMed, EMA, PMDA and India the same
     defence, for indications and contraindications alike (issue #59).
+
+    All three defences judge the **name** only. The verbatim half is quoted source text,
+    not a disease name, so the length cap and the sentence-shape guard would reject
+    perfectly good quotes.
     """
     stripped = (text or "").strip()
     if not stripped or stripped.lower().startswith("none"):
         return []
-    return [
-        d.strip()
-        for d in stripped.split("|")
-        if d.strip()
-        and d.strip().lower() != "none"
-        and len(d.strip()) <= _MAX_DISEASE_NAME_LEN
-        and looks_like_disease_name(d.strip())
-    ]
+    out: list[Extracted] = []
+    for item in stripped.split("|"):
+        name, sep, verbatim = item.partition(_VERBATIM_SEP)
+        name = name.strip()
+        verbatim = verbatim.strip() if sep else ""
+        if not _is_usable_disease_name(name):
+            continue
+        out.append(Extracted(name, verbatim))
+    return out
+
+
+def _is_usable_disease_name(name: str) -> bool:
+    return bool(
+        name
+        and name.lower() != "none"
+        and len(name) <= _MAX_DISEASE_NAME_LEN
+        and looks_like_disease_name(name)
+    )
+
+
+
+
+def _encode_extractions(items: list[Extracted]) -> list[list[str]]:
+    """Cache form: ``[[name, verbatim], ...]``. JSON has no tuples, and a flat list of
+    names could not carry the verbatim half."""
+    return [[e.name, e.verbatim] for e in items]
+
+
+def _decode_extractions(raw) -> list[Extracted]:
+    """Rebuild from the cache, tolerating the v1 shape (a bare list of names).
+
+    The v2 cache files are new, so a v1 payload should not appear — but a hand-edited or
+    partially-migrated cache should degrade to "no verbatim" rather than crash the build.
+    """
+    out: list[Extracted] = []
+    for item in raw or []:
+        if isinstance(item, str):
+            out.append(Extracted(item, ""))
+        elif isinstance(item, (list, tuple)) and item:
+            name = str(item[0])
+            verbatim = str(item[1]) if len(item) > 1 and item[1] else ""
+            out.append(Extracted(name, verbatim))
+    return out
 
 
 def _screen_negated_indications(
-    diseases: list[str], indication_text: str, source: str,
+    diseases: list[Extracted], indication_text: str, source: str,
     parts: list[str] | None = None,
-) -> list[str]:
+) -> list[Extracted]:
     """Drop extracted 'indications' the source actually negates/excludes (inversions).
 
     Deterministic prevention pass (FAILURE_MODES §4.1-4.2): a disease stated only inside
@@ -397,8 +467,10 @@ def _screen_negated_indications(
     """
     from medic.validation.extraction_fidelity import screen_indications
 
+    by_name = {e.name: e for e in diseases}
     result = screen_indications(
-        diseases, indication_text, source=source, parts=parts)
+        [e.name for e in diseases], indication_text, source=source, parts=parts,
+        verbatims={e.name: e.verbatim for e in diseases if e.verbatim})
     for d in result.dropped:
         logger.warning(
             "Dropping negated 'indication' %r (cue: %r, scope: %s) — source states it "
@@ -418,13 +490,13 @@ def _screen_negated_indications(
             "the source text (LLM canonicalisation): %s",
             len(result.unlocatable), len(diseases), result.unlocatable,
         )
-    return result.kept
+    return [by_name[n] for n in result.kept]
 
 
 def _screen_negated_contraindications(
-    diseases: list[str], contraindication_text: str, source: str,
+    diseases: list[Extracted], contraindication_text: str, source: str,
     parts: list[str] | None = None,
-) -> list[str]:
+) -> list[Extracted]:
     """The contraindication-side screen, which did not exist at all (issue #59).
 
     Opposite polarity to the indication screen: here "contraindicated in X" is the claim,
@@ -434,8 +506,10 @@ def _screen_negated_contraindications(
     """
     from medic.validation.extraction_fidelity import screen_contraindications
 
+    by_name = {e.name: e for e in diseases}
     result = screen_contraindications(
-        diseases, contraindication_text, source=source, parts=parts)
+        [e.name for e in diseases], contraindication_text, source=source, parts=parts,
+        verbatims={e.name: e.verbatim for e in diseases if e.verbatim})
     for d in result.dropped:
         logger.warning(
             "Dropping non-contraindication %r (cue: %r) — source states the condition is "
@@ -447,13 +521,13 @@ def _screen_negated_contraindications(
             "locatable in the source text",
             len(result.unlocatable), len(diseases),
         )
-    return result.kept
+    return [by_name[n] for n in result.kept]
 
 
 def extract_diseases_from_text(
     indication_text: str, *, source: str = "DAILYMED",
     parts: list[str] | None = None,
-) -> list[str]:
+) -> list[Extracted]:
     """Extract disease names from indication free text via LLM.
 
     The raw LLM extraction is cached; a deterministic negation screen then drops any
@@ -471,7 +545,7 @@ def extract_diseases_from_text(
     cached = cache.get(key)
     if cached is not None:
         return _screen_negated_indications(
-            cached.get("diseases", []), indication_text, source, parts)
+            _decode_extractions(cached.get("diseases")), indication_text, source, parts)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("indication")
@@ -480,12 +554,20 @@ def extract_diseases_from_text(
     from medic.llm import llm_call
     text = llm_call(
         (
-            "Extract all diseases mentioned as therapeutic indications from this text. "
-            "Return ONLY a pipe-separated list like: disease1|disease2|disease3\n"
+            "Extract all diseases mentioned as therapeutic indications from this text.\n"
+            "For each disease return TWO parts separated by '::' —\n"
+            "  <canonical disease name> :: <verbatim substring copied from the text>\n"
+            "The second part MUST be copied character-for-character from the text above, "
+            "including any abbreviation the text uses. Do not normalise or expand it.\n"
+            "Return ONLY a pipe-separated list like: "
+            "name1 :: quote1|name2 :: quote2\n"
             "If no diseases, return: None\n"
             "Do not infer diseases - only list those explicitly mentioned.\n"
             "Do not include contraindicated conditions.\n"
-            "Be specific (e.g., 'type 2 diabetes mellitus' not just 'diabetes').\n\n"
+            "Be specific in the canonical name (e.g., 'type 2 diabetes mellitus' not just "
+            "'diabetes'), but keep the quote exactly as written.\n\n"
+            "Example: if the text says 'reducing the risk of nonfatal MI', return\n"
+            "  myocardial infarction :: MI\n\n"
             f"Text: {indication_text[:3000]}"
         ),
         task="extraction",
@@ -495,7 +577,8 @@ def extract_diseases_from_text(
     diseases = _parse_llm_disease_list(text)
 
     # Cache the RAW extraction (faithful to the LLM); screen on return.
-    cache.put(key, {"diseases": diseases, "text_prefix": indication_text[:200]})
+    cache.put(key, {"diseases": _encode_extractions(diseases),
+                    "text_prefix": indication_text[:200]})
     _checkpoint(cache)
     return _screen_negated_indications(diseases, indication_text, source, parts)
 
@@ -503,7 +586,7 @@ def extract_diseases_from_text(
 def extract_contraindicated_diseases_from_text(
     contraindication_text: str, *, source: str = "DAILYMED",
     parts: list[str] | None = None,
-) -> list[str]:
+) -> list[Extracted]:
     """Extract disease names from contraindication free text via LLM.
 
     Sister to `extract_diseases_from_text`, but tuned for contraindication
@@ -530,7 +613,8 @@ def extract_contraindicated_diseases_from_text(
     cached = cache.get(key)
     if cached is not None:
         return _screen_negated_contraindications(
-            cached.get("diseases", []), contraindication_text, source, parts)
+            _decode_extractions(cached.get("diseases")), contraindication_text,
+            source, parts)
 
     if should_skip_expensive_calls():
         _note_skipped_uncached("contraindication")
@@ -543,11 +627,17 @@ def extract_contraindicated_diseases_from_text(
             "contraindications in this text. A contraindication is a condition "
             "that makes a drug inappropriate (e.g., 'patients with active "
             "infection', 'severe hepatic impairment', 'pregnancy').\n\n"
-            "Return ONLY a pipe-separated list like: condition1|condition2|condition3\n"
+            "For each condition return TWO parts separated by '::' —\n"
+            "  <canonical condition name> :: <verbatim substring copied from the text>\n"
+            "The second part MUST be copied character-for-character from the text above, "
+            "including any abbreviation the text uses. Do not normalise or expand it.\n"
+            "Return ONLY a pipe-separated list like: "
+            "name1 :: quote1|name2 :: quote2\n"
             "If no specific medical conditions are listed (e.g., the section only "
             "lists hypersensitivity to the drug itself), return: None\n"
             "Do not infer — only list conditions explicitly mentioned.\n"
-            "Be specific (e.g., 'severe hepatic impairment' not just 'liver disease').\n"
+            "Be specific in the canonical name (e.g., 'severe hepatic impairment' not just "
+            "'liver disease'), but keep the quote exactly as written.\n"
             "Exclude generic hypersensitivity to the drug or excipients — that's "
             "trivial and not informative.\n"
             "Exclude pure procedural exclusions (e.g., 'concurrent use of MAOIs') "
@@ -567,7 +657,8 @@ def extract_contraindicated_diseases_from_text(
     # Cache the RAW extraction (faithful to the LLM); screen on return.
     cache.put(
         key,
-        {"diseases": diseases, "text_prefix": contraindication_text[:200]},
+        {"diseases": _encode_extractions(diseases),
+         "text_prefix": contraindication_text[:200]},
     )
     _checkpoint(cache)
     return _screen_negated_contraindications(
@@ -729,7 +820,9 @@ def _process_spl_data(
                     logger.warning("Disease extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)
                     diseases = []
-                for disease_name in diseases:
+                for _extracted in diseases:
+                    disease_name, disease_verbatim = (
+                        _extracted.name, _extracted.verbatim)
                     record: dict = {}
                     disease_id, disease_label = _ground_disease(
                         disease_name, grounding_backend, record
@@ -763,6 +856,7 @@ def _process_spl_data(
                     if set_id:
                         evidence_item["original_drug_id"] = set_id
                     evidence_item["original_disease_label"] = disease_name
+                    evidence_item["original_disease_verbatim"] = disease_verbatim
 
                     record.update(
                         {
@@ -795,7 +889,9 @@ def _process_spl_data(
                     logger.warning("Contraindication extraction failed for setid %s (%s); skipping.",
                                    set_id, exc)
                     contra_diseases = []
-                for disease_name in contra_diseases:
+                for _extracted in contra_diseases:
+                    disease_name, disease_verbatim = (
+                        _extracted.name, _extracted.verbatim)
                     record = {}
                     disease_id, disease_label = _ground_disease(
                         disease_name, grounding_backend, record
@@ -824,6 +920,7 @@ def _process_spl_data(
                     if set_id:
                         contra_evidence["original_drug_id"] = set_id
                     contra_evidence["original_disease_label"] = disease_name
+                    contra_evidence["original_disease_verbatim"] = disease_verbatim
 
                     record.update(
                         {

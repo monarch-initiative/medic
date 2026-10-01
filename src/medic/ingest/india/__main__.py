@@ -64,7 +64,8 @@ def _build_india_indication_records(grounded_drugs: list[dict], grounding_backen
             diseases = []
         if diseases:
             drugs_with_indications += 1
-        for disease_name in diseases:
+        for _extracted in diseases:
+            disease_name, disease_verbatim = _extracted.name, _extracted.verbatim
             try:
                 result = service.ground_disease_best(disease_name)
             except Exception as e:
@@ -94,6 +95,7 @@ def _build_india_indication_records(grounded_drugs: list[dict], grounding_backen
                 "reference": ref_url,
                 "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                 "original_disease_label": disease_name,
+                "original_disease_verbatim": disease_verbatim,
             }
             if approval_date:
                 evidence_item["approval_date"] = approval_date

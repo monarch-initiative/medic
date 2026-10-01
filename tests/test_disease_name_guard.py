@@ -52,4 +52,4 @@ def test_the_parser_applies_the_guard():
 
     out = _parse_llm_disease_list(
         "epilepsy|These are contraindications, not indications.|H. pylori infection")
-    assert out == ["epilepsy", "H. pylori infection"]
+    assert [e.name for e in out] == ["epilepsy", "H. pylori infection"]

@@ -197,6 +197,25 @@ def _claim_and_limitation_text(
     return claim or (source_text or "").strip(), limitation
 
 
+def _locatable_anchor(
+    name: str, verbatim: str | None, claim_text: str, limitation_text: str
+) -> str:
+    """Which string to search the source for: the source's own wording, or the name.
+
+    Prefers ``verbatim`` — it is what the extractor copied out of the text, so it is
+    findable where a canonicalised name is not. Falls back to ``name`` when no verbatim was
+    recorded (a cached answer predating #64, or a model that ignored the format) or when
+    the recorded one cannot be found either, which is the hallucinated-quote case. Falling
+    back matters: an unfindable verbatim must never make a row *less* evaluable than the
+    name alone would have made it.
+    """
+    quote = (verbatim or "").strip()
+    if not quote:
+        return name
+    haystack = f"{claim_text} {limitation_text}".lower()
+    return quote if quote.lower() in haystack else name
+
+
 class ScreenResult(NamedTuple):
     """Outcome of a destructive screen, one bucket per verdict.
 
@@ -235,19 +254,28 @@ def _screen(
     cues: tuple[str, ...],
     check_limitations: bool,
     parts: list[str] | None = None,
+    verbatims: dict[str, str] | None = None,
 ) -> ScreenResult:
     """Shared body of :func:`screen_indications` and :func:`screen_contraindications`."""
     claim_text, limitation_text = _claim_and_limitation_text(source_text, source, parts)
+    verbatims = verbatims or {}
     kept: list[str] = []
     dropped: list[dict] = []
     unlocatable: list[str] = []
     limitation_only: list[dict] = []
 
     for name in disease_names:
+        # Anchor on the source's own wording when the extractor recorded it. The prompt
+        # asks for a canonicalised name, so the name itself is often absent from the text
+        # and polarity is then not evaluable at all (#64). The verbatim form is present by
+        # construction — but a model can hallucinate a quote as easily as a name, so fall
+        # back to the name whenever the quote cannot be found either.
+        anchor = _locatable_anchor(name, verbatims.get(name), claim_text, limitation_text)
+
         # Strict, full-phrase matching only — a destructive drop must never fire on a
         # head-word that belongs to a different disease.
         neg, total, reason = assertion_negated(
-            name, claim_text, head_fallback=False, cues=cues)
+            anchor, claim_text, head_fallback=False, cues=cues)
         if total and neg == total:
             dropped.append({"disease": name, "reason": reason or "negated",
                             "scope": "claim"})
@@ -270,9 +298,9 @@ def _screen(
         # evidence; this verdict does not meet that bar (#66). The merge reaches the same
         # conclusion and marks the claim `negated_inversion` -> EXCLUDED, which removes it
         # from the published subset while leaving it auditable and curator-overridable.
-        if check_limitations and limitation_text and entailment_score(name, claim_text) == 0.0:
+        if check_limitations and limitation_text and entailment_score(anchor, claim_text) == 0.0:
             lneg, ltotal, lreason = assertion_negated(
-                name, limitation_text, head_fallback=False, cues=cues)
+                anchor, limitation_text, head_fallback=False, cues=cues)
             if ltotal and lneg == ltotal:
                 limitation_only.append({"disease": name, "reason": lreason or "negated"})
                 kept.append(name)
@@ -284,7 +312,7 @@ def _screen(
 
 def screen_indications(
     disease_names: list[str], source_text: str, *, source: str = "DAILYMED",
-    parts: list[str] | None = None,
+    parts: list[str] | None = None, verbatims: dict[str, str] | None = None,
 ) -> ScreenResult:
     """Split extracted *indication* disease names into kept / dropped / unlocatable.
 
@@ -308,12 +336,13 @@ def screen_indications(
     a silent ingest drop.
     """
     return _screen(disease_names, source_text, source=source,
-                   cues=_NEGATION_CUES, check_limitations=True, parts=parts)
+                   cues=_NEGATION_CUES, check_limitations=True, parts=parts,
+                   verbatims=verbatims)
 
 
 def screen_contraindications(
     disease_names: list[str], source_text: str, *, source: str = "DAILYMED",
-    parts: list[str] | None = None,
+    parts: list[str] | None = None, verbatims: dict[str, str] | None = None,
 ) -> ScreenResult:
     """The contraindication-side screen. Same shape, opposite polarity.
 
@@ -330,7 +359,8 @@ def screen_contraindications(
     sections, so the limitation pass is off here.
     """
     return _screen(disease_names, source_text, source=source,
-                   cues=_CONTRA_NEGATION_CUES, check_limitations=False, parts=parts)
+                   cues=_CONTRA_NEGATION_CUES, check_limitations=False, parts=parts,
+                   verbatims=verbatims)
 
 
 def _source_text_for(record: dict, evidence: dict) -> str:

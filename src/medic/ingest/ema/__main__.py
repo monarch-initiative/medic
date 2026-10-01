@@ -240,7 +240,9 @@ def _build_ema_indication_records(grounded_drugs: list[dict], grounding_backend:
                 diseases = []
             if diseases:
                 drugs_with_indications += 1
-            for disease_name in diseases:
+            for _extracted in diseases:
+                disease_name, disease_verbatim = (
+                    _extracted.name, _extracted.verbatim)
                 record: dict = {}
                 try:
                     disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -261,6 +263,7 @@ def _build_ema_indication_records(grounded_drugs: list[dict], grounding_backend:
                     "snippet": ind_text[:SNIPPET_CHAR_CAP],
                     "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                     "original_disease_label": disease_name,
+                    "original_disease_verbatim": disease_verbatim,
                 }
                 ema_product_number = (drug_rec.get("ema_product_number", "") or "").strip()
                 if ema_product_number:
@@ -410,7 +413,7 @@ def _extract_contraindications(
             continue
 
         # The LLM helper is tuned for indications; filter refusal prose etc.
-        diseases = [d for d in raw_diseases if _looks_like_disease_name(d)]
+        diseases = [d for d in raw_diseases if _looks_like_disease_name(d.name)]
         if len(diseases) < len(raw_diseases):
             logger.info(
                 "Filtered %d non-disease strings from §4.3 extraction (slug=%s)",
@@ -418,7 +421,8 @@ def _extract_contraindications(
             )
 
         pdf_url = _PRODUCT_INFO_URL_TEMPLATE.format(slug=slug)
-        for disease_name in diseases:
+        for _extracted in diseases:
+            disease_name, disease_verbatim = _extracted.name, _extracted.verbatim
             record: dict = {}
             try:
                 disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -444,6 +448,7 @@ def _extract_contraindications(
                 "snippet": contras_text[:SNIPPET_CHAR_CAP],
                 "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                 "original_disease_label": disease_name,
+                "original_disease_verbatim": disease_verbatim,
                 "reference": epar_url,
                 "source_document_url": pdf_url,
             }
