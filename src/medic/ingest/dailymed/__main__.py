@@ -26,7 +26,7 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-from medic.enrichment.cache import EnrichmentCache
+from medic.enrichment.cache import EnrichmentCache, flush_all
 from medic.ingest.common import (
     _clean_for_yaml,
     looks_like_disease_name,
@@ -314,9 +314,7 @@ def _checkpoint(cache) -> None:
     _writes_since_flush += 1
     if _writes_since_flush >= _FLUSH_EVERY:
         _writes_since_flush = 0
-        for c in (_disease_cache, _contra_disease_cache, _allergen_cache):
-            if c is not None:
-                c.flush()
+        flush_all()
         logger.info("cache checkpoint: flushed after %d new entries", _FLUSH_EVERY)
 
 
@@ -969,17 +967,14 @@ def main():
     _write_output(indication_records, contraindication_records)
 
     # Flush caches. `EnrichmentCache.put` only mutates the in-memory dict, so a cache that
-    # is never flushed is silently re-queried on every build. `_contra_disease_cache` was
-    # missing here: its 2,484 LLM calls ran on every run, and because the extraction is not
-    # deterministic the contraindication count moved between otherwise identical builds
-    # (2,399 -> 2,442 -> 2,445) while indications stayed pinned at 6,504. `just determinism`
-    # cannot see it — it re-runs the merge twice, never the extraction.
-    if _disease_cache is not None:
-        _disease_cache.flush()
-    if _contra_disease_cache is not None:
-        _contra_disease_cache.flush()
-    if _allergen_cache is not None:
-        _allergen_cache.flush()
+    # is never flushed is silently re-queried on every build. `_contra_disease_cache` used
+    # to be missing from a hand-written list here: its 2,484 LLM calls ran on every run, and
+    # because the extraction is not deterministic the contraindication count moved between
+    # otherwise identical builds (2,399 -> 2,442 -> 2,445) while indications stayed pinned
+    # at 6,504. `just determinism` could not see it — it re-runs the merge twice, never the
+    # extraction. `flush_all` flushes whatever caches exist, so the next cache added cannot
+    # repeat it (#57).
+    flush_all()
 
     # Fail loudly if the "cheap" path dropped extractions rather than shipping a
     # quietly under-populated build. Runs after the flushes so whatever work *was*
