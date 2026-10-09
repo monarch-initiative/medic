@@ -143,12 +143,17 @@ The most consequential fidelity class: recording the *right entities* in the *wr
 - **4.2 Negation missed.** "Not indicated for X", "should not be used in X", "except X" → X extracted
   as a positive indication. LLM free-text extraction is the weak point. → **Mitigation:** ✅ addressed by
   the same deterministic negation screen (4.1). Residual: synonym phrasing the cue-matcher can't locate
-  (kept, then caught by the entailment flag) — **1414 of 11696 shipped INDICATIONs (12%)** are in that
-  state, most of them because the extraction prompt asks the LLM to canonicalise a name the source
-  spells differently. Those are no longer silent: the screen reports them in
-  `ScreenResult.unlocatable`, and where no anchor reaches a verdict at all the merge stamps the claim
-  `polarity_unverified` (207 rows, 1.8%) so "not checked" stays distinguishable from "checked and
-  clean". Closing the gap needs the verbatim source substring from the extractor (#59 follow-up).
+  (kept, then caught by the entailment flag). This was **1,414 of 11,696 shipped INDICATIONs (12%)**,
+  most of them because the extraction prompt asks the LLM to canonicalise a name the source spells
+  differently. **#64 closed most of it**: the extractor now returns the source's own wording beside the
+  canonical name, and re-extracting all four sources takes the unlocatable rate to **347 of 13,342
+  (2.6%)** — dailymed 3.2%, ema 2.3%, pmda 1.8%, india 0.0%. 2,213 rows are locatable *only* via that
+  quote. The residue is rows where the model's quote is not findable either, which is the floor of the
+  approach rather than a bug: the screen falls back to the canonical name in exactly those cases.
+  What remains visible rather than fixed: the screen reports unlocatable names in
+  `ScreenResult.unlocatable`, and where no anchor reaches a verdict the merge stamps the claim
+  `polarity_unverified` (1,122 assertions in the rebuilt indication product) so "not checked" stays
+  distinguishable from "checked and clean".
 - **4.3 Warning / precaution / dosing condition read as indication.** Renal-impairment dosing, boxed
   warnings, drug-interaction conditions mention diseases that are not indications. DailyMed extracts
   only from the Indications section (good), but EMA/PMDA free-text notes are less clean.
