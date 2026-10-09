@@ -37,6 +37,7 @@ from medic.grounding.factory import get_grounding_service
 from medic.ingest.common import (
     download_file,
     load_source_urls,
+    looks_like_disease_name,
     reformat_date,
     standardize_columns,
     write_drug_source_yaml,
@@ -233,13 +234,15 @@ def _build_ema_indication_records(grounded_drugs: list[dict], grounding_backend:
                 continue
             entry_url = (entry.get("epar_url", "") or epar_url).strip()
             try:
-                diseases = extract_diseases_from_text(ind_text)
+                diseases = extract_diseases_from_text(ind_text, source="EMA")
             except Exception as e:
                 logger.warning("Disease extraction failed for %s: %s", drug_label, e)
                 diseases = []
             if diseases:
                 drugs_with_indications += 1
-            for disease_name in diseases:
+            for _extracted in diseases:
+                disease_name, disease_verbatim = (
+                    _extracted.name, _extracted.verbatim)
                 record: dict = {}
                 try:
                     disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -260,6 +263,7 @@ def _build_ema_indication_records(grounded_drugs: list[dict], grounding_backend:
                     "snippet": ind_text[:SNIPPET_CHAR_CAP],
                     "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                     "original_disease_label": disease_name,
+                    "original_disease_verbatim": disease_verbatim,
                 }
                 ema_product_number = (drug_rec.get("ema_product_number", "") or "").strip()
                 if ema_product_number:
@@ -325,36 +329,10 @@ def _epar_slug_from_url(epar_url: str) -> str:
     return slug.lower()
 
 
-def _looks_like_disease_name(name: str) -> bool:
-    """Defensive filter for LLM disease-extraction output.
-
-    ``extract_diseases_from_text`` (in ``dailymed/__main__.py``) is tuned for
-    indications and explicitly tells the LLM not to extract contraindicated
-    conditions. When applied to §4.3 text the LLM occasionally responds with a
-    refusal sentence ("These are contraindications, not indications…") that
-    bypasses the ``"none"`` check and gets treated as a disease name.
-
-    This filter rejects strings that are clearly not disease names: too long,
-    sentence-shaped, or starting with a refusal phrase. It is conservative:
-    real disease names like "primary biliary cholangitis" pass.
-    """
-    if not name:
-        return False
-    name = name.strip()
-    if len(name) > 120:
-        return False
-    if "." in name:
-        # Real disease names rarely contain periods.
-        return False
-    refusal_starts = (
-        "these are", "this is", "the text", "no diseases",
-        "i cannot", "i can't", "n/a", "not applicable",
-        "note:", "warning:",
-    )
-    lower = name.lower()
-    if any(lower.startswith(p) for p in refusal_starts):
-        return False
-    return True
+#: Backwards-compatible alias. The guard moved to ``medic.ingest.common`` and now runs
+#: inside ``_parse_llm_disease_list``, so every source gets it — not just the EU path
+#: (issue #59). Kept as a name here because the §4.3 path reads it directly.
+_looks_like_disease_name = looks_like_disease_name
 
 
 def _extract_contraindications(
@@ -425,7 +403,8 @@ def _extract_contraindications(
         drugs_with_section += 1
 
         try:
-            raw_diseases = extract_contraindicated_diseases_from_text(contras_text)
+            raw_diseases = extract_contraindicated_diseases_from_text(
+                contras_text, source="EMA")
         except Exception as exc:  # noqa: BLE001
             logger.warning(
                 "Disease extraction failed for slug=%s drug=%s: %s",
@@ -434,7 +413,7 @@ def _extract_contraindications(
             continue
 
         # The LLM helper is tuned for indications; filter refusal prose etc.
-        diseases = [d for d in raw_diseases if _looks_like_disease_name(d)]
+        diseases = [d for d in raw_diseases if _looks_like_disease_name(d.name)]
         if len(diseases) < len(raw_diseases):
             logger.info(
                 "Filtered %d non-disease strings from §4.3 extraction (slug=%s)",
@@ -442,7 +421,8 @@ def _extract_contraindications(
             )
 
         pdf_url = _PRODUCT_INFO_URL_TEMPLATE.format(slug=slug)
-        for disease_name in diseases:
+        for _extracted in diseases:
+            disease_name, disease_verbatim = _extracted.name, _extracted.verbatim
             record: dict = {}
             try:
                 disease_id = resolve_disease_onto_record(record, disease_name, service)
@@ -468,6 +448,7 @@ def _extract_contraindications(
                 "snippet": contras_text[:SNIPPET_CHAR_CAP],
                 "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                 "original_disease_label": disease_name,
+                "original_disease_verbatim": disease_verbatim,
                 "reference": epar_url,
                 "source_document_url": pdf_url,
             }

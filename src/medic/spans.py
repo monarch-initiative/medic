@@ -89,13 +89,61 @@ def split_dailymed_section(text: str, *, document: str, section_code: str) -> li
 
 
 def spans_for_source(
-    source: str, text: str, *, document: str, section_code: str
+    source: str, text: str, *, document: str, section_code: str,
+    parts: list[str] | None = None,
 ) -> list[dict]:
-    """Typed spans for one source record. Empty text yields no spans, never an empty span."""
+    """Typed spans for one source record. Empty text yields no spans, never an empty span.
+
+    ``parts`` — the source's own structural chunks, when the ingester kept them. For
+    DailyMed these are the section's `<title>`/`<text>` elements
+    (``_section_chunks``). Each is split independently, so a ``Limitations of Use``
+    marker can only ever govern text inside the element that contains it.
+
+    Splitting the concatenation instead put the Highlights summary, which restates the
+    indication, inside a LIMITATION_STATEMENT span on 203 of the 306 labels carrying the
+    marker; per-element splitting reduces that to 9 (#65). ``parts`` is optional because
+    records mined before it existed only have the flat string, and a degraded split is
+    better than no spans.
+    """
     src = (source or "").upper()
     body = (text or "").strip()
     if not body:
         return []
-    if src == "DAILYMED":
+    if src != "DAILYMED":
+        return [_span(_SOURCE_ROLE.get(src, "UNKNOWN"), body, document, section_code)]
+    if not parts:
         return split_dailymed_section(body, document=document, section_code=section_code)
-    return [_span(_SOURCE_ROLE.get(src, "UNKNOWN"), body, document, section_code)]
+    out: list[dict] = []
+    for part in parts:
+        out.extend(split_dailymed_section(
+            part, document=document, section_code=section_code))
+    return out
+
+
+#: Roles a claim may NOT be read from. A SECTION_HEADER / SUBSECTION_HEADER names the
+#: section rather than asserting anything in it; a LIMITATION_STATEMENT *restricts* a claim
+#: made elsewhere, so reading it as the claim — or letting its cues bear on the claim's
+#: negation check — is the §4.3 bug.
+NON_CLAIM_ROLES = ("SECTION_HEADER", "SUBSECTION_HEADER", "LIMITATION_STATEMENT")
+
+
+def readable_span_indices(spans: list[dict]) -> list[int]:
+    """Positions in ``spans`` a claim may be read from (see :data:`NON_CLAIM_ROLES`).
+
+    Shared by the *reporting* half (``on_label_merge._build_disease_provenance``, which
+    records these as the assertion's ``negation_scope``) and the *destructive* half
+    (``extraction_fidelity.screen_indications``, which drops records). They held different
+    definitions of scope, and only the reporting half was ever fixed — issue #59.
+    """
+    return [i for i, s in enumerate(spans or []) if s.get("role") not in NON_CLAIM_ROLES]
+
+
+def readable_spans(spans: list[dict]) -> list[dict]:
+    """The spans themselves, for callers that do not need their positions."""
+    return [(spans or [])[i] for i in readable_span_indices(spans)]
+
+
+def spans_with_role(spans: list[dict], role: str, *, exclude: int | None = None) -> list[dict]:
+    """Every span carrying ``role``, optionally skipping one index (the claim's own span)."""
+    return [s for i, s in enumerate(spans or [])
+            if s.get("role") == role and i != exclude]

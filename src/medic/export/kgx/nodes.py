@@ -15,7 +15,11 @@ from __future__ import annotations
 
 from medic import product_view as pv
 from medic.export.kgx import biolink as bl
-from medic.reliability import score_reliability
+from medic.reliability import (
+    StatementReviewStore,
+    default_review_store,
+    score_reliability,
+)
 
 
 def _clean(node: dict) -> dict:
@@ -39,7 +43,9 @@ def _step(mention: dict, category: str) -> dict:
 # ---------------------------------------------------------------------------
 # Drugs
 # ---------------------------------------------------------------------------
-def drug_node(drug: dict) -> dict | None:
+def drug_node(
+    drug: dict, review: StatementReviewStore | None = None
+) -> dict | None:
     """A drug node, or ``None`` when the drug never resolved to a canonical id.
 
     An unresolved drug has no identifier to be a node *of*. It is not silently lost — it
@@ -118,7 +124,9 @@ def drug_node(drug: dict) -> dict | None:
         "medic_mention_source": identity.get("mention_source") or "",
         "medic_grounding_quality": _step(identity, "GROUNDING").get("quality") or "",
         "medic_resolution_confidence": resolution.get("confidence"),
-        "medic_reliability": score_reliability(drug).value,
+        "medic_reliability": score_reliability(
+            drug, review_status=(review or default_review_store()).status(drug)
+        ).value,
     }
     return _clean(node)
 
@@ -170,6 +178,7 @@ def build_nodes(
     drugs: list[dict],
     diseases: list[dict],
     referenced: dict[str, str] | None = None,
+    review: StatementReviewStore | None = None,
 ) -> list[dict]:
     """All nodes, deduplicated and sorted by id.
 
@@ -177,10 +186,11 @@ def build_nodes(
     endpoints missing from the products become stubs and the graph stays referentially
     closed.
     """
+    review = review or default_review_store()
     by_id: dict[str, dict] = {}
 
     for drug in drugs:
-        node = drug_node(drug)
+        node = drug_node(drug, review)
         if node:
             by_id.setdefault(node["id"], node)
     for disease in diseases:

@@ -39,7 +39,12 @@ fairly trustworthy. Two orthogonal knobs:
      sources that don't publish one (Orange Book, GRLS, CDE) are never structurally capped.
 
 A gate returns ``None`` when it does not apply (a structured approval has no extraction
-gate); the provenance gate always applies, so nothing reaches HIGH by absence of signal.
+gate). **HIGH requires at least one of the quality gates above to have reached a verdict.**
+The provenance gate alone cannot earn it: it passes on any one of five weak signals and
+returned HIGH for 9,000 of 9,000 pairs when measured, so it discriminates nothing. This
+used to read "the provenance gate always applies, so nothing reaches HIGH by absence of
+signal", which was false in both halves — ``_worst`` over an all-abstaining list returned
+HIGH, and the backstop did not backstop (#60).
 
 **Two invariants (see the design spec §7):**
 
@@ -104,10 +109,38 @@ RELIABLE_TIERS = frozenset({ReliabilityTier.HIGH, ReliabilityTier.MEDIUM})
 
 
 def _worst(tiers: list[ReliabilityTier | None]) -> ReliabilityTier:
+    """The most conservative tier among those that reached a verdict.
+
+    The identity element is LOW, not HIGH. HIGH is what ``min`` wants arithmetically — the
+    top of the lattice, so it disappears under the fold — and it is the opposite of what a
+    conservative score wants: it means "no gate had anything to say, therefore excellent"
+    (#60). Every in-tree caller guards against the empty case already, so this is a floor
+    rather than a behaviour change, but the floor is the point.
+    """
     applicable = [t for t in tiers if t is not None]
     if not applicable:
-        return ReliabilityTier.HIGH
+        return ReliabilityTier.LOW
     return min(applicable, key=lambda t: _TIER_ORDER[t])
+
+
+def _aggregate_pair(tiers: list[ReliabilityTier]) -> ReliabilityTier:
+    """Fold per-assertion tiers into the pair's tier: the strongest attestation wins.
+
+    The counterpart to :func:`_worst`, and deliberately its opposite. ``_worst`` is right
+    *within* one assertion — a claim is only as good as its weakest link, and each gate
+    there asks a different way the same claim could be wrong. Across assertions it inverts
+    the meaning: three regulators independently stating the same drug-disease relationship
+    is the strongest signal MeDIC has, and scoring the pair by whichever read worst turned
+    corroboration into a liability (#61). Measured over the products, 82.2% of
+    single-source pairs reached HIGH against 0% of four-source pairs.
+
+    **Adding an attestation must never lower a pair's tier.** That is why this is `max` and
+    not something cleverer: a "best, floored one tier above the worst" rule reads as more
+    cautious, but a new bad attestation drags the floor down and demotes the pair — the
+    exact property this issue exists to remove. A weak attestation is still visible per
+    edge, where ``export/kgx/edges.py`` scores each one on its own.
+    """
+    return max(tiers, key=lambda t: _TIER_ORDER[t]) if tiers else ReliabilityTier.LOW
 
 
 # ---------------------------------------------------------------------------
@@ -166,6 +199,22 @@ def _steps_of(record: dict, category: str) -> list[dict]:
     return out
 
 
+def _confidence_or_none(raw, basis) -> float | None:
+    """A step's confidence as a float, or ``None`` when nothing actually measured it.
+
+    ``ConfidenceBasis.DETERMINISTIC`` is the one case where an absent value legitimately
+    implies 1.0 — the schema defines it as "the step cannot be wrong" (an identity
+    normalization, a verbatim read of a structured field). Every other absence is an
+    unknown, and reading it as 1.0 is how a record with no measurement scored HIGH (#60).
+    """
+    if raw is None:
+        return 1.0 if (basis or "").upper() == "DETERMINISTIC" else None
+    try:
+        return float(raw)
+    except (TypeError, ValueError):
+        return None
+
+
 def _grounding_tier_from_step(step: dict) -> ReliabilityTier | None:
     """Reliability tier from a GroundingStep (the transformation-provenance model)."""
     quality = (step.get("quality") or "").lower()
@@ -178,11 +227,12 @@ def _grounding_tier_from_step(step: dict) -> ReliabilityTier | None:
         return ReliabilityTier.MEDIUM
     if quality in _EXACT_QUALITIES:
         return ReliabilityTier.HIGH
-    conf = step.get("confidence")
-    try:
-        conf = float(conf) if conf is not None else 1.0
-    except (TypeError, ValueError):
-        conf = 1.0
+    conf = _confidence_or_none(step.get("confidence"), step.get("confidence_basis"))
+    if conf is None:
+        # Inexact quality and nothing measured it. Defaulting to 1.0 made "we never scored
+        # this" indistinguishable from "we scored this perfectly" (#60). We do know the
+        # match was inexact, so MEDIUM, not HIGH and not LOW.
+        return ReliabilityTier.MEDIUM
     if conf >= 0.9:
         return ReliabilityTier.HIGH
     if conf >= 0.7:
@@ -227,11 +277,10 @@ def _grounding_tier(grounding: dict | None) -> ReliabilityTier | None:
         return ReliabilityTier.HIGH
     # Inexact (surgery / salt / formulation / transliteration / fuzzy): let the rule
     # weight decide — fuzzy edit-1 (~0.6) is LOW, salt/formulation (~0.8-0.9) is MEDIUM.
-    conf = grounding.get("confidence")
-    try:
-        conf = float(conf) if conf is not None else 1.0
-    except (TypeError, ValueError):
-        conf = 1.0
+    conf = _confidence_or_none(
+        grounding.get("confidence"), grounding.get("confidence_basis"))
+    if conf is None:
+        return ReliabilityTier.MEDIUM
     if conf >= 0.9:
         return ReliabilityTier.HIGH
     if conf >= 0.7:
@@ -467,16 +516,44 @@ def score_reliability(
     if verdict == "confirm":
         return ReliabilityTier.HIGH
     st = statement_type or classify_statement(record)
-    gates = [
+
+    # A pair carries one assertion per attesting source. Score each in isolation and take
+    # the strongest, so corroboration moves the tier the same direction as
+    # `confidence.corroboration()` rather than against it (#61). Within one assertion the
+    # gates still fold with `_worst`.
+    assertions = pv.assoc_assertions(record)
+    if len(assertions) > 1:
+        scalars = {k: v for k, v in record.items() if k != "assertions"}
+        return _aggregate_pair([
+            _score_one({**scalars, "assertions": [a]}, st) for a in assertions
+        ])
+    return _score_one(record, st)
+
+
+def _score_one(record: dict, st: StatementType) -> ReliabilityTier:
+    """The automated gates for a single attestation (or a record with no assertions)."""
+    # The gates that speak to whether the record is *right*: was the entity grounded, was
+    # it recognised in the source, does the source assert this relation, did the name
+    # survive translation. Each returns None when it has nothing to say.
+    quality_gates = [
         _grounding_gate(record),
         _recognition_gate(record),
         _assertion_gate(record, st),
         _translation_gate(record),
-        _provenance_gate(record),
     ]
     if st == StatementType.DRUG_APPROVAL:
-        gates.append(_approval_gate(record))
-    return _worst(gates)
+        quality_gates.append(_approval_gate(record))
+    provenance = _provenance_gate(record)
+
+    tier = _worst([*quality_gates, provenance])
+    if tier is ReliabilityTier.HIGH and all(g is None for g in quality_gates):
+        # Only the provenance gate spoke, and it passes on any one of five weak signals —
+        # a snippet, a URL, a reference, an application id, a source drug id. It was never
+        # able to be the backstop this docstring claimed it was: a record carrying one
+        # evidence field and nothing else cleared it and reached HIGH (#60). Absence of
+        # signal is not evidence of quality, so cap it.
+        return ReliabilityTier.LOW
+    return tier
 
 
 def is_reliable(record: dict, *, core_only: bool = True, review_status: str = "") -> bool:
@@ -524,6 +601,24 @@ class StatementReviewStore:
 
     def status(self, record: dict) -> str:
         return self._rows.get(statement_key(record), "")
+
+
+_DEFAULT_REVIEW_STORE: StatementReviewStore | None = None
+
+
+def default_review_store() -> StatementReviewStore:
+    """The process-wide review store, loaded once from :data:`REVIEW_STORE_PATH`.
+
+    Exists so a caller that forgets to thread a store still gets the curator's verdicts
+    rather than silently discarding them. That omission is what let a ``REJECTED``
+    statement ship as ``medic_reliability: HIGH`` from the KGX export (#62): every other
+    caller passed a status, the export did not, and nothing in the type signature made the
+    difference visible.
+    """
+    global _DEFAULT_REVIEW_STORE
+    if _DEFAULT_REVIEW_STORE is None:
+        _DEFAULT_REVIEW_STORE = StatementReviewStore().load()
+    return _DEFAULT_REVIEW_STORE
 
 
 # ---------------------------------------------------------------------------

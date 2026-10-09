@@ -115,13 +115,16 @@ def test_parse_prose_refusal_is_empty():
 
 
 def test_parse_normal_pipe_list():
+    """A bare list with no `::` still parses — cached answers predate the verbatim
+    contract (#64) and a model sometimes ignores the format."""
     out = _parse_llm_disease_list("type 2 diabetes mellitus|hypertension")
-    assert out == ["type 2 diabetes mellitus", "hypertension"]
+    assert [e.name for e in out] == ["type 2 diabetes mellitus", "hypertension"]
+    assert [e.verbatim for e in out] == ["", ""]
 
 
 def test_parse_strips_whitespace_and_inner_none():
     out = _parse_llm_disease_list("  asthma | None | COPD  ")
-    assert out == ["asthma", "COPD"]
+    assert [e.name for e in out] == ["asthma", "COPD"]
 
 
 def test_parse_drops_overlong_items():
@@ -129,7 +132,7 @@ def test_parse_drops_overlong_items():
     start with 'None'. Real disease names don't run 200+ chars."""
     long_prose = "x" * 250
     out = _parse_llm_disease_list(f"asthma|{long_prose}|COPD")
-    assert out == ["asthma", "COPD"]
+    assert [e.name for e in out] == ["asthma", "COPD"]
 
 
 # ---------------------------------------------------------------------------

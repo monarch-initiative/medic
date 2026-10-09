@@ -498,6 +498,18 @@ Highest-value outstanding work:
   across substances differing only inside brackets), **#22** (snippet entailment is lexical, demoting
   206 correct synonym extractions to LOW), **#24** (clinical qualifiers are dropped, so distinct claims
   collapse at merge) and **#35** (register the w3id redirect before publishing the schema).
+  The verbatim-substring gap is **closed** (#64, landed in `7a07efd` / `6f808d8`). The extraction
+  prompts ask the LLM to *canonicalise* disease names, so the first recorded step's "verbatim source
+  string" used to be a value the document never wrote — 1,414 of 11,696 shipped INDICATIONs (12%)
+  carried a disease label not locatable in its own source text. The extractors now return
+  `Extracted(name, verbatim)`, the verbatim is stored on the evidence row as
+  `original_disease_verbatim`, and re-extracting all four sources under the new contract takes the
+  unlocatable rate to **347 of 13,342 (2.6%)**, with 2,213 rows locatable only via the quote. The LLM
+  caches moved to a `_v2` namespace; the v1 files are retained so a rollback costs no re-extraction.
+  **Still open on this axis:** the verbatim→canonical-name canonicalisation is not yet recorded as an
+  I-8 `ExtractionStep` in→out pair, so the transformation happens but is not replayable from the
+  record; and `char_start`/`char_end` are still computed by literal `find` in
+  `provenance_build._extraction_step`, which should now anchor on the verbatim.
 - **Translation stage follow-ups.** (a) The disease-side Babelon store
   (`mappings/disease_translation.babelon.tsv`) is not yet wired — no non-English disease sources exist
   today, but the plumbing (`DISEASE_TRANSLATION_STORE`, `entity_type="diseases"`) is ready. (b) The
