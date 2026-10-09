@@ -197,10 +197,16 @@ def _claim_and_limitation_text(
     return claim or (source_text or "").strip(), limitation
 
 
-def _locatable_anchor(
+def locatable_anchor(
     name: str, verbatim: str | None, claim_text: str, limitation_text: str
 ) -> str:
     """Which string to search the source for: the source's own wording, or the name.
+
+    Public because both halves of the polarity check must agree on it. The ingest screen
+    and ``on_label_merge._polarity_flags`` searching for different strings is the same
+    class of drift #59 fixed for span scope, and it has the same consequence: #66 keeps a
+    limitation-only row on the understanding that the merge will reach the same verdict
+    and flag it, which only holds if the merge is looking for the same thing.
 
     Prefers ``verbatim`` — it is what the extractor copied out of the text, so it is
     findable where a canonicalised name is not. Falls back to ``name`` when no verbatim was
@@ -270,7 +276,7 @@ def _screen(
         # and polarity is then not evaluable at all (#64). The verbatim form is present by
         # construction — but a model can hallucinate a quote as easily as a name, so fall
         # back to the name whenever the quote cannot be found either.
-        anchor = _locatable_anchor(name, verbatims.get(name), claim_text, limitation_text)
+        anchor = locatable_anchor(name, verbatims.get(name), claim_text, limitation_text)
 
         # Strict, full-phrase matching only — a destructive drop must never fire on a
         # head-word that belongs to a different disease.
