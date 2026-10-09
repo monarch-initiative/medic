@@ -15,7 +15,11 @@ from medic.grounding_store_view import GroundingStoreView
 from medic.mention import mint_mention_id
 from medic.confidence import corroboration
 from medic.spans import is_truncated, readable_span_indices, spans_for_source, spans_with_role
-from medic.validation.extraction_fidelity import assertion_negated, entailment_score
+from medic.validation.extraction_fidelity import (
+    assertion_negated,
+    entailment_score,
+    locatable_anchor,
+)
 from medic.provenance_build import (
     build_assertion,
     build_confidence_breakdown,
@@ -1038,6 +1042,7 @@ def _warrant_for(
 
 def _polarity_flags(
     raw: str, check_text: str, spans: list[dict], span_index: int | None,
+    verbatim: str = "",
 ) -> tuple[bool, list[str]]:
     """Is this INDICATION inverted, and what claim-level flags does it earn?
 
@@ -1073,23 +1078,33 @@ def _polarity_flags(
     reliability tier, since the entailment score already grades how well the source
     supports the claim.
     """
-    strict_neg, strict_total, _ = assertion_negated(raw, check_text, head_fallback=False)
+    limitation = " ".join(
+        s["text"] for s in spans_with_role(
+            spans, "LIMITATION_STATEMENT", exclude=span_index)
+    )
+    # Search for whatever the ingest screen searched for. `original_disease_verbatim` is
+    # the source's own wording and is present by construction; the canonical name often is
+    # not — 1,108 of 6,772 rebuilt DailyMed rows are locatable only via the verbatim. While
+    # this function anchored on the name alone, the two halves of the polarity check were
+    # looking for different strings, which is the drift #59 fixed for span scope. It also
+    # silently voided #66's safety net: that change stopped dropping limitation-only rows
+    # at ingest *because* this function would flag them, which only holds when both halves
+    # can see the same disease.
+    anchor = locatable_anchor(raw, verbatim, check_text, limitation)
+
+    strict_neg, strict_total, _ = assertion_negated(anchor, check_text, head_fallback=False)
     if strict_total and strict_neg == strict_total:
         return True, []
 
     flags: list[str] = []
-    lenient_neg, lenient_total, _ = assertion_negated(raw, check_text, head_fallback=True)
+    lenient_neg, lenient_total, _ = assertion_negated(anchor, check_text, head_fallback=True)
     if lenient_total and lenient_neg == lenient_total:
         flags.append("over_extraction")
 
     # Only meaningful when the claim's own span gives the disease no positive support.
-    if entailment_score(raw, check_text) == 0.0:
-        limitation = " ".join(
-            s["text"] for s in spans_with_role(
-                spans, "LIMITATION_STATEMENT", exclude=span_index)
-        )
+    if entailment_score(anchor, check_text) == 0.0:
         if limitation:
-            neg, total, _ = assertion_negated(raw, limitation, head_fallback=False)
+            neg, total, _ = assertion_negated(anchor, limitation, head_fallback=False)
             if total and neg == total:
                 return True, flags
 
@@ -1212,6 +1227,8 @@ def _build_disease_provenance(
     evidence = assoc.get("evidence") or []
     ev0 = evidence[0] if evidence and isinstance(evidence[0], dict) else {}
     raw = (ev0.get("original_disease_label") or disease_label or "").strip()
+    # The source's own wording for this disease, when the ingester recorded it (#64).
+    verbatim = (ev0.get("original_disease_verbatim") or "").strip()
     if not raw:
         return None, None
     rel = (assoc.get("relationship_type") or "").upper()
@@ -1251,9 +1268,14 @@ def _build_disease_provenance(
     claim_flags: list[str] = []
     check_text = spans[span_index]["text"] if span_index is not None else (snippet or raw)
     if check_text:
-        support = entailment_score(raw, check_text)
+        # Scored against the string the source actually contains, so a label that writes
+        # "MI" where the LLM returned "myocardial infarction" is not recorded as having
+        # zero support for its own indication.
+        support = entailment_score(
+            locatable_anchor(raw, verbatim, check_text, ""), check_text)
         if rel == "INDICATION":
-            negated, claim_flags = _polarity_flags(raw, check_text, spans, span_index)
+            negated, claim_flags = _polarity_flags(
+                raw, check_text, spans, span_index, verbatim)
     warrant = _warrant_for(warrants or {}, record.get("source") or "", section_code, rel)
     assertion = build_assertion(
         supporting_quote=snippet or raw,
@@ -1284,6 +1306,9 @@ def _build_disease_provenance(
         "method": "LLM",
         "confidence": support,
         "span_index": span_index,
+        # The source's own wording, so char_start/char_end can locate the text the
+        # extraction read rather than the canonical name it produced (#64).
+        "verbatim": verbatim,
         "flags": ["truncated_snippet"] if truncated else [],
     }
     grounding = record.get("disease_grounding") or record.get("grounding")

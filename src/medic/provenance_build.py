@@ -271,10 +271,16 @@ def _extraction_step(
     if span is not None:
         step["span_index"] = span_index
         step["span_role"] = span["role"]
-        start = span["text"].find(step["output_value"])
+        # Offsets delimit the text the extraction *read*, which is the source's own wording
+        # when the extractor recorded it (#64) — not the canonical name it was normalised
+        # to. Searching for the canonical name meant that every canonicalised extraction
+        # found nothing and got no offsets, which is precisely the population #64 fixed.
+        # `output_value` stays the canonical name; only the locate changes.
+        located = (extraction.get("verbatim") or "").strip() or step["output_value"]
+        start = span["text"].find(located)
         if start >= 0:
             step["char_start"] = start
-            step["char_end"] = start + len(step["output_value"])
+            step["char_end"] = start + len(located)
     _stamp_co_mentions(step, extraction, span)
     # Reading a structured field verbatim cannot be wrong; an LLM extraction without a
     # self-reported score falls back to the EXTRACTION.LLM prior.
