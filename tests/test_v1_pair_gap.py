@@ -114,7 +114,99 @@ def test_the_same_drug_id_is_the_same_drug_whatever_the_label():
 
 
 def test_the_related_classes_are_the_ones_excluded_from_loss():
-    assert set(RELATED) == {"ancestor", "descendant", "wording"}
+    assert set(RELATED) == {"equivalent", "moiety", "ancestor", "descendant", "wording"}
+
+
+# ---------------------------------------------------------------------------
+# v1 named a product, we name its moieties
+# ---------------------------------------------------------------------------
+# 451 of v1's drugs are combination products ('Orkambi', 'dapagliflozin / saxagliptin Oral
+# Product') that the pipeline resolves to active moieties instead. A pair on one of those
+# matches no drug of ours by name, so it lands in `drug_absent` even when we assert the same
+# disease for every ingredient.
+
+
+def test_a_pair_on_a_product_we_hold_as_moieties_is_not_drug_absent():
+    counts, _ = classify(
+        _v1("MONDO:CF", "cystic fibrosis", drug="Orkambi", drug_id="RXCUI:9"),
+        _now("MONDO:CF", "cystic fibrosis", drug="ivacaftor", drug_id="CHEBI:2"), PARENTS,
+        moieties={norm("Orkambi"): {norm("ivacaftor"), norm("lumacaftor")}})
+    assert counts["moiety"] == 1, dict(counts)
+
+
+def test_a_product_whose_moiety_has_a_different_disease_is_still_drug_absent():
+    """The guard: the moiety must carry *this* disease, not merely exist."""
+    counts, _ = classify(
+        _v1("MONDO:CF", "cystic fibrosis", drug="Orkambi", drug_id="RXCUI:9"),
+        _now("MONDO:ASTHMA", "asthma", drug="ivacaftor", drug_id="CHEBI:2"), PARENTS,
+        moieties={norm("Orkambi"): {norm("ivacaftor")}})
+    assert counts["drug_absent"] == 1, dict(counts)
+
+
+def test_the_moiety_class_does_not_stack_with_the_hierarchy():
+    """A product standing for its ingredient AND a disease standing for its parent is two
+    approximations at once; the bucket would stop being evidence of anything."""
+    counts, _ = classify(
+        _v1("MONDO:RECURRENT_UTI", "recurrent UTI", drug="SomeProduct",
+            drug_id="RXCUI:9"),
+        _now("MONDO:UTI", "UTI", drug="ingredientone", drug_id="CHEBI:2"), PARENTS,
+        moieties={norm("SomeProduct"): {"ingredientone"}})
+    assert counts["drug_absent"] == 1, dict(counts)
+
+
+def test_without_a_moiety_map_the_class_is_not_counted():
+    counts, _ = classify(
+        _v1("MONDO:CF", "cystic fibrosis", drug="Orkambi", drug_id="RXCUI:9"),
+        _now("MONDO:CF", "cystic fibrosis", drug="ivacaftor", drug_id="CHEBI:2"), PARENTS)
+    assert counts.get("moiety", 0) == 0
+    assert counts["drug_absent"] == 1, dict(counts)
+
+
+# ---------------------------------------------------------------------------
+# Same condition, different vocabulary
+# ---------------------------------------------------------------------------
+# v1's indication list is MONDO 8,720 / UMLS 1,310 / HP 812 / EFO 113 / NCIT 101; our edge
+# objects are MONDO 54,667 / UMLS 25,110 / HP 15,393. So the join is cross-vocabulary by
+# construction, and Mondo alone carries 32,514 UMLS and 574 HP cross-references to resolve
+# it with.
+
+
+def _terms(**over):
+    from scripts.term_index import TermIndex
+
+    index = TermIndex(strings={}, xrefs={}, parents={})
+    for key, value in over.items():
+        getattr(index, key).update(value)
+    return index
+
+
+def test_a_pair_we_hold_under_an_xrefed_vocabulary_is_not_a_loss():
+    counts, _ = classify(_v1("MONDO:UTI", "UTI"), _now("UMLS:C1", "urinary infection"),
+                         PARENTS, _terms(xrefs={"MONDO:UTI": {"UMLS:C1"}}))
+    assert counts["equivalent"] == 1, dict(counts)
+
+
+def test_an_exact_synonym_is_enough_without_an_xref():
+    counts, _ = classify(
+        _v1("MONDO:UTI", "UTI"), _now("HP:1", "something else"), PARENTS,
+        _terms(strings={"MONDO:UTI": {"urinary tract infection"},
+                        "HP:1": {"urinary tract infection"}}))
+    assert counts["equivalent"] == 1, dict(counts)
+
+
+def test_an_unrelated_disease_for_the_same_drug_is_still_a_loss():
+    """The guard against the class swallowing the gap — asserting *something* for the drug
+    must not count as asserting *this*."""
+    counts, _ = classify(_v1("MONDO:UTI", "UTI"), _now("MONDO:ASTHMA", "asthma"),
+                         PARENTS, _terms())
+    assert counts["absent"] == 1, dict(counts)
+
+
+def test_without_a_term_index_the_class_is_simply_not_counted():
+    counts, _ = classify(_v1("MONDO:UTI", "UTI"), _now("UMLS:C1", "urinary infection"),
+                         PARENTS)
+    assert counts.get("equivalent", 0) == 0
+    assert counts["absent"] == 1, dict(counts)
 
 
 def test_norm_ignores_case_and_punctuation():

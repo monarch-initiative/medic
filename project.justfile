@@ -634,7 +634,7 @@ v1-drug-gap:
 # Reads v1's lists from `main` and the hierarchy from cache/ontologies/mondo.json.
 [group('QC')]
 v1-pair-gap ref="main":
-  uv run python scripts/v1_pair_gap.py --ref {{ref}}
+  uv run python -m scripts.v1_pair_gap --ref {{ref}}
 
 # Score the build's combination-label claims against the curated gold standard
 # (curation/combinations/: 1,133 claims, 103 SPLs, 102 ingredient sets, hand-curated in
@@ -643,7 +643,7 @@ v1-pair-gap ref="main":
 # opposite directions. This is the regression set #88/#89/#97 shipped without.
 [group('QC')]
 gold-combination-audit:
-  uv run python scripts/gold_combination_audit.py
+  uv run python -m scripts.gold_combination_audit
 
 # Move SPL labels out of the mined corpus that cannot contribute (no indications and no
 # contraindications section) or can only contribute wrongly (animal labels — an indication

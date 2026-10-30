@@ -51,7 +51,6 @@ from __future__ import annotations
 
 import argparse
 import collections
-import dataclasses
 import json
 import re
 import sys
@@ -59,12 +58,9 @@ from pathlib import Path
 
 import yaml
 
-GOLD_DIR = Path("curation/combinations")
-ONTOLOGY_DIR = Path("cache/ontologies")
+from scripts.term_index import ONTOLOGY_DIR, TermIndex, load_terms
 
-#: How far up the hierarchy an "ancestor" may sit and still mean the two sides agreed about
-#: the same condition. Mondo is deep; the bound is the one `v1_pair_gap` settled on.
-MAX_DEPTH = 6
+GOLD_DIR = Path("curation/combinations")
 
 #: A DailyMed setid as it appears in evidence references and document URLs.
 _SETID_RE = re.compile(
@@ -77,97 +73,6 @@ RELATION_MAP = {
     "PREVENTATIVE_FOR_CONDITION": "INDICATION",
     "CONTRAINDICATED_IN": "CONTRAINDICATION",
 }
-
-
-def _norm(s: object) -> str:
-    return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
-
-
-@dataclasses.dataclass(frozen=True)
-class TermIndex:
-    """What the scorer needs to tell "a different id" from "a different condition".
-
-    Deliberately three plain dicts rather than an ontology object: the scorer stays pure and
-    a test can state the one relationship it is about.
-    """
-
-    #: curie -> normalised primary label and `hasExactSynonym` values. Exact synonyms only;
-    #: broad and related ones make unrelated terms collide, which is the failure the
-    #: grounding cascade's own predicate rules exist to avoid.
-    strings: dict[str, set[str]]
-    #: curie -> curies it is cross-referenced with, recorded in both directions.
-    xrefs: dict[str, set[str]]
-    #: child curie -> direct parent curies.
-    parents: dict[str, set[str]]
-
-    def same_condition(self, a: str, b: str) -> bool:
-        if a == b:
-            return True
-        if b in self.xrefs.get(a, ()) or a in self.xrefs.get(b, ()):
-            return True
-        sa, sb = self.strings.get(a), self.strings.get(b)
-        return bool(sa and sb and sa & sb)
-
-    def ancestors(self, curie: str, depth: int = MAX_DEPTH) -> set[str]:
-        seen: set[str] = set()
-        frontier = {curie}
-        for _ in range(depth):
-            nxt: set[str] = set()
-            for node in frontier:
-                for parent in self.parents.get(node, ()):
-                    if parent not in seen:
-                        seen.add(parent)
-                        nxt.add(parent)
-            frontier = nxt
-            if not frontier:
-                break
-        return seen
-
-
-def load_terms(ontology_dir: Path = ONTOLOGY_DIR) -> TermIndex | None:
-    """Build a :class:`TermIndex` from the cached obographs releases, or ``None``.
-
-    ``None`` rather than an exit: the ontology cache is ~130MB and untracked, and this
-    script is a gate. Without it the strict join is still a real number — it is just the
-    pessimistic one, and `main` says so rather than quietly reporting it as the whole story.
-    """
-    strings: dict[str, set[str]] = collections.defaultdict(set)
-    xrefs: dict[str, set[str]] = collections.defaultdict(set)
-    parents: dict[str, set[str]] = collections.defaultdict(set)
-    found = False
-    for prefix, filename in (("MONDO", "mondo.json"), ("HP", "hp.json")):
-        path = ontology_dir / filename
-        if not path.exists():
-            continue
-        found = True
-        graph = json.loads(path.read_text())["graphs"][0]
-        token = f"{prefix}_"
-        for node in graph.get("nodes", ()):
-            raw = str(node.get("id", ""))
-            if token not in raw:
-                continue
-            curie = f"{prefix}:{raw.rsplit(token, 1)[1]}"
-            meta = node.get("meta") or {}
-            if node.get("lbl"):
-                strings[curie].add(_norm(node["lbl"]))
-            for syn in meta.get("synonyms") or ():
-                if syn.get("pred") == "hasExactSynonym" and syn.get("val"):
-                    strings[curie].add(_norm(syn["val"]))
-            for xref in meta.get("xrefs") or ():
-                val = str(xref.get("val") or "")
-                if val.startswith(("HP:", "MONDO:")):
-                    xrefs[curie].add(val)
-                    xrefs[val].add(curie)
-        for edge in graph.get("edges", ()):
-            if edge.get("pred") != "is_a":
-                continue
-            sub, obj = str(edge.get("sub", "")), str(edge.get("obj", ""))
-            if token in sub and token in obj:
-                parents[f"{prefix}:{sub.rsplit(token, 1)[1]}"].add(
-                    f"{prefix}:{obj.rsplit(token, 1)[1]}")
-    if not found:
-        return None
-    return TermIndex(strings=dict(strings), xrefs=dict(xrefs), parents=dict(parents))
 
 
 def _term_id(obj: dict) -> str:
