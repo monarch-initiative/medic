@@ -436,3 +436,99 @@ tell-tale of a heuristic measuring nothing: the final record is long because ver
 are long. Discarded rather than reported.
 
 Recorded as `issues/issue_extraction_recall_within_enumerated_sections.md`.
+
+---
+
+## 2026-10-30 — Re-measuring the gap, and how much of it was never there
+
+Every gate re-run against the Oct 22 build (`4a9a512`), whose products nothing since has
+touched — #109 and #110 changed only `src/medic/export/kgx/`. So the build did not move;
+what moved is what we believe about it.
+
+### The comparisons were joining on ids, and both sides use several vocabularies
+
+v1's indication list is MONDO 8,720 / UMLS 1,310 / HP 812 / EFO 113 / NCIT 101. Our edge
+objects are MONDO 54,667 / UMLS 25,110 / HP 15,393. Every comparison in the repo joined
+those on the id string, so a pair named in two vocabularies read as a recall loss. Mondo
+alone carries 32,514 UMLS and 574 HP cross-references to settle it, and the exact synonyms
+settle more: MONDO:0000004 'adrenocortical insufficiency' lists `adrenal insufficiency`,
+which is HP:0000846's primary label. The evidence was on disk; nothing was reading it.
+
+`scripts/term_index.py` now holds that index and all three comparisons use it.
+
+| | before | after |
+|---|---:|---:|
+| gold standard claim recall | 48.2% | **62.3%** |
+| v1 indication retention (hierarchy-aware) | 47.9% | **52.1%** |
+| v1 contraindication retention | 30.2% | **38.4%** |
+| effective v1 drug coverage | 68.0% | **84.0%** (substance) |
+
+Strict retention is unchanged — 35.6% and 24.8% — because "can a consumer look this exact
+pair up" is a different question and only the id answers it.
+
+### v1 counted products, we count moieties
+
+451 of v1's drugs are combination products (`Orkambi`, `dapagliflozin / saxagliptin Oral
+Product`) and 170 more are reachable only through v1's own ingredient string
+(`hydroxystilbamidine` against the isethionate we carry). Resolving a product to its active
+moieties instead of minting a node for the pack is the architecture's decision, so counting
+those 621 as lost coverage charges us for a choice made on purpose. The same reclassification
+at the pair level moves 345 indication and 281 contraindication pairs out of "nothing
+asserted for that drug at all".
+
+### A claim of mine that was wrong
+
+The standing note above — *"Russia: 248 absent v1 drugs, and `russia.csv` grew 1,831 →
+5,885, so likely grounding rather than coverage"* — is false. Measured against the
+per-source grounding reports, **15** of those drugs are ones Russia ingested and failed to
+ground; across all sources it is 22 of 1,243. The 5,352 ungrounded source names are
+overwhelmingly herbals and preparations v1 never carried ("Belladonna leaves", "Water Pepper
+Herb", "Heart"), not v1's drugs. Russia's gap is coverage after all.
+
+### #105 is four defects, and the smallest one is the expensive one
+
+The issue is titled for a cause that turns out to be 15% of it. Tracing all 234 real misses
+across the pipeline boundaries — the section text, the raw cached answer, the grounding, the
+merge:
+
+| | | |
+|---|---:|---|
+| grounding refused the extracted string | 123 | 52.6% |
+| grounded, but to another term (51 of them a UMLS CUI) | 66 | 28.2% |
+| the model never named the condition | 35 | 15.0% |
+| no section in the intermediate | 10 | 4.3% |
+| lost between intermediate and products | **0** | — |
+
+Nothing is lost at merge, which clears the gates of suspicion. The grounder is fed the
+model's *canonical* name and never the verbatim it returned alongside it — verified 530
+matches to a canonical, 0 to a verbatim — so an over-qualified canonical simply fails:
+
+    "Breast cancer, hormone sensitive"   ->  refused; MONDO:0007254 is right there
+    "Migraine headaches with aura"       ->  refused
+    "Liver tumors, benign or malignant"  ->  refused
+
+`qualifier_variants` exists for this but its regex is `^`-anchored over a fixed vocabulary,
+so it strips 'moderate to severe X' and cannot see 'X, hormone sensitive'. A trailing-clause
+strip was tried and recovers only 6 of 122: most of the residue is clinical paraphrase
+("inherited or acquired hypercoagulopathies" for thrombophilia) that no string rule reaches.
+
+### What is actually left
+
+| axis | v1 | now | |
+|---|---:|---:|---|
+| error rate at HIGH | no usable tier | 5.2–5.6% | ahead |
+| indication pairs | 11,071 | 22,410 | ahead |
+| drug substance coverage | — | 84.0% | **436 drugs short** |
+| india rows | 3,118 | 2,759 | **−359** |
+| pmda rows | 1,200 | 1,174 | **−26** |
+| v1 indication retention | — | 52.1% | behind |
+| v1 contraindication retention | — | 38.4% | behind |
+
+**219 of the 436 absent drugs are in `data/raw/india/indian_drugs.csv`**, on disk and
+deliberately unread. That is half the remaining drug gap behind one decision, and the
+decision has a real reason: the file is derived, with no primary document reference, so
+edges from it would carry weaker provenance than I-8 asks for. Coverage against
+traceability — a call to make, not a bug to fix.
+
+The rest is genuine work: 2,718 indication and 782 contraindication pairs we assert nothing
+for on drugs we do carry, and 2,583 / 1,670 on drugs we do not.
