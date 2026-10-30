@@ -22,6 +22,23 @@ ingredients? Two numbers, because they fail for different reasons:
   crediting an attributed claim to all of them are both wrong, in opposite directions, so
   they are counted separately (`over_attributed` / `under_attributed`).
 
+**Why the match is not a plain id join (#105).** Matching on `(setid, relation, disease_id)`
+alone counts a claim as missing whenever the curator and the pipeline named the same
+condition differently. Measured over the 626 scored claims, that was 88 of 324 apparent
+misses — 72 of them cross-ontology, which the id join scores wrong twice over: once as a
+curated claim we failed to extract, and once as an unrelated extra of our own.
+
+    curated MONDO:0000004 'adrenocortical insufficiency'   ours HP:0000846 'Adrenal insufficiency'
+    curated MONDO:0005277 'migraine disorder'              ours HP:0002076 'Migraine'
+    curated HP:0005543    'Reduced protein C activity'     ours MONDO:0019145
+
+`v1_pair_gap.py` was fixed for exactly this and for the same reason; reporting the strict
+number alone overstated the regression there by 12 points and here by 14. So three buckets
+sit between a hit and a miss: the same condition under an equivalent id (an xref either
+way, or a shared `hasExactSynonym`), an object of ours that is more specific than the
+curator's, and one that is coarser. The strict count is still printed, and `found` keeps its
+exact-id meaning so it stays comparable across builds.
+
 **What it deliberately does not do.** It does not score the disease *grounding* when the
 curators recorded a `binding` other than `EXACT`: 'HIV-1 infection' bound to
 MONDO:0005109 'HIV infectious disease' as BROADER is a curator's considered compromise about
@@ -34,6 +51,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import dataclasses
 import json
 import re
 import sys
@@ -42,6 +60,11 @@ from pathlib import Path
 import yaml
 
 GOLD_DIR = Path("curation/combinations")
+ONTOLOGY_DIR = Path("cache/ontologies")
+
+#: How far up the hierarchy an "ancestor" may sit and still mean the two sides agreed about
+#: the same condition. Mondo is deep; the bound is the one `v1_pair_gap` settled on.
+MAX_DEPTH = 6
 
 #: A DailyMed setid as it appears in evidence references and document URLs.
 _SETID_RE = re.compile(
@@ -54,6 +77,97 @@ RELATION_MAP = {
     "PREVENTATIVE_FOR_CONDITION": "INDICATION",
     "CONTRAINDICATED_IN": "CONTRAINDICATION",
 }
+
+
+def _norm(s: object) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
+
+
+@dataclasses.dataclass(frozen=True)
+class TermIndex:
+    """What the scorer needs to tell "a different id" from "a different condition".
+
+    Deliberately three plain dicts rather than an ontology object: the scorer stays pure and
+    a test can state the one relationship it is about.
+    """
+
+    #: curie -> normalised primary label and `hasExactSynonym` values. Exact synonyms only;
+    #: broad and related ones make unrelated terms collide, which is the failure the
+    #: grounding cascade's own predicate rules exist to avoid.
+    strings: dict[str, set[str]]
+    #: curie -> curies it is cross-referenced with, recorded in both directions.
+    xrefs: dict[str, set[str]]
+    #: child curie -> direct parent curies.
+    parents: dict[str, set[str]]
+
+    def same_condition(self, a: str, b: str) -> bool:
+        if a == b:
+            return True
+        if b in self.xrefs.get(a, ()) or a in self.xrefs.get(b, ()):
+            return True
+        sa, sb = self.strings.get(a), self.strings.get(b)
+        return bool(sa and sb and sa & sb)
+
+    def ancestors(self, curie: str, depth: int = MAX_DEPTH) -> set[str]:
+        seen: set[str] = set()
+        frontier = {curie}
+        for _ in range(depth):
+            nxt: set[str] = set()
+            for node in frontier:
+                for parent in self.parents.get(node, ()):
+                    if parent not in seen:
+                        seen.add(parent)
+                        nxt.add(parent)
+            frontier = nxt
+            if not frontier:
+                break
+        return seen
+
+
+def load_terms(ontology_dir: Path = ONTOLOGY_DIR) -> TermIndex | None:
+    """Build a :class:`TermIndex` from the cached obographs releases, or ``None``.
+
+    ``None`` rather than an exit: the ontology cache is ~130MB and untracked, and this
+    script is a gate. Without it the strict join is still a real number — it is just the
+    pessimistic one, and `main` says so rather than quietly reporting it as the whole story.
+    """
+    strings: dict[str, set[str]] = collections.defaultdict(set)
+    xrefs: dict[str, set[str]] = collections.defaultdict(set)
+    parents: dict[str, set[str]] = collections.defaultdict(set)
+    found = False
+    for prefix, filename in (("MONDO", "mondo.json"), ("HP", "hp.json")):
+        path = ontology_dir / filename
+        if not path.exists():
+            continue
+        found = True
+        graph = json.loads(path.read_text())["graphs"][0]
+        token = f"{prefix}_"
+        for node in graph.get("nodes", ()):
+            raw = str(node.get("id", ""))
+            if token not in raw:
+                continue
+            curie = f"{prefix}:{raw.rsplit(token, 1)[1]}"
+            meta = node.get("meta") or {}
+            if node.get("lbl"):
+                strings[curie].add(_norm(node["lbl"]))
+            for syn in meta.get("synonyms") or ():
+                if syn.get("pred") == "hasExactSynonym" and syn.get("val"):
+                    strings[curie].add(_norm(syn["val"]))
+            for xref in meta.get("xrefs") or ():
+                val = str(xref.get("val") or "")
+                if val.startswith(("HP:", "MONDO:")):
+                    xrefs[curie].add(val)
+                    xrefs[val].add(curie)
+        for edge in graph.get("edges", ()):
+            if edge.get("pred") != "is_a":
+                continue
+            sub, obj = str(edge.get("sub", "")), str(edge.get("obj", ""))
+            if token in sub and token in obj:
+                parents[f"{prefix}:{sub.rsplit(token, 1)[1]}"].add(
+                    f"{prefix}:{obj.rsplit(token, 1)[1]}")
+    if not found:
+        return None
+    return TermIndex(strings=dict(strings), xrefs=dict(xrefs), parents=dict(parents))
 
 
 def _term_id(obj: dict) -> str:
@@ -125,9 +239,45 @@ def load_build(products: Path) -> dict[tuple[str, str, str], set[str]]:
     return out
 
 
-def score(gold: list[dict], build: dict[tuple[str, str, str], set[str]]) -> dict:
+def _near_miss(row: dict, curated: str, by_doc: dict[tuple[str, str], set[str]],
+               terms: TermIndex | None) -> tuple[str, str]:
+    """``(bucket, the id of ours that matched)``, or ``("", "")`` for a genuine miss.
+
+    Order matters. An equivalent id is not a specificity difference at all — it is the same
+    term twice — so it is tested before the hierarchy, or a cross-ontology pair that also
+    happens to share an ancestor would be filed as the weaker result.
+    """
+    if terms is None:
+        return "", ""
+    ours = by_doc.get((row["setid"], row["relation"]), set())
+    if not ours:
+        return "", ""
+
+    for other in sorted(ours):
+        if terms.same_condition(curated, other):
+            return "found_equivalent", other
+    # our object sits below the curator's: we are more specific than the ground truth
+    for other in sorted(ours):
+        if curated in terms.ancestors(other):
+            return "found_descendant", other
+    # our object sits above it: we grounded coarser than the curator
+    coarser = sorted(ours & terms.ancestors(curated))
+    if coarser:
+        return "found_coarser", coarser[0]
+    return "", ""
+
+
+def score(gold: list[dict], build: dict[tuple[str, str, str], set[str]],
+          terms: TermIndex | None = None) -> dict:
     counts: collections.Counter = collections.Counter()
     examples: dict[str, list] = collections.defaultdict(list)
+
+    # what we assert on each document, for the near-miss buckets. Derived here rather than
+    # returned by `load_build` so the strict triple index stays the thing tests inject.
+    by_doc: dict[tuple[str, str], set[str]] = collections.defaultdict(set)
+    for setid, relation, disease_id in build:
+        by_doc[(setid, relation)].add(disease_id)
+
     for row in gold:
         if not row["disease_id"]:
             counts["no_curated_term"] += 1
@@ -136,15 +286,23 @@ def score(gold: list[dict], build: dict[tuple[str, str, str], set[str]]) -> dict
             counts["inexact_binding"] += 1
             continue
         counts["scored"] += 1
-        key = (row["setid"], row["relation"], row["disease_id"])
+        curated = row["disease_id"]
+        key = (row["setid"], row["relation"], curated)
         ours = build.get(key, set())
+        bucket = "found"
         if not ours:
-            counts["missed"] += 1
-            if len(examples["missed"]) < 8:
-                examples["missed"].append(
-                    f"{row['file']}: {row['relation']} {row['disease_id']}")
-            continue
-        counts["found"] += 1
+            bucket, matched = _near_miss(row, curated, by_doc, terms)
+            if not bucket:
+                counts["missed"] += 1
+                if len(examples["missed"]) < 8:
+                    examples["missed"].append(
+                        f"{row['file']}: {row['relation']} {curated}")
+                continue
+            ours = build.get((row["setid"], row["relation"], matched), set())
+            if len(examples[bucket]) < 8:
+                examples[bucket].append(
+                    f"{row['file']}: curated {curated} -> ours {matched}")
+        counts[bucket] += 1
         expected = set(row["owners"]) if row["owners"] else set(row["ingredients"])
         if not expected:
             counts["attribution_unknown"] += 1
@@ -176,14 +334,19 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--products", default="products", type=Path)
     ap.add_argument("--gold", default=GOLD_DIR, type=Path)
+    ap.add_argument("--ontologies", default=ONTOLOGY_DIR, type=Path,
+                    help="cached obographs releases for the near-miss buckets")
+    ap.add_argument("--strict", action="store_true",
+                    help="id join only; do not read the ontologies")
     ap.add_argument("--json", action="store_true", help="machine-readable output")
     args = ap.parse_args()
 
     gold = load_gold(args.gold)
     if not gold:
         raise SystemExit(f"no curated claims under {args.gold}")
+    terms = None if args.strict else load_terms(args.ontologies)
     build = load_build(args.products)
-    result = score(gold, build)
+    result = score(gold, build, terms)
     c = result["counts"]
 
     if args.json:
@@ -199,11 +362,30 @@ def main() -> int:
     if not scored:
         print("nothing scored")
         return 0
+    near = ("found_equivalent", "found_descendant", "found_coarser")
+    matched = c.get("found", 0) + sum(c.get(k, 0) for k in near)
+
     print(f"scored: {scored:,}")
-    print(f"  found       {c.get('found', 0):6,}  ({100 * c.get('found', 0) / scored:4.1f}%)")
-    print(f"  missed      {c.get('missed', 0):6,}  ({100 * c.get('missed', 0) / scored:4.1f}%)")
-    found = c.get("found", 0)
+    print(f"  found       {c.get('found', 0):6,}  "
+          f"({100 * c.get('found', 0) / scored:4.1f}%)  exact id")
+    for key, label in (("found_equivalent", "same condition, equivalent id"),
+                       ("found_descendant", "ours is more specific"),
+                       ("found_coarser", "ours is coarser than the curator's")):
+        n = c.get(key, 0)
+        if n:
+            print(f"    {n:6,}  ({100 * n / scored:4.1f}%)  {label}")
+    print(f"  missed      {c.get('missed', 0):6,}  "
+          f"({100 * c.get('missed', 0) / scored:4.1f}%)")
+    print(f"\n  strict recall     {100 * c.get('found', 0) / scored:5.1f}%")
+    if terms is None:
+        print("  (no ontologies read, so this is the id join alone — the pessimistic "
+              "number.\n   `just download-grounding-ontologies` for the rest)")
+    else:
+        print(f"  hierarchy-aware   {100 * matched / scored:5.1f}%")
+
+    found = matched
     if found:
+        print()
         for key, label in (("attribution_ok", "attributed correctly"),
                            ("over_attributed", "credited to a moiety that does not own it"),
                            ("under_attributed", "product-level claim missing from a moiety"),
