@@ -673,6 +673,29 @@
   indications_text: Antibiotic- For the treatment as respiratory tract, G.I. Tract and genitourinary tract infections.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:58974|UMLS:C4082764
+  ema: false
+  evidence:
+  - approval_date: '19710101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: gastrointestinal tract infections
+    original_disease_verbatim: G.I. Tract infections
+    original_drug_label: Epicillin (6-aminopenicillanic acid) 250mg/500mg Capsule
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- For the treatment as respiratory tract, G.I. Tract and genitourinary tract infections.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C4082764
+  final_normalized_disease_label: Gastrointestinal infections
+  final_normalized_drug_id: CHEBI:58974
+  final_normalized_drug_label: epicillin
+  indications_text: Antibiotic- For the treatment as respiratory tract, G.I. Tract and genitourinary tract infections.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:58974|UMLS:C1279264
   ema: false
   evidence:
@@ -2152,6 +2175,31 @@
   indications_text: Corticosteroids- Indicated for conditions requiring glucocorticoid activity including collagen disease, allergic disease, hypersensitivity reactions.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:32162|MONDO:0005136
+  ema: false
+  evidence:
+  - approval_date: '19710101'
+    approval_status: APPROVED
+    co_administered_with:
+    - pyrimethamine
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: chloroquine-resistant malaria
+    original_disease_verbatim: malaria which are resistant to chloroquin
+    original_drug_label: Sulfametopyrazine
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: The drug sulphametopyrazine to be used only in manufacture of tablets containing this drug in combination with pyrimethamin for the treatment of cases of malaria which are resistant to chloroquin.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005136
+  final_normalized_disease_label: malaria
+  final_normalized_drug_id: CHEBI:32162
+  final_normalized_drug_label: sulfamethopyrazine
+  indications_text: The drug sulphametopyrazine to be used only in manufacture of tablets containing this drug in combination with pyrimethamin for the treatment of cases of malaria which are resistant to chloroquin.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:63622|HP:0001681
   ema: false
   evidence:
@@ -2292,6 +2340,29 @@
   fda: false
   final_normalized_disease_id: MONDO:0004989
   final_normalized_disease_label: breast carcinoma
+  final_normalized_drug_id: CHEBI:5864
+  final_normalized_drug_label: ifosfamide
+  indications_text: Anticancer- indicated in the treatment of ovarian, breast, testicular carcinoma, hyper nephrone, pancreatic carcinoma and malignant lymphoma.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:5864|MONDO:0005447
+  ema: false
+  evidence:
+  - approval_date: '19710101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: testicular carcinoma
+    original_disease_verbatim: testicular carcinoma
+    original_drug_label: Ifosfamide
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anticancer- indicated in the treatment of ovarian, breast, testicular carcinoma, hyper nephrone, pancreatic carcinoma and malignant lymphoma.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005447
+  final_normalized_disease_label: testicular cancer
   final_normalized_drug_id: CHEBI:5864
   final_normalized_drug_label: ifosfamide
   indications_text: Anticancer- indicated in the treatment of ovarian, breast, testicular carcinoma, hyper nephrone, pancreatic carcinoma and malignant lymphoma.
@@ -3367,6 +3438,29 @@
   indications_text: Anti-ulcer, indicated for treatment of benign gastric, duodenal, recurrent and stomal ulceration, reflex oesophagitis only.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:3699|MONDO:0001126
+  ema: false
+  evidence:
+  - approval_date: '19710101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: benign gastric ulcer
+    original_disease_verbatim: benign gastric
+    original_drug_label: Cimetidine 200mg Tablet/Capsule
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti-ulcer, indicated for treatment of benign gastric, duodenal, recurrent and stomal
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0001126
+  final_normalized_disease_label: gastric ulcer
+  final_normalized_drug_id: CHEBI:3699
+  final_normalized_drug_label: cimetidine
+  indications_text: Anti-ulcer, indicated for treatment of benign gastric, duodenal, recurrent and stomal
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:3699|MONDO:0005412
   ema: false
   evidence:
@@ -4070,6 +4164,31 @@
   indications_text: Non steroidal anti- inflammatory agent- Indicated in the treatment rheumatoid arthritis, Osteoarthritis, ankylosing spondylites, gout.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:9329|MONDO:0005136
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    co_administered_with:
+    - pyrimethamine
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: chloroquine-resistant malaria
+    original_disease_verbatim: malaria which are resistent to chloroquine
+    original_drug_label: Sulphadoxine
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: The drug sulphadoxine should be used only in the manufacture of tablets containing this drug in combination with pyrimethamine for the treatment of cases of malaria which are resistent to chloroquine.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005136
+  final_normalized_disease_label: malaria
+  final_normalized_drug_id: CHEBI:9329
+  final_normalized_drug_label: sulfadoxine
+  indications_text: The drug sulphadoxine should be used only in the manufacture of tablets containing this drug in combination with pyrimethamine for the treatment of cases of malaria which are resistent to chloroquine.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:71428|MONDO:0004952
   ema: false
   evidence:
@@ -4659,6 +4778,52 @@
   indications_text: Anti ulcer- Indicated in the treatment of duodenal ulcer, benign gastric ulcer, post operative ulcer, reflux oesophagitis, Zollinger Ellison syndrome.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:8776|MONDO:0001126
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: benign gastric ulcer
+    original_disease_verbatim: benign gastric ulcer
+    original_drug_label: Ranitidine Hcl 150mg Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti ulcer- Indicated in the treatment of duodenal ulcer, benign gastric ulcer, post operative ulcer, reflux oesophagitis, Zollinger Ellison syndrome.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0001126
+  final_normalized_disease_label: gastric ulcer
+  final_normalized_drug_id: CHEBI:8776
+  final_normalized_drug_label: ranitidine
+  indications_text: Anti ulcer- Indicated in the treatment of duodenal ulcer, benign gastric ulcer, post operative ulcer, reflux oesophagitis, Zollinger Ellison syndrome.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:8776|HP:0002020
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: reflux oesophagitis
+    original_disease_verbatim: reflux oesophagitis
+    original_drug_label: Ranitidine Hcl 150mg Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti ulcer- Indicated in the treatment of duodenal ulcer, benign gastric ulcer, post operative ulcer, reflux oesophagitis, Zollinger Ellison syndrome.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002020
+  final_normalized_disease_label: Gastroesophageal reflux
+  final_normalized_drug_id: CHEBI:8776
+  final_normalized_drug_label: ranitidine
+  indications_text: Anti ulcer- Indicated in the treatment of duodenal ulcer, benign gastric ulcer, post operative ulcer, reflux oesophagitis, Zollinger Ellison syndrome.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:8776|MONDO:0019610
   ema: false
   evidence:
@@ -5102,6 +5267,30 @@
   indications_text: Antibiotic- Indicated in the treatment of upper & lower respiratory tract infections, urinary tract infections, skin infections, gonorrhea, sinusitis, tonsilitis, acute & chronic bronchitis, otitis media, post- operative infections.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:2969|UMLS:C0038941
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: post-operative infections
+    original_disease_verbatim: post- operative infections
+    original_drug_label: Bacampicillin Hcl 400mg Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- Indicated in the treatment of upper & lower respiratory tract infections, urinary tract infections, skin infections, gonorrhea, sinusitis, tonsilitis, acute & chronic bronchitis, otitis media, post- operative infections.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: post-operative
+  fda: false
+  final_normalized_disease_id: UMLS:C0038941
+  final_normalized_disease_label: Surgical Wound Infection
+  final_normalized_drug_id: CHEBI:2969
+  final_normalized_drug_label: bacampicillin hydrochloride
+  indications_text: Antibiotic- Indicated in the treatment of upper & lower respiratory tract infections, urinary tract infections, skin infections, gonorrhea, sinusitis, tonsilitis, acute & chronic bronchitis, otitis media, post- operative infections.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:6078|UMLS:C1704319
   ema: false
   evidence:
@@ -5523,6 +5712,30 @@
   fda: false
   final_normalized_disease_id: UMLS:C0152154
   final_normalized_disease_label: Poor progression in labor
+  final_normalized_drug_id: CHEBI:3404
+  final_normalized_drug_label: carboprost tromethamine
+  indications_text: Syncrhronisation of oestrus and partium in animals and for the treatment of resistant cystic corpus luteum, help in the involution of uterus, in prolonged labour and for the removal of dead foetus in cattle, mares and sheep.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:3404|UMLS:C0269282
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: fetal retention
+    original_disease_verbatim: removal of dead foetus
+    original_drug_label: Carboprost Tromethamine
+    population_context: cattle, mares and sheep
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Syncrhronisation of oestrus and partium in animals and for the treatment of resistant cystic corpus luteum, help in the involution of uterus, in prolonged labour and for the removal of dead foetus in cattle, mares and sheep.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0269282
+  final_normalized_disease_label: Retained fetal tissue
   final_normalized_drug_id: CHEBI:3404
   final_normalized_drug_label: carboprost tromethamine
   indications_text: Syncrhronisation of oestrus and partium in animals and for the treatment of resistant cystic corpus luteum, help in the involution of uterus, in prolonged labour and for the removal of dead foetus in cattle, mares and sheep.
@@ -6555,6 +6768,35 @@
   indications_text: Anti sclerosis- Indicated in the treatment of sclerosation of various cutaneous veins and oeseophageal varicose haemorhoids and haemangiomas.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:31184|UMLS:C0037274
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - inflammatory manifestations
+    - pruritic manifestations
+    disease_context_ids:
+    - UMLS:C0021368
+    - HP:0000989
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: corticosteroid-responsive dermatosis
+    original_disease_verbatim: corticosteroid responsive dermatosis
+    original_drug_label: Alclometasone Dipropionate 0.05%Cream/Ointment
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Topical corticosteroid- Indicated for the relief of the inflammatory & pruritic manifestations of corticosteroid responsive dermatosis.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0037274
+  final_normalized_disease_label: dermopathy
+  final_normalized_drug_id: CHEBI:31184
+  final_normalized_drug_label: alclometasone dipropionate
+  indications_text: Topical corticosteroid- Indicated for the relief of the inflammatory & pruritic manifestations of corticosteroid responsive dermatosis.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:16163|MONDO:0005087
   ema: false
   evidence:
@@ -6578,6 +6820,29 @@
   indications_text: Mucolytic agent- Indicated as an adjunctive therapy in respiratory disorder.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:2453|MONDO:0005770
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: initial genital herpes
+    original_disease_verbatim: initial & recurrence genital herpes
+    original_drug_label: Acyclovir 5% Cream/Ointment
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005770
+  final_normalized_disease_label: genital herpes
+  final_normalized_drug_id: CHEBI:2453
+  final_normalized_drug_label: acyclovir
+  indications_text: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:2453|HP:0032157
   ema: false
   evidence:
@@ -6647,6 +6912,29 @@
   indications_text: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:2453|MONDO:0005770
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: initial genital herpes
+    original_disease_verbatim: initial & recurrence genital herpes
+    original_drug_label: Acyclovir 3% Ophthalmic Ointment & 400mg/5ml Suspension(30.07.91)
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005770
+  final_normalized_disease_label: genital herpes
+  final_normalized_drug_id: CHEBI:2453
+  final_normalized_drug_label: acyclovir
+  indications_text: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:2453|HP:0032157
   ema: false
   evidence:
@@ -6714,6 +7002,98 @@
   final_normalized_drug_id: CHEBI:2453
   final_normalized_drug_label: acyclovir
   indications_text: Anti viral agent- Indicated in the treatment of Herpes simplex virus infections of the skin including initial & recurrence genital herpes, herpes labiales, herpes simplex keratites.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:31515|MONDO:0006769
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: gastric motility disorder
+    original_disease_verbatim: gastric motility disorder
+    original_drug_label: Domperidone 10mg Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0006769
+  final_normalized_disease_label: gastroparesis
+  final_normalized_drug_id: CHEBI:31515
+  final_normalized_drug_label: domperidone
+  indications_text: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:31515|MONDO:0006769
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: gastric motility disorder
+    original_disease_verbatim: gastric motility disorder
+    original_drug_label: Domperidone 1mg/ml Suspension
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0006769
+  final_normalized_disease_label: gastroparesis
+  final_normalized_drug_id: CHEBI:31515
+  final_normalized_drug_label: domperidone
+  indications_text: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:31515|MONDO:0006769
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: gastric motility disorder
+    original_disease_verbatim: gastric motility disorder
+    original_drug_label: Domperidone 10mg/ml Oral Drops
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0006769
+  final_normalized_disease_label: gastroparesis
+  final_normalized_drug_id: CHEBI:31515
+  final_normalized_drug_label: domperidone
+  indications_text: Anti emetic- Indicated in the treatment of gastric motility disorder etc.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:100246|MONDO:0100338
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: acute uncomplicated urinary tract infection
+    original_disease_verbatim: acute uncomplicated/complicated chronic, recurrent urinary tract infections
+    original_drug_label: Norfloxacin 200mg/400mg/800mg Tablet & 100mg ODT(July-93)
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibacterial- Indicated in the treatment of acute uncomplicated/complicated chronic, recurrent urinary tract infections, including pyelonephritis, cystitis, urethritis & gonococcal infections.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0100338
+  final_normalized_disease_label: urinary tract infection
+  final_normalized_drug_id: CHEBI:100246
+  final_normalized_drug_label: norfloxacin
+  indications_text: Antibacterial- Indicated in the treatment of acute uncomplicated/complicated chronic, recurrent urinary tract infections, including pyelonephritis, cystitis, urethritis & gonococcal infections.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:100246|MONDO:0006939
@@ -7451,6 +7831,75 @@
   fda: false
   final_normalized_disease_id: MONDO:0004277
   final_normalized_disease_label: gonorrhea
+  final_normalized_drug_id: CHEBI:50694
+  final_normalized_drug_label: minocycline
+  indications_text: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:50694|MONDO:0005297
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: uncomplicated urethral infection
+    original_disease_verbatim: uncomplicated urethral
+    original_drug_label: Minocycline 50mg Oral Suspension
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005297
+  final_normalized_disease_label: urethritis
+  final_normalized_drug_id: CHEBI:50694
+  final_normalized_drug_label: minocycline
+  indications_text: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:50694|HP:0030160
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: uncomplicated endocervical infection
+    original_disease_verbatim: endoservical
+    original_drug_label: Minocycline 50mg Oral Suspension
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0030160
+  final_normalized_disease_label: Cervicitis
+  final_normalized_drug_id: CHEBI:50694
+  final_normalized_drug_label: minocycline
+  indications_text: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:50694|UMLS:C0018081
+  ema: false
+  evidence:
+  - approval_date: '19810101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: uncomplicated rectal infection
+    original_disease_verbatim: rectal
+    original_drug_label: Minocycline 50mg Oral Suspension
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0018081
+  final_normalized_disease_label: Neisseria gonorrhoeae Infection
   final_normalized_drug_id: CHEBI:50694
   final_normalized_drug_label: minocycline
   indications_text: Antibiotic- Indicated in the treatment of UTI, respiratory, Skin & soft tissue, ENT infections, rockettsial, pneumonia, gonorrhea, uncomplicated urethral, endoservical or rectal
@@ -8434,6 +8883,29 @@
   indications_text: Antibiotic- In respiratory infections, ENT infection, UT infections, Skin and skin structure infections.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:3478|UMLS:C3544325
+  ema: false
+  evidence:
+  - approval_date: '19910101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: ENT infection
+    original_disease_verbatim: ENT infection
+    original_drug_label: i)Cefaclor Monohydrate 250mg/500mg Capsule. ii)Cefaclor Monohydrate 125mg/5ml & 250mg/5ml Suspension. iii)Cefaclor Monohydrate 100mg/ml Drops. iv)Cefaclor 187mg/5ml Suspension (For paediatric use).
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Antibiotic- In respiratory infections, ENT infection, UT infections, Skin and skin structure infections.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C3544325
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:3478
+  final_normalized_drug_label: cefaclor
+  indications_text: Antibiotic- In respiratory infections, ENT infection, UT infections, Skin and skin structure infections.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:7772|MONDO:0005412
   ema: false
   evidence:
@@ -8475,6 +8947,29 @@
   fda: false
   final_normalized_disease_id: MONDO:0001126
   final_normalized_disease_label: gastric ulcer
+  final_normalized_drug_id: CHEBI:7772
+  final_normalized_drug_label: omeprazole
+  indications_text: Short term treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, management of Zollinger- Ellison syndrome.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:7772|HP:0002020
+  ema: false
+  evidence:
+  - approval_date: '19910101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: reflux oesophagitis
+    original_disease_verbatim: reflux oesophagitis
+    original_drug_label: Omeprazole 10mg/20mg Enteric Coated Granules Capsule
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Short term treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, management of Zollinger- Ellison syndrome.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002020
+  final_normalized_disease_label: Gastroesophageal reflux
   final_normalized_drug_id: CHEBI:7772
   final_normalized_drug_label: omeprazole
   indications_text: Short term treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, management of Zollinger- Ellison syndrome.
@@ -8685,6 +9180,31 @@
   fda: false
   final_normalized_disease_id: MONDO:0005412
   final_normalized_disease_label: duodenal ulcer
+  final_normalized_drug_id: CHEBI:32107
+  final_normalized_drug_label: Roxatidine acetate hydrochloride
+  indications_text: Anti ulcer- Disorders in the upper gastric intestinal region i.e duodenal ulcer, benign gastric ulcers.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:32107|MONDO:0001126
+  ema: false
+  evidence:
+  - approval_date: '19910101'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - upper gastric intestinal region disorder
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: benign gastric ulcer
+    original_disease_verbatim: benign gastric ulcers
+    original_drug_label: Roxatidine Acetate Hcl 75mg SR Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Anti ulcer- Disorders in the upper gastric intestinal region i.e duodenal ulcer, benign gastric ulcers.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0001126
+  final_normalized_disease_label: gastric ulcer
   final_normalized_drug_id: CHEBI:32107
   final_normalized_drug_label: Roxatidine acetate hydrochloride
   indications_text: Anti ulcer- Disorders in the upper gastric intestinal region i.e duodenal ulcer, benign gastric ulcers.
@@ -9975,6 +10495,60 @@
   indications_text: For the treatment of AIDS.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:4671|HP:0001635
+  ema: false
+  evidence:
+  - approval_date: '19931004'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - organic heart disease
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: cardiac decompensation
+    original_disease_verbatim: cardiac decompensation
+    original_drug_label: Dobutamine Hcl 50mg/ml (Infusion Concentrate) Injection
+    population_context: patients requiring parenteral inotropic support
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated when parentral therapy is necessary for inotropic support in the short term treatment of cardiac decompensation due to depressed contractility resulting either from organic heart disease or from cardiac surgical procedures.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: short term treatment ; following cardiac surgical procedures
+  fda: false
+  final_normalized_disease_id: HP:0001635
+  final_normalized_disease_label: Congestive heart failure
+  final_normalized_drug_id: CHEBI:4671
+  final_normalized_drug_label: dobutamine hydrochloride
+  indications_text: Indicated when parentral therapy is necessary for inotropic support in the short term treatment of cardiac decompensation due to depressed contractility resulting either from organic heart disease or from cardiac surgical procedures.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:4671|HP:0001635
+  ema: false
+  evidence:
+  - approval_date: '19931004'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - organic heart disease
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: depressed contractility
+    original_disease_verbatim: depressed contractility
+    original_drug_label: Dobutamine Hcl 50mg/ml (Infusion Concentrate) Injection
+    population_context: patients requiring parenteral inotropic support
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated when parentral therapy is necessary for inotropic support in the short term treatment of cardiac decompensation due to depressed contractility resulting either from organic heart disease or from cardiac surgical procedures.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: short term treatment ; following cardiac surgical procedures
+  fda: false
+  final_normalized_disease_id: HP:0001635
+  final_normalized_disease_label: Congestive heart failure
+  final_normalized_drug_id: CHEBI:4671
+  final_normalized_drug_label: dobutamine hydrochloride
+  indications_text: Indicated when parentral therapy is necessary for inotropic support in the short term treatment of cardiac decompensation due to depressed contractility resulting either from organic heart disease or from cardiac surgical procedures.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:7551|HP:0000822
   ema: false
   evidence:
@@ -10321,6 +10895,29 @@
   fda: false
   final_normalized_disease_id: MONDO:0001126
   final_normalized_disease_label: gastric ulcer
+  final_normalized_drug_id: CHEBI:6375
+  final_normalized_drug_label: lansoprazole
+  indications_text: For the treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, Zollinger-Ellison syndrome.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:6375|HP:0002020
+  ema: false
+  evidence:
+  - approval_date: '19941216'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: reflux oesophagitis
+    original_disease_verbatim: reflux oesophagitis
+    original_drug_label: Lansoprazole 15mg/30mg (as enteric coated granule) Capsule
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, Zollinger-Ellison syndrome.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002020
+  final_normalized_disease_label: Gastroesophageal reflux
   final_normalized_drug_id: CHEBI:6375
   final_normalized_drug_label: lansoprazole
   indications_text: For the treatment of duodenal ulcer, gastric ulcer, reflux oesophagitis, Zollinger-Ellison syndrome.
@@ -10941,6 +11538,33 @@
   indications_text: In the treatment of prostate cancer, breast cancer, endometriosis.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:4647|HP:0007906
+  ema: false
+  evidence:
+  - approval_date: '19960516'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - chronic open angle glaucoma
+    disease_context_ids:
+    - UMLS:C0857070
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: intraocular pressure elevation
+    original_disease_verbatim: intra-ocular pressure
+    original_drug_label: Dipivefrin Hcl USP 0.1% Ophthalmic Solution
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the control of intra-ocular pressure in chronic open angle glaucoma.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007906
+  final_normalized_disease_label: Ocular hypertension
+  final_normalized_drug_id: CHEBI:4647
+  final_normalized_drug_label: dipivefrin hydrochloride
+  indications_text: For the control of intra-ocular pressure in chronic open angle glaucoma.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:3438|HP:0000822
   ema: false
   evidence:
@@ -11256,6 +11880,29 @@
   indications_text: Community acquired pneumonia, acute exacerbation of chronic bronchitis, other lower respiratory tract infection caused by susceptible bacteria, acute sinusitis genococcal and non genococcal urethritis in males, uncomplicated UTI skin soft tissue infections, ENT infections.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:9212|UMLS:C3544325
+  ema: false
+  evidence:
+  - approval_date: '19961111'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: ENT infection
+    original_disease_verbatim: ENT infections
+    original_drug_label: Sparfloxacin 100mg/200mg/400mg Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Community acquired pneumonia, acute exacerbation of chronic bronchitis, other lower respiratory tract infection caused by susceptible bacteria, acute sinusitis genococcal and non genococcal urethritis in males, uncomplicated UTI skin soft tissue infections, ENT infections.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C3544325
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:9212
+  final_normalized_drug_label: sparfloxacin
+  indications_text: Community acquired pneumonia, acute exacerbation of chronic bronchitis, other lower respiratory tract infection caused by susceptible bacteria, acute sinusitis genococcal and non genococcal urethritis in males, uncomplicated UTI skin soft tissue infections, ENT infections.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:183811|UMLS:C0320225
   ema: false
   evidence:
@@ -11349,6 +11996,30 @@
   fda: false
   final_normalized_disease_id: UMLS:C2747816
   final_normalized_disease_label: Severe Malaria
+  final_normalized_drug_id: CHEBI:63609
+  final_normalized_drug_label: mefloquine
+  indications_text: Used in severe malaria including cerebral malaria and as a second line chloroquine resistant malaria cases only.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:63609|UMLS:C0024530
+  ema: false
+  evidence:
+  - approval_date: '19970303'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: chloroquine resistant malaria
+    original_disease_verbatim: chloroquine resistant malaria
+    original_drug_label: Mefloquine Hcl 250mg Film Coated Tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Used in severe malaria including cerebral malaria and as a second line chloroquine resistant malaria cases only.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: second line
+  fda: false
+  final_normalized_disease_id: UMLS:C0024530
+  final_normalized_disease_label: Plasmodium Infections
   final_normalized_drug_id: CHEBI:63609
   final_normalized_drug_label: mefloquine
   indications_text: Used in severe malaria including cerebral malaria and as a second line chloroquine resistant malaria cases only.
@@ -12377,6 +13048,29 @@
   indications_text: Mild to moderate hypertension.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:6518|MONDO:0006668
+  ema: false
+  evidence:
+  - approval_date: '19980722'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: bacterial infection of the eye
+    original_disease_verbatim: Bacterial infection of the eye
+    original_drug_label: Lomefloxacin Hcl 3mg/ml Eye Drops
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Bacterial infection of the eye.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0006668
+  final_normalized_disease_label: bacterial conjunctivitis
+  final_normalized_drug_id: CHEBI:6518
+  final_normalized_drug_label: lomefloxacin hydrochloride
+  indications_text: Bacterial infection of the eye.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:5050|MONDO:0005324
   ema: false
   evidence:
@@ -12579,6 +13273,36 @@
   indications_text: In treatment of congestive heart failure (CHF).
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:51157|HP:0007906
+  ema: false
+  evidence:
+  - approval_date: '19990518'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - open angle glaucoma
+    - ocular hypertension
+    disease_context_ids:
+    - MONDO:0005338
+    - MONDO:0006875
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: intraocular pressure elevation
+    original_disease_verbatim: intraocular pressure
+    original_drug_label: Brimonidine Tartrate 0.2% (eq. to Brimonidine base 0.13%) Ophthalmic Solution
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For lowering intraocular pressure in patients with open angle glaucoma or ocular hypertension.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007906
+  final_normalized_disease_label: Ocular hypertension
+  final_normalized_drug_id: CHEBI:51157
+  final_normalized_drug_label: brimonidine tartrate
+  indications_text: For lowering intraocular pressure in patients with open angle glaucoma or ocular hypertension.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:51157|MONDO:0005338
   ema: false
   evidence:
@@ -12649,6 +13373,33 @@
   indications_text: Short term treatment of insomnia.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:141029|HP:0007906
+  ema: false
+  evidence:
+  - approval_date: '19990624'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - glaucoma
+    disease_context_ids:
+    - MONDO:0005041
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: intraocular pressure elevation
+    original_disease_verbatim: intraocular pressure
+    original_drug_label: Pilocarpine Hcl 40mg/gm Gel
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the management of intraocular pressure in glaucoma.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007906
+  final_normalized_disease_label: Ocular hypertension
+  final_normalized_drug_id: CHEBI:141029
+  final_normalized_drug_label: pilocarpine hydrochloride
+  indications_text: For the management of intraocular pressure in glaucoma.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:50686|HP:0003124
   ema: false
   evidence:
@@ -12675,6 +13426,37 @@
   fda: false
   final_normalized_disease_id: HP:0003124
   final_normalized_disease_label: Hypercholesterolemia
+  final_normalized_drug_id: CHEBI:50686
+  final_normalized_drug_label: atorvastatin calcium
+  indications_text: As an adjunct diet to reduce elevated total cholesterol and triglyceride levels in patients with primary hypercholesterolemia and mixed dyslipidemia (type IIa & IIb).
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:50686|MONDO:0005347
+  ema: false
+  evidence:
+  - approval_date: '19990917'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - primary hypercholesterolemia
+    - mixed dyslipidemia
+    disease_context_ids:
+    - UMLS:C0342879
+    - ''
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: elevated triglyceride levels
+    original_disease_verbatim: triglyceride levels
+    original_drug_label: Atorvastatin Calcium 10mg/20mg/40mg Film Coated Tablet
+    population_context: patients with primary hypercholesterolemia and mixed dyslipidemia
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As an adjunct diet to reduce elevated total cholesterol and triglyceride levels in patients with primary hypercholesterolemia and mixed dyslipidemia (type IIa & IIb).
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005347
+  final_normalized_disease_label: hypertriglyceridemia
   final_normalized_drug_id: CHEBI:50686
   final_normalized_drug_label: atorvastatin calcium
   indications_text: As an adjunct diet to reduce elevated total cholesterol and triglyceride levels in patients with primary hypercholesterolemia and mixed dyslipidemia (type IIa & IIb).
@@ -14180,6 +14962,33 @@
   indications_text: For acne
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:23965|HP:0031217
+  ema: false
+  evidence:
+  - approval_date: '20070101'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - menopause
+    disease_context_ids:
+    - UMLS:C0567312
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: vasomotor symptoms
+    original_disease_verbatim: Vasomotor symptoms
+    original_drug_label: Estradiol topical emulsion 2.5mg/gm
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Vasomotor symptoms Associated with menopause
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0031217
+  final_normalized_disease_label: Hot flashes
+  final_normalized_drug_id: CHEBI:23965
+  final_normalized_drug_label: estradiol
+  indications_text: Vasomotor symptoms Associated with menopause
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:85161|UMLS:C0401160
   ema: false
   evidence:
@@ -15533,6 +16342,30 @@
   final_normalized_drug_id: CHEBI:8868
   final_normalized_drug_label: Risedronate sodium
   indications_text: For osteoporosis in men at high risk of fracture.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:6437|HP:0007359
+  ema: false
+  evidence:
+  - approval_date: '20071009'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial onset seizures
+    original_disease_verbatim: partial onset seizures
+    original_drug_label: Levetiracetam Tablet (addl. indication)
+    population_context: patients 16 years of age with newly diagnosed epilepsy
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: (i) (i) As monotherapy in partial onset seizures with or without secondary generalisation in patients with 16 years of age with newly diagnosed epilepsy. (ii) As adjunctive therapy in myoclonic seizures in adults and adolescents from 12 years of age with Juvenile myoclonic epilepsy. In primary generalised tonic-clonic seizures in adults and adolescents from 12 years of age with idiopathic generalised epilepsy.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007359
+  final_normalized_disease_label: Focal-onset seizure
+  final_normalized_drug_id: CHEBI:6437
+  final_normalized_drug_label: levetiracetam
+  indications_text: (i) (i) As monotherapy in partial onset seizures with or without secondary generalisation in patients with 16 years of age with newly diagnosed epilepsy. (ii) As adjunctive therapy in myoclonic seizures in adults and adolescents from 12 years of age with Juvenile myoclonic epilepsy. In primary generalised tonic-clonic seizures in adults and adolescents from 12 years of age with idiopathic generalised epilepsy.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:6437|UMLS:C2674108
@@ -17084,6 +17917,8 @@
     confidence: HIGH
     disease_context:
     - acute painful musculoskeletal conditions
+    disease_context_ids:
+    - UMLS:C0026858
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: muscle spasm
@@ -21304,6 +22139,33 @@
   indications_text: For the treatment of human immunodeficiency virus (HIV) infection in antiretroviral treatment experienced adult patients, such as those patients with HIV-1 strains resistant to more than one protease inhibitor when co-administered with 100mg ritonavir, and with other antiretroviral agents.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:367163|UMLS:C2363741
+  ema: false
+  evidence:
+  - approval_date: '20090101'
+    approval_status: APPROVED
+    co_administered_with:
+    - ritonavir
+    - other antiretroviral agents
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: HIV-1 strains resistant to more than one protease inhibitor
+    original_disease_verbatim: HIV-1 strains resistant to more than one protease inhibitor
+    original_drug_label: Darunavir(as ethanolate) Tablet 300mg
+    population_context: antiretroviral treatment experienced adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of human immunodeficiency virus (HIV) infection in antiretroviral treatment experienced adult patients, such as those patients with HIV-1 strains resistant to more than one protease inhibitor when co-administered with 100mg ritonavir, and with other antiretroviral agents.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C2363741
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:367163
+  final_normalized_drug_label: darunavir
+  indications_text: For the treatment of human immunodeficiency virus (HIV) infection in antiretroviral treatment experienced adult patients, such as those patients with HIV-1 strains resistant to more than one protease inhibitor when co-administered with 100mg ritonavir, and with other antiretroviral agents.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:134750|MONDO:0005326
   ema: false
   evidence:
@@ -21722,6 +22584,35 @@
   fda: false
   final_normalized_disease_id: UMLS:C0877341
   final_normalized_disease_label: Coronary Revascularization Procedure
+  final_normalized_drug_id: CHEBI:2668
+  final_normalized_drug_label: amlodipine
+  indications_text: 1. To reduce of fatal coronary heart disease and non-fatal myocardial infarction, and to reduce the risk of stroke. 2. To reduce the risk of coronary revascularization procedures and the need for hospitalization due to angina in patients with coronary artery disease.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:2668|UMLS:C0002962
+  ema: false
+  evidence:
+  - approval_date: '20090502'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - coronary artery disease
+    disease_context_ids:
+    - MONDO:0005010
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hospitalization due to angina
+    original_disease_verbatim: hospitalization due to angina
+    original_drug_label: Amlodipine Tablets 5mg/10mg (additional indication)
+    population_context: patients with coronary artery disease
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 1. To reduce of fatal coronary heart disease and non-fatal myocardial infarction, and to reduce the risk of stroke. 2. To reduce the risk of coronary revascularization procedures and the need for hospitalization due to angina in patients with coronary artery disease.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0002962
+  final_normalized_disease_label: Angor Pectoris
   final_normalized_drug_id: CHEBI:2668
   final_normalized_drug_label: amlodipine
   indications_text: 1. To reduce of fatal coronary heart disease and non-fatal myocardial infarction, and to reduce the risk of stroke. 2. To reduce the risk of coronary revascularization procedures and the need for hospitalization due to angina in patients with coronary artery disease.
@@ -22557,6 +23448,37 @@
   indications_text: For the treatment of oropharyngeal candidiasis, including oropharyngeal candidiasis refractory to itraconazoleand/orfluconazole. For prophylaxis of invasive Aspergillus and Candida infections in patients, 13 years of age and older, who are at high risk of developing these infections due to being severlyimmunocompromised, such as hematopoietic stem cell transplant (HSCT) recipients with graft-versus-host disease (GVHD) or those with hematologic malignancies with prolonged neutropenia from chemotherapy.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:64355|HP:5210100
+  ema: false
+  evidence:
+  - approval_date: '20090718'
+    approval_status: APPROVED
+    claim_predicate: prevents
+    confidence: HIGH
+    disease_context:
+    - graft-versus-host disease
+    - hematologic malignancies
+    disease_context_ids:
+    - MONDO:0013730
+    - UMLS:C0376545
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: invasive Aspergillus
+    original_disease_verbatim: invasive Aspergillus
+    original_drug_label: Posaconazole Oral Suspension 40mg/ml
+    population_context: 13 years of age and older; severely immunocompromised patients; hematopoietic stem cell transplant (HSCT) recipients with graft-versus-host disease (GVHD); those with hematologic malignancies with prolonged neutropenia from chemotherapy
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of oropharyngeal candidiasis, including oropharyngeal candidiasis refractory to itraconazoleand/orfluconazole. For prophylaxis of invasive Aspergillus and Candida infections in patients, 13 years of age and older, who are at high risk of developing these infections due to being severlyimmunocompromised, such as hematopoietic stem cell transplant (HSCT) recipients with graft-versus-host disease (GVHD) or those with hematologic malignancies with prolonged neutropenia from chemoth
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:5210100
+  final_normalized_disease_label: Severe Aspergillus infection
+  final_normalized_drug_id: CHEBI:64355
+  final_normalized_drug_label: posaconazole
+  indications_text: For the treatment of oropharyngeal candidiasis, including oropharyngeal candidiasis refractory to itraconazoleand/orfluconazole. For prophylaxis of invasive Aspergillus and Candida infections in patients, 13 years of age and older, who are at high risk of developing these infections due to being severlyimmunocompromised, such as hematopoietic stem cell transplant (HSCT) recipients with graft-versus-host disease (GVHD) or those with hematologic malignancies with prolonged neutropenia from chemotherapy.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:64355|UMLS:C0006840
   ema: false
   evidence:
@@ -22780,6 +23702,32 @@
   indications_text: For the treatment of HIV-1 infection in combination with other antiretroviral agents
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:46557|UMLS:C0016658
+  ema: false
+  evidence:
+  - approval_date: '20090801'
+    approval_status: APPROVED
+    claim_predicate: prevents
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: clinical fractures
+    original_disease_verbatim: clinical fractures
+    original_drug_label: Zoledronic Acid Solution for Infusion Addl. Indication
+    population_context: men and women
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Prevention of clinical fractures after hip fracture in men and women
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: after hip fracture
+  fda: false
+  final_normalized_disease_id: UMLS:C0016658
+  final_normalized_disease_label: Bone fracture
+  final_normalized_drug_id: CHEBI:46557
+  final_normalized_drug_label: zoledronic acid
+  indications_text: Prevention of clinical fractures after hip fracture in men and women
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:10650|MONDO:0005277
   ema: false
   evidence:
@@ -22973,6 +23921,30 @@
     source_role: PRIMARY
     source_type: REGULATORY
     temporal_context: adjunct to standard therapy
+  fda: false
+  final_normalized_disease_id: MONDO:0005252
+  final_normalized_disease_label: heart failure
+  final_normalized_drug_id: CHEBI:5775
+  final_normalized_drug_label: hydralazine
+  indications_text: For the treatment of heart failure as an adjunct to standard therapy in patients to improve survival, to prolong time to hospitalization for heart failure and to improve patients reported functional status.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:5775|MONDO:0005252
+  ema: false
+  evidence:
+  - approval_date: '20090918'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hospitalization for heart failure
+    original_disease_verbatim: hospitalization for heart failure
+    original_drug_label: Isosorbibe 20 mg + Hydralazine 37.5 mg tablets
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of heart failure as an adjunct to standard therapy in patients to improve survival, to prolong time to hospitalization for heart failure and to improve patients reported functional status.
+    source_role: PRIMARY
+    source_type: REGULATORY
   fda: false
   final_normalized_disease_id: MONDO:0005252
   final_normalized_disease_label: heart failure
@@ -24145,6 +25117,35 @@
   indications_text: For selection,anxiolysis and amnesia prior to diagnostic, therapeutic or endoscopic procedure or before induction of anesthesia.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:34553|MONDO:0100338
+  ema: false
+  evidence:
+  - approval_date: '20091222'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - cystitis
+    - urethritis
+    disease_context_ids:
+    - MONDO:0006032
+    - MONDO:0005297
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: uncomplicated urinary tract infections
+    original_disease_verbatim: uncomplicated urinary tract infectins
+    original_drug_label: Balofloxacin Tablet 100mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: for the treatment of uncomplicated urinary tract infectins (such as cystitis and urethritis)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0100338
+  final_normalized_disease_label: urinary tract infection
+  final_normalized_drug_id: CHEBI:34553
+  final_normalized_drug_label: Balofloxacin
+  indications_text: for the treatment of uncomplicated urinary tract infectins (such as cystitis and urethritis)
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:10082|HP:0001742
   ema: false
   evidence:
@@ -24504,6 +25505,30 @@
   final_normalized_drug_id: CHEBI:45863
   final_normalized_drug_label: paclitaxel
   indications_text: 'Advanced squmous cell carcinoma of Head and Neck SCCHN: 1. Diagnosed but unrectable locally advanced SCCHN 2. Recurrent SCCHN, if surgery or radiation is not feasible. 3. Palliative treatment of metastatic SCCHN.'
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:87016|MONDO:0005027
+  ema: false
+  evidence:
+  - approval_date: '20110101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial-onset seizures
+    original_disease_verbatim: partial-onset seizures
+    original_drug_label: Eslicarbazepine Acetate Tablets 200mg/400mg/600mg/800mg
+    population_context: adults
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As an adjunctive therapy in adults with partial-onset seizures with or without secondary generalisation.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005027
+  final_normalized_disease_label: epilepsy
+  final_normalized_drug_id: CHEBI:87016
+  final_normalized_drug_label: eslicarbazepine acetate
+  indications_text: As an adjunctive therapy in adults with partial-onset seizures with or without secondary generalisation.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:87016|UMLS:C2674108
@@ -24914,6 +25939,37 @@
   indications_text: 1) As an Adjunct to Diet to Reduce Elevated Total Cholesterol and Triglyceride Levels in Patients with Primary HyperCholesterolemia and Mixed Dyalipidemia (Type IIa and IIIb). 2) In adult patients with type II diabetes and without clinically evident coronary heart disease to reduce the risk of myocardial infarction and stroke. 3) To reduce the risk of stroke in adult patients without clinically evident coronary heart disease but multiple risk factors for coronary heart disease
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:50686|MONDO:0005347
+  ema: false
+  evidence:
+  - approval_date: '20110420'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - Primary HyperCholesterolemia
+    - Mixed Dyalipidemia
+    disease_context_ids:
+    - UMLS:C0342879
+    - ''
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: elevated triglyceride levels
+    original_disease_verbatim: Triglyceride Levels
+    original_drug_label: 42. 5mg/10mg/20mg/40mg/80mg Atorvastatin calcium (Additional Dosage Form)
+    population_context: patients with Primary HyperCholesterolemia and Mixed Dyalipidemia (Type IIa and IIIb)
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 1) As an Adjunct to Diet to Reduce Elevated Total Cholesterol and Triglyceride Levels in Patients with Primary HyperCholesterolemia and Mixed Dyalipidemia (Type IIa and IIIb). 2) In adult patients with type II diabetes and without clinically evident coronary heart disease to reduce the risk of myocardial infarction and stroke. 3) To reduce the risk of stroke in adult patients without clinically evident coronary heart disease but multiple risk factors for coronary heart disease
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005347
+  final_normalized_disease_label: hypertriglyceridemia
+  final_normalized_drug_id: CHEBI:50686
+  final_normalized_drug_label: atorvastatin calcium
+  indications_text: 1) As an Adjunct to Diet to Reduce Elevated Total Cholesterol and Triglyceride Levels in Patients with Primary HyperCholesterolemia and Mixed Dyalipidemia (Type IIa and IIIb). 2) In adult patients with type II diabetes and without clinically evident coronary heart disease to reduce the risk of myocardial infarction and stroke. 3) To reduce the risk of stroke in adult patients without clinically evident coronary heart disease but multiple risk factors for coronary heart disease
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:50686|MONDO:0005068
   ema: false
   evidence:
@@ -25020,6 +26076,57 @@
   final_normalized_drug_id: CHEBI:85966
   final_normalized_drug_label: ivabradine
   indications_text: For Symptomatic Treatment of Chronic 05/05/2011 Stable Angina Pectoris in Coronary Artery Disease Patients with Normal Sinus Rhythm, Indicated in Combination with Beta-Blockers in Patients Inadequately Controlled with an Optimal Beta-Blocker Dose and Whose Heart rate is >60bpm.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:232546|UMLS:C2609093
+  ema: false
+  evidence:
+  - approval_date: '20110505'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: metastatic pancreatic neuroendocrine tumours
+    original_disease_verbatim: Unresectable or Metastatic Well-differentiated Pancreatic Neuroendocrine Tumours
+    original_drug_label: Sunitinib malate Capsules 12.5mg/25mg (Additional Indication)
+    population_context: adults
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Treatment of Unresectable or Metastatic Well-differentiated Pancreatic Neuroendocrine Tumours with Disease Progression in Adults
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C2609093
+  final_normalized_disease_label: Metastatic Pancreatic Neuroendocrine Tumor
+  final_normalized_drug_id: CHEBI:232546
+  final_normalized_drug_label: sunitinib malate
+  indications_text: Treatment of Unresectable or Metastatic Well-differentiated Pancreatic Neuroendocrine Tumours with Disease Progression in Adults
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:6437|HP:0007359
+  ema: false
+  evidence:
+  - approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - epilepsy
+    disease_context_ids:
+    - MONDO:0005027
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial onset seizures
+    original_disease_verbatim: Partial Onset Seizures
+    original_drug_label: Levetiracetam Oral Solution 100mg/ml (Additional Indication)
+    population_context: Adults, Children and Infants from 1 Month of Age
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As Adjunctive Therapy in the Treatment 05/05/2011 of Partial Onset Seizures With or Without Secondary Generalisation in Adults, Children and Infants from 1 Month of Age with Epilepsy.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007359
+  final_normalized_disease_label: Focal-onset seizure
+  final_normalized_drug_id: CHEBI:6437
+  final_normalized_drug_label: levetiracetam
+  indications_text: As Adjunctive Therapy in the Treatment 05/05/2011 of Partial Onset Seizures With or Without Secondary Generalisation in Adults, Children and Infants from 1 Month of Age with Epilepsy.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:6437|UMLS:C2674108
@@ -25617,6 +26724,55 @@
   indications_text: For the early treatment of recurrent cold sores in adult patients to reduce likelihood of ulcerative cold sores and to shorten the lesion healing time
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:2453|UMLS:C0019345
+  ema: false
+  evidence:
+  - approval_date: '20110101'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: ulcerative cold sores
+    original_disease_verbatim: ulcerative cold sores
+    original_drug_label: Acyclovir 50g + Hydrocortisone 10mg Cream
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the early treatment of recurrent cold sores in adult patients to reduce likelihood of ulcerative cold sores and to shorten the lesion healing time
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0019345
+  final_normalized_disease_label: Herpes Labialis
+  final_normalized_drug_id: CHEBI:2453
+  final_normalized_drug_label: acyclovir
+  indications_text: For the early treatment of recurrent cold sores in adult patients to reduce likelihood of ulcerative cold sores and to shorten the lesion healing time
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:749470|UMLS:C0013238
+  ema: false
+  evidence:
+  - approval_date: '20110101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: dryness of the eye
+    original_disease_verbatim: dryness of the eye
+    original_drug_label: Polyethylene glycol 0.4% w/v + Propylene Glycol 0.3% w/v Eye Drops
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For temporary relief of burning and irritation due to dryness of the eye
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: temporary
+  fda: false
+  final_normalized_disease_id: UMLS:C0013238
+  final_normalized_disease_label: Dry Eye Disease
+  final_normalized_drug_id: CHEBI:749470
+  final_normalized_drug_label: polyethylene glycol
+  indications_text: For temporary relief of burning and irritation due to dryness of the eye
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:16856|MONDO:0021104
   ema: false
   evidence:
@@ -25954,6 +27110,32 @@
   indications_text: For the treatment of Diabetic Neuropathy
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:63584|MONDO:0004956
+  ema: false
+  evidence:
+  - approval_date: '20110101'
+    approval_status: APPROVED
+    co_administered_with:
+    - prednisone
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hormone-refractory metastatic prostate cancer
+    original_disease_verbatim: hormone-refractory metastatic prostrate cancer
+    original_drug_label: Cabazitaxel Injection 60mg / 1.5ml
+    population_context: patients previously treated with a docetaxel-containing treatment regimen
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: In combination with prednisone for treatment of patients with hormone-refractory metastatic prostrate cancer previously treated with a docetaxel-containing treatment regimen.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0004956
+  final_normalized_disease_label: metastatic prostate carcinoma
+  final_normalized_drug_id: CHEBI:63584
+  final_normalized_drug_label: cabazitaxel
+  indications_text: In combination with prednisone for treatment of patients with hormone-refractory metastatic prostrate cancer previously treated with a docetaxel-containing treatment regimen.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:16664|UMLS:C0338437
   ema: false
   evidence:
@@ -26206,6 +27388,8 @@
     confidence: HIGH
     disease_context:
     - moderately emetogenic cancer chemotherapy
+    disease_context_ids:
+    - UMLS:C0401160
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: nausea and vomiting
@@ -26498,6 +27682,32 @@
   indications_text: For the treatment of Schizophrenia in adult patients when first line treatment is ineffective.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:63589|UMLS:C2363741
+  ema: false
+  evidence:
+  - approval_date: '20120101'
+    approval_status: APPROVED
+    co_administered_with:
+    - other antiretroviral agents
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: human immunodeficiency virus type 1 infection
+    original_disease_verbatim: human immunodeficiency virus type 1 (HIV-1) infection
+    original_drug_label: Etravirine Tablet 100mg
+    population_context: antiretroviral treatment-experienced adult patients who have evidence of viral replication and HIV-1 strains resistant to an NNRTI and other antiretroviral agents
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: In combination with other antiretroviral agents for the treatment of human immunodeficiency virus type 1 (HIV-1) infection in antiretroviral treatment-experienced adult patients who have evidence of viral replication and HIV-1 strains resistant to an NNRTI and other antiretroviral agents. It should be used only in situations where other treatments have failed or cannot be used because of side
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C2363741
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:63589
+  final_normalized_drug_label: etravirine
+  indications_text: In combination with other antiretroviral agents for the treatment of human immunodeficiency virus type 1 (HIV-1) infection in antiretroviral treatment-experienced adult patients who have evidence of viral replication and HIV-1 strains resistant to an NNRTI and other antiretroviral agents. It should be used only in situations where other treatments have failed or cannot be used because of side
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:68558|HP:0001907
   ema: false
   evidence:
@@ -26684,6 +27894,30 @@
   indications_text: 'For the treatment of equine respiratory diseases in horses where airway obstruction due to bronchospasm and/or accumulation of mucus is contributing factor and improved muco-ciliary clearance is desirable. The product should be used alone or as an adjuvant therapy. The product is of particular value in cases of: - Acute, sub-acute and chronic infections where the presence of mucus and/or micro-organisms may stimulate bronchospam e.g. Bronchitis, broncholitis and Bronchopneumonia - Acute, sub-acute and chronic respiratory allergies. - Chronic obstructive pulmonary disease (COPD)'
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:31410|MONDO:0011786
+  ema: false
+  evidence:
+  - approval_date: '20120701'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: respiratory allergies
+    original_disease_verbatim: respiratory allergies
+    original_drug_label: Clenbuterol Hydrochloride Solution for injection 30mcg/ml
+    population_context: horses
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 'For the treatment of equine respiratory diseases in horses where airway obstruction due to bronchospasm and/or accumulation of mucus is contributing factor and improved muco-ciliary clearance is desirable. The product should be used alone or as an adjuvant therapy. The product is of particular value in cases of: - Acute, sub-acute and chronic infections where the presence of mucus and/or micro-organisms may stimulate bronchospam e.g. Bronchitis, broncholitis and Bronchopneumonia - Acute, sub-acu'
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0011786
+  final_normalized_disease_label: allergic rhinitis
+  final_normalized_drug_id: CHEBI:31410
+  final_normalized_drug_label: clenbuterol hydrochloride
+  indications_text: 'For the treatment of equine respiratory diseases in horses where airway obstruction due to bronchospasm and/or accumulation of mucus is contributing factor and improved muco-ciliary clearance is desirable. The product should be used alone or as an adjuvant therapy. The product is of particular value in cases of: - Acute, sub-acute and chronic infections where the presence of mucus and/or micro-organisms may stimulate bronchospam e.g. Bronchitis, broncholitis and Bronchopneumonia - Acute, sub-acute and chronic respiratory allergies. - Chronic obstructive pulmonary disease (COPD)'
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:31410|MONDO:0005002
   ema: false
   evidence:
@@ -26706,6 +27940,66 @@
   final_normalized_drug_id: CHEBI:31410
   final_normalized_drug_label: clenbuterol hydrochloride
   indications_text: 'For the treatment of equine respiratory diseases in horses where airway obstruction due to bronchospasm and/or accumulation of mucus is contributing factor and improved muco-ciliary clearance is desirable. The product should be used alone or as an adjuvant therapy. The product is of particular value in cases of: - Acute, sub-acute and chronic infections where the presence of mucus and/or micro-organisms may stimulate bronchospam e.g. Bronchitis, broncholitis and Bronchopneumonia - Acute, sub-acute and chronic respiratory allergies. - Chronic obstructive pulmonary disease (COPD)'
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:72296|MONDO:0005399
+  ema: false
+  evidence:
+  - approval_date: '20120803'
+    approval_status: APPROVED
+    claim_predicate: prevents
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: venous thromboembolic events
+    original_disease_verbatim: venous thromboembolic events (VTE)
+    original_drug_label: Apixaban Tablets 2.5mg
+    population_context: adult patients who have undergone elective hip or knee replacement surgery
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Prevention of venous thromboembolic events (VTE) in adult patients who have undergone elective hip or knee replacement surgery.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: following elective hip or knee replacement surgery
+  fda: false
+  final_normalized_disease_id: MONDO:0005399
+  final_normalized_disease_label: venous thromboembolism
+  final_normalized_drug_id: CHEBI:72296
+  final_normalized_drug_label: apixaban
+  indications_text: Prevention of venous thromboembolic events (VTE) in adult patients who have undergone elective hip or knee replacement surgery.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:31430|UMLS:C0021141
+  ema: false
+  evidence:
+  - approval_date: '20120821'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - syndrome of inappropriate secretion of antidiuretic hormone
+    - hypothyroidism
+    - adrenal insufficiency
+    - pulmonary disorders
+    disease_context_ids:
+    - MONDO:0006802
+    - MONDO:0005420
+    - MONDO:0000004
+    - MONDO:0005275
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: euvolemic hyponatremia
+    original_disease_verbatim: euvolemic hyponatremia
+    original_drug_label: Conivaptan Hydrochloride Injection 20mg/4ml.
+    population_context: hospitalized patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of euvolemic hyponatremia (e.g. the syndrome of inappropriate secretion of antidiuretic hormone , or in the setting of hypothyroidism, adrenal insufficiency, pulmonary disorders, etc.) in hospitalized patients.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0021141
+  final_normalized_disease_label: Inappropriate antidiuretic hormone secretion
+  final_normalized_drug_id: CHEBI:31430
+  final_normalized_drug_label: conivaptan hydrochloride
+  indications_text: For the treatment of euvolemic hyponatremia (e.g. the syndrome of inappropriate secretion of antidiuretic hormone , or in the setting of hypothyroidism, adrenal insufficiency, pulmonary disorders, etc.) in hospitalized patients.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:32246|HP:0002902
@@ -26952,6 +28246,30 @@
   final_normalized_drug_id: CHEBI:749720
   final_normalized_drug_label: flupirtine maleate
   indications_text: For the treatment of acute and chronic pain, i.e. for painful increased muscle tone of the posture and motor muscle, Primary Headache, tumor pain, Dysmenorrhea and pain after Traumatology/Orthopedic Operations and injuries
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:135939|HP:0007359
+  ema: false
+  evidence:
+  - approval_date: '20120101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial onset seizures
+    original_disease_verbatim: partial onset seizures
+    original_drug_label: Lacosamide Injection 10mg/ml
+    population_context: patients >17 years of age
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As an adjunctive treatment of partial onset seizures in patients>17 years of age.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0007359
+  final_normalized_disease_label: Focal-onset seizure
+  final_normalized_drug_id: CHEBI:135939
+  final_normalized_drug_label: lacosamide
+  indications_text: As an adjunctive treatment of partial onset seizures in patients>17 years of age.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:63637|UMLS:C4725093
@@ -27304,6 +28622,52 @@
   indications_text: For the prevention and treatment of thromboembolic diseases such as venous thrombosis, atrial fibrillation with embolization, pulmonary embolism and as an adjunct in the treatment of coronary occulsion.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:53766|MONDO:0004981
+  ema: false
+  evidence:
+  - approval_date: '20130101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: atrial fibrillation with embolization
+    original_disease_verbatim: atrial fibrillation with embolization
+    original_drug_label: Nicoumalone Tablets 0.5mg/5mg/6mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the prevention and treatment of thromboembolic diseases such as venous thrombosis, atrial fibrillation with embolization, pulmonary embolism and as an adjunct in the treatment of coronary occulsion.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0004981
+  final_normalized_disease_label: atrial fibrillation
+  final_normalized_drug_id: CHEBI:53766
+  final_normalized_drug_label: acenocoumarol
+  indications_text: For the prevention and treatment of thromboembolic diseases such as venous thrombosis, atrial fibrillation with embolization, pulmonary embolism and as an adjunct in the treatment of coronary occulsion.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:53766|MONDO:0004981
+  ema: false
+  evidence:
+  - approval_date: '20130101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: atrial fibrillation with embolization
+    original_disease_verbatim: atrial fibrillation with embolization
+    original_drug_label: Nicoumalone Tablets 0.5mg/5mg/6mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the prevention and treatment of thromboembolic diseases such as venous thrombosis, atrial fibrillation with embolization, pulmonary embolism and as an adjunct in the treatment of coronary occulsion.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0004981
+  final_normalized_disease_label: atrial fibrillation
+  final_normalized_drug_id: CHEBI:53766
+  final_normalized_drug_label: acenocoumarol
+  indications_text: For the prevention and treatment of thromboembolic diseases such as venous thrombosis, atrial fibrillation with embolization, pulmonary embolism and as an adjunct in the treatment of coronary occulsion.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:53766|MONDO:0005279
   ema: false
   evidence:
@@ -27402,6 +28766,30 @@
   final_normalized_drug_id: CHEBI:66919
   final_normalized_drug_label: ruxolitinib
   indications_text: For the treatment of patients with myelofibrosis including primary myelofibrosis, post-polycythemia vera myelofibrosis or post-essential thrombocythemia myelofibrosis.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:41879|MONDO:0020283
+  ema: false
+  evidence:
+  - approval_date: '20130101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: non-infectious uveitis
+    original_disease_verbatim: non-infectious uveitis
+    original_drug_label: Dexamethasone Intravitreal Implant 0.7mg (in solid polymer drug delivery system)
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of non-infectious uveitis affecting the posterior segment of the eye. However it should not be used when there is gap in posterior capsule.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: affecting the posterior segment of the eye
+  fda: false
+  final_normalized_disease_id: MONDO:0020283
+  final_normalized_disease_label: uveitis
+  final_normalized_drug_id: CHEBI:41879
+  final_normalized_drug_label: dexamethasone
+  indications_text: For the treatment of non-infectious uveitis affecting the posterior segment of the eye. However it should not be used when there is gap in posterior capsule.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:134708|UMLS:C3160761
@@ -27539,6 +28927,32 @@
   fda: false
   final_normalized_disease_id: MONDO:0004555
   final_normalized_disease_label: kidney angiomyolipoma
+  final_normalized_drug_id: CHEBI:68478
+  final_normalized_drug_label: everolimus
+  indications_text: 1. For the treatment of tuberous sclerosis complex (TSC) who have renal angiomyolipoma not requiring immediate surgery. 2. For the treatment of postmenopausal women with hormone receptor positive advanced breast cancer in combination with an aromatase inhibitor.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:68478|MONDO:0700079
+  ema: false
+  evidence:
+  - approval_date: '20130101'
+    approval_status: APPROVED
+    co_administered_with:
+    - aromatase inhibitor
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hormone receptor positive advanced breast cancer
+    original_disease_verbatim: hormone receptor positive advanced breast cancer
+    original_drug_label: Everolimus 2.5mg/5mg/10mg Tablets
+    population_context: postmenopausal women
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 1. For the treatment of tuberous sclerosis complex (TSC) who have renal angiomyolipoma not requiring immediate surgery. 2. For the treatment of postmenopausal women with hormone receptor positive advanced breast cancer in combination with an aromatase inhibitor.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0700079
+  final_normalized_disease_label: hormone receptor-positive breast cancer
   final_normalized_drug_id: CHEBI:68478
   final_normalized_drug_label: everolimus
   indications_text: 1. For the treatment of tuberous sclerosis complex (TSC) who have renal angiomyolipoma not requiring immediate surgery. 2. For the treatment of postmenopausal women with hormone receptor positive advanced breast cancer in combination with an aromatase inhibitor.
@@ -28393,6 +29807,64 @@
   indications_text: For the management of anxiety disorders or for the short term relief of symptoms of anxiety or anxiety associated with depressive symptoms.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:3175|MONDO:0006604
+  ema: false
+  evidence:
+  - approval_date: '20150101'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: facial erythema of rosacea
+    original_disease_verbatim: persistent (non- transient) facial erythema of rosacea
+    original_drug_label: Brimonidine topical gel 0.33% (Add. Dosage form/indication)
+    population_context: adults 18 years of age or older
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the topical treatment of persistent (non- transient) facial erythema of rosacea in adults 18 years of age or older.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0006604
+  final_normalized_disease_label: rosacea
+  final_normalized_drug_id: CHEBI:3175
+  final_normalized_drug_label: brimonidine
+  indications_text: For the topical treatment of persistent (non- transient) facial erythema of rosacea in adults 18 years of age or older.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:68579|UMLS:C1963943
+  ema: false
+  evidence:
+  - approval_date: '20150101'
+    approval_status: APPROVED
+    claim_predicate: prevents
+    co_administered_with:
+    - Acetylsalicylic acid (ASA)
+    - Clopidogrel
+    - Ticlopidine
+    confidence: HIGH
+    disease_context:
+    - acute coronary syndrome
+    disease_context_ids:
+    - MONDO:0005542
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: atherothrombotic events
+    original_disease_verbatim: atherothrombotic events
+    original_drug_label: Rivaroxaban tablet 2.5mg (add. strength)
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Rivaroxaban 2.5mg tablet, co-administered with Acetylsalicylic acid (ASA) alone or with ASA plus Clopidogrel or Ticlopidine, is indicated for the prevention of atherothrombotic events in adult patients after an acute coronary syndrome (ACS) with elevated cardiac biomarkers.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: after an acute coronary syndrome (ACS) with elevated cardiac biomarkers
+  fda: false
+  final_normalized_disease_id: UMLS:C1963943
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:68579
+  final_normalized_drug_label: rivaroxaban
+  indications_text: Rivaroxaban 2.5mg tablet, co-administered with Acetylsalicylic acid (ASA) alone or with ASA plus Clopidogrel or Ticlopidine, is indicated for the prevention of atherothrombotic events in adult patients after an acute coronary syndrome (ACS) with elevated cardiac biomarkers.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:6367|HP:0007359
   ema: false
   evidence:
@@ -28480,6 +29952,33 @@
   fda: false
   final_normalized_disease_id: MONDO:0005625
   final_normalized_disease_label: cerebral malaria
+  final_normalized_drug_id: CHEBI:135335
+  final_normalized_drug_label: artemotil
+  indications_text: Indicated for the treatment of severe malaria including cerebral malaria and as a second line in chloroquine resistant malaria cases only.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:135335|UMLS:C0024530
+  ema: false
+  evidence:
+  - approval_date: '20101203'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - malaria
+    disease_context_ids:
+    - MONDO:0005136
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: chloroquine resistant malaria
+    original_disease_verbatim: chloroquine resistant malaria
+    original_drug_label: Arteether injection 150mg/mL
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated for the treatment of severe malaria including cerebral malaria and as a second line in chloroquine resistant malaria cases only.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0024530
+  final_normalized_disease_label: Plasmodium Infections
   final_normalized_drug_id: CHEBI:135335
   final_normalized_drug_label: artemotil
   indications_text: Indicated for the treatment of severe malaria including cerebral malaria and as a second line in chloroquine resistant malaria cases only.
@@ -28704,6 +30203,28 @@
   indications_text: '"For the treatment of Patients with Schizophrenia"'
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:71013|MONDO:0005027
+  ema: false
+  evidence:
+  - approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial-onset seizures
+    original_disease_verbatim: partial-onset seizures
+    original_drug_label: Perampanel
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: '"The adjunctive treatment of partial-onset seizures'
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005027
+  final_normalized_disease_label: epilepsy
+  final_normalized_drug_id: CHEBI:71013
+  final_normalized_drug_label: perampanel
+  indications_text: '"The adjunctive treatment of partial-onset seizures'
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:70708|HP:0034267
   ema: false
   evidence:
@@ -28728,6 +30249,29 @@
   final_normalized_drug_id: CHEBI:70708
   final_normalized_drug_label: dienogest
   indications_text: For the management of Pelvic pain associated with Endometriosis
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:133013|MONDO:0005027
+  ema: false
+  evidence:
+  - approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: partial-onset seizures
+    original_disease_verbatim: partial-onset seizures
+    original_drug_label: Brivaracetam Film Coated
+    population_context: patients 16 years of age and older
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As adjunctive therapy in the treatment of partial -onset seizures in patients 16 years of age and older
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005027
+  final_normalized_disease_label: epilepsy
+  final_normalized_drug_id: CHEBI:133013
+  final_normalized_drug_label: brivaracetam
+  indications_text: As adjunctive therapy in the treatment of partial -onset seizures in patients 16 years of age and older
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:29806|MONDO:0005366
@@ -28955,6 +30499,30 @@
   indications_text: For the treatment of persistent/ recurrent chronic Thromoembolic pulmonary Hypertension (CTEPH) WHO Group 4) After surgical treatment or imoperable CTEPH to improve exercise capacity and WHO function
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:76018|MONDO:0015924
+  ema: false
+  evidence:
+  - approval_date: '20180416'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: WHO functional class
+    original_disease_verbatim: WHO function
+    original_drug_label: Riociguat bulk & 0.5mg/1.0mg/1.5mg/2.0mg/2.5 mg tablet
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of persistent/ recurrent chronic Thromoembolic pulmonary Hypertension (CTEPH) WHO Group 4) After surgical treatment or imoperable CTEPH to improve exercise capacity and WHO function
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: After surgical treatment or imoperable CTEPH
+  fda: false
+  final_normalized_disease_id: MONDO:0015924
+  final_normalized_disease_label: pulmonary arterial hypertension
+  final_normalized_drug_id: CHEBI:76018
+  final_normalized_drug_label: riociguat
+  indications_text: For the treatment of persistent/ recurrent chronic Thromoembolic pulmonary Hypertension (CTEPH) WHO Group 4) After surgical treatment or imoperable CTEPH to improve exercise capacity and WHO function
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:95341|MONDO:0008383
   ema: false
   evidence:
@@ -29055,6 +30623,32 @@
   final_normalized_drug_id: CHEBI:9706
   final_normalized_drug_label: Trientine hydrochloride
   indications_text: For the treatment of Wilson's disease (hepatolenticular degeneration) in patients intolerant to Penicillamine. It should be used when continued treatment with Penicillamine is no longer possible because of intolerable or life endangering side effect.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:133007|UMLS:C2363741
+  ema: false
+  evidence:
+  - approval_date: '20180625'
+    approval_status: APPROVED
+    co_administered_with:
+    - other antiretroviral agents
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: Human Immunodeficiency Virus type-1 infection
+    original_disease_verbatim: Human Immunodeficiency Virus type-1 (HIV-1)
+    original_drug_label: FDC of Emtricitabine 200 mg and Tenofovir Alafenamide 25 mg tablets
+    population_context: adults and adolescents aged 12 years and older with body weight at least 35 kg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: In combination with other antiretroviral agents for the treatment of adults and adolescents (aged 12 years and older with body weight atleast 35 kg) infected with Human Immunodeficiency Virus type-1 (HIV-1)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C2363741
+  final_normalized_disease_label: ''
+  final_normalized_drug_id: CHEBI:133007
+  final_normalized_drug_label: Descovy
+  indications_text: In combination with other antiretroviral agents for the treatment of adults and adolescents (aged 12 years and older with body weight atleast 35 kg) infected with Human Immunodeficiency Virus type-1 (HIV-1)
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:68850|HP:0000822
@@ -29219,6 +30813,9 @@
     disease_context:
     - human epidermal growth factor receptor 2 (HER2)-negative metastatic breast cancer
     - hormone receptor (HR)-positive breast cancer
+    disease_context_ids:
+    - ''
+    - MONDO:0700079
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: metastatic breast cancer
@@ -29314,6 +30911,37 @@
   final_normalized_drug_id: CHEBI:136044
   final_normalized_drug_label: fimasartan
   indications_text: For the treatment of mild hypertension
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:134714|MONDO:0005252
+  ema: false
+  evidence:
+  - approval_date: '20181224'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - chronic heart failure
+    - reduced ejection fraction
+    disease_context_ids:
+    - HP:0001635
+    - HP:0012664
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hospitalization for heart failure
+    original_disease_verbatim: hospitalization for heart failure
+    original_drug_label: Sacubitril/Valsartan (as sodium salt complex) and FDC of Sacubitril + Valartan 50 (24+26)/100 (49+51)/200 (97+103) mg film coated tablets
+    population_context: NYHA Class II-IV
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: To reduce the risk of cardiovascular death and hospitalization for heart failure in patients with chronic heart failure (NYHA Class II-IV) and reduced ejection fraction
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005252
+  final_normalized_disease_label: heart failure
+  final_normalized_drug_id: CHEBI:134714
+  final_normalized_drug_label: sacubitril
+  indications_text: To reduce the risk of cardiovascular death and hospitalization for heart failure in patients with chronic heart failure (NYHA Class II-IV) and reduced ejection fraction
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:749728|UMLS:C2317131
@@ -29513,6 +31141,66 @@
   indications_text: Indicated in adults aged 18 years and older with type2 diabetes mellitus to improve glycemic control as:-  Monotherapy when diet and exercise alone do not provide adequate glyceamic control.  Add on therapy with metformin, together with diet and exercise, when these do not provide adequate glyceamic control.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:177541|HP:0000819
+  ema: false
+  evidence:
+  - approval_date: '20190426'
+    approval_status: APPROVED
+    co_administered_with:
+    - metformin
+    confidence: HIGH
+    disease_context:
+    - type2 diabetes mellitus
+    disease_context_ids:
+    - MONDO:0005148
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: inadequate glycemic control
+    original_disease_verbatim: inadequate glyceamic control
+    original_drug_label: Remogliflozin etabonate bulk and Remogliflozin etabonate film coated tablets 100 mg
+    population_context: adults aged 18 years and older
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated in adults aged 18 years and older with type2 diabetes mellitus to improve glycemic control as:-  Monotherapy when diet and exercise alone do not provide adequate glyceamic control.  Add on therapy with metformin, together with diet and exercise, when these do not provide adequate glyceamic control.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0000819
+  final_normalized_disease_label: Diabetes mellitus
+  final_normalized_drug_id: CHEBI:177541
+  final_normalized_drug_label: remogliflozin etabonate
+  indications_text: Indicated in adults aged 18 years and older with type2 diabetes mellitus to improve glycemic control as:-  Monotherapy when diet and exercise alone do not provide adequate glyceamic control.  Add on therapy with metformin, together with diet and exercise, when these do not provide adequate glyceamic control.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:177541|HP:0000819
+  ema: false
+  evidence:
+  - approval_date: '20190426'
+    approval_status: APPROVED
+    co_administered_with:
+    - metformin
+    confidence: HIGH
+    disease_context:
+    - type2 diabetes mellitus
+    disease_context_ids:
+    - MONDO:0005148
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: inadequate glycemic control
+    original_disease_verbatim: inadequate glyceamic control
+    original_drug_label: Remogliflozin etabonate bulk and Remogliflozin etabonate film coated tablets 100 mg
+    population_context: adults aged 18 years and older
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated in adults aged 18 years and older with type2 diabetes mellitus to improve glycemic control as:-  Monotherapy when diet and exercise alone do not provide adequate glyceamic control.  Add on therapy with metformin, together with diet and exercise, when these do not provide adequate glyceamic control.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0000819
+  final_normalized_disease_label: Diabetes mellitus
+  final_normalized_drug_id: CHEBI:177541
+  final_normalized_drug_label: remogliflozin etabonate
+  indications_text: Indicated in adults aged 18 years and older with type2 diabetes mellitus to improve glycemic control as:-  Monotherapy when diet and exercise alone do not provide adequate glyceamic control.  Add on therapy with metformin, together with diet and exercise, when these do not provide adequate glyceamic control.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:45304|MONDO:0040753
   ema: false
   evidence:
@@ -29581,13 +31269,13 @@
     - dopamine beta-hydroxylase deficiency
     - non-diabetic autonomic neuropathy
     disease_context_ids:
-    - ''
+    - UMLS:C2875365
     - MONDO:0018608
     - MONDO:0005180
     - MONDO:0007803
     - MONDO:0018608
     - MONDO:0009123
-    - ''
+    - MONDO:0001300
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: orthostatic dizziness
@@ -29621,13 +31309,13 @@
     - dopamine beta-hydroxylase deficiency
     - non-diabetic autonomic neuropathy
     disease_context_ids:
-    - ''
+    - UMLS:C2875365
     - MONDO:0018608
     - MONDO:0005180
     - MONDO:0007803
     - MONDO:0018608
     - MONDO:0009123
-    - ''
+    - MONDO:0001300
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: light headedness
@@ -29641,6 +31329,46 @@
   fda: false
   final_normalized_disease_id: UMLS:C0220870
   final_normalized_disease_label: Light-Headedness
+  final_normalized_drug_id: CHEBI:31524
+  final_normalized_drug_label: droxidopa
+  indications_text: For the treatment of orthostatic dizziness, light headedness or the "feeling that you are about to black out" in adult patients with symptomatic neurogenic orthostatic hypotension caused by primary autonomic failure (Parkinson's Disease multiple system atrophy (MSA) and pure autonomic failure), dopamine beta-hydroxylase deficiency and non-diabetic autonomic neuropathy.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:31524|HP:0031972
+  ema: false
+  evidence:
+  - approval_date: '20190924'
+    approval_status: APPROVED
+    confidence: HIGH
+    disease_context:
+    - symptomatic neurogenic orthostatic hypotension
+    - primary autonomic failure
+    - Parkinson's Disease
+    - multiple system atrophy
+    - pure autonomic failure
+    - dopamine beta-hydroxylase deficiency
+    - non-diabetic autonomic neuropathy
+    disease_context_ids:
+    - UMLS:C2875365
+    - MONDO:0018608
+    - MONDO:0005180
+    - MONDO:0007803
+    - MONDO:0018608
+    - MONDO:0009123
+    - MONDO:0001300
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: feeling that you are about to black out
+    original_disease_verbatim: '"feeling that you are about to black out"'
+    original_drug_label: Droxidopa bulk drug and Droxidopa capsules 200mg/300mg
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: For the treatment of orthostatic dizziness, light headedness or the "feeling that you are about to black out" in adult patients with symptomatic neurogenic orthostatic hypotension caused by primary autonomic failure (Parkinson's Disease multiple system atrophy (MSA) and pure autonomic failure), dopamine beta-hydroxylase deficiency and non-diabetic autonomic neuropathy.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0031972
+  final_normalized_disease_label: Presyncope
   final_normalized_drug_id: CHEBI:31524
   final_normalized_drug_label: droxidopa
   indications_text: For the treatment of orthostatic dizziness, light headedness or the "feeling that you are about to black out" in adult patients with symptomatic neurogenic orthostatic hypotension caused by primary autonomic failure (Parkinson's Disease multiple system atrophy (MSA) and pure autonomic failure), dopamine beta-hydroxylase deficiency and non-diabetic autonomic neuropathy.
@@ -29848,6 +31576,8 @@
     confidence: HIGH
     disease_context:
     - Hormone receptor (HR)-positive, human epidermal growth factor receptor 2 (HER2)-negative, PIK3CA-mutated, advanced or metastatic breast cancer
+    disease_context_ids:
+    - HP:0003002
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: breast cancer
@@ -29937,6 +31667,31 @@
   indications_text: It is intended to treat keratoconus and corneal ecstasia following refractive surgery
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:135945|UMLS:C0079731
+  ema: false
+  evidence:
+  - approval_date: '20200311'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: aggressive Non-Hodgkin's B-Cell Lymphoma
+    original_disease_verbatim: multiply relapsed or refractory aggresive Non-Hodgkins B- Cell Lymphomas (NHL)
+    original_drug_label: Pixantrone 29mg powder for concentrate for solution for infusion
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as 3rd line and 4th line therapy for the treatment of adult patients with multiply relapsed or refractory aggresive Non-Hodgkins B- Cell Lymphomas (NHL)
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: 3rd line and 4th line therapy
+  fda: false
+  final_normalized_disease_id: UMLS:C0079731
+  final_normalized_disease_label: B cell lymphoma
+  final_normalized_drug_id: CHEBI:135945
+  final_normalized_drug_label: pixantrone
+  indications_text: Indicated as 3rd line and 4th line therapy for the treatment of adult patients with multiply relapsed or refractory aggresive Non-Hodgkins B- Cell Lymphomas (NHL)
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:135954|MONDO:0011786
   ema: false
   evidence:
@@ -29980,6 +31735,30 @@
   fda: false
   final_normalized_disease_id: MONDO:0000240
   final_normalized_disease_label: invasive aspergillosis
+  final_normalized_drug_id: CHEBI:85979
+  final_normalized_drug_label: isavuconazole
+  indications_text: Indicated for patients 18 years of age and older for the treatment of Invasive Aspergillosis and Invasive Mucormycosis
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:85979|MONDO:0019136
+  ema: false
+  evidence:
+  - approval_date: '20200311'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: Invasive Mucormycosis
+    original_disease_verbatim: Invasive Mucormycosis
+    original_drug_label: Isavuconazole (as Isavuconazoniumsulfate) 200mg powder for concentrate for solution for infusion
+    population_context: patients 18 years of age and older
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated for patients 18 years of age and older for the treatment of Invasive Aspergillosis and Invasive Mucormycosis
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0019136
+  final_normalized_disease_label: Zygomycosis
   final_normalized_drug_id: CHEBI:85979
   final_normalized_drug_label: isavuconazole
   indications_text: Indicated for patients 18 years of age and older for the treatment of Invasive Aspergillosis and Invasive Mucormycosis
@@ -30262,6 +32041,60 @@
   final_normalized_drug_id: CHEBI:134722
   final_normalized_drug_label: favipiravir
   indications_text: For the treatment of patients with mild to moderate Covid-19 disease, in light of Covid 19 outbreak, for restricted emergency use in the country.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:748780|UMLS:C1827301
+  ema: false
+  evidence:
+  - approval_date: '20200715'
+    approval_status: APPROVED
+    co_administered_with:
+    - Bedaquiline
+    - Linezolid
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: pulmonary extensively drug resistant tuberculosis
+    original_disease_verbatim: pulmonary extensively drug resistant (XDR) tuberculosis
+    original_drug_label: Pretomanid bulk and Pretomanid tablets 200mg
+    population_context: adults
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as part of a combination regimen with Bedaquiline and Linezolid, in adults for the treatment of pulmonary extensively drug resistant (XDR), or treatment intolerant or nonresponsive multidrug- resistant (MDR) tuberculosis (TB)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C1827301
+  final_normalized_disease_label: Extensively Drug-Resistant Tuberculosis
+  final_normalized_drug_id: CHEBI:748780
+  final_normalized_drug_label: pretomanid
+  indications_text: Indicated as part of a combination regimen with Bedaquiline and Linezolid, in adults for the treatment of pulmonary extensively drug resistant (XDR), or treatment intolerant or nonresponsive multidrug- resistant (MDR) tuberculosis (TB)
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:748780|MONDO:0005861
+  ema: false
+  evidence:
+  - approval_date: '20200715'
+    approval_status: APPROVED
+    co_administered_with:
+    - Bedaquiline
+    - Linezolid
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: pulmonary multidrug-resistant tuberculosis
+    original_disease_verbatim: treatment intolerant or nonresponsive multidrug-resistant (MDR) tuberculosis
+    original_drug_label: Pretomanid bulk and Pretomanid tablets 200mg
+    population_context: adults
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as part of a combination regimen with Bedaquiline and Linezolid, in adults for the treatment of pulmonary extensively drug resistant (XDR), or treatment intolerant or nonresponsive multidrug- resistant (MDR) tuberculosis (TB)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005861
+  final_normalized_disease_label: multidrug-resistant tuberculosis
+  final_normalized_drug_id: CHEBI:748780
+  final_normalized_drug_label: pretomanid
+  indications_text: Indicated as part of a combination regimen with Bedaquiline and Linezolid, in adults for the treatment of pulmonary extensively drug resistant (XDR), or treatment intolerant or nonresponsive multidrug- resistant (MDR) tuberculosis (TB)
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:134722|MONDO:0100096
@@ -31102,6 +32935,32 @@
   indications_text: Indicated as an adjunct to percutaneous coronary intervention (PCI) to reduce the risk of periprocedural myocardial infarction (MI), repeat coronary revarscularization, and stent thrombosis (ST) in patients who have not been treated with a P2Y12 platelet inhibitor and are not being given a glycoprotein IIb/IIIa inhibitor
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:90841|UMLS:C1956346
+  ema: false
+  evidence:
+  - approval_date: '20210621'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: repeat coronary revascularization
+    original_disease_verbatim: repeat coronary revarscularization
+    original_drug_label: Cangrelor tetra sodium bulk and Cangrelor for injection 50mg/vial
+    population_context: patients who have not been treated with a P2Y12 platelet inhibitor and are not being given a glycoprotein IIb/IIIa inhibitor
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as an adjunct to percutaneous coronary intervention (PCI) to reduce the risk of periprocedural myocardial infarction (MI), repeat coronary revarscularization, and stent thrombosis (ST) in patients who have not been treated with a P2Y12 platelet inhibitor and are not being given a glycoprotein IIb/IIIa inhibitor
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: adjunct to percutaneous coronary intervention (PCI)
+  fda: false
+  final_normalized_disease_id: UMLS:C1956346
+  final_normalized_disease_label: Coronary disease
+  final_normalized_drug_id: CHEBI:90841
+  final_normalized_drug_label: cangrelor
+  indications_text: Indicated as an adjunct to percutaneous coronary intervention (PCI) to reduce the risk of periprocedural myocardial infarction (MI), repeat coronary revarscularization, and stent thrombosis (ST) in patients who have not been treated with a P2Y12 platelet inhibitor and are not being given a glycoprotein IIb/IIIa inhibitor
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:90841|UMLS:C3897493
   ema: false
   evidence:
@@ -31264,6 +33123,8 @@
     confidence: HIGH
     disease_context:
     - manic or mixed episodes
+    disease_context_ids:
+    - HP:0007302
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: bipolar I disorder
@@ -31613,6 +33474,36 @@
   indications_text: For treatment of adult high risk patients with mild Covid-19 having risk of progression of the disease.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:142432|MONDO:0005252
+  ema: false
+  evidence:
+  - approval_date: '20220225'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - symptomatic chronic heart failure
+    disease_context_ids:
+    - MONDO:0005252
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: heart failure hospitalization
+    original_disease_verbatim: heart failure (HF) hospitalization
+    original_drug_label: Vericiguat tablets 2.5mg/ 5mg/ 10mg
+    population_context: adults with ejection fraction less than 45%
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated to reduce the risk of cardiovascular death and heart failure (HF) hospitalization following a hospitalization for heart failure or need for outpatient IV diuretics, in adults with symptomatic chronic HF and ejection fraction less than 45%
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: following a hospitalization for heart failure or need for outpatient IV diuretics
+  fda: false
+  final_normalized_disease_id: MONDO:0005252
+  final_normalized_disease_label: heart failure
+  final_normalized_drug_id: CHEBI:142432
+  final_normalized_drug_label: vericiguat
+  indications_text: Indicated to reduce the risk of cardiovascular death and heart failure (HF) hospitalization following a hospitalization for heart failure or need for outpatient IV diuretics, in adults with symptomatic chronic HF and ejection fraction less than 45%
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:755923|MONDO:0100096
   ema: false
   evidence:
@@ -31744,6 +33635,37 @@
   indications_text: Indicated for the treatment of cystic fibrosis (CF) in patient age 2 years and older who are homozygous for the F508del mutation in the CFTR gene.
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:747008|MONDO:0005300
+  ema: false
+  evidence:
+  - approval_date: '20220411'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - chronic kidney disease
+    - type 2 Diabetes
+    disease_context_ids:
+    - MONDO:0005300
+    - MONDO:0005148
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: sustained eGFR decline
+    original_disease_verbatim: sustained eGFR decline
+    original_drug_label: Finerenone 10mg/20mg film coated tablets
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005300
+  final_normalized_disease_label: chronic kidney disease
+  final_normalized_drug_id: CHEBI:747008
+  final_normalized_drug_label: Finerenone
+  indications_text: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:747008|MONDO:0004375
   ema: false
   evidence:
@@ -31770,6 +33692,68 @@
   fda: false
   final_normalized_disease_id: MONDO:0004375
   final_normalized_disease_label: end stage renal failure
+  final_normalized_drug_id: CHEBI:747008
+  final_normalized_drug_label: Finerenone
+  indications_text: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:747008|MONDO:0005068
+  ema: false
+  evidence:
+  - approval_date: '20220411'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - chronic kidney disease
+    - type 2 Diabetes
+    disease_context_ids:
+    - MONDO:0005300
+    - MONDO:0005148
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: non-fatal myocardial infarction
+    original_disease_verbatim: non-fatal myocardial infarction
+    original_drug_label: Finerenone 10mg/20mg film coated tablets
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005068
+  final_normalized_disease_label: myocardial infarction
+  final_normalized_drug_id: CHEBI:747008
+  final_normalized_drug_label: Finerenone
+  indications_text: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:747008|MONDO:0005252
+  ema: false
+  evidence:
+  - approval_date: '20220411'
+    approval_status: APPROVED
+    claim_predicate: reduces_risk_of
+    confidence: HIGH
+    disease_context:
+    - chronic kidney disease
+    - type 2 Diabetes
+    disease_context_ids:
+    - MONDO:0005300
+    - MONDO:0005148
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: hospitalization for heart failure
+    original_disease_verbatim: hospitalization for heart failure
+    original_drug_label: Finerenone 10mg/20mg film coated tablets
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005252
+  final_normalized_disease_label: heart failure
   final_normalized_drug_id: CHEBI:747008
   final_normalized_drug_label: Finerenone
   indications_text: Indicated to reduce the risk of sustained eGFR decline, end stage kidney disease, cardiovascular death, non-fatal myocardial infarction, and hospitalization for heart failure in adult patients with chronic kidney disease (CKD) associated with type 2 Diabetes (T2D)
@@ -32298,6 +34282,54 @@
   indications_text: Indicated for topical treatment of mild to moderate atopic dermatitis in adult and paediatric patients 2 years of age and older
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:750441|UMLS:C0238452
+  ema: false
+  evidence:
+  - approval_date: '20230120'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: internal contamination with radioactive thallium
+    original_disease_verbatim: internal contamination with radioactive thallium
+    original_drug_label: Prussian Blue Insoluble 340 mg and Magnesium Hydroxide 500 mg Capsule
+    population_context: patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As decorporation agent indicated for treatment of patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium to increase their rates of elimination.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0238452
+  final_normalized_disease_label: Thallium or thallium compound causing toxic effect
+  final_normalized_drug_id: CHEBI:750441
+  final_normalized_drug_label: prussian blue insoluble
+  indications_text: As decorporation agent indicated for treatment of patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium to increase their rates of elimination.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:750441|UMLS:C0238452
+  ema: false
+  evidence:
+  - approval_date: '20230127'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: internal contamination with radioactive thallium
+    original_disease_verbatim: internal contamination with radioactive thallium
+    original_drug_label: Prussian Blue Insolube 340 mg Capsule and Prussian Blue Insolube Bulk Drug
+    population_context: patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: As decorporation agent indicated for treatment of patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium to increase their rates of elimination.
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0238452
+  final_normalized_disease_label: Thallium or thallium compound causing toxic effect
+  final_normalized_drug_id: CHEBI:750441
+  final_normalized_drug_label: prussian blue insoluble
+  indications_text: As decorporation agent indicated for treatment of patients with known or suspected internal contamination with radioactive cesium and/or radioactive or non radioactive thallium to increase their rates of elimination.
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:134677|MONDO:0004980
   ema: false
   evidence:
@@ -32778,6 +34810,29 @@
   indications_text: Indicated for psychosomatic manifestations of anxiety
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:136048|HP:0002020
+  ema: false
+  evidence:
+  - approval_date: '20240508'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: reflux esophagitis
+    original_disease_verbatim: reflux esophagitis
+    original_drug_label: Vonoprazan fumarate Bulk drug& Vonoprazan tablets 10mg/20 mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: ' Treatment of reflux esophagitis(RE)  Treatment of gastric ulcer (GU)  Treatment of duodenal ulcer(DU)  Prevention of recurrence of gastric ulcer or duodenal ulcer during low- dose aspirin administration.  Prevention of recurrence of gastric ulcer or duodenal ulcer during NSAIDs administration.  Adjunct to Helicobacter pylori eradication associated with: Gastric ulcer, Duodenal ulcer, gastric MALT lymphoma, idiopathic thrombocytopenic purpura, the stomach after endoscopic resection of earl'
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002020
+  final_normalized_disease_label: Gastroesophageal reflux
+  final_normalized_drug_id: CHEBI:136048
+  final_normalized_drug_label: vonoprazan
+  indications_text: ' Treatment of reflux esophagitis(RE)  Treatment of gastric ulcer (GU)  Treatment of duodenal ulcer(DU)  Prevention of recurrence of gastric ulcer or duodenal ulcer during low- dose aspirin administration.  Prevention of recurrence of gastric ulcer or duodenal ulcer during NSAIDs administration.  Adjunct to Helicobacter pylori eradication associated with: Gastric ulcer, Duodenal ulcer, gastric MALT lymphoma, idiopathic thrombocytopenic purpura, the stomach after endoscopic resection of early-stage cancer, or Helicobacter pylori gastritis.'
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:136048|MONDO:0001126
   ema: false
   evidence:
@@ -32983,6 +35038,8 @@
     confidence: HIGH
     disease_context:
     - metastatic RET fusion-positive non-small cell lung cancer
+    disease_context_ids:
+    - MONDO:0005233
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: non-small cell lung cancer
@@ -33036,6 +35093,9 @@
     disease_context:
     - advanced or metastatic RET fusion-positive thyroid cancer
     - radioactive iodine refractory
+    disease_context_ids:
+    - ''
+    - MONDO:0002108
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: thyroid cancer
@@ -33078,6 +35138,56 @@
   final_normalized_drug_id: CHEBI:755066
   final_normalized_drug_label: elobixibat
   indications_text: For treatment of chronic constipation (except for constipation associated with organic diseases)
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:232810|UMLS:C5394780
+  ema: false
+  evidence:
+  - approval_date: '20240918'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: anaplastic lymphoma kinase-positive advanced non-small cell lung cancer
+    original_disease_verbatim: ALK-positive advanced NSCLC
+    original_drug_label: Brigatinib Tablets,30mg,90mg, and 180mg
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as monotherapy for the treatment of adult patients with anaplastic lymphoma kinase(ALK)- positive advanced non-small cell lung cancer(NSCLC) previously not treated with an ALK inhibitor. Brigatinib is indicated as monotherapy for the treatment of adult patients with ALK-positive advanced NSCLC previously treated with crizotinib.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: previously treated with crizotinib
+  fda: false
+  final_normalized_disease_id: UMLS:C5394780
+  final_normalized_disease_label: Anaplastic lymphoma kinase fusion oncogene positive non-small cell lung cancer
+  final_normalized_drug_id: CHEBI:232810
+  final_normalized_drug_label: brigatinib
+  indications_text: Indicated as monotherapy for the treatment of adult patients with anaplastic lymphoma kinase(ALK)- positive advanced non-small cell lung cancer(NSCLC) previously not treated with an ALK inhibitor. Brigatinib is indicated as monotherapy for the treatment of adult patients with ALK-positive advanced NSCLC previously treated with crizotinib.
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:232810|UMLS:C5394780
+  ema: false
+  evidence:
+  - approval_date: '20240918'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: anaplastic lymphoma kinase-positive advanced non-small cell lung cancer
+    original_disease_verbatim: ALK-positive advanced NSCLC
+    original_drug_label: Brigatinib Tablets,30mg,90mg, and 180mg
+    population_context: adult patients
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Indicated as monotherapy for the treatment of adult patients with anaplastic lymphoma kinase(ALK)- positive advanced non-small cell lung cancer(NSCLC) previously not treated with an ALK inhibitor. Brigatinib is indicated as monotherapy for the treatment of adult patients with ALK-positive advanced NSCLC previously treated with crizotinib.
+    source_role: PRIMARY
+    source_type: REGULATORY
+    temporal_context: previously treated with crizotinib
+  fda: false
+  final_normalized_disease_id: UMLS:C5394780
+  final_normalized_disease_label: Anaplastic lymphoma kinase fusion oncogene positive non-small cell lung cancer
+  final_normalized_drug_id: CHEBI:232810
+  final_normalized_drug_label: brigatinib
+  indications_text: Indicated as monotherapy for the treatment of adult patients with anaplastic lymphoma kinase(ALK)- positive advanced non-small cell lung cancer(NSCLC) previously not treated with an ALK inhibitor. Brigatinib is indicated as monotherapy for the treatment of adult patients with ALK-positive advanced NSCLC previously treated with crizotinib.
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:756998|MONDO:0005045
@@ -33236,6 +35346,8 @@
     confidence: HIGH
     disease_context:
     - non-valvular atrial fibrillation
+    disease_context_ids:
+    - MONDO:0004981
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: stroke
@@ -33263,6 +35375,8 @@
     confidence: HIGH
     disease_context:
     - non-valvular atrial fibrillation
+    disease_context_ids:
+    - MONDO:0004981
     explanation: CDSCO-approved indication from India primary source PDF
     jurisdiction: INDIA
     original_disease_label: systemic embolism
@@ -33600,6 +35714,52 @@
   indications_text: 'It is indicated for the treatment of adult patients with: 1. Mantle cell lymphoma (MCL) who have received at least one prior therapy. 2. Waldenstrom’s macrogloubulinemia (WM) 3. Relapsed or refractory marginal zone lymphoma(MZL) who have received at least one anti-CD20- based regimen. 4. Chronic lymphocytic leukaemia (CLL) or small lymphocytic lymphoma(SLL). 5. Relapsed or refractory follicular lymphoma (FL),in combination with obinutuzumab, after two or more lines of systemic therapy.'
   pmda: false
   relationship_type: INDICATION
+- drug_disease: CHEBI:757058|UMLS:C0267055
+  ema: false
+  evidence:
+  - approval_date: '20250528'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: Erosive Gastroesophageal Reflux Disease
+    original_disease_verbatim: Erosive Gastroesophageal Reflux Disease
+    original_drug_label: Tegoprazan Tablet 50 mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 'Indicated for: • Erosive Gastroesophageal Reflux Disease • Non-erosive Gastroesophageal Reflux Disease • Gastric Ulcer'
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0267055
+  final_normalized_disease_label: Erosive oesophagitis
+  final_normalized_drug_id: CHEBI:757058
+  final_normalized_drug_label: tegoprazan
+  indications_text: 'Indicated for: • Erosive Gastroesophageal Reflux Disease • Non-erosive Gastroesophageal Reflux Disease • Gastric Ulcer'
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:757058|MONDO:0007186
+  ema: false
+  evidence:
+  - approval_date: '20250528'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: Non-erosive Gastroesophageal Reflux Disease
+    original_disease_verbatim: Non-erosive Gastroesophageal Reflux Disease
+    original_drug_label: Tegoprazan Tablet 50 mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: 'Indicated for: • Erosive Gastroesophageal Reflux Disease • Non-erosive Gastroesophageal Reflux Disease • Gastric Ulcer'
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0007186
+  final_normalized_disease_label: gastroesophageal reflux disease
+  final_normalized_drug_id: CHEBI:757058
+  final_normalized_drug_label: tegoprazan
+  indications_text: 'Indicated for: • Erosive Gastroesophageal Reflux Disease • Non-erosive Gastroesophageal Reflux Disease • Gastric Ulcer'
+  pmda: false
+  relationship_type: INDICATION
 - drug_disease: CHEBI:757058|UMLS:C0038358
   ema: false
   evidence:
@@ -33621,6 +35781,30 @@
   final_normalized_drug_id: CHEBI:757058
   final_normalized_drug_label: tegoprazan
   indications_text: 'Indicated for: • Erosive Gastroesophageal Reflux Disease • Non-erosive Gastroesophageal Reflux Disease • Gastric Ulcer'
+  pmda: false
+  relationship_type: INDICATION
+- drug_disease: CHEBI:757058|UMLS:C0267055
+  ema: false
+  evidence:
+  - approval_date: '20250708'
+    approval_status: APPROVED
+    claim_predicate: maintenance
+    confidence: HIGH
+    explanation: CDSCO-approved indication from India primary source PDF
+    jurisdiction: INDIA
+    original_disease_label: erosive gastroesophageal reflux disease
+    original_disease_verbatim: Erosive Gastroesophageal Reflux disease
+    original_drug_label: Tegoprazan Tablet 25 mg
+    reference: https://cdsco.gov.in/opencms/opencms/en/Approval_new/Approved-New-Drugs/
+    snippet: Maintenance of healed Erosive Gastroesophageal Reflux disease
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0267055
+  final_normalized_disease_label: Erosive oesophagitis
+  final_normalized_drug_id: CHEBI:757058
+  final_normalized_drug_label: tegoprazan
+  indications_text: Maintenance of healed Erosive Gastroesophageal Reflux disease
   pmda: false
   relationship_type: INDICATION
 - drug_disease: CHEBI:755661|MONDO:0005101
