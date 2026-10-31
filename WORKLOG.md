@@ -532,3 +532,85 @@ traceability — a call to make, not a bug to fix.
 
 The rest is genuine work: 2,718 indication and 782 contraindication pairs we assert nothing
 for on drugs we do carry, and 2,583 / 1,670 on drugs we do not.
+
+---
+
+## 2026-10-31 — Three levers, paid for and measured
+
+Spend was authorised for the three levers costed the day before. Two of them turned out not
+to need it.
+
+### What each lever actually was
+
+**A — LLM condition resolver (the only one that needed money).** 52.8% of every disease
+string the pipeline had extracted resolved to `sssom:NoTermFound`, and 9,594 of those 9,696
+were real clinical phrases. `src/medic/enrichment/disease_paraphrase.py` asks the model what
+condition a phrase names and feeds the *name* back through MeDIC's own cascade, so the id
+always comes from the pinned release and a hallucinated CURIE has no path in. 9,866 asked,
+**6,893 recovered (69.9%)**, 7,636 locked proposals at `skos:broadMatch` / 0.55.
+
+**B — contraindications from EMA and PMDA (#25) needed no new code.** Both paths existed
+behind `--extract-contras`, which `build-all` does not call. EMA's had rotted against the
+`Claim` refactor — it read `d.name` where the field is `target` — so it had never been
+runnable, which is the whole reason #25 persisted. Fixed: **542 EMA records**. PMDA gave
+**16**, capped by reading review reports (審査報告書) rather than package inserts (添付文書) — #116.
+
+**C — re-extraction was the wrong fix.** The 35 "model omitted it" claims are mostly the
+prompt obeying rule 1 on purpose, which exists to stop #93/#97's self-clashes. Chasing them
+found a precision bug instead: 60 contraindication rows across 10 drugs reproduced the
+prompt's own worked example. Guarded for free. A re-extraction would not have taken effect
+anyway — the cache keys on section text, not on the prompt.
+
+### Measured after a warm rebuild
+
+| | Oct 22 | now |
+|---|---:|---:|
+| **error rate at HIGH** | 5.6% | **5.4%** |
+| MEDIUM error rate | 7.1% | 8.3% |
+| indication pairs | 22,410 | 27,213 |
+| contraindication pairs | 4,618 | 7,638 |
+| KGX edges | 95,170 | 124,567 |
+| gold recall (hierarchy-aware) | 62.3% | 79.7% |
+| v1 indication retention | 52.1% | 56.4% |
+| v1 contraindication retention | 38.4% | 49.6% |
+| v1 audited-**correct** carried | 76.1% | **79.3%** |
+| v1 audited-**wrong** carried | 20.5% | 25.6% |
+
+The error rate at HIGH is the number that had to hold, and did: `_caps_at_medium` demotes any
+grounding whose predicate is not `skos:exactMatch`, so none of the 7,636 proposals can reach
+the tier a consumer filters on. The cost landed where it was aimed.
+
+**The debit.** We gained seven of v1's audited-correct pairs and four of its wrong ones.
+Positive at 1.75:1, thinner than the headline suggests, and on n=222/78 neither figure is
+worth more than a couple of points.
+
+### Why v1 was ahead, from reading `main`
+
+Three deliberate trades, not accidents:
+
+1. **Grounding.** v1 ran `nameres` -> `llm-id-qc` -> `corrected-ids` -> SRI Node Normalizer
+   with conflation. A permissive web service plus an LLM adjudicator resolves 'a history of
+   bronchial asthma'; a pinned offline cascade over exact synonyms cannot. Lever A is that
+   step done I-8-compliantly.
+2. **Corpus.** v1 unzipped the full prescription release and discovered drugs *from* labels.
+   We query `spls.json?drug_name=` per drug-list entry: 19,801 of 52,434 labels (37.8%).
+   Tested the lever and it is small — ~5 genuine new drugs per 1,000 labels, and only 14 of
+   the 436 absent drugs are USA.
+3. **India and Russia are the same files.** v1's `india-raw` is `indian_drugs.csv`, which sits
+   unread in `data/raw/india/`; our `data/raw/russia/` holds v1's own intermediates.
+
+### Not Pareto, and what is left
+
+Quality is won — 5.4% at HIGH against v1's 25.8%, and we drop 59.4% of what v1 asserted
+wrongly. Still behind on 436 absent drugs, india -359, pmda -26, and 20.7% of v1's
+audited-correct pairs. Every remaining item is filed:
+
+- **#114** ingest `indian_drugs.csv`? 219 drugs, half the drug gap — a decision, not work
+- **#115** Russia and Japan: 163 and 36 absent, measured twice as coverage not grounding
+- **#116** PMDA contraindications read the wrong document
+- **#117** opt-in paths rot: three bugs in one day, all behind flags no build runs
+- **#118** the grounding residue is mostly not a grounding problem — lever A's ceiling
+
+There is no algorithmic lever left of A's size. #118 is the evidence: the 30% A could not
+reach is one part prompt-rule violation, one part ontology coverage, one part hard clinical
+inference. What remains is one judgement and an acquisition programme.
