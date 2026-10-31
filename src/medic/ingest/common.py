@@ -235,6 +235,24 @@ _MAX_DISEASE_NAME_CHARS = 120
 #: drug-contraindication target is itself named after contraindication.
 _META_RESTRICTION_TOKEN = "contraindicat"
 
+#: Strings pandas reads as a missing value, which must never become a disease name.
+#:
+#: This is pandas' own default ``na_values`` list, and the literal ``None`` is on it. A
+#: model that answers with the bare word got it grounded — `None` matched UMLS:C0549184
+#: "None (qualifier value)" via `oio:hasExactSynonym` at 0.95, because the disease
+#: vocabulary really does contain that SNOMED qualifier (#108). The row then broke every
+#: pandas-based reader of the store: `parse_sssom_table` turned its `subject_label` into
+#: `NaN`, so SSSOM JSON-schema validation reported `'subject_label' is a required property`
+#: and the whole of `mappings/disease_grounding.sssom.tsv` failed validation on that one
+#: row of 19,683 — which is the test failure behind #106.
+#:
+#: Checked case-insensitively and whole-string only: 'NA' is not a disease, but a real name
+#: may legitimately contain it.
+_PANDAS_NA_STRINGS = frozenset({
+    "", "#n/a", "#n/a n/a", "#na", "-1.#ind", "-1.#qnan", "-nan", "1.#ind", "1.#qnan",
+    "<na>", "n/a", "na", "null", "nan", "none",
+})
+
 
 def looks_like_disease_name(name: str) -> bool:
     """Defensive filter for LLM disease-extraction output.
@@ -261,6 +279,8 @@ def looks_like_disease_name(name: str) -> bool:
     if len(name) > _MAX_DISEASE_NAME_CHARS:
         return False
     lower = name.lower()
+    if lower in _PANDAS_NA_STRINGS:
+        return False
     if any(lower.startswith(p) for p in _REFUSAL_STARTS):
         return False
     if _META_RESTRICTION_TOKEN in lower:

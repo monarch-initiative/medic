@@ -12,6 +12,8 @@ on it rather than a comprehension inside a multi-hour run.
 
 from __future__ import annotations
 
+import pytest
+
 from medic.ingest.dailymed.__main__ import Claim
 from medic.ingest.ema.__main__ import disease_claims
 
@@ -33,18 +35,6 @@ def test_refusal_prose_is_dropped():
     assert kept == {"angioedema"}
 
 
-def test_the_literal_None_still_gets_through_which_is_108():
-    """Pins current behaviour rather than the behaviour I expected.
-
-    `looks_like_disease_name("None")` returns True, so a model answering with the bare word
-    survives this filter and goes on to ground — against UMLS "None (qualifier value)",
-    which is #108. Not introduced here and not fixed here; asserted so that closing #108
-    has to come past this test rather than quietly changing what this path emits.
-    """
-    kept = disease_claims([Claim(target="None")])
-    assert [c.target for c in kept] == ["None"]
-
-
 def test_an_empty_extraction_filters_to_nothing_rather_than_raising():
     assert disease_claims([]) == []
 
@@ -54,3 +44,31 @@ def test_every_claim_field_the_path_reads_exists_on_claim():
     claim = Claim(target="x")
     for field in ("target", "target_verbatim"):
         assert hasattr(claim, field), field
+
+
+# ---------------------------------------------------------------------------
+# The literal `None` (#108, and the test failure behind #106)
+# ---------------------------------------------------------------------------
+def test_the_literal_None_is_rejected_now():
+    """Was the opposite assertion until the cause was found.
+
+    A model answering with the bare word got `None` grounded against UMLS:C0549184
+    "None (qualifier value)" — the disease vocabulary really does hold that SNOMED
+    qualifier. The row then broke every pandas-based reader of the grounding store, because
+    `None` is in pandas' default `na_values`: `parse_sssom_table` read its `subject_label`
+    as `NaN` and SSSOM JSON-schema validation failed the whole file on that one row.
+    """
+    assert disease_claims([Claim(target="None")]) == []
+
+
+@pytest.mark.parametrize("token", ["None", "none", "NA", "n/a", "NULL", "NaN", "<NA>"])
+def test_no_pandas_missing_value_token_survives_as_a_disease(token):
+    """Whole-string and case-insensitive. Any of these reaching the store reintroduces the
+    same unreadable row under a different spelling."""
+    assert disease_claims([Claim(target=token)]) == []
+
+
+@pytest.mark.parametrize("name", ["anaemia", "Nanjing encephalitis", "NAFLD"])
+def test_a_real_name_that_merely_contains_such_a_token_is_kept(name):
+    """The check is whole-string for a reason — 'NA' inside a word is not a missing value."""
+    assert [c.target for c in disease_claims([Claim(target=name)])] == [name]
