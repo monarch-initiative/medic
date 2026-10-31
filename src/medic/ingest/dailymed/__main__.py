@@ -909,7 +909,19 @@ def _screen_negated_indications(
     run on them, which is not the same as their passing it. The merge records the same
     fact per row as the ``polarity_unverified`` assertion flag.
     """
-    from medic.validation.extraction_fidelity import screen_indications
+    from medic.validation.extraction_fidelity import (
+        drop_copied_prompt_examples,
+        screen_indications,
+    )
+
+    diseases, copied = drop_copied_prompt_examples(
+        diseases, indication_text, kind="indication")
+    for claim in copied:
+        logger.warning(
+            "Dropping %r — it reproduces the prompt's worked example and its verbatim "
+            "%r is nowhere in this section, so the label does not assert it",
+            claim.target, claim.target_verbatim,
+        )
 
     by_name = {c.target: c for c in diseases}
     result = screen_indications(
@@ -948,7 +960,19 @@ def _screen_negated_contraindications(
     contraindicated in X") or excepting the condition from a broader class. See
     ``extraction_fidelity._CONTRA_NEGATION_CUES``.
     """
-    from medic.validation.extraction_fidelity import screen_contraindications
+    from medic.validation.extraction_fidelity import (
+        drop_copied_prompt_examples,
+        screen_contraindications,
+    )
+
+    diseases, copied = drop_copied_prompt_examples(
+        diseases, contraindication_text, kind="contraindication")
+    for claim in copied:
+        logger.warning(
+            "Dropping %r — it reproduces the prompt's worked example and its verbatim "
+            "%r is nowhere in this section, so the label does not assert it",
+            claim.target, claim.target_verbatim,
+        )
 
     by_name = {c.target: c for c in diseases}
     result = screen_contraindications(

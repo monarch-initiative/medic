@@ -339,6 +339,20 @@ def _epar_slug_from_url(epar_url: str) -> str:
 _looks_like_disease_name = looks_like_disease_name
 
 
+def disease_claims(raw: list) -> list:
+    """Keep the extracted claims whose target reads like a disease name.
+
+    A named function rather than an inline comprehension because the inline one read
+    ``d.name`` and the extractor returns a ``Claim``, whose field is ``target``. Nothing
+    caught it: this whole path is opt-in behind ``--extract-contras``, which `build-all`
+    does not call, so the only way to reach the line was to run the recipe by hand — and
+    the first time anyone did, it raised ``AttributeError: 'Claim' object has no attribute
+    'name'`` after downloading every EPAR PDF. That is why EMA has contributed no
+    contraindications (#25): not a missing feature, a stale attribute behind a flag.
+    """
+    return [claim for claim in raw if _looks_like_disease_name(claim.target)]
+
+
 def _extract_contraindications(
     grounded_records: list[dict],
     grounding_backend: str,
@@ -418,7 +432,7 @@ def _extract_contraindications(
             continue
 
         # The LLM helper is tuned for indications; filter refusal prose etc.
-        diseases = [d for d in raw_diseases if _looks_like_disease_name(d.name)]
+        diseases = disease_claims(raw_diseases)
         if len(diseases) < len(raw_diseases):
             logger.info(
                 "Filtered %d non-disease strings from §4.3 extraction (slug=%s)",

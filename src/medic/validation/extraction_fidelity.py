@@ -572,3 +572,71 @@ def main(
 
 if __name__ == "__main__":
     app()
+
+
+# ---------------------------------------------------------------------------
+# Copied prompt examples
+# ---------------------------------------------------------------------------
+#: The records each extraction prompt shows as its worked example.
+#:
+#: A model that copies the example instead of reading the section emits exactly these, and
+#: nothing downstream notices: ``locatable_anchor`` deliberately falls back from an
+#: unfindable verbatim to the name, because its job is deciding whether polarity can be
+#: evaluated rather than whether the claim is supported at all.
+#:
+#: Measured on the contraindication intermediate: 102 rows reproduce an example record and
+#: **60 of them have the verbatim nowhere in their own section text** — fabricated
+#: contraindications on aliskiren, irbesartan, losartan, valsartan, sildenafil and five
+#: more. The other 42 are real: an ACE-inhibitor label genuinely does say "a history of
+#: angioedema", which is why the text check is what decides and the pair alone is not.
+PROMPT_EXAMPLE_RECORDS = {
+    "contraindication": frozenset({
+        ("angioedema", "a history of angioedema"),
+        ("nsaid-induced asthma", "asthma after taking aspirin or other nsaids"),
+    }),
+    "indication": frozenset({
+        ("osteoarthritis", "osteoarthritis"),
+    }),
+}
+
+
+def _fold(text: object) -> str:
+    """Compare text the way a quote should be compared: shape, not code points."""
+    folded = unicodedata.normalize("NFKD", str(text or ""))
+    for dash in ("‑", "–", "—", "−"):
+        folded = folded.replace(dash, "-")
+    for quote in ("’", "‘"):
+        folded = folded.replace(quote, "'")
+    return re.sub(r"\s+", " ", folded).strip().lower()
+
+
+def drop_copied_prompt_examples(
+    claims: list, source_text: str, kind: str = "contraindication",
+) -> tuple[list, list]:
+    """``(kept, dropped)`` — remove claims that are the prompt's example, not the label's.
+
+    A claim is dropped only when it matches an example record **and** its verbatim cannot
+    be found in the section text. Both conditions are needed: the pair alone would discard
+    real claims from the many labels that do contraindicate a history of angioedema, and
+    the text check alone would discard legitimate canonicalisations such as
+    'neutrophil counts of <1,000 cells/mm3' -> severe neutropenia, which is 231 further
+    rows whose target *is* in the text.
+
+    Deliberately narrow. 246 rows have neither verbatim nor target in their section text,
+    but that set still mixes fabrication with apostrophe variants and with lab-threshold
+    canonicalisation, so dropping on it would cost real claims. The example pair is the one
+    discriminator with no false positives.
+    """
+    examples = PROMPT_EXAMPLE_RECORDS.get(kind, frozenset())
+    if not examples:
+        return list(claims), []
+    haystack = _fold(source_text)
+    kept, dropped = [], []
+    for claim in claims:
+        target = _fold(getattr(claim, "target", ""))
+        verbatim = _fold(getattr(claim, "target_verbatim", ""))
+        if (target, verbatim) in examples and verbatim and verbatim not in haystack:
+            dropped.append(claim)
+        else:
+            kept.append(claim)
+    return kept, dropped
