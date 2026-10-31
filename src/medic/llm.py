@@ -171,4 +171,14 @@ def llm_call(
         timeout=60,
     )
 
-    return response.choices[0].message.content.strip()
+    # `content` is None, not "", when a provider returns a message with no text block —
+    # a refusal, or a stop that produced no content. Calling `.strip()` on that raised
+    # `AttributeError: 'NoneType' object has no attribute 'strip'` 38 calls into a 300-call
+    # batch and took the whole run down. Every caller already handles an empty answer
+    # (the parsers return no records), so degrade to "" rather than crash a paid run.
+    content = response.choices[0].message.content
+    if content is None:
+        logger.warning("LLM returned a message with no content (model=%s, task=%s)",
+                       resolved_model, task)
+        return ""
+    return content.strip()

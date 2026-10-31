@@ -473,6 +473,7 @@ RULE_CERTAINTY = {
     "translation_dictionary": 0.85, "translation_llm": 0.50,
     "deepl_translation": 0.85,
     "rxnorm_resolve": 0.70,
+    "llm_condition_paraphrase": 0.55,
 }
 RULE_PREDICATE = {
     "base_normalization": "skos:exactMatch",
@@ -493,4 +494,5 @@ RULE_PREDICATE = {
     "translation_dictionary": "skos:closeMatch", "translation_llm": "skos:closeMatch",
     "deepl_translation": "skos:closeMatch",
     "rxnorm_resolve": "skos:closeMatch",
+    "llm_condition_paraphrase": "skos:broadMatch",
 }

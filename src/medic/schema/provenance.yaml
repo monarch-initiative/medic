@@ -436,6 +436,10 @@ enums:
       rxnorm_resolve:
         description: "RxNav approximate-match resolves a product/formulation string to its ingredient INN, re-grounded to CHEBI/DRON. Network-derived, cached, curator-reviewable proposal written into the store (not run at resolve time)."
         annotations: {certainty: 0.70, rule_family: substance_resolver, predicate: skos:closeMatch}
+      # --- family: condition_resolver (clinical paraphrase -> the condition it names) ---
+      llm_condition_paraphrase:
+        description: "LLM names the condition a clinical phrase refers to ('a history of bronchial asthma' -> 'asthma'), re-grounded through MeDIC's own lexical cascade so the id comes from the pinned release and never from the model. Network-derived, cached, curator-reviewable proposal written into the store (not run at resolve time). broadMatch because the phrase is routinely narrower than the condition it names - a history of it, a risk of it, a severe form of it - so the mapping is a generalisation and must never ship as an exact identity."
+        annotations: {certainty: 0.55, rule_family: condition_resolver, predicate: skos:broadMatch}
   NormalizationQualityEnum:
     description: How the initial ID maps to the canonical target ID.
     permissible_values:

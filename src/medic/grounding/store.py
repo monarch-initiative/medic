@@ -44,6 +44,19 @@ UNSPECIFIED = "semapv:UnspecifiedMatching"
 #: ``subject_preprocessing`` entry that marks a row as an RxNorm resolver proposal.
 RXNORM_RULE = "rxnorm_resolve"
 
+#: ``subject_preprocessing`` entry that marks a row as an LLM condition-paraphrase proposal.
+#:
+#: Same standing as :data:`RXNORM_RULE` and for the same reason: network-derived, cached,
+#: curator-reviewable, and locked so an offline regrounding run reads it from the store
+#: instead of re-emitting ``NoTermFound``. The lexical cascade cannot reach a clinical
+#: paraphrase — 'a history of bronchial asthma', 'inherited or acquired hypercoagulopathies'
+#: — and 9,594 of the 18,375 disease strings in this store are of that shape.
+#:
+#: The LLM proposes a *condition name*, never an id. The id is whatever MeDIC's own lexical
+#: cascade then grounds that name to, so a hallucinated CURIE cannot enter the store: the
+#: only ids that reach it are ones the pinned release already contains.
+PARAPHRASE_RULE = "llm_condition_paraphrase"
+
 #: The predicate written on an unresolved row. SSSOM expresses "we looked and found nothing"
 #: as ``object_id: sssom:NoTermFound`` against a real predicate — the predicate says what was
 #: sought, the object says it was not found. Writing ``NoTermFound`` into ``predicate_id`` with
@@ -61,7 +74,8 @@ def is_locked(d: "GroundingDecision") -> bool:
     a legal ``semapv:`` term and can no longer carry a MeDIC-specific marker.
     """
     return (d.mapping_justification == MANUAL
-            or RXNORM_RULE in (d.subject_preprocessing or ()))
+            or RXNORM_RULE in (d.subject_preprocessing or ())
+            or PARAPHRASE_RULE in (d.subject_preprocessing or ()))
 
 COLUMNS = [
     "subject_type", "subject_label", "subject_id", "predicate_id",
