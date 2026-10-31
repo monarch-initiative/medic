@@ -1,0 +1,30 @@
+{
+  "china": {
+    "bytes": 340591,
+    "file": "cder_drugs_final_all.csv",
+    "modified": "2026-07-25",
+    "row_count": 1521,
+    "sha256": "980262a8a7adc7ec"
+  },
+  "ema": {
+    "bytes": 881275,
+    "file": "ema_medicines.xlsx",
+    "modified": "2026-04-02",
+    "row_count": 995,
+    "sha256": "c642abe40f5c4cc7"
+  },
+  "pmda": {
+    "bytes": 3171568,
+    "file": "pmda_approvals.pdf",
+    "modified": "2026-04-29",
+    "row_count": 1174,
+    "sha256": "a6ec550d02348432"
+  },
+  "russia": {
+    "bytes": 18642697,
+    "file": "grls.zip",
+    "modified": "2026-07-24",
+    "row_count": 5885,
+    "sha256": "a34040a4b6c433d0"
+  }
+}

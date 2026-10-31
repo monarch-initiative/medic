@@ -1,0 +1,18 @@
+translation_set_id: https://w3id.org/monarch-initiative/medic/mappings/drug_translation
+title: MeDIC drug-name translations
+license: https://creativecommons.org/licenses/by/4.0/
+source_language:
+- ru
+- zh
+comment: 'The translations in this file are MeDIC''s own contribution (DeepL machine output, post-edited
+  where a curator has reviewed it) and are offered as https://creativecommons.org/publicdomain/zero/1.0/.
+  The set is declared https://creativecommons.org/licenses/by/4.0/ because `source_value` reproduces verbatim
+  ru, zh strings from the Russian GRLS and Chinese CDE registers. Those registers declare no open licence:
+  MeDIC republishes derived per-drug records from them as a recorded decision (see LICENSING.md), and
+  cannot license their content onward. Treat `source_value` as upstream content and `translation_value`
+  as MeDIC''s. MeDIC grants no rights over upstream source content. The original licence of each contributing
+  source remains in force and must be respected; parsing, translation, normalisation and mapping to ontology
+  identifiers do not alter it. Where terms conflict, the stricter governs.'
+note: Terms live here rather than in the TSV because babelon's own reader (babelon.utils.parse_babelon)
+  is a bare pandas read_csv with no comment handling, so a '#' front-matter line makes the table unparseable.
+  Keep the TSV clean.

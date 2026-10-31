@@ -1,0 +1,1228 @@
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: UMLS:C0472387
+    grounded_label: Vasogenic Cerebral Edema
+    grounding_quality: lexical_exact
+    original_string: vasogenic cerebral edema
+    subject_id: MEDICNE:768859d9-a7e6-532a-82f7-68dab7ec19dc
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0472387
+    normalized_label: Vasogenic Cerebral Edema
+    original_id: UMLS:C0472387
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:756751|UMLS:C0472387
+  ema: false
+  evidence:
+  - approval_date: '20240924'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: vasogenic cerebral edema
+    original_disease_verbatim: the presence of vasogenic cerebral edema prior to the initiation of donanemab treatment
+    original_drug_label: DONANEMAB
+    product_id: P20240920001
+    reference: https://www.pmda.go.jp/files/000275604.pdf
+    snippet: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+      donanemab treatment
+
+       Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+      cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+      106
+
+      Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+    source_document_url: https://www.pmda.go.jp/files/000275604.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0472387
+  final_normalized_disease_label: Vasogenic Cerebral Edema
+  final_normalized_drug_id: CHEBI:756751
+  final_normalized_drug_label: donanemab
+  indications_text: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+    donanemab treatment
+
+     Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+    cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+    106
+
+    Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.55
+    grounded_id: UMLS:C1868999
+    grounded_label: ''
+    grounding_quality: curated
+    original_string: ≥5 cerebral microhemorrhages
+    subject_id: MEDICNE:cebadd90-e37a-54ad-8f2d-eafdbc427d6b
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C1868999
+    normalized_label: ''
+    original_id: UMLS:C1868999
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:756751|UMLS:C1868999
+  ema: false
+  evidence:
+  - approval_date: '20240924'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: ≥5 cerebral microhemorrhages
+    original_disease_verbatim: findings that show the presence of ≥5 cerebral microhemorrhages
+    original_drug_label: DONANEMAB
+    product_id: P20240920001
+    reference: https://www.pmda.go.jp/files/000275604.pdf
+    snippet: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+      donanemab treatment
+
+       Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+      cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+      106
+
+      Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+    source_document_url: https://www.pmda.go.jp/files/000275604.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C1868999
+  final_normalized_disease_label: ≥5 cerebral microhemorrhages
+  final_normalized_drug_id: CHEBI:756751
+  final_normalized_drug_label: donanemab
+  indications_text: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+    donanemab treatment
+
+     Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+    cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+    106
+
+    Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 1.0
+    grounded_id: MONDO:0016594
+    grounded_label: superficial siderosis
+    grounding_quality: lexical_exact
+    original_string: superficial siderosis
+    subject_id: MEDICNE:2b16748d-9e31-5164-9f3b-578b0b32b6bb
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: MONDO:0016594
+    normalized_label: superficial siderosis
+    original_id: MONDO:0016594
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:756751|MONDO:0016594
+  ema: false
+  evidence:
+  - approval_date: '20240924'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: superficial siderosis
+    original_disease_verbatim: superficial siderosis
+    original_drug_label: DONANEMAB
+    product_id: P20240920001
+    reference: https://www.pmda.go.jp/files/000275604.pdf
+    snippet: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+      donanemab treatment
+
+       Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+      cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+      106
+
+      Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+    source_document_url: https://www.pmda.go.jp/files/000275604.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0016594
+  final_normalized_disease_label: superficial siderosis
+  final_normalized_drug_id: CHEBI:756751
+  final_normalized_drug_label: donanemab
+  indications_text: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+    donanemab treatment
+
+     Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+    cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+    106
+
+    Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.55
+    grounded_id: HP:0001342
+    grounded_label: Cerebral hemorrhage
+    grounding_quality: curated
+    original_string: cerebral hemorrhage >1 cm
+    subject_id: MEDICNE:d034c8b7-8858-54f4-a9ff-fbcaf5d3bf07
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0001342
+    normalized_label: Cerebral hemorrhage
+    original_id: HP:0001342
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:756751|HP:0001342
+  ema: false
+  evidence:
+  - approval_date: '20240924'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: cerebral hemorrhage >1 cm
+    original_disease_verbatim: cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+    original_drug_label: DONANEMAB
+    product_id: P20240920001
+    reference: https://www.pmda.go.jp/files/000275604.pdf
+    snippet: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+      donanemab treatment
+
+       Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+      cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+      106
+
+      Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+    source_document_url: https://www.pmda.go.jp/files/000275604.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0001342
+  final_normalized_disease_label: Cerebral hemorrhage
+  final_normalized_drug_id: CHEBI:756751
+  final_normalized_drug_label: donanemab
+  indications_text: ' Patients with findings that show the presence of vasogenic cerebral edema prior to the initiation of
+
+    donanemab treatment
+
+     Patients with findings that show the presence of ≥5 cerebral microhemorrhages, superficial siderosis, or
+
+    cerebral hemorrhage >1 cm prior to the initiation of donanemab treatment
+
+    106
+
+    Kisunla Intravenous Infusion_Eli Lilly Japan K.K._Review Report'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.855
+    grounded_id: UMLS:C0032961
+    grounded_label: Gestation
+    grounding_quality: lexical_exact
+    original_string: pregnancy
+    subject_id: MEDICNE:61fa2e1b-9485-57c6-8f7d-5133426ad8d3
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0032961
+    normalized_label: Gestation
+    original_id: UMLS:C0032961
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:63791|UMLS:C0032961
+  ema: false
+  evidence:
+  - approval_date: '20100625'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: pregnancy
+    original_disease_verbatim: Pregnant women or women who may possibly be pregnant
+    original_drug_label: LENALIDOMIDE HYDRATE
+    product_id: P20170306001
+    reference: https://www.pmda.go.jp/files/000228384.pdf
+    snippet: '1. Pregnant women or women who may possibly be pregnant
+
+      2. Patients who are unable to adhere to the proper management procedures
+
+      3. Patients with a history of hypersensitivity to any of the ingredients of lenalidomide'
+    source_document_url: https://www.pmda.go.jp/files/000228384.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0032961
+  final_normalized_disease_label: Gestation
+  final_normalized_drug_id: CHEBI:63791
+  final_normalized_drug_label: lenalidomide
+  indications_text: '1. Pregnant women or women who may possibly be pregnant
+
+    2. Patients who are unable to adhere to the proper management procedures
+
+    3. Patients with a history of hypersensitivity to any of the ingredients of lenalidomide'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0002105
+    grounded_label: Hemoptysis
+    grounding_quality: lexical_exact
+    original_string: hemoptysis
+    subject_id: MEDICNE:1dbeebd2-9d51-52ca-aa80-57fe281795b4
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0002105
+    normalized_label: Hemoptysis
+    original_id: HP:0002105
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:749495|HP:0002105
+  ema: false
+  evidence:
+  - approval_date: '20110926'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: hemoptysis
+    original_disease_verbatim: hemoptysis (fresh blood of ≥2.5 mL)
+    original_drug_label: BEVACIZUMAB
+    product_id: P20160518003
+    reference: https://www.pmda.go.jp/files/000224436.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+      2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+      [hemoptysis] may occur, which may result in death.]'
+    source_document_url: https://www.pmda.go.jp/files/000224436.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002105
+  final_normalized_disease_label: Hemoptysis
+  final_normalized_drug_id: CHEBI:749495
+  final_normalized_drug_label: bevacizumab
+  indications_text: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+    2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+    [hemoptysis] may occur, which may result in death.]'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.55
+    grounded_id: UMLS:C0280962
+    grounded_label: Bone Marrow Depression
+    grounding_quality: curated
+    original_string: serious myelosuppression
+    subject_id: MEDICNE:78835f23-936a-5c00-a0da-8a62e7b75d48
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0280962
+    normalized_label: Bone Marrow Depression
+    original_id: UMLS:C0280962
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:45863|UMLS:C0280962
+  ema: false
+  evidence:
+  - approval_date: '20100723'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: serious myelosuppression
+    original_disease_verbatim: serious myelosuppression
+    original_drug_label: PACLITAXEL
+    product_id: P20190905002
+    reference: https://www.pmda.go.jp/files/000234773.pdf
+    snippet: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+      associated with myelosuppression may become serious.]
+
+      2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+      22
+
+      Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+      3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+      4. Pregnant women or women who may be pregnant'
+    source_document_url: https://www.pmda.go.jp/files/000234773.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0280962
+  final_normalized_disease_label: Bone Marrow Depression
+  final_normalized_drug_id: CHEBI:45863
+  final_normalized_drug_label: paclitaxel
+  indications_text: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+    associated with myelosuppression may become serious.]
+
+    2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+    22
+
+    Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+    3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+    4. Pregnant women or women who may be pregnant'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: UMLS:C3714514
+    grounded_label: Infections
+    grounding_quality: lexical_exact
+    original_string: infections
+    subject_id: MEDICNE:96160c5a-94fe-5e66-ad67-e649ebd80af5
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C3714514
+    normalized_label: Infections
+    original_id: UMLS:C3714514
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:45863|UMLS:C3714514
+  ema: false
+  evidence:
+  - approval_date: '20100723'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: infections
+    original_disease_verbatim: Infections
+    original_drug_label: PACLITAXEL
+    product_id: P20190905002
+    reference: https://www.pmda.go.jp/files/000234773.pdf
+    snippet: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+      associated with myelosuppression may become serious.]
+
+      2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+      22
+
+      Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+      3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+      4. Pregnant women or women who may be pregnant'
+    source_document_url: https://www.pmda.go.jp/files/000234773.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C3714514
+  final_normalized_disease_label: Infections
+  final_normalized_drug_id: CHEBI:45863
+  final_normalized_drug_label: paclitaxel
+  indications_text: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+    associated with myelosuppression may become serious.]
+
+    2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+    22
+
+    Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+    3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+    4. Pregnant women or women who may be pregnant'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.855
+    grounded_id: UMLS:C0032961
+    grounded_label: Gestation
+    grounding_quality: lexical_exact
+    original_string: pregnancy
+    subject_id: MEDICNE:61fa2e1b-9485-57c6-8f7d-5133426ad8d3
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0032961
+    normalized_label: Gestation
+    original_id: UMLS:C0032961
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:45863|UMLS:C0032961
+  ema: false
+  evidence:
+  - approval_date: '20100723'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: pregnancy
+    original_disease_verbatim: Pregnant women or women who may be pregnant
+    original_drug_label: PACLITAXEL
+    product_id: P20190905002
+    reference: https://www.pmda.go.jp/files/000234773.pdf
+    snippet: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+      associated with myelosuppression may become serious.]
+
+      2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+      22
+
+      Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+      3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+      4. Pregnant women or women who may be pregnant'
+    source_document_url: https://www.pmda.go.jp/files/000234773.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0032961
+  final_normalized_disease_label: Gestation
+  final_normalized_drug_id: CHEBI:45863
+  final_normalized_drug_label: paclitaxel
+  indications_text: '1. Patients with serious myelosuppression [Myelosuppression is a dose-limiting toxicity, and infections
+
+    associated with myelosuppression may become serious.]
+
+    2. Patients with infections [Infections may be exacerbated by myelosuppression.]
+
+    22
+
+    Abraxane I.V. Infusion (breast cancer)_Taiho Pharmaceutical Co., Ltd._review report
+
+    3. Patients with a history of hypersensitivity to nab-PTX or paclitaxel/albumin
+
+    4. Pregnant women or women who may be pregnant'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.75
+    grounded_id: UMLS:C0948807
+    grounded_label: ''
+    grounding_quality: lexical_exact_surgery
+    original_string: moderate or severe hepatic impairment
+    subject_id: MEDICNE:c023c18d-c9da-5ed7-8ad3-66b6bc7ee683
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0948807
+    normalized_label: ''
+    original_id: UMLS:C0948807
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:76612|UMLS:C0948807
+  ema: false
+  evidence:
+  - approval_date: '20160328'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: moderate or severe hepatic impairment
+    original_disease_verbatim: moderate or severe hepatic impairment
+    original_drug_label: IBRUTINIB
+    product_id: P20230213002
+    reference: https://www.pmda.go.jp/files/000266405.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any ingredient of the product
+
+      2. Patients with moderate or severe hepatic impairment
+
+      3. Patients currently receiving ketoconazole, itraconazole, or clarithromycin
+
+      4. Pregnant women or women who may possibly be pregnant'
+    source_document_url: https://www.pmda.go.jp/files/000266405.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0948807
+  final_normalized_disease_label: moderate or severe hepatic impairment
+  final_normalized_drug_id: CHEBI:76612
+  final_normalized_drug_label: ibrutinib
+  indications_text: '1. Patients with a history of hypersensitivity to any ingredient of the product
+
+    2. Patients with moderate or severe hepatic impairment
+
+    3. Patients currently receiving ketoconazole, itraconazole, or clarithromycin
+
+    4. Pregnant women or women who may possibly be pregnant'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.855
+    grounded_id: UMLS:C0032961
+    grounded_label: Gestation
+    grounding_quality: lexical_exact
+    original_string: pregnancy
+    subject_id: MEDICNE:61fa2e1b-9485-57c6-8f7d-5133426ad8d3
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0032961
+    normalized_label: Gestation
+    original_id: UMLS:C0032961
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:76612|UMLS:C0032961
+  ema: false
+  evidence:
+  - approval_date: '20160328'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: pregnancy
+    original_disease_verbatim: Pregnant women or women who may possibly be pregnant
+    original_drug_label: IBRUTINIB
+    product_id: P20230213002
+    reference: https://www.pmda.go.jp/files/000266405.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any ingredient of the product
+
+      2. Patients with moderate or severe hepatic impairment
+
+      3. Patients currently receiving ketoconazole, itraconazole, or clarithromycin
+
+      4. Pregnant women or women who may possibly be pregnant'
+    source_document_url: https://www.pmda.go.jp/files/000266405.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0032961
+  final_normalized_disease_label: Gestation
+  final_normalized_drug_id: CHEBI:76612
+  final_normalized_drug_label: ibrutinib
+  indications_text: '1. Patients with a history of hypersensitivity to any ingredient of the product
+
+    2. Patients with moderate or severe hepatic impairment
+
+    3. Patients currently receiving ketoconazole, itraconazole, or clarithromycin
+
+    4. Pregnant women or women who may possibly be pregnant'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0002105
+    grounded_label: Hemoptysis
+    grounding_quality: lexical_exact
+    original_string: hemoptysis
+    subject_id: MEDICNE:1dbeebd2-9d51-52ca-aa80-57fe281795b4
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0002105
+    normalized_label: Hemoptysis
+    original_id: HP:0002105
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:749495|HP:0002105
+  ema: false
+  evidence:
+  - approval_date: '20220926'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: hemoptysis
+    original_disease_verbatim: hemoptysis (fresh blood of ≥2.5 mL)
+    original_drug_label: BEVACIZUMAB [BEVACIZUMAB BIOSIMILAR 4]
+    product_id: P20160518003
+    reference: https://www.pmda.go.jp/files/000224436.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+      2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+      [hemoptysis] may occur, which may result in death.]'
+    source_document_url: https://www.pmda.go.jp/files/000224436.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002105
+  final_normalized_disease_label: Hemoptysis
+  final_normalized_drug_id: CHEBI:749495
+  final_normalized_drug_label: bevacizumab
+  indications_text: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+    2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+    [hemoptysis] may occur, which may result in death.]'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: UMLS:C0018802
+    grounded_label: Heart failure
+    grounding_quality: lexical_exact
+    original_string: congestive cardiac failure
+    subject_id: MEDICNE:158c9d7c-a691-598f-a385-19864785fc14
+  disease_normalization:
+    normalization_quality: asserted_exact
+    normalized_id: MONDO:0005009
+    normalized_label: null
+    original_id: UMLS:C0018802
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|MONDO:0005009
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: congestive cardiac failure
+    original_disease_verbatim: congestive cardiac failure
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005009
+  final_normalized_disease_label: Heart failure
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 1.0
+    grounded_id: MONDO:0005068
+    grounded_label: myocardial infarction
+    grounding_quality: lexical_exact
+    original_string: myocardial infarction
+    subject_id: MEDICNE:a390f77a-2c80-5306-98f3-82c8df78028f
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: MONDO:0005068
+    normalized_label: myocardial infarction
+    original_id: MONDO:0005068
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|MONDO:0005068
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: myocardial infarction
+    original_disease_verbatim: myocardial infarction
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: MONDO:0005068
+  final_normalized_disease_label: myocardial infarction
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0001681
+    grounded_label: Angina pectoris
+    grounding_quality: lexical_exact
+    original_string: angina pectoris
+    subject_id: MEDICNE:15ddd97e-d839-5c27-93a8-101b99664b2b
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0001681
+    normalized_label: Angina pectoris
+    original_id: HP:0001681
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|HP:0001681
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: angina pectoris
+    original_disease_verbatim: angina pectoris
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0001681
+  final_normalized_disease_label: Angina pectoris
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.55
+    grounded_id: HP:0012722
+    grounded_label: Heart block
+    grounding_quality: curated
+    original_string: advanced conduction system disorders
+    subject_id: MEDICNE:7f571d3d-afb6-597d-a4e4-05dab4c78e8f
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0012722
+    normalized_label: Heart block
+    original_id: HP:0012722
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|HP:0012722
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: advanced conduction system disorders
+    original_disease_verbatim: advanced conduction system disorders (e.g., complete atrioventricular block)
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0012722
+  final_normalized_disease_label: Heart block
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.75
+    grounded_id: UMLS:C0948807
+    grounded_label: ''
+    grounding_quality: lexical_exact_surgery
+    original_string: moderate or severe hepatic impairment
+    subject_id: MEDICNE:c023c18d-c9da-5ed7-8ad3-66b6bc7ee683
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: UMLS:C0948807
+    normalized_label: ''
+    original_id: UMLS:C0948807
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|UMLS:C0948807
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: moderate or severe hepatic impairment
+    original_disease_verbatim: moderate or severe hepatic impairment (Child-Pugh class B or C)
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: UMLS:C0948807
+  final_normalized_disease_label: moderate or severe hepatic impairment
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0004796
+    grounded_label: Gastrointestinal obstruction
+    grounding_quality: lexical_exact
+    original_string: gastrointestinal obstruction
+    subject_id: MEDICNE:b5e77b3e-e36a-521c-adcb-bb94014e6d4c
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0004796
+    normalized_label: Gastrointestinal obstruction
+    original_id: HP:0004796
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:754417|HP:0004796
+  ema: false
+  evidence:
+  - approval_date: '20210122'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: gastrointestinal obstruction
+    original_disease_verbatim: gastrointestinal obstruction
+    original_drug_label: ANAMORELIN HYDROCHLORIDE
+    product_id: P20210113006
+    reference: https://www.pmda.go.jp/files/000242929.pdf
+    snippet: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+      4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+      the symptoms.]
+
+      5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+      may worsen the symptoms.]
+
+      6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+      with sodium channel inhibition may have inhibitory effec'
+    source_document_url: https://www.pmda.go.jp/files/000242929.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0004796
+  final_normalized_disease_label: Gastrointestinal obstruction
+  final_normalized_drug_id: CHEBI:754417
+  final_normalized_drug_label: anamorelin
+  indications_text: '3. Patients with a history of hypersensitivity to anamorelin or any of the excipients
+
+    4. Patients with congestive cardiac failure [Anamorelin suppresses the cardiac functions and may worsen
+
+    the symptoms.]
+
+    5. Patients with myocardial infarction or angina pectoris [Anamorelin suppresses the cardiac functions and
+
+    may worsen the symptoms.]
+
+    6. Patients with advanced conduction system disorders (e.g., complete atrioventricular block) [Anamorelin
+
+    with sodium channel inhibition may have inhibitory effects on the conduction system and may worsen
+
+    the condition.)
+
+    7. Patients being treated with the following drugs: clarithromycin, indinavir, itraconazole, nelfinavir,
+
+    saquinavir, telaprevir, voriconazole, ritonavir-containing product, and cobicistat-containing product
+
+    8. Patients with moderate or severe hepatic impairment (Child-Pugh class B or C) [The liver is a major
+
+    contributor to the elimination of anamorelin from the body. Therefore, when anamorelin is used in such
+
+    a patient, the blood anamorelin concentration may increase, which may result in the inhibition of the
+
+    conduction system.]
+
+    9. Patients who have difficulty with oral intake of food due to organic gastrointestinal abnormalities, such
+
+    as gastrointestinal obstruction.'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0002105
+    grounded_label: Hemoptysis
+    grounding_quality: lexical_exact
+    original_string: hemoptysis
+    subject_id: MEDICNE:1dbeebd2-9d51-52ca-aa80-57fe281795b4
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0002105
+    normalized_label: Hemoptysis
+    original_id: HP:0002105
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:749495|HP:0002105
+  ema: false
+  evidence:
+  - approval_date: '20190618'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: hemoptysis
+    original_disease_verbatim: hemoptysis (fresh blood of ≥2.5 mL)
+    original_drug_label: BEVACIZUMAB [BEVACIZUMAB BIOSIMILAR 1]
+    product_id: P20160518003
+    reference: https://www.pmda.go.jp/files/000224436.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+      2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+      [hemoptysis] may occur, which may result in death.]'
+    source_document_url: https://www.pmda.go.jp/files/000224436.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002105
+  final_normalized_disease_label: Hemoptysis
+  final_normalized_drug_id: CHEBI:749495
+  final_normalized_drug_label: bevacizumab
+  indications_text: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+    2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+    [hemoptysis] may occur, which may result in death.]'
+  pmda: true
+  relationship_type: CONTRAINDICATION
+- disease_grounding:
+    confidence: 0.9
+    grounded_id: HP:0002105
+    grounded_label: Hemoptysis
+    grounding_quality: lexical_exact
+    original_string: hemoptysis
+    subject_id: MEDICNE:1dbeebd2-9d51-52ca-aa80-57fe281795b4
+  disease_normalization:
+    normalization_quality: identity
+    normalized_id: HP:0002105
+    normalized_label: Hemoptysis
+    original_id: HP:0002105
+    tool: medic-normalizer/1
+  drug_disease: CHEBI:749495|HP:0002105
+  ema: false
+  evidence:
+  - approval_date: '20190920'
+    approval_status: APPROVED
+    confidence: HIGH
+    explanation: PMDA contraindication from per-product review report
+    jurisdiction: JAPAN
+    original_disease_label: hemoptysis
+    original_disease_verbatim: hemoptysis (fresh blood of ≥2.5 mL)
+    original_drug_label: BEVACIZUMAB [BEVACIZUMAB BIOSIMILAR 2]
+    product_id: P20160518003
+    reference: https://www.pmda.go.jp/files/000224436.pdf
+    snippet: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+      2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+      [hemoptysis] may occur, which may result in death.]'
+    source_document_url: https://www.pmda.go.jp/files/000224436.pdf
+    source_role: PRIMARY
+    source_type: REGULATORY
+  fda: false
+  final_normalized_disease_id: HP:0002105
+  final_normalized_disease_label: Hemoptysis
+  final_normalized_drug_id: CHEBI:749495
+  final_normalized_drug_label: bevacizumab
+  indications_text: '1. Patients with a history of hypersensitivity to any of the ingredients of Avastin
+
+    2. Patients with a history of hemoptysis (fresh blood of ≥2.5 mL) (Pulmonary hemorrhage
+
+    [hemoptysis] may occur, which may result in death.]'
+  pmda: true
+  relationship_type: CONTRAINDICATION
