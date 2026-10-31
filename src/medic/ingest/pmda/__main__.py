@@ -333,7 +333,14 @@ def _build_pmda_contraindication_records(
                     "PMDA contraindication; review report not yet linked (search URL fallback)"
                 ),
                 "snippet": section_text[:500],
-                "language": section.get("language", ""),
+                # No `language` key. `EvidenceItem` is a closed class and does not declare
+                # one, so emitting it failed `validate-all` on the first build that ever
+                # reached this code — the whole contraindication path is opt-in behind
+                # `--extract-contras`, which `build-all` does not call. PMDA review reports
+                # are bilingual and the parser records which heading it matched, but the
+                # snippet is kept verbatim either way (I-7) and its language is evident from
+                # the text; language and translation provenance belong in the Babelon table,
+                # not on an evidence item.
                 "original_drug_label": drug_rec.get("source_name", "") or drug_label,
                 "original_disease_label": disease_name,
                 "original_disease_verbatim": disease_verbatim,
